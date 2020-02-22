@@ -1,0 +1,29 @@
+//ESTILOS UNICOS DEL COMPONENTE
+.body-app{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5em 1fr;
+    grid-gap: 1em;
+
+    header{
+        display: grid;
+        grid-template-columns: 6em 1fr 7em;
+        grid-template-rows: 5em;
+
+        img{
+            width: 5em;
+        }
+
+        ul{
+            display: grid;
+            grid-template-columns: 6em 6em 6em 6em 1fr;
+            grid-template-rows: 1fr;
+            grid-gap: 1em;
+
+            &:last-child{
+                width: 100%;
+            }
+        }
+
+    }
+}

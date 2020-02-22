@@ -1,0 +1,18 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-eventos',
+  templateUrl: './eventos.component.html',
+  styleUrls: ['./eventos.component.scss']
+})
+export class EventosComponent implements OnInit {
+  public title:string;
+
+  constructor() { 
+    this.title = "pagina de eventos";
+  }
+
+  ngOnInit(): void {
+  }
+
+}
