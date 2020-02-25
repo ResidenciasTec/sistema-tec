@@ -1,6 +1,7 @@
 
 <main class="body-app">
-    <header>
+
+    <header *ngIf="!identity" >
         <img src="../assets/img/logo.png" alt="logo"/>
         <ul>
             <li><a [routerLink]="['/inicio']">Inicio</a></li>
@@ -9,9 +10,22 @@
             <li><a [routerLink]="['/mantenimiento']">Mantenimiento</a></li>
             <li></li>
         </ul>
-        <p>usuario registrado</p>
-
+        <p [routerLink]="['/login']">logueate</p>
     </header>
+
+    <header *ngIf="identity && identity.nombre">
+        <img src="../assets/img/logo.png" alt="logo"/>
+        <ul>
+            <li><a [routerLink]="['/inicio']">Inicio</a></li>
+            <li><a [routerLink]="['/transporte']">Transporte</a></li>
+            <li><a [routerLink]="['/eventos']">Eventos</a></li>
+            <li><a [routerLink]="['/mantenimiento']">Mantenimiento</a></li>
+            <li></li>
+        </ul>
+        <p>{{identity.nombre + ' ' + identity.apellidos}}</p>
+        <p [routerLink]="['/logout/1']">cerrar sesion</p>
+    </header>
+
     <router-outlet></router-outlet>
 </main>
 

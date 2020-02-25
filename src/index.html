@@ -7,6 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
+  <httpProtocol>  
+    <customHeaders>  
+     <add name="Access-Control-Allow-Origin" value="*" />  
+     <add name="Access-Control-Allow-Headers" value="Content-Type" />  
+     <add name="Access-Control-Allow-Methods" value="GET, POST, PUT, DELETE, OPTIONS" />  
+    </customHeaders>  
+  </httpProtocol>  
 <body>
   <app-root></app-root>
 </body>

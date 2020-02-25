@@ -11,10 +11,12 @@ import {TransporteComponent} from "./components/transporte/transporte.component"
 import {EventosComponent} from "./components/eventos/eventos.component";
 import {MantenimientoComponent} from "./components/mantenimiento/mantenimiento.component";
 
+
 //definir las rutas
 const  appRoutes: Routes = [
     {path: '', component: LoginComponent},
     {path: 'login', component: LoginComponent},
+    {path: 'logout/:sure', component: LoginComponent},
     {path: 'registro', component: RegistroComponent},
     {path: 'inicio', component: InicioComponent},
     {path: 'error', component: ErrorComponent },

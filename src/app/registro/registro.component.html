@@ -1,2 +1,48 @@
 <h1>{{title}}</h1>
 
+<div *ngIf="!status">
+	Registrate en el sistema si no tienes una cuenta actualmente.
+</div>
+<div *ngIf="status == 'success'">
+	El registro se ha completado correctamente, <a [routerLink]="['/login']">logueate aqui</a>
+</div>
+
+<div *ngIf="status == 'error'">
+	El registro no se ha completado, intentalo mas tarde
+</div>
+
+<form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" >
+	<p>
+		<label for="nombre">Nombre</label>
+		<input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="user.nombre" 
+		required pattern="[a-zA-Z]+" />
+
+		<small *ngIf="!nombre.valid && nombre.touched">El nombre no es valido</small>
+	</p>
+	<p>
+		<label for="apellidos">Apellidos</label>
+		<input type="text" name="apellidos" #apellidos="ngModel" [(ngModel)]="user.apellidos" 
+		required pattern="[a-zA-Z]+"  />
+
+		<small *ngIf="!apellidos.valid && apellidos.touched">Los apellidos no son validos</small>
+	</p>
+	<p>
+		<label for="correo">Correo electronico</label>
+		<input type="email" name="correo" #correo="ngModel" [(ngModel)]="user.correo" 
+		required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" />
+		<small *ngIf="!correo.valid && correo.touched">El correo no es valido</small>
+	</p>
+	<p>
+		<label for="password">contrasena</label>
+		<input type="password" name="contrasena" #contrasena="ngModel" [(ngModel)]="user.contrasena" required />
+		<small *ngIf="!contrasena.valid && contrasena.touched">La contrasena no es valida</small>
+	</p>
+	<p>
+		<label for="numerocontrol">numero de control</label>
+		<input type="text" name="numerocontrol" #numerocontrol="ngModel" [(ngModel)]="user.numero_control" required />
+		<small *ngIf="!numerocontrol.valid && numerocontrol.touched">El numero de control no es valido</small>
+	</p>
+
+	<input type="submit" value="registrarme"  [disabled]="registerForm.invalid"/>
+</form>
+
