@@ -12,7 +12,7 @@ export class User{
 		public departmento: string,
 		public clave_electronica: string,
 		public descripcion: string,
-		public image: string,
+		public imagen: string,
 		){
 
 

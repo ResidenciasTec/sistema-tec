@@ -1,5 +1,16 @@
 <h1>{{title}}</h1>
 
+<div *ngIf="!status">
+	Modifica tus datos pesonales
+</div>
+<div *ngIf="status == 'success'">
+	Los datos se han guardado correctamente!!
+</div>
+
+<div *ngIf="status == 'error'">
+	Los datos no se han guardado, intenta nuevamete.
+</div>
+
 <form #UserEditForm="ngForm" (ngSubmit)="onSubmit(UserEditForm)" >
 	<p>
 		<label for="nombre">Nombre</label>
@@ -25,16 +36,22 @@
 	</p>
 
 	<p>
-		<label for="departamento">departamento</label>
-		<input type="text" name="departamento" #departamento="ngModel" [(ngModel)]="user.departmento" 
+		<label for="departmento">departamento</label>
+		<input type="text" name="departmento" #departmento="ngModel" [(ngModel)]="user.departmento" 
 		required />
 	</p>
-
-	<p>
-		<label for="image">foto de perfil</label>
-		<input type="file" name="image" #image="ngModel" [(ngModel)]="user.image" 
-		 />
-	</p>
+	<div>
+		<label>foto de perfil</label>
+		<div *ngIf="identity && identity.imagen">
+			<img src="{{url + 'user/avatar/' + identity.imagen}}" />
+		</div>
+	
+		<angular-file-uploader  
+		      [config]="afuConfig"
+		      [resetUpload]=resetVar
+		      (ApiResponse)="avatarUpload($event)">
+		</angular-file-uploader>
+	</div>
 
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../../models/user";
 import {UserService} from "../../services/user.service";
+import {global} from "../../services/global";
 
 @Component({
   selector: 'app-user-edit',
@@ -14,6 +15,27 @@ export class UserEditComponent implements OnInit {
   public identity;
   public token;
   public status;
+  public resetVar;
+  public url;
+
+  public afuConfig = {
+    multiple: false,
+    formatsAllowed: ".jpg, .png, .gif, .jpeg",
+    maxSize: "100",
+    uploadAPI:  {
+      url: global.url+'user/upload',
+      headers: {
+       "Authorization" : this._userService.getToken()
+      }
+    },
+    theme: "attachPinBtn",
+    hideProgressBar: false,
+    hideResetBtn: true,
+    hideSelectBtn: false,
+    attachPinText: "sube tu imagen de usuario"
+};
+
+
 
   constructor(
     private _userService: UserService
@@ -23,6 +45,7 @@ export class UserEditComponent implements OnInit {
     this.user = new User(1,'','','','usuario','','','','','','','');
     this.identity = _userService.getIdentity();
     this.token = _userService.getToken();
+    this.url = global.url;
 
     //rellenar objeto usuario
     this.user = new User(
@@ -34,10 +57,10 @@ export class UserEditComponent implements OnInit {
           this.identity.correo,
           '',
           '',
-          this.identity.departamento,
+          this.identity.departmento,
           '',
           this.identity.descripcion,
-          this.identity.image
+          this.identity.imagen
       );
   }
 
@@ -77,8 +100,8 @@ export class UserEditComponent implements OnInit {
           }
 
 
-          if(response.changes.image){
-            this.user.image = response.changes.image;
+          if(response.changes.imagen){
+            this.user.imagen = response.changes.imagen;
           }
 
           this.identity = this.user;
@@ -93,6 +116,13 @@ export class UserEditComponent implements OnInit {
         this.status = "error";
       }
       );
+  }
+
+  avatarUpload(datos){
+    let data = JSON.parse(datos.response);
+     console.log(data.image);
+     this.user.imagen = data.image;
+
   }
 
 }
