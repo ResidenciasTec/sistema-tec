@@ -12,6 +12,8 @@ import { ErrorComponent } from './components/error/error.component';
 import { EventosComponent } from './components/eventos/eventos.component';
 import { TransporteComponent } from './components/transporte/transporte.component';
 import { MantenimientoComponent } from './components/mantenimiento/mantenimiento.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { MantenimientoComponent } from './components/mantenimiento/mantenimiento
     ErrorComponent,
     EventosComponent,
     TransporteComponent,
-    MantenimientoComponent
+    MantenimientoComponent,
+    UserEditComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,

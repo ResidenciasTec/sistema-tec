@@ -1,0 +1,42 @@
+<h1>{{title}}</h1>
+
+<form #UserEditForm="ngForm" (ngSubmit)="onSubmit(UserEditForm)" >
+	<p>
+		<label for="nombre">Nombre</label>
+		<input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="user.nombre" 
+		required pattern="[a-zA-Z]+"  />
+
+	</p>
+	<p>
+		<label for="apellidos">Apellidos</label>
+		<input type="text" name="apellidos" #apellidos="ngModel" [(ngModel)]="user.apellidos" 
+		required pattern="[a-zA-Z]+"  />
+
+	</p>
+	<p>
+		<label for="correo">Correo electronico</label>
+		<input type="email" name="correo" #correo="ngModel" [(ngModel)]="user.correo" 
+		required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" />
+	</p>
+	<p>
+		<label for="descripcion">Descripcion sobre mi</label>
+		<input type="text" name="descripcion" #descripcion="ngModel" [(ngModel)]="user.descripcion" 
+		required />
+	</p>
+
+	<p>
+		<label for="departamento">departamento</label>
+		<input type="text" name="departamento" #departamento="ngModel" [(ngModel)]="user.departmento" 
+		required />
+	</p>
+
+	<p>
+		<label for="image">foto de perfil</label>
+		<input type="file" name="image" #image="ngModel" [(ngModel)]="user.image" 
+		 />
+	</p>
+
+
+
+	<input type="submit" value="Guardar cambios"  [disabled]="UserEditForm.invalid"/>
+</form>

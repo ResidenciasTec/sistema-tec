@@ -10,6 +10,8 @@ import {ErrorComponent} from "./components/error/error.component";
 import {TransporteComponent} from "./components/transporte/transporte.component";
 import {EventosComponent} from "./components/eventos/eventos.component";
 import {MantenimientoComponent} from "./components/mantenimiento/mantenimiento.component";
+import {UserEditComponent} from "./components/user-edit/user-edit.component";
+import {PerfilComponent} from "./components/perfil/perfil.component";
 
 
 //definir las rutas
@@ -22,7 +24,9 @@ const  appRoutes: Routes = [
     {path: 'error', component: ErrorComponent },
     {path: 'transporte', component: TransporteComponent},
     {path: 'eventos', component: EventosComponent},
-    {path: 'mantenimiento', component: MantenimientoComponent}
+    {path: 'mantenimiento', component: MantenimientoComponent},
+    {path: 'editar-perfil', component: UserEditComponent},
+    {path: 'perfil', component: PerfilComponent}
 ];
 
 //exportar configuracion de rutas
