@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "tec-materiales": {
@@ -92,8 +92,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -124,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "tec-materiales"
+    }
+  },
+  "defaultProject": "tec-materiales",
+  "cli": {
+    "analytics": "e466c070-2a9d-47ce-a759-c808c08c6121"
+  }
 }
