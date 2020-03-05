@@ -9,10 +9,10 @@ export class User{
 		public correo: string,
 		public contrasena: string,
 		public numero_control: string,
-		public departamento: string,
+		public departmento: string,
 		public clave_electronica: string,
 		public descripcion: string,
-		public image: string,
+		public imagen: string,
 		){
 
 
