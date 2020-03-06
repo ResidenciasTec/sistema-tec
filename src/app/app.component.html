@@ -1,19 +1,14 @@
 
 <main class="body-app">
 
-    <header *ngIf="!identity" >
-        <img src="../assets/img/logo.png" alt="logo"/>
-        <ul>
-            <li><a [routerLink]="['/inicio']">Inicio</a></li>
-            <li><a [routerLink]="['/transporte']">Transporte</a></li>
-            <li><a [routerLink]="['/eventos']">Eventos</a></li>
-            <li><a [routerLink]="['/mantenimiento']">Mantenimiento</a></li>
-            <li></li>
-        </ul>
-        <p [routerLink]="['/login']">logueate</p>
+    <header id="header-nolog" *ngIf="!identity" >
+        <h1><strong>TEC MATERIALES:</strong> Organiza tus eventos, solicitudes y recursos del itm.</h1>
+        <div class="Crea-cuenta">
+        <p [routerLink]="['/login']">Crear Cuenta</p>
+        </div>
     </header>
 
-    <header *ngIf="identity && identity.nombre">
+    <header id="header-silog" *ngIf="identity && identity.nombre">
         <img src="../assets/img/logo.png" alt="logo"/>
         <ul>
             <li><a [routerLink]="['/inicio']">Inicio</a></li>
@@ -25,9 +20,10 @@
         <p>
             <img width="20px" src="{{url + 'user/avatar/' + identity.imagen}}" />
             {{identity.nombre + ' ' + identity.apellidos}}</p>
+             <p [routerLink]="['/perfil']">Perfil</p>
+             <p [routerLink]="['/logout/1']">cerrar sesion</p>
     </header>
-        <p [routerLink]="['/perfil']">Perfil</p>
-        <p [routerLink]="['/logout/1']">cerrar sesion</p>
+       
     <router-outlet></router-outlet>
 </main>
 

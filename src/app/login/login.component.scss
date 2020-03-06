@@ -1,0 +1,22 @@
+#Login-form{
+    display: grid;
+	grid-template-columns: 1fr;
+    grid-template-rows:1fr 4em 1fr ;
+
+    div{
+    	display: flex;
+    	justify-content: center;
+    	align-items: center;
+    	padding: 1.5em;
+    	img{
+    		width: 12em;
+    	  }
+    	}
+    	
+    h1{
+    	display: flex;
+    	justify-content: center;
+    	align-items: center;
+    	font-size: 2em;
+    }
+}
