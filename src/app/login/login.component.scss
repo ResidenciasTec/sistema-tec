@@ -10,6 +10,7 @@
     	padding: 1.5em;
     	img{
     		width: 12em;
+    		padding: 1em;
     	  }
     	}
     	
@@ -18,5 +19,43 @@
     	justify-content: center;
     	align-items: center;
     	font-size: 2em;
+
     }
+    form{
+    	display: grid;
+    	justify-content: center;
+    	align-items: center;
+    	font-size: 1.5em;
+         
+         #boton{
+				border: 1px solid #9F3133 ;
+                border-radius: 13px;
+                color:  #9F3133;
+                padding: 0.3em;
+                background: transparent;
+                width: 8em;
+
+
+               
+                
+    }       
+
+    	}
+
+    #user, #contras{
+        display: flex;
+    	background-color: #D8CACA;
+    	border-radius: 10px;
+    	width: 26em;
+    	height: 1.8em;
+    	font-family: padding 50px;
+        padding: 2px;
+        
+
+    }	
+    small{
+    	color: red;
+    	display: flex;
+    }
+    
 }

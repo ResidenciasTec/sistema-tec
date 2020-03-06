@@ -45,6 +45,23 @@
         }
 
     }
+    #header-silog{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: rgb(173, 136, 50);
+        height: 5em;
+        display:grid;
+        grid-template-columns: 1fr 11em;
+        grid-template-rows: 5em ;
+        position: fixed;
+        width: 100%;
+        
 
+    }
+    ul{
+        color: #000;
+        
+       
+        
+    }
 }
 

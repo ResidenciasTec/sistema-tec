@@ -1,7 +1,9 @@
-<h1>{{title}}</h1>
 
+<div id="Regiistro-form">
+	<h1><strong>{{title}}</strong></h1>
 <div *ngIf="!status">
-	Registrate en el sistema si no tienes una cuenta actualmente.
+
+	**Registrate en el sistema si no tienes una cuenta actualmente.
 </div>
 <div *ngIf="status == 'success'">
 	El registro se ha completado correctamente, <a [routerLink]="['/login']">logueate aqui</a>
@@ -10,7 +12,7 @@
 <div *ngIf="status == 'error'">
 	El registro no se ha completado, intentalo mas tarde
 </div>
-
+<div id="Contenedor-formulario">
 <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" >
 	<p>
 		<label for="nombre">Nombre</label>
@@ -33,7 +35,7 @@
 		<small *ngIf="!correo.valid && correo.touched">El correo no es valido</small>
 	</p>
 	<p>
-		<label for="password">contrasena</label>
+		<label for="password">Contraseña</label>
 		<input type="password" name="contrasena" #contrasena="ngModel" [(ngModel)]="user.contrasena" required />
 		<small *ngIf="!contrasena.valid && contrasena.touched">La contrasena no es valida</small>
 	</p>
@@ -43,6 +45,7 @@
 		<small *ngIf="!numerocontrol.valid && numerocontrol.touched">El numero de control no es valido</small>
 	</p>
 
-	<input type="submit" value="registrarme"  [disabled]="registerForm.invalid"/>
+	<input id="Btn" type="submit" value="registrarme"  [disabled]="registerForm.invalid"/>
 </form>
-
+</div>
+</div>
