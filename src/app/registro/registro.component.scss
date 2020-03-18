@@ -1,0 +1,58 @@
+#Regiistro-form{
+	
+    
+        h1{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3em;}
+        div{
+            display: grid;
+            font-size: 20px;
+            margin: 20px;
+            
+        }
+        #Contenedor-formulario{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows:1fr;
+            margin: 50px;
+            justify-content: center;
+            align-items: center;
+
+                form{
+                    grid-column: 2/3;
+                    grid-row:1/2;
+                    display: grid;
+		            grid-template-columns: 1fr;
+		            grid-template-rows: 1fr 1fr 1fr;
+    	            justify-content: center;
+    	            align-items: center;
+		            font-size: 1.5em;
+
+                input{
+                    display: flex;
+    	            background-color: #D8CACA;
+    	            border-radius: 10px;
+    	            width: 26em;
+    	            height: 1.8em;
+    	            font-family: padding 50px;
+                    padding: 2px;
+                    }
+                #Btn{
+                    border: 1px solid #9F3133 ;
+                    border-radius: 13px;
+                    color:  #9F3133;
+                    padding: 0.3em;
+                    background: transparent;
+                    width: 8em;
+                   margin: 1em;
+                }
+    	
+        }
+        
+
+        
+        }
+        
+}

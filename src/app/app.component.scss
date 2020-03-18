@@ -1,29 +1,79 @@
 //ESTILOS UNICOS DEL COMPONENTE
 .body-app{
+    background-color: #F5EBBD;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 5em 1fr;
-    grid-gap: 1em;
+    grid-template-rows:5em 1fr ;
+    min-height: 100vh;
 
-    header{
+
+    #header-nolog{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #9F3133;
+        height: 4.5em;
         display: grid;
-        grid-template-columns: 6em 1fr 15em;
+        grid-template-columns: 1fr 11em;
         grid-template-rows: 5em;
+        position: fixed;
+        width: 100%;
+        h1{
 
-        img{
-            width: 5em;
+            font-size: 25px;
+            font-weight: normal;
+            padding-left: 1em;
+            color: #F5D588 ;
+            margin-top: 17px;
+
+            strong{
+
+            }
+        }
+        .Crea-cuenta{
+
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+           
+
+            p{
+                border: 1px solid #F5D588  ;
+                border-radius: 13px;
+                color:  #F5D588 ;
+                text-align: center;
+                padding: 0.5em;
+                cursor: pointer;
+
+                &:hover{
+                    transition: .8s;
+                    color:#9F3133 ;
+                   background-color: #F5D588; 
+                }
         }
 
-        ul{
-            display: grid;
-            grid-template-columns: 6em 6em 6em 6em 1fr;
-            grid-template-rows: 1fr;
-            grid-gap: 1em;
+             
 
-            &:last-child{
-                width: 100%;
-            }
+
         }
 
     }
+    #header-silog{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: rgb(173, 136, 50);
+        height: 5em;
+        display:grid;
+        grid-template-columns: 1fr 11em;
+        grid-template-rows: 5em ;
+        position: fixed;
+        width: 100%;
+        
+
+    }
+    ul{
+        color: #000;
+        
+       
+        
+    }
+    
 }
+

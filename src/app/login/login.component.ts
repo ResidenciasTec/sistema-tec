@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   	private _route: ActivatedRoute,
    	) 
   { 
-    this.title = "pagina de login";
+    this.title = "Inicia sesión para ingresar";
     this.user = new User(1,'','','','usuario','','','','','','','');
   }
 

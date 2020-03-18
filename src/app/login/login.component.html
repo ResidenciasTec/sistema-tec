@@ -1,19 +1,25 @@
-<h1>{{title}}</h1>
-<div></div>
-<div></div>
-<div></div>
+<div id="Login-form">
 
-<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" >
-	<p>
-		<label for="correo">Correo electronico</label>
-		<input type="email" name="correo" #correo="ngModel" [(ngModel)]="user.correo" required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"/>
-		<small *ngIf="!correo.valid && correo.touched">El correo no es correcto.</small>
-	</p>
-	<p>
-		<label for="contrasena">Contrasena</label>
-		<input type="password" name="contrasena" #contrasena="ngModel" [(ngModel)]="user.contrasena" required/>
-		<small *ngIf="!contrasena.valid && contrasena.touched">La contrasena no es correcta.</small>
-	</p>
-	<input type="submit" value="iniciar sesion" [disabled]="loginForm.invalid" />
-</form>
+	<div><img src="../assets/img/logo.png" alt="logo"/></div>
+	
+	<h1>{{title}}</h1>
+	<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" >
+		<p>
+			
+			<input id="user" placeholder="Numero de Control" type="email" name="correo" #correo="ngModel" [(ngModel)]="user.correo" required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"/>
+			<small *ngIf="!correo.valid && correo.touched">El correo no es correcto.</small>
+		</p>
+		<p>
+			
+			<input id="contras" placeholder="Contraseña" type="password" name="contrasena" #contrasena="ngModel" [(ngModel)]="user.contrasena" required />
+			<small *ngIf="!contrasena.valid && contrasena.touched">La contrasena no es correcta.</small>
+		</p>
+		<p>
+			<input id="boton" type="submit" value="Entrar" [disabled]="loginForm.invalid" />
+		</p>
+		<p>Olvidaste tu contraseña? Ingresa aquí para obtener una nueva. </p>
+		
+	
+	</form>
 
+</div>
