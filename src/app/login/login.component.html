@@ -14,8 +14,12 @@
 			<input id="contras" placeholder="Contraseña" type="password" name="contrasena" #contrasena="ngModel" [(ngModel)]="user.contrasena" required />
 			<small *ngIf="!contrasena.valid && contrasena.touched">La contrasena no es correcta.</small>
 		</p>
-		<input id="boton" type="submit" value="iniciar sesion" [disabled]="loginForm.invalid" />
+		<p>
+			<input id="boton" type="submit" value="Entrar" [disabled]="loginForm.invalid" />
+		</p>
+		<p>Olvidaste tu contraseña? Ingresa aquí para obtener una nueva. </p>
+		
 	
 	</form>
- 
+
 </div>

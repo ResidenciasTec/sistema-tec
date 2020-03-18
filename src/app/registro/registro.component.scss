@@ -14,12 +14,21 @@
         }
         #Contenedor-formulario{
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             grid-template-rows:1fr;
             margin: 50px;
+            justify-content: center;
+            align-items: center;
 
                 form{
+                    grid-column: 2/3;
+                    grid-row:1/2;
                     display: grid;
+		            grid-template-columns: 1fr;
+		            grid-template-rows: 1fr 1fr 1fr;
+    	            justify-content: center;
+    	            align-items: center;
+		            font-size: 1.5em;
 
                 input{
                     display: flex;
@@ -41,6 +50,7 @@
                 }
     	
         }
+        
 
         
         }

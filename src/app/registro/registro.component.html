@@ -9,16 +9,18 @@
 	El registro se ha completado correctamente, <a [routerLink]="['/login']">logueate aqui</a>
 </div>
 
+
 <div *ngIf="status == 'error'">
 	El registro no se ha completado, intentalo mas tarde
 </div>
 <div id="Contenedor-formulario">
 <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" >
-	<p>
+	<p >
 		<label for="nombre">Nombre</label>
 		<input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="user.nombre" 
 		required pattern="[a-zA-Z]+" />
 
+		
 		<small *ngIf="!nombre.valid && nombre.touched">El nombre no es valido</small>
 	</p>
 	<p>
@@ -46,6 +48,7 @@
 	</p>
 
 	<input id="Btn" type="submit" value="registrarme"  [disabled]="registerForm.invalid"/>
+
 </form>
 </div>
 </div>

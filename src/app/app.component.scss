@@ -9,8 +9,8 @@
 
     #header-nolog{
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #F5D588;
-        height: 5em;
+        background-color: #9F3133;
+        height: 4.5em;
         display: grid;
         grid-template-columns: 1fr 11em;
         grid-template-rows: 5em;
@@ -18,25 +18,36 @@
         width: 100%;
         h1{
 
-            font-size: 24px;
+            font-size: 25px;
+            font-weight: normal;
             padding-left: 1em;
-            color: #9F3133;
+            color: #F5D588 ;
+            margin-top: 17px;
+
+            strong{
+
+            }
         }
         .Crea-cuenta{
 
             display: flex;
             justify-content: center;
             align-items: center; 
-            margin-top: 10px;
+           
 
             p{
-                border: 1px solid #9F3133 ;
+                border: 1px solid #F5D588  ;
                 border-radius: 13px;
-                color:  #9F3133;
+                color:  #F5D588 ;
                 text-align: center;
                 padding: 0.5em;
+                cursor: pointer;
 
-
+                &:hover{
+                    transition: .8s;
+                    color:#9F3133 ;
+                   background-color: #F5D588; 
+                }
         }
 
              
@@ -63,5 +74,6 @@
        
         
     }
+    
 }
 

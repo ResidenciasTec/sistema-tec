@@ -2,9 +2,10 @@
     <header id="header-nolog" *ngIf="!identity" >
         <h1><strong>TEC MATERIALES:</strong> Organiza tus eventos, solicitudes y recursos del itm.</h1>
         <div class="Crea-cuenta">
-        <p [routerLink]="['/login']">Crear Cuenta</p>
+        <p [routerLink]="['/registro']">Crear Cuenta</p>
         </div>
     </header>
+
 
 
     <header id="header-silog" *ngIf="identity && identity.nombre">
@@ -14,7 +15,7 @@
             <li><a [routerLink]="['/transporte']">Transporte</a></li>
             <li><a [routerLink]="['/eventos']">Eventos</a></li>
             <li><a [routerLink]="['/mantenimiento']">Mantenimiento</a></li>
-            <li></li>
+            <li></li> 
         </ul>
         <p>
             <img width="20px" src="{{url + 'user/avatar/' + identity.imagen}}" />
@@ -22,7 +23,8 @@
              <p [routerLink]="['/perfil']">Perfil</p>
              <p [routerLink]="['/logout/1']">cerrar sesion</p>
     </header>
-       
+    
+    
     <router-outlet></router-outlet>
 </main>
 
