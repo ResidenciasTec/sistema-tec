@@ -17,7 +17,7 @@ export class RegistroComponent implements OnInit {
   	private _userService: UserService
   	) { 
     this.title = "Registro";
-    this.user = new User(1,'','','','usuario','','','','','','','');
+    this.user = new User(1,'','','','','','','','','','');
 
   }
 

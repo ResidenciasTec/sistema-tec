@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
    	) 
   { 
     this.title = "Inicia sesión para ingresar";
-    this.user = new User(1,'','','','usuario','','','','','','','');
+    this.user = new User(1,'','','','','','','','','','');
   }
 
   ngOnInit(): void {

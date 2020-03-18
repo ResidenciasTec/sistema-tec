@@ -42,7 +42,7 @@ export class UserEditComponent implements OnInit {
     ) 
   {
   	this.title = "editar usuario";
-    this.user = new User(1,'','','','usuario','','','','','','','');
+    this.user = new User(1,'','','','','','','','','','');
     this.identity = _userService.getIdentity();
     this.token = _userService.getToken();
     this.url = global.url;
@@ -53,11 +53,10 @@ export class UserEditComponent implements OnInit {
           this.identity.nombre,
           this.identity.apellidos,
           '',
-          this.identity.rol,
           this.identity.correo,
           '',
           '',
-          this.identity.departmento,
+          this.identity.departamento,
           '',
           this.identity.descripcion,
           this.identity.imagen
@@ -95,8 +94,8 @@ export class UserEditComponent implements OnInit {
           }
 
 
-          if(response.changes.departmento){
-            this.user.departmento = response.changes.departmento;
+          if(response.changes.departamento){
+            this.user.departamento = response.changes.departamento;
           }
 
 
