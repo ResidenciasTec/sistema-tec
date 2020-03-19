@@ -15,6 +15,15 @@ import { TransporteComponent } from './components/transporte/transporte.componen
 import { MantenimientoComponent } from './components/mantenimiento/mantenimiento.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { SalidasComponent } from './components/salidas/salidas.component';
+import { MisSolicitudesComponent } from './components/mis-solicitudes/mis-solicitudes.component';
+import { CrearEventoComponent } from './components/crear-evento/crear-evento.component';
+import { CrearSalidaComponent } from './components/crear-salida/crear-salida.component';
+import { CrearMantenimientoComponent } from './components/crear-mantenimiento/crear-mantenimiento.component';
+import { VerEventoComponent } from './components/ver-evento/ver-evento.component';
+import { VerMantenimientoComponent } from './components/ver-mantenimiento/ver-mantenimiento.component';
+import { VerSalidaComponent } from './components/ver-salida/ver-salida.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +36,16 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     TransporteComponent,
     MantenimientoComponent,
     UserEditComponent,
-    PerfilComponent
+    PerfilComponent,
+    SalidasComponent,
+    MisSolicitudesComponent,
+    CrearEventoComponent,
+    CrearSalidaComponent,
+    CrearMantenimientoComponent,
+    VerEventoComponent,
+    VerMantenimientoComponent,
+    VerSalidaComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,
