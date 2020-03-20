@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Evento} from "../models/departamento";
+import {Departamento} from "../models/departamento";
 import {global} from "./global";
 
 @Injectable()
@@ -16,23 +16,50 @@ export class departamentoService{
 
 	}
 
-	getDepartamentos(){
+	getDepartamentos():Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+		return this._http.get(this.url + 'departamentos', {headers: headers});
+
 
 	}
 
-	getDepartamento(id){
+	getDepartamento(id):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+		return this._http.get(this.url + 'departamentos/'+id, {headers: headers});
+
 
 	}
 
-	createDepartamento(){
+	createDepartamento(token, departamento):Observable<any>{
+		let json = JSON.stringify(departamento);
+		let params = 'json='+json;
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+		 						       .set('Authorization', token);
+
+		return this._http.post(this.url + 'departamentos', {headers: headers});
+
 
 	}
 
-	updateDepartamento(){
+	updateDepartamento(token, departamento, id):Observable<any>{
+		let json = JSON.stringify(departamento);
+		let params = 'json='+json;
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+		  						       .set('Authorization', token);
+
+		return this._http.put(this.url + 'departamentos/'+id, params, {headers: headers});
+
 
 	}
 
-	deleteDepartamento(){
+	deleteDepartamento(token, id):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+		 						       .set('Authorization', token);
+
+		return this._http.delete(this.url + 'departamentos/'+id, {headers: headers});
+
 		
 	}
 

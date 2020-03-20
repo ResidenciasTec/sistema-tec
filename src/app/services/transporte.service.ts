@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Evento} from "../models/transporte";
+import {Vehiculo} from "../models/vehiculo";
 import {global} from "./global";
 
 @Injectable()
@@ -16,23 +16,50 @@ export class TransporteService{
 
 	}
 
-	getTransportes(){
+	getTransportes():Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+		return this._http.get(this.url + 'vehiculos', {headers: headers});
 
 	}
 
-	getTransporte(id){
+	getTransporte(id):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+		return this._http.get(this.url + 'vehiculos/'+id, {headers: headers});
+
 
 	}
 
-	createTransporte(){
+	createTransporte(token, vehiculo):Observable<any>{
+		let json = JSON.stringify(vehiculo);
+		let params = 'json='+json;
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+									   .set('Authorization', token);
+
+		return this._http.post(this.url + 'vehiculos', params, {headers: headers});
+
 
 	}
 
-	updateTransporte(){
+	updateTransporte(token, vehiculo, id):Observable<any>{
+		let json = 	JSON.stringify(vehiculo);
+		let params = 'json='+json;
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+									   .set('Authorization', token);
+
+		return this._http.put(this.url + 'vehiculos/'+id, params, {headers: headers});
+
 
 	}
 
-	deleteTransporte(){
+	deleteTransporte(token, id):Observable<any>{
+
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+									   .set('Authorization', token);
+
+		return this._http.delete(this.url + 'vehiculos/'+id, {headers: headers});
+
 		
 	}
 

@@ -24,7 +24,7 @@ export class EventoService{
 	//creamos los servicios que recuperaran la informacion de nuestra api.
 
 	//servicio para recuperar por metodo get todos los eventos
-	getEventos(){
+	getEventos():Observable<any>{
 		let headers = new HttpHeaders().set('Content-type', 'application/x-www-form-urlencoded');
 
 		return this._http.get(this.url+'eventos', {headers: headers});
@@ -32,20 +32,23 @@ export class EventoService{
 
 	//servicio para recuperar por metodo get un solo evento, pasandole un id
 
-	getEvento(id){
+	getEvento(id):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
-		return this._http.get(this.url+'eventos/'+id, params, {headers: headers});
+		return this._http.get(this.url+'eventos/'+id, {headers: headers});
 	}
 
 	//servicio para recuperar una solicitud de eventos de un usuario.
-	getByUser(id){
+	getByUser(id):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
 		return this._http.get(this.url+'eventos/user/'+id, {headers: headers});
 	}
 
 	//servicio para recuperar una solicitud de eventos por su status.
-	getStatus(status){
+	getStatus(status):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-urlencoded');
+
 		return this._http.get(this.url+'eventos/status/'+status, {headers: headers} )
 	}
 
@@ -74,7 +77,7 @@ export class EventoService{
 		let headers = new HttpHeaders().set('Content-Type', 'x-www-form-urlencoded')
 									   .set('Authorization', token);
 
-		return this._http.delete(this.url+'eventos/'+id, params, {headers: headers});
+		return this._http.delete(this.url+'eventos/'+id, {headers: headers});
 	}
 
 }

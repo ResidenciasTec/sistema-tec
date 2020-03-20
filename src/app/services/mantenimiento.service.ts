@@ -9,7 +9,7 @@ export class MantenimientoService{
 	public url: string;
 
 	constructor(
-		public _http: HttpClient;
+		public _http: HttpClient
 		){
 		this.url = global.url;
 	}
@@ -20,26 +20,28 @@ export class MantenimientoService{
 	}
 
 	//servicio para recuperar todas las solicitudes de mantenimiento
-	getMantenimientos(){
+	getMantenimientos():Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'Application/x-www-urlencoded');
 
 		return this._http.get(this.url+'mantenimiento', {headers: headers});
 	}
 
 	//servicio para recuperar una solicitud de mantenimiento por medio de su id.
-	getMantenimiento(id){
+	getMantenimiento(id):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'Application/x-www-urlencoded');
 
 		return this._http.get(this.url+'mantenimiento/'+id, {headers: headers});
 	}
 
 	//servicio para recuperar una solicitud de mantenimiento de un usuario.
-	getByUser(id){
+	getByUser(id):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-urlencoded');
+
 		return this._http.get(this.url+'mantenimiento/user/'+id, {headers: headers});
 	}
 
 	//servicio para recuperar una solicitud de mantenimiento por su status.
-	getStatus(status){
+	getStatus(status):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-urlencoded');
 		return this._http.get(this.url+'mantenimiento/status/'+status, {headers: headers})
 	}
@@ -68,10 +70,10 @@ export class MantenimientoService{
 
 	//servicio para borrar una solicitud de mantenimiento de la base de datos.
 	deleteMantenimiento(token, id){
-		let headers = hew HttpHeaders().set('Content-Type', 'Application/x-www-urlencoded')
+		let headers = new HttpHeaders().set('Content-Type', 'Application/x-www-urlencoded')
 									   .set('Authorization', token);
 
-		return this._http.delete(this.url+'mantenimiento/'+id, params, {headers: headers});
+		return this._http.delete(this.url+'mantenimiento/'+id, {headers: headers});
 
 	}
 

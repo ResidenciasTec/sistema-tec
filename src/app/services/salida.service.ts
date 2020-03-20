@@ -22,28 +22,30 @@ export class SalidaService{
 	}
 
 	//servicio para recuperar todas las solicitudes de salidas.
-	getSalidas(){
+	getSalidas():Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-urlencoded');
 
 		return this._http.get(this.url+'salidas', {headers: headers});
 	}
 
 	//servicio para recuperar una solicitud de salidas mediante su id.
-	getSalida(id){
+	getSalida(id):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-urlencoded');
 
 		return this._http.get(this.url+'salidas/'+id, {headers: headers});
 	}
 
 	//servicio para recuperar una solicitud de salidas de un usuario.
-	getByUser(id){
+	getByUser(id):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-urlencoded');
+		
 		return this._http.get(this.url+'salidas/user/'+id, {headers: headers});
 	}
 
 	//servicio para recuperar una solicitud de salidas por su status.
-	getStatus(status){
+	getStatus(status):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-urlencoded');
+
 		return this._http.get(this.url+'salidas/status/'+status, {headers: headers} )
 	}
 
@@ -70,11 +72,11 @@ export class SalidaService{
 	}
 
 	//servicio para borrar una solicitud de salida en la base de datos.
-	deleteSalida(token, id){
-		let header = new HttpHeaders().set('Content-Type', 'application/x-www-urlencoded')
+	deleteSalida(token, id):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-urlencoded')
 									  .set('Authorization', token);
 
-		return this._http.delete(this.url+'salidas/'+id, params, {headers: headers});
+		return this._http.delete(this.url+'salidas/'+id, {headers: headers});
 
 
 	}
