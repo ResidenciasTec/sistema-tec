@@ -30,6 +30,11 @@ import {VerSalidaComponent} from "./components/ver-salida/ver-salida.component";
 import {VerEventoComponent} from "./components/ver-evento/ver-evento.component";
 import {VerMantenimientoComponent} from "./components/ver-mantenimiento/ver-mantenimiento.component";
 
+//componentes para actualizar solicitudes
+import {ActualizarSalidaComponent} from "./components/actualizar-salida/actualizar-salida.component";
+import {ActualizarEventoComponent} from "./components/actualizar-evento/actualizar-evento.component";
+import {ActualizarMantenimientoComponent} from "./components/actualizar-mantenimiento/actualizar-mantenimiento.component";
+
 //componentes de usuario
 import {UserEditComponent} from "./components/user-edit/user-edit.component";
 import {PerfilComponent} from "./components/perfil/perfil.component";
@@ -70,6 +75,11 @@ const  appRoutes: Routes = [
     {path: 'mantenimiento/:id', component: VerMantenimientoComponent},
     {path: 'eventos/:id', component: VerEventoComponent},
     {path: 'salidas/:id', component: VerSalidaComponent},
+
+    //rutas para actualizar una solicitud
+    {path: 'mantenimiento/actualizar/:id', component: ActualizarMantenimientoComponent},
+    {path: 'eventos/actualizar/:id', component: ActualizarEventoComponent},
+    {path: 'salidas/actualizar/:id', component: ActualizarSalidaComponent},
 
     //ruta de usuario
     {path: 'perfil', component: PerfilComponent},    

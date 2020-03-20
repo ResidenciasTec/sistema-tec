@@ -24,6 +24,9 @@ import { VerEventoComponent } from './components/ver-evento/ver-evento.component
 import { VerMantenimientoComponent } from './components/ver-mantenimiento/ver-mantenimiento.component';
 import { VerSalidaComponent } from './components/ver-salida/ver-salida.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { ActualizarSalidaComponent } from './components/actualizar-salida/actualizar-salida.component';
+import { ActualizarEventoComponent } from './components/actualizar-evento/actualizar-evento.component';
+import { ActualizarMantenimientoComponent } from './components/actualizar-mantenimiento/actualizar-mantenimiento.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,10 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
     VerEventoComponent,
     VerMantenimientoComponent,
     VerSalidaComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    ActualizarSalidaComponent,
+    ActualizarEventoComponent,
+    ActualizarMantenimientoComponent
   ],
   imports: [
     BrowserModule,

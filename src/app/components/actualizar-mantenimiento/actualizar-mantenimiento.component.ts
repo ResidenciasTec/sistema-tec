@@ -3,19 +3,19 @@ import { Mantenimiento } from '../../models/mantenimiento';
 import { MantenimientoService } from "../../services/mantenimiento.service";
 
 @Component({
-  selector: 'app-crear-mantenimiento',
-  templateUrl: './crear-mantenimiento.component.html',
-  styleUrls: ['./crear-mantenimiento.component.scss'],
+  selector: 'app-actualizar-mantenimiento',
+  templateUrl: './actualizar-mantenimiento.component.html',
+  styleUrls: ['./actualizar-mantenimiento.component.scss'],
   providers: [MantenimientoService]
 })
-export class CrearMantenimientoComponent implements OnInit {
-	public mantenimiento: Mantenimiento;
+export class ActualizarMantenimientoComponent implements OnInit {
+  public mantenimiento: Mantenimiento;
 
   constructor(
   	private _mantenimientoService: MantenimientoService,
   	) 
   {
-  	this.mantenimiento = new Mantenimiento(1, 1 , 1 ,'','','','','','',''); 
+  	this.mantenimiento = new Mantenimiento(1, 1 , 1 ,'','','','','','','');  
   }
 
   ngOnInit(): void {
