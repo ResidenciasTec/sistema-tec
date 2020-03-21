@@ -3,9 +3,11 @@
         <h1><strong>TEC MATERIALES:</strong> Organiza tus eventos, solicitudes y recursos del itm.</h1>
         <div class="Crea-cuenta">
         <p [routerLink]="['/registro']">Crear Cuenta</p>
+        <p  [routerLink]="['/login']">iniciar sesion</p>
+        
+
         </div>
     </header>
-
 
 
     <header id="header-silog" *ngIf="identity && identity.nombre">
@@ -19,7 +21,8 @@
         </ul>
         <p>
             <img width="20px" src="{{url + 'user/avatar/' + identity.imagen}}" />
-            {{identity.nombre + ' ' + identity.apellidos}}</p>
+            {{identity.nombre + ' ' + identity.apellidos}}
+        </p>
              <p [routerLink]="['/perfil']">Perfil</p>
              <p [routerLink]="['/logout/1']">cerrar sesion</p>
     </header>

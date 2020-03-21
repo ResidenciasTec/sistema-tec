@@ -19,7 +19,7 @@ export class RegistroComponent implements OnInit {
   	private _userService: UserService,
     private _departamentoService: departamentoService,
   	) { 
-    this.title = "Registro";
+    this.title = "Crea una cuenta";
     this.user = new User(1,'','','','','','','','','','');
 
   }

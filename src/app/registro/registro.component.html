@@ -1,7 +1,8 @@
 
 <div id="Registro-form">
+	<div class="img-container"><img src="../assets/img/logo.png" alt="logo"/></div>
 
-	<h1><strong>{{title}}</strong></h1>
+	<h1>{{title}}</h1>
 
 	<div class="status" *ngIf="!status">
 
@@ -35,9 +36,9 @@
 
 				<small *ngIf="!apellidos.valid && apellidos.touched">Los apellidos no son validos</small>
 			</p>
-			<p>
+			<p class="email">
 			
-				<input class="email" type="email" name="correo" #correo="ngModel" [(ngModel)]="user.correo" 
+				<input  type="email" name="correo" #correo="ngModel" [(ngModel)]="user.correo" 
 				required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" placeholder="introduce un correo electronico..." />
 
 				<small *ngIf="!correo.valid && correo.touched">El correo no es valido</small>
@@ -54,7 +55,7 @@
 				<small *ngIf="!numerocontrol.valid && numerocontrol.touched">El numero de control no es valido</small>
 			</p>
 
-			<p>
+			<p class="select">
 				<label>selecciona tu departamento</label>
 				<select  name="departamento" #departamento="ngModel" [(ngModel)]="user.departamento_id"   required>
 					<option selected>selecciona un departamento</option>
