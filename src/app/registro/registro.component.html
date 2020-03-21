@@ -1,54 +1,75 @@
 
-<div id="Regiistro-form">
+<div id="Registro-form">
+
 	<h1><strong>{{title}}</strong></h1>
-<div *ngIf="!status">
 
-	**Registrate en el sistema si no tienes una cuenta actualmente.
-</div>
-<div *ngIf="status == 'success'">
-	El registro se ha completado correctamente, <a [routerLink]="['/login']">logueate aqui</a>
-</div>
+	<div class="status" *ngIf="!status">
+
+		**Registrate en el sistema si no tienes una cuenta actualmente.
+	</div>
+
+	<div class="status" *ngIf="status == 'success'">
+		El registro se ha completado correctamente, <a [routerLink]="['/login']">logueate aqui</a>
+	</div>
 
 
-<div *ngIf="status == 'error'">
-	El registro no se ha completado, intentalo mas tarde
-</div>
-<div id="Contenedor-formulario">
-<form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" >
-	<p >
-		<label for="nombre">Nombre</label>
-		<input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="user.nombre" 
-		required pattern="[a-zA-Z]+" />
+	<div class="status" *ngIf="status == 'error'">
+		El registro no se ha completado, intentalo mas tarde
+	</div>
 
-		
-		<small *ngIf="!nombre.valid && nombre.touched">El nombre no es valido</small>
-	</p>
-	<p>
-		<label for="apellidos">Apellidos</label>
-		<input type="text" name="apellidos" #apellidos="ngModel" [(ngModel)]="user.apellidos" 
-		required pattern="[a-zA-Z]+"  />
+	<div id="Contenedor-formulario">
 
-		<small *ngIf="!apellidos.valid && apellidos.touched">Los apellidos no son validos</small>
-	</p>
-	<p>
-		<label for="correo">Correo electronico</label>
-		<input type="email" name="correo" #correo="ngModel" [(ngModel)]="user.correo" 
-		required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" />
-		<small *ngIf="!correo.valid && correo.touched">El correo no es valido</small>
-	</p>
-	<p>
-		<label for="password">Contraseña</label>
-		<input type="password" name="contrasena" #contrasena="ngModel" [(ngModel)]="user.contrasena" required />
-		<small *ngIf="!contrasena.valid && contrasena.touched">La contrasena no es valida</small>
-	</p>
-	<p>
-		<label for="numerocontrol">numero de control</label>
-		<input type="text" name="numerocontrol" #numerocontrol="ngModel" [(ngModel)]="user.numero_control" required />
-		<small *ngIf="!numerocontrol.valid && numerocontrol.touched">El numero de control no es valido</small>
-	</p>
+		<form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" >
+			<p >
+				
+				<input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="user.nombre" 
+				required pattern="[a-zA-Z]+" placeholder="introduce tu nombre..." />
 
-	<input id="Btn" type="submit" value="registrarme"  [disabled]="registerForm.invalid"/>
+				
+				<small *ngIf="!nombre.valid && nombre.touched">El nombre no es valido</small>
+			</p>
+			<p>
+				
+				<input type="text" name="apellidos" #apellidos="ngModel" [(ngModel)]="user.apellidos" 
+				required pattern="[a-zA-Z]+" placeholder="introduce tu apellido..." />
 
-</form>
-</div>
+				<small *ngIf="!apellidos.valid && apellidos.touched">Los apellidos no son validos</small>
+			</p>
+			<p>
+			
+				<input class="email" type="email" name="correo" #correo="ngModel" [(ngModel)]="user.correo" 
+				required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" placeholder="introduce un correo electronico..." />
+
+				<small *ngIf="!correo.valid && correo.touched">El correo no es valido</small>
+			</p>
+
+			<p>
+				
+				<input type="password" name="contrasena" #contrasena="ngModel" [(ngModel)]="user.contrasena" placeholder="introduce una Contraseña..." required />
+				<small *ngIf="!contrasena.valid && contrasena.touched">La contrasena no es valida</small>
+			</p>
+			<p>
+				
+				<input type="text" name="numerocontrol" #numerocontrol="ngModel" [(ngModel)]="user.numero_control" placeholder="introduce tu numero de empleado..." required />
+				<small *ngIf="!numerocontrol.valid && numerocontrol.touched">El numero de control no es valido</small>
+			</p>
+
+			<p>
+				<label>selecciona tu departamento</label>
+				<select  name="departamento" #departamento="ngModel" [(ngModel)]="user.departamento_id"   required>
+					<option selected>selecciona un departamento</option>
+					<option *ngFor="let departamento of departamentos" [value]="departamento.id">
+						{{departamento.nombre}}
+
+					</option>
+
+				</select>
+			</p>
+
+			<div class="Btn-box">
+				<input id="Btn" type="submit" value="registrarme"  [disabled]="registerForm.invalid"/>
+			</div>
+
+		</form>
+	</div>
 </div>

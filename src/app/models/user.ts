@@ -8,7 +8,7 @@ export class User{
 		public correo: string,
 		public contrasena: string,
 		public numero_control: string,
-		public departamento: string,
+		public departamento_id: string,
 		public clave_electronica: string,
 		public descripcion: string,
 		public imagen: string,

@@ -28,6 +28,10 @@ import { ActualizarSalidaComponent } from './components/actualizar-salida/actual
 import { ActualizarEventoComponent } from './components/actualizar-evento/actualizar-evento.component';
 import { ActualizarMantenimientoComponent } from './components/actualizar-mantenimiento/actualizar-mantenimiento.component';
 
+//servicios
+import {UserService} from "./services/user.service";
+import {UserGuard} from "./services/user.guard";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +65,9 @@ import { ActualizarMantenimientoComponent } from './components/actualizar-manten
     AngularFileUploaderModule
   ],
   providers: [
-    appRoutingProviders
+    appRoutingProviders,
+    UserService,
+    UserGuard
   ],
   bootstrap: [AppComponent]
 })

@@ -56,7 +56,7 @@ export class UserEditComponent implements OnInit {
           this.identity.correo,
           '',
           '',
-          this.identity.departamento,
+          this.identity.departamento_id,
           '',
           this.identity.descripcion,
           this.identity.imagen
@@ -95,7 +95,7 @@ export class UserEditComponent implements OnInit {
 
 
           if(response.changes.departamento){
-            this.user.departamento = response.changes.departamento;
+            this.user.departamento_id = response.changes.departamento_id;
           }
 
 

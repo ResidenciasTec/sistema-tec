@@ -44,6 +44,9 @@ import {MisSolicitudesComponent} from "./components/mis-solicitudes/mis-solicitu
 import {TransporteComponent} from "./components/transporte/transporte.component";
 import {UsuariosComponent} from "./components/usuarios/usuarios.component";
 
+//importar guards
+import {UserGuard} from "./services/user.guard";
+
 
 
 //definir las rutas
@@ -56,39 +59,39 @@ const  appRoutes: Routes = [
     {path: 'registro', component: RegistroComponent},
 
     //ruta principal
-    {path: 'inicio', component: InicioComponent},
+    {path: 'inicio', component: InicioComponent, canActivate:[UserGuard]},
 
     //ruta de error
     {path: 'error', component: ErrorComponent },
 
     //rutas de solicitudes
-    {path: 'eventos', component: EventosComponent},
-    {path: 'mantenimiento', component: MantenimientoComponent},
-    {path: 'salidas', component: SalidasComponent},
+    {path: 'eventos', component: EventosComponent, canActivate:[UserGuard]},
+    {path: 'mantenimiento', component: MantenimientoComponent, canActivate:[UserGuard]},
+    {path: 'salidas', component: SalidasComponent, canActivate:[UserGuard]},
 
     //rutas de crear solicitudes
-    {path: 'mantenimiento/crear', component: CrearMantenimientoComponent},
-    {path: 'eventos/crear', component: CrearEventoComponent},
-    {path: 'salidas/crear', component: CrearSalidaComponent},
+    {path: 'mantenimiento/crear', component: CrearMantenimientoComponent, canActivate:[UserGuard]},
+    {path: 'eventos/crear', component: CrearEventoComponent, canActivate:[UserGuard]},
+    {path: 'salidas/crear', component: CrearSalidaComponent, canActivate:[UserGuard]},
 
     //rutas para ver una solicitud
-    {path: 'mantenimiento/:id', component: VerMantenimientoComponent},
-    {path: 'eventos/:id', component: VerEventoComponent},
-    {path: 'salidas/:id', component: VerSalidaComponent},
+    {path: 'mantenimiento/:id', component: VerMantenimientoComponent, canActivate:[UserGuard]},
+    {path: 'eventos/:id', component: VerEventoComponent, canActivate:[UserGuard]},
+    {path: 'salidas/:id', component: VerSalidaComponent, canActivate:[UserGuard]},
 
     //rutas para actualizar una solicitud
-    {path: 'mantenimiento/actualizar/:id', component: ActualizarMantenimientoComponent},
-    {path: 'eventos/actualizar/:id', component: ActualizarEventoComponent},
-    {path: 'salidas/actualizar/:id', component: ActualizarSalidaComponent},
+    {path: 'mantenimiento/actualizar/:id', component: ActualizarMantenimientoComponent, canActivate:[UserGuard]},
+    {path: 'eventos/actualizar/:id', component: ActualizarEventoComponent, canActivate:[UserGuard]},
+    {path: 'salidas/actualizar/:id', component: ActualizarSalidaComponent, canActivate:[UserGuard]},
 
     //ruta de usuario
-    {path: 'perfil', component: PerfilComponent},    
-    {path: 'perfil/editar', component: UserEditComponent},
-    {path: 'perfil/solicitudes', component: MisSolicitudesComponent},
+    {path: 'perfil', component: PerfilComponent, canActivate:[UserGuard]},    
+    {path: 'perfil/editar', component: UserEditComponent, canActivate:[UserGuard]},
+    {path: 'perfil/solicitudes', component: MisSolicitudesComponent, canActivate:[UserGuard]},
 
     //otras rutas
-    {path: 'transporte', component: TransporteComponent},
-    {path: 'usuarios', component: UsuariosComponent},
+    {path: 'transporte', component: TransporteComponent, canActivate:[UserGuard]},
+    {path: 'usuarios', component: UsuariosComponent, canActivate:[UserGuard]},
 
 ];
 
