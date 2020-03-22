@@ -21,7 +21,7 @@
 	<div id="Contenedor-formulario">
 
 		<form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" >
-			<p >
+			<p>
 				
 				<input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="user.nombre" 
 				required pattern="[a-zA-Z]+" placeholder="introduce tu nombre..." />
@@ -56,10 +56,10 @@
 			</p>
 
 			<p class="select">
-				<label>selecciona tu departamento</label>
+		
 				<select  name="departamento" #departamento="ngModel" [(ngModel)]="user.departamento_id"   required>
-					<option selected>selecciona un departamento</option>
-					<option *ngFor="let departamento of departamentos" [value]="departamento.id">
+					<option id="uno" selected>selecciona un departamento</option>
+					<option *ngFor="let departamento of departamentos" value="uno">
 						{{departamento.nombre}}
 
 					</option>

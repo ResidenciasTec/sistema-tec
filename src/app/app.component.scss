@@ -3,7 +3,7 @@
     background-color: #F5EBBD;
     background-color: #F2EEE2;
     background: linear-gradient(#FCEECB, #F2EEE2 );
-        background: linear-gradient( #F2EEE2, #FCEECB);
+    background: linear-gradient( #F2EEE2, #FCEECB);
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows:5em 1fr ;
@@ -59,24 +59,121 @@
         }
 
     }
-    #header-silog{
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: rgb(173, 136, 50);
-        height: 5em;
+    #header-silog{        
         display:grid;
-        grid-template-columns: 1fr 11em;
-        grid-template-rows: 5em ;
+        grid-template-columns: 4em 1fr 10em;
+        grid-template-rows: 5em;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #F7F7F7;
+        border: 1px solid #C1BDBD;
+        border-width: 0px 0px 1px 0px;
+        padding-left: 6em;
+        padding-right: 6em;
+        height: 5em;
         position: fixed;
         width: 100%;
-        
 
-    }
-    ul{
-        color: #000;
+        div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+
+            img{
+                width: 100%;
+            }
+
+        }
+
+        ul{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            grid-gap: 1em;
+
+            li{
+
+                a{
+                    color: black;
+                }
+
+            }
+        }
+
+        .div-user{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            border-radius: 7px;
+
+
+                &::after{
+                    content: url('../assets/img/Icon ionic-ios-arrow-down.png');
+                    display:block;
+                    position: absolute;
+                    margin-left: 5.5em;
+                    width: .2em;
+
+
+                }
+
+            img{
+                width: 4em;
+                border: ipx solid #C1BDBD;
+
+                &:hover{
+                    transition: .4s;
+                    transform: scale(1.1,1.1);
+                }
+
+
+                
+            }
+
+            .submenu-user{
+                position: absolute;
+                background-color: #F7F7F7;
+                width:11em;
+                height: 16em;
+                padding: .4em;
+                margin-top: 22em;
+                box-shadow: 1px 1px 1px #E2E2E2; 
+                border-width: 0px 2px 2px 2px;
+                border-radius: 10px;
+                cursor: pointer;
+                margin-left: 2.4em;
+
+                hr{
+                   border: 1px solid #E2E2E2;
+                }
+
+                p{
+                    text-align: center;
+                    width: 100%;
+
+                    &:hover{
+                        text-decoration: underline;
+                    }
+
+                    a{
+                        color: black;
+                    }
+                }
+               
+            }
+
+            .hide{
+                display: none;
+            }
+
+            .show{
+                display: block;
+            }
+        }
         
-       
-        
     }
+
     
 }
 

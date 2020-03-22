@@ -36,9 +36,22 @@
 	</p>
 
 	<p>
-		<label for="departamento">departamento</label>
-		<input type="text" name="departamento" #departamento="ngModel" [(ngModel)]="user.departamento_id" 
-		required />
+				
+		<input type="text" name="telefono" #telefono="ngModel" [(ngModel)]="user.telefono" placeholder="introduce tu numero de telefono" />
+	</p>
+
+
+
+	<p class="select">
+			<label>selecciona tu departamento</label>
+			<select  name="departamento" #departamento="ngModel" [(ngModel)]="user.departamento_id"   required>
+				<option selected>selecciona un departamento</option>
+				<option *ngFor="let departamento of departamentos" [value]="departamento.id">
+					{{departamento.nombre}}
+
+				</option>
+
+			</select>
 	</p>
 	<div>
 		<label>foto de perfil</label>

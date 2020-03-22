@@ -11,22 +11,41 @@
 
 
     <header id="header-silog" *ngIf="identity && identity.nombre">
-        
+        <div><img src="../assets/img/logo.png"></div>
         <ul>
             <li><a [routerLink]="['/inicio']">Inicio</a></li>
-            <li><a [routerLink]="['/transporte']">Transporte</a></li>
-            <li><a [routerLink]="['/eventos']">Eventos</a></li>
-            <li><a [routerLink]="['/mantenimiento']">Mantenimiento</a></li>
-            <li></li> 
+            <li>Panel</li>
+            <li>Crear solicitudes</li> 
+            <li></li>
         </ul>
-        <p>
-            <img width="20px" src="{{url + 'user/avatar/' + identity.imagen}}" />
-            {{identity.nombre + ' ' + identity.apellidos}}
-        </p>
-             <p [routerLink]="['/perfil']">Perfil</p>
-             <p [routerLink]="['/logout/1']">cerrar sesion</p>
+        <div class="div-user" (click)="showMenuUser()">
+            <img width="20px" src="{{url + 'user/avatar/' + identity.imagen}}" />        
+        
+
+            <div *ngIf="submenu_user == true" class="submenu-user show">
+                <p><strong>{{identity.nombre}}</strong></p>
+                <p><strong>{{identity.apellidos}}</strong></p>
+                <hr/>
+                <p [routerLink]="['/perfil']">Perfil</p>
+                <p [routerLink]="['/perfil/editar']">Editar Perfil</p>
+                <p [routerLink]="['/perfil/solicitudes']">Mis solicitudes</p>
+                <p [routerLink]="['/logout/1']">cerrar sesion</p>
+            </div>
+
+            <div *ngIf="submenu_user == false" class="submenu-user hidden">
+                <p>{{identity.nombre}}</p>
+                <p>{{identity.apellidos}}</p>
+                 <hr/>
+                <p [routerLink]="['/perfil']">Perfil</p>
+                <p [routerLink]="['/perfil/editar']">Editar Perfil</p>
+                <p [routerLink]="['/perfil/solicitudes']">Mis solicitudes</p>
+                <p [routerLink]="['/logout/1']">cerrar sesion</p>
+            </div>
+</div>
+
+
     </header>
-    
+
     
     <router-outlet></router-outlet>
 </main>
