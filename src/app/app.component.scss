@@ -81,6 +81,7 @@
 
             img{
                 width: 100%;
+                margin-right: 1em;
             }
 
         }
@@ -91,7 +92,56 @@
             justify-content: flex-start;
             grid-gap: 1em;
 
+            .li-crear{
+                width: 9em;
+            }
+
             li{
+                font-size: 1.2em;
+                width: 5em;
+                cursor: pointer;
+
+
+                &:hover{
+                    color: black;
+                    text-decoration: underline;
+                }
+
+                .submenu-panel, .submenu-crear{
+                    position: absolute;
+                    background-color: #F7F7F7;
+                    width: 10em;
+                    height: 8em;
+                    font-size: .8em;
+                    padding: .5em;                    
+                    box-shadow: 1px 1px 1px #E2E2E2; 
+                    border-width: 0px 2px 2px 2px;
+                    border-radius: 10px;
+                    cursor: pointer;
+
+                    li{
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+
+                        &:hover{
+                            color: #DA2643;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+
+                .submenu-crear{
+                    margin-left: 3em;
+                    margin-top: 1em;
+                    cursor: pointer;
+
+                }
+
+                .submenu-panel{
+                    margin-left: -1em;
+                    margin-top: 1.3em;
+                }
 
                 a{
                     color: black;

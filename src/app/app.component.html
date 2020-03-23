@@ -14,8 +14,34 @@
         <div><img src="../assets/img/logo.png"></div>
         <ul>
             <li><a [routerLink]="['/inicio']">Inicio</a></li>
-            <li>Panel</li>
-            <li>Crear solicitudes</li> 
+            <li (click)="showMenuPanel()">Panel
+
+                <ul *ngIf="submenu_panel == true" class="submenu-panel show">
+                    <li [routerLink]="['/eventos']">Eventos</li>
+                    <li [routerLink]="['/mantenimiento']">Mantenimiento</li>
+                    <li [routerLink]="['/salidas']">Salidas</li>
+                </ul>
+
+                 <ul *ngIf="submenu_panel == false" class="submenu-panel hidden">
+                    <li [routerLink]="['/eventos']">Eventos</li>
+                    <li [routerLink]="['/mantenimiento']">Mantenimiento</li>
+                    <li [routerLink]="['/salidas']">Salidas</li>
+                </ul>
+            </li>
+
+            <li class="li-crear" (click)="showMenuCrear()">Crear solicitudes
+                <ul *ngIf="submenu_crear == true" class="submenu-crear show">
+                    <li [routerLink]="['/eventos/crear']">Eventos</li>
+                    <li [routerLink]="['mantenimiento/crear']">Mantenimiento</li>
+                    <li [routerLink]="['/salidas/crear']">Salidas</li>
+                </ul>
+
+                <ul *ngIf="submenu_crear == false" class="submenu-crear hidden">
+                    <li [routerLink]="['/eventos/crear']">Eventos</li>
+                    <li [routerLink]="['mantenimiento/crear']">Mantenimiento</li>
+                    <li [routerLink]="['/salidas/crear']">Salidas</li>
+                </ul>
+            </li> 
             <li></li>
         </ul>
         <div class="div-user" (click)="showMenuUser()">

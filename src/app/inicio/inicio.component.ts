@@ -9,7 +9,7 @@ export class InicioComponent implements OnInit {
   public title:string;
 
   constructor() {
-    this.title = "pagina de inicio";
+    this.title = "Sistema de control de inventarios del Instituto Tecnologico de Matamoros";
    }
 
   ngOnInit(): void {

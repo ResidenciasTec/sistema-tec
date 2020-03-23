@@ -15,6 +15,8 @@ export class AppComponent implements OnInit, DoCheck {
   public token;
   public url;
   public submenu_user: boolean;
+  public submenu_panel: boolean;
+  public submenu_crear: boolean;
 
   constructor(
   	public _userService: UserService,
@@ -35,6 +37,8 @@ export class AppComponent implements OnInit, DoCheck {
   ngDoCheck(){
     this.loadUser();
     this.submenu_user;
+    this.submenu_crear;
+    this.submenu_panel;
   }
 
   loadUser(){
@@ -49,6 +53,24 @@ export class AppComponent implements OnInit, DoCheck {
       this.submenu_user = false;
     }else{
       this.submenu_user = true;
+    }
+  }
+
+    showMenuPanel(){
+    
+    if(this.submenu_panel == true){
+      this.submenu_panel = false;
+    }else{
+      this.submenu_panel = true;
+    }
+  }
+
+    showMenuCrear(){
+    
+    if(this.submenu_crear == true){
+      this.submenu_crear = false;
+    }else{
+      this.submenu_crear = true;
     }
   }
 
