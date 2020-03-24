@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { routing, appRoutingProviders } from "./app.routing";
 import { AngularFileUploaderModule } from "angular-file-uploader";
+
 
 import { AppComponent } from './app.component';
 import { InicioComponent } from './inicio/inicio.component';
@@ -62,7 +63,8 @@ import {UserGuard} from "./services/user.guard";
     routing,
     FormsModule,
     HttpClientModule,
-    AngularFileUploaderModule
+    AngularFileUploaderModule,
+    ReactiveFormsModule
   ],
   providers: [
     appRoutingProviders,
