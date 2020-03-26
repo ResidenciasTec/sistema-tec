@@ -74,6 +74,10 @@
 
     
     <router-outlet></router-outlet>
+
+    <footer *ngIf="identity && identity.nombre">
+        todos los derechos reservados
+    </footer>
 </main>
 
 

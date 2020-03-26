@@ -8,7 +8,9 @@
 #Login-form{
     display: grid;
 	grid-template-columns: 1fr;
-    grid-template-rows:12em 3em 1fr ;
+    grid-template-rows:12em 3em 1fr;
+    margin-top: 2.5em;
+    margin-bottom: 2em;
 
     div{
     	display: flex;

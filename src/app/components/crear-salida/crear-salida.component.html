@@ -1,0 +1,67 @@
+<main class="body-create">
+
+	<div class="banner">
+		Crea una nueva salida de vehiculos.
+	</div>
+
+	<article>
+		<form [formGroup]="salidaForm" (ngSubmit)="onSubmit()">
+
+			<label id="titulo">
+				<p class="label">titulo:</p>
+				<input type="text"  appInput formControlName="titulo" placeholder="titulo de la solicitud">
+				<div *ngIf="getTitulo.invalid && (getTitulo.dirty || getTitulo.touched)">
+					el texto es requerido
+				</div>
+			</label>
+
+			<label>
+				<p class="label">contenido:</p>
+				<input type="text" appTextarea formControlName="contenido" placeholder="contenido de la solicitud">
+			</label>
+
+			<label>
+				<p class="label">usuario:</p>
+				<p class="user_id" appInput>{{identity.nombre}} {{identity.apellidos}}</p>
+			</label>
+
+			
+			<label>
+				<p class="label">vehiculo elegido:</p>
+				<select type="text" formControlName="vehiculo_id" >
+					<option id="seleccionado" selected>selecciona un vehiculo:</option>
+					<option *ngFor="let transporte of transportes" value="seleccionado">
+						{{transporte.vehiculo}}
+					</option>
+
+				</select>
+			</label>
+		
+			
+			<label>
+				<p class="label">fecha de realizacion:</p>
+				<input type="date" appInput formControlName="fecha" placeholder="selecciona una fecha">
+			</label>
+
+			<label>
+				<p class="label">hora de comienzo:</p>
+				<input type="time" appInput formControlName="hora_inicio">
+			</label>
+
+			<label>
+				<p class="label">hora de finalizacion:</p>
+				<input type="time" appInput formControlName="hora_final">
+			</label>
+
+			<label>
+				<input type="submit" appSubmit [disabled]="salidaForm.invalid || salidaForm.untouched" value="Crear Solicitud">
+			</label>
+
+			<p class="aviso">
+				Las solicitudes que estes creando seran revisadas y se mantendran en estado "pendiente" hasta que la junta administrativa revise y decida aceptar la solicitud.
+			</p>
+
+
+		</form>
+	</article>
+</main>

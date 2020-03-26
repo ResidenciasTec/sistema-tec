@@ -1,0 +1,31 @@
+.textarea{
+	background-color: #D8CACA;
+	box-sizing: border-box;
+	width: 100%;
+    height: 15em;
+    padding-top: .3em;
+    font-size: .8em;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #b4aaaa;
+    white-space: nowrap;    
+
+    &:focus{
+    	border-color: black;
+
+    }    
+
+    &:placeholder{
+    	color: gray;
+
+    }    
+
+    &:error{
+    	border-color: red;
+
+
+    }
+
+}
+
+

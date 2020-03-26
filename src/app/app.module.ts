@@ -32,6 +32,9 @@ import { ActualizarMantenimientoComponent } from './components/actualizar-manten
 //servicios
 import {UserService} from "./services/user.service";
 import {UserGuard} from "./services/user.guard";
+import { InputDirective } from './directivas/forms/input.directive';
+import { SubmitDirective } from './directivas/submit/submit.directive';
+import { TextareaDirective } from './directivas/textarea/textarea.directive';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,10 @@ import {UserGuard} from "./services/user.guard";
     UsuariosComponent,
     ActualizarSalidaComponent,
     ActualizarEventoComponent,
-    ActualizarMantenimientoComponent
+    ActualizarMantenimientoComponent,
+    InputDirective,
+    SubmitDirective,
+    TextareaDirective
   ],
   imports: [
     BrowserModule,

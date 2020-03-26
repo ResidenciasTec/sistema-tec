@@ -1,0 +1,41 @@
+.btn{
+    box-sizing: border-box;
+    border: 1px solid #9F3133 !important;;
+    border-color: #9F3133 !important;
+    border-radius: 13px !important;
+    color:  #9F3133 !important;
+    padding: 0.5em;
+    padding: 50px;
+    background: transparent;
+    width: 100%;
+    height: 3.4em !important;
+    cursor: pointer;
+    font-size: 2em;
+
+
+        &:hover{
+            background-color: none;
+
+        }
+
+        &:disabled {
+          box-sizing: border-box;
+          background-color: transparent;
+          color: white;
+          cursor: not-allowed;
+          border: 1px solid #9F3133;
+        }
+
+        &:hover:not(:disabled){
+            border: 1px solid #9F3133 !important;
+            transition: .8s;
+            color: white !important;
+            background-color: #9F3133;
+            cursor: pointer;
+        }
+
+        &:placeholder{
+        color: gray;
+
+    }
+}    
