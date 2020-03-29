@@ -5,6 +5,7 @@
 	grid-template-rows: 16em 1fr 6em;
 	grid-gap: 1em;
 	min-width: 100vw;
+	overflow-x: hidden;
 
 
 	.banner{
@@ -44,9 +45,45 @@
 
 	.contenido{
 		display: grid;
+		grid-template-columns: .2fr 1fr .2fr;
+		grid-template-rows: 3em 1fr 1fr 1fr;
+		grid-gap: 1em;
+		
+
+		h1{
+			grid-column: 2/3;
+			grid-row: 1/2;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.eventos, .mantenimiento, .salidas{
+			grid-column: 2/3;
+			display: grid;
+			grid-template-columns: 6em 1fr;
+			grid-template-rows: 1fr;
+			grid-gap: 1em;
+
+		}
+
+		.eventos{
+			grid-row: 2/3;
+
+
+		}
+
+		.mantenimiento{
+			grid-row: 3/4;
+
+		}
+
+		.salidas{
+			grid-row:4/5;
+
+		}
+
 	}
 
-	.footer{
-		display: flex;
-	}
+
 }
