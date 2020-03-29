@@ -4,18 +4,9 @@
 	grid-template-rows: 10em 1fr;
 	margin-bottom: 5em;
 
-	.banner{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-size: 1.5em;
-		background-color: #DA2643;
-		color: white;
-	}
-
 	article{
 		display: grid;
-		grid-template-columns: .5fr 1fr .5fr;
+		grid-template-columns: .4fr 1fr .4fr;
 		grid-template-rows: 1fr;
 		margin-top: 4em;
 

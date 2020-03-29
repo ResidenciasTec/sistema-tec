@@ -1,2 +1,34 @@
-<h1>{{title}}</h1>
- <p [routerLink]="['/perfil/editar']">editar mi perfil</p>
+<main class="body-perfil">
+    <app-banner-crear [titulo]="title">
+
+    </app-banner-crear>
+    <div>
+        <article class="article">
+            <div class="section-banner">
+                <img src="{{url + 'user/avatar/' + identity.imagen}}">
+                <h3>{{identity.nombre}} {{identity.apellidos}}</h3>
+                <p *ngIf="identity.descripcion">{{identity.descripcion}}</p>
+                <p *ngIf="!identity.descripcion">edita tu perfil para que puedas agregar una descripcion breve sobre ti</p>
+            </div>
+
+            <div class="section-info">
+                <p>DEPARTAMENTO:</p> 
+                <p>el departamento es este</p>
+                <p>PUESTO:</p>
+                <p>general </p>
+                <p>NUMERO DE CONTROL:</p> 
+                <p>{{logueado.numero_control}}</p>
+                <p>CORREO ELECTRONICO:</p>
+                <p>{{identity.correo}}</p>
+                <p>NUMERO TELEFONICO:</p> 
+                <p>{{identity.telefono}}</p>
+                <div class="submit">
+                    <p class=" btn" appSubmit [routerLink]="['/perfil/editar']">editar mi perfil</p>
+                </div>
+            </div>
+                
+        </article>
+    </div>
+
+</main>
+ 

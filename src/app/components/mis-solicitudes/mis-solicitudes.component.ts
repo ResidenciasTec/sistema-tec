@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mis-solicitudes.component.scss']
 })
 export class MisSolicitudesComponent implements OnInit {
-
-  constructor() { }
+public titulo: String;
+  constructor() { 
+    this.titulo = "Mis solicitudes"
+  }
 
   ngOnInit(): void {
   }

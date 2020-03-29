@@ -65,7 +65,8 @@
         grid-template-rows: 5em;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         background-color: #F7F7F7;
-        border: 1px solid #C1BDBD;
+        background-color: #DA2643;
+        /*border: 1px solid #C1BDBD;*/
         border-width: 0px 0px 1px 0px;
         padding-left: 6em;
         padding-right: 6em;
@@ -100,6 +101,7 @@
                 font-size: 1.2em;
                 width: 5em;
                 cursor: pointer;
+                color: black;
 
 
                 &:hover{
@@ -231,6 +233,7 @@
         background-color: #DA2643;
         color: white;
         font-size: 1.4em;
+        grid-gap: 1em;
     }
 
     

@@ -1,1 +1,85 @@
-<p>crear-mantenimiento works!</p>
+<main class="body-create">
+
+	<app-banner-crear [titulo]="textoCrear"></app-banner-crear>
+
+	<article>
+		<form #mantenimientoForm="ngForm" (ngSubmit)="onSubmit()">
+
+			<label id="titulo">
+				<p class="label">titulo:</p>
+				<input type="text" appInput  placeholder="titulo de la solicitud" name="titulo" #titulo="ngModel" [(ngModel)]="mantenimiento.titulo" required minlength="5">
+				<div *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)">
+					el titulo de la solicitud es requerida
+				</div>
+			</label>
+
+			<label>
+				<p class="label">contenido:</p>
+				<textarea type="text" name="contenido" appTextarea  placeholder="contenido de la solicitud" #contenido="ngModel" [(ngModel)]="mantenimiento.contenido" required>
+				</textarea>
+					<div *ngIf="contenido.invalid && (contenido.dirty || contenido.touched)">
+					el contenido de la solicitud es requerida.
+				</div>
+			</label>
+
+			<label>
+				<p class="label">creado por:</p>
+				<p class="user_id" appInput>{{identity.nombre}} {{identity.apellidos}}</p>
+			</label>
+
+			
+			<label>
+				<p class="label">Locacion elegida:</p>
+				<select name="lugar_id" type="text" #lugar_id="ngModel" [(ngModel)]="mantenimiento.lugar_id">
+					<option id="seleccionado" selected>selecciona un lugar:</option>
+					<option *ngFor="let lugar of lugares" value="{{lugar.id}}">
+						{{lugar.lugar}}
+					</option>
+
+				</select>
+				<div *ngIf="lugar_id.invalid && (lugar_id.dirty || lugar_id.touched)">
+					debes seleccionar una locacion de las opciones
+				</div>
+			</label>
+		
+			
+			<label>
+				<p class="label">fecha de realizacion:</p>
+				<input type="date" name="fecha" appInput  placeholder="selecciona una fecha" #fecha="ngModel" [(ngModel)]="mantenimiento.fecha" required>
+
+				<div *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)">
+					debes seleccionar una fecha.
+				</div>
+			</label>
+
+			<label>
+				<p class="label">hora de comienzo:</p>
+				<input type="time" name="hora_inicio" appInput #hora_inicio="ngModel" [(ngModel)]="mantenimiento.hora_inicio" required>
+
+				<div *ngIf="hora_inicio.invalid && (hora_inicio.dirty || hora_inicio.touched)">
+					debes seleccionar una hora de inicio
+				</div>
+			</label>
+
+			<label>
+				<p class="label">hora de finalizacion:</p>
+				<input type="time" name="hora_final" appInput #hora_final="ngModel" [(ngModel)]="mantenimiento.hora_final" required>
+
+				<div *ngIf="hora_final.invalid && (hora_final.dirty || hora_final.touched)">
+					debes seleccionar una hora de finalizacion.
+				</div>
+			</label>
+
+			<label>
+				<input type="submit" class="btn" appSubmit [disabled]="mantenimientoForm.invalid || mantenimientoForm.untouched" value="Crear Solicitud">
+			</label>
+
+			<p class="aviso">
+				Las solicitudes que estes creando seran revisadas y se mantendran en estado "pendiente" hasta que la junta administrativa revise y decida aceptar la solicitud.
+			</p>
+			<app-status style="grid-column: 1/3" *ngIf="status" [status]="status"></app-status>
+
+
+		</form>
+	</article>
+</main>

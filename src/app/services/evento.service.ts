@@ -47,7 +47,7 @@ export class EventoService{
 
 	//servicio para recuperar una solicitud de eventos por su status.
 	getStatus(status):Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-urlencoded');
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
 		return this._http.get(this.url+'eventos/status/'+status, {headers: headers} )
 	}
@@ -66,7 +66,7 @@ export class EventoService{
 	updateEvento(token, evento, id): Observable<any>{
 		let json = JSON.stringify(evento);
 		let params = 'json='+json;
-		let headers = new HttpHeaders().set('Content-Type', 'x-www-form-urlencoded')
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
 									   .set('Authorization', token);
 
 		return this._http.put(this.url+'eventos/'+id, params, {headers: headers});
@@ -74,7 +74,7 @@ export class EventoService{
 
 	//servicio para borrar un evento de la base de datos por medio de su id.
 	deleteEvento(token, id){
-		let headers = new HttpHeaders().set('Content-Type', 'x-www-form-urlencoded')
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
 									   .set('Authorization', token);
 
 		return this._http.delete(this.url+'eventos/'+id, {headers: headers});

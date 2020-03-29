@@ -1,0 +1,10 @@
+.body-solicitudes{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 10em 1fr;
+        grid-gap: 1em;
+
+        .div{
+            min-height: 100vh;
+        }
+}

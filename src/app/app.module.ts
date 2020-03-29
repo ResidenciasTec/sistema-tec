@@ -35,6 +35,9 @@ import {UserGuard} from "./services/user.guard";
 import { InputDirective } from './directivas/forms/input.directive';
 import { SubmitDirective } from './directivas/submit/submit.directive';
 import { TextareaDirective } from './directivas/textarea/textarea.directive';
+import { BannerCrearComponent } from './reutilizables/banner-crear/banner-crear.component';
+import { StatusComponent } from './reutilizables/status/status.component';
+import { BannerInicioComponent } from './reutilizables/banner-inicio/banner-inicio.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +65,10 @@ import { TextareaDirective } from './directivas/textarea/textarea.directive';
     ActualizarMantenimientoComponent,
     InputDirective,
     SubmitDirective,
-    TextareaDirective
+    TextareaDirective,
+    BannerCrearComponent,
+    StatusComponent,
+    BannerInicioComponent
   ],
   imports: [
     BrowserModule,

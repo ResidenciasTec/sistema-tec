@@ -11,7 +11,7 @@
 
 
     <header id="header-silog" *ngIf="identity && identity.nombre">
-        <div><img src="../assets/img/logo.png"></div>
+        <div></div>
         <ul>
             <li><a [routerLink]="['/inicio']">Inicio</a></li>
             <li (click)="showMenuPanel()">Panel
@@ -45,7 +45,9 @@
             <li></li>
         </ul>
         <div class="div-user" (click)="showMenuUser()">
-            <img width="20px" src="{{url + 'user/avatar/' + identity.imagen}}" />        
+            <img *ngIf="identity.imagen" width="20px" src="{{url + 'user/avatar/' + identity.imagen}}" /> 
+
+            <img *ngIf="!identity.imagen" width="20px" src="../assets/img/default_profile.png" />        
         
 
             <div *ngIf="submenu_user == true" class="submenu-user show">
@@ -76,7 +78,10 @@
     <router-outlet></router-outlet>
 
     <footer *ngIf="identity && identity.nombre">
-        todos los derechos reservados
+        <p> Instituto Tecnológico de Matamoros</p>
+        <p>Carr. Lauro Villar K.M. 6.5</p>
+        <p>8688140952 y 8688140953</p>
+        <p>C.P. 87490 H. Matamoros, México.</p>
     </footer>
 </main>
 

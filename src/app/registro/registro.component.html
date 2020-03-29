@@ -21,55 +21,55 @@
 	<div id="Contenedor-formulario">
 
 		<form #registerForm="ngForm"  (ngSubmit)="onSubmit(registerForm)" >
-			<p>
-				
+			<label>
+				<p class="label">escribe tu nombre:</p>
 				<input type="text" appInput name="nombre" #nombre="ngModel" [(ngModel)]="user.nombre" 
 				required pattern="[a-zA-Z]+" placeholder="introduce tu nombre..." />
 
 				
-				<small *ngIf="!nombre.valid && nombre.touched">El nombre no es valido</small>
-			</p>
-			<p>
-				
+				<div *ngIf="!nombre.valid && nombre.touched">El nombre no es valido</div>
+			</label>
+			<label>
+				<p class="label">escribe tus apellidos:</p>
 				<input type="text" appInput name="apellidos" #apellidos="ngModel" [(ngModel)]="user.apellidos" 
 				required pattern="[a-zA-Z]+" placeholder="introduce tu apellido..." />
 
-				<small *ngIf="!apellidos.valid && apellidos.touched">Los apellidos no son validos</small>
-			</p>
-			<p class="email">
-			
+				<div *ngIf="!apellidos.valid && apellidos.touched">Los apellidos no son validos</div>
+			</label>
+			<label class="email">
+				<p class="label">escribe tu correo:</p>
 				<input  type="email" appInput name="correo" #correo="ngModel" [(ngModel)]="user.correo" 
 				required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" placeholder="introduce un correo electronico..." />
 
-				<small *ngIf="!correo.valid && correo.touched">El correo no es valido</small>
-			</p>
+				<div *ngIf="!correo.valid && correo.touched">El correo no es valido</div>
+			</label>
 
-			<p>
-				
+			<label>
+				<p class="label">contrasena:</p>
 				<input type="password" appInput name="contrasena" #contrasena="ngModel" [(ngModel)]="user.contrasena" placeholder="introduce una Contraseña..." required />
-				<small *ngIf="!contrasena.valid && contrasena.touched">La contrasena no es valida</small>
-			</p>
-			<p>
-				
+				<div *ngIf="!contrasena.valid && contrasena.touched">La contrasena no es valida</div>
+			</label>
+			<label>
+				<p class="label">numero de control:</p>
 				<input type="text" appInput name="numerocontrol" #numerocontrol="ngModel" [(ngModel)]="user.numero_control" placeholder="introduce tu numero de empleado..." required />
-				<small *ngIf="!numerocontrol.valid && numerocontrol.touched">El numero de control no es valido</small>
-			</p>
+				<div *ngIf="!numerocontrol.valid && numerocontrol.touched">El numero de control no es valido</div>
+			</label>
 
-			<p class="select">
-		
+			<label class="select">
+				<p class="label">selecciona tu departamento:</p>
 				<select appInput  name="departamento" #departamento="ngModel" [(ngModel)]="user.departamento_id"   required>
 					<option id="uno" selected>selecciona un departamento</option>
-					<option *ngFor="let departamento of departamentos" value="uno">
+					<option *ngFor="let departamento of departamentos" value="{{departamento.id}}">
 						{{departamento.nombre}}
 
 					</option>
 
 				</select>
-			</p>
+			</label>
 
-			<div class="Btn-box">
-				<input appSubmit type="submit" value="registrarme"  [disabled]="registerForm.invalid"/>
-			</div>
+			<label class="Btn-box">
+				<input appSubmit type="submit" class="btn" value="registrarme"  [disabled]="registerForm.invalid"/>
+			</label>
 
 		</form>
 	</div>

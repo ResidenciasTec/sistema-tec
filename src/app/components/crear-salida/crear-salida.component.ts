@@ -2,57 +2,60 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidatorFn, AbstractControl } from "@angular/forms";
 import { Salida } from '../../models/salida';
 import { SalidaService } from "../../services/salida.service";
-import { UserService } from "../../services/user.service";
 import { TransporteService } from "../../services/transporte.service";
+
 
 @Component({
   selector: 'app-crear-salida',
   templateUrl: './crear-salida.component.html',
   styleUrls: ['./crear-salida.component.scss'],
-  providers: [SalidaService, UserService, TransporteService]
+  providers: [SalidaService, TransporteService]
 })
 export class CrearSalidaComponent implements OnInit {
 	public salida: Salida;
   public salidaForm: FormGroup;
   public identity;
+  public token;
   public transportes;
+  public status;
+  public textoCrear;
 
 
   constructor(
   	  	private _salidaService: SalidaService, 
-        private _userService: UserService,
         private _transporteService: TransporteService,
         
   	) 
   {
-  	this.identity = _userService.getIdentity();
+    this.salida = new Salida(1, 1 , 1 ,'','','','','','','');
+  	this.identity = localStorage.getItem('identity');
+    this.token = localStorage.getItem('token');
+    this.textoCrear = "Crear una solicitud de salida";
   }
 
   ngOnInit(): void {
     this.getTransportes();
 
-    this.salidaForm = new FormGroup({
-
-      vehiculo_id: new FormControl(null, Validators.required),
-      titulo: new FormControl(null),
-      contenido: new FormControl(null),
-      fecha: new FormControl(null),
-      hora_inicio: new FormControl(null),
-      hora_final: new FormControl(null)
-
-    });
-
-    this.salidaForm.valueChanges.subscribe(
-      value => console.log(value)
-      );
-
-    this.salidaForm.statusChanges.subscribe(
-      value => console.log(value)
-      );
   }
 
   onSubmit(){
-    console.log("submit", this.salidaForm);
+
+    this._salidaService.createSalida(this.token, this.salida).subscribe(
+      response => {
+      console.log("el servicio se ha ejecutado");
+      if(response && response.status == 'success'){
+        this.status = 'success';
+      }else{
+        this.status = 'error';
+      }
+        
+
+      },
+      error=>{
+        this.status = 'error';
+        console.log(<any>error);
+      }
+      );
   }
 
   getTransportes(){
@@ -70,22 +73,7 @@ export class CrearSalidaComponent implements OnInit {
       });
 
   }
+ 
 
-  get getTitulo(){
-    return this.salidaForm.get('titulo');
-  }
-
-  minPrice(minPrice: number): ValidatorFn {
-    return(control: AbstractControl): {[key: string]: any} | null => {
-      if(control.value !== undefined && control.value <= minPrice){
-        return {
-          'minPrice': true
-        }
-      }else{
-        return null;
-      }
-    }
-
-  }
 
 }

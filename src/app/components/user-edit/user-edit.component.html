@@ -1,72 +1,84 @@
-<h1>{{title}}</h1>
+<main class="body-editUser">
 
-<div *ngIf="!status">
-	Modifica tus datos pesonales
-</div>
-<div *ngIf="status == 'success'">
-	Los datos se han guardado correctamente!!
-</div>
 
-<div *ngIf="status == 'error'">
-	Los datos no se han guardado, intenta nuevamete.
-</div>
+	<app-banner-crear [titulo]="title"></app-banner-crear>
 
-<form #UserEditForm="ngForm" (ngSubmit)="onSubmit(UserEditForm)" >
-	<p>
-		<label for="nombre">Nombre</label>
-		<input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="user.nombre" 
-		required pattern="[a-zA-Z]+"  />
 
-	</p>
-	<p>
-		<label for="apellidos">Apellidos</label>
-		<input type="text" name="apellidos" #apellidos="ngModel" [(ngModel)]="user.apellidos" 
-		required pattern="[a-zA-Z]+"  />
+	<article>
+		<form #UserEditForm="ngForm" (ngSubmit)="onSubmit(UserEditForm)" >
+			<label>
+				<p class="label">Nombre:</p>
+				<input type="text" name="nombre" appInput #nombre="ngModel" [(ngModel)]="user.nombre" 
+				required pattern="[a-zA-Z]+"  />
 
-	</p>
-	<p>
-		<label for="correo">Correo electronico</label>
-		<input type="email" name="correo" #correo="ngModel" [(ngModel)]="user.correo" 
-		required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" />
-	</p>
-	<p>
-		<label for="descripcion">Descripcion sobre mi</label>
-		<input type="text" name="descripcion" #descripcion="ngModel" [(ngModel)]="user.descripcion" 
-		required />
-	</p>
+			</label>
+			<label>
+				<p class="label">Apellidos:</p>
+				<input type="text" name="apellidos" appInput #apellidos="ngModel" [(ngModel)]="user.apellidos" 
+				required pattern="[a-zA-Z]+"  />
 
-	<p>
+			</label>
+			<label>
+				<p class="label">Correo electronico:</p>
+				<input type="email" appInput name="correo" #correo="ngModel" [(ngModel)]="user.correo" 
+				required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" />
+			</label>
+			<label>
+				<p class="label">informacion sobre mi:</p>
+				<textarea type="text" appTextarea name="descripcion" #descripcion="ngModel" [(ngModel)]="user.descripcion" 
+				required>
+				</textarea>
+			</label>
+
+			<label>
+				<p class="label">numero de telefono:</p>		
+				<input type="tel" pattern="[0-9]{10}" appInput name="telefono" #telefono="ngModel" [(ngModel)]="user.telefono"  />
+			</label>
+
+
+			<label class="select">
+					<p class="label">selecciona tu departamento:</p>
+					<select  name="departamento" #departamento="ngModel" [(ngModel)]="user.departamento_id"   required>
+						<option selected>selecciona un departamento</option>
+						<option *ngFor="let departamento of departamentos" [value]="user.departamento_id">
+							{{departamento.nombre}}
+
+						</option>
+
+					</select>
+			</label>
+
+			<label>
+				<p class="label">foto de perfil:</p>
+					<div class="avatar" *ngIf="identity && identity.imagen">
+						<img *ngIf="identity.imagen" src="{{url + 'user/avatar/' + identity.imagen}}" />
+					</div>
+
+					<div class="avatar" *ngIf="!identity.imagen && user.imagen">
+						<img  src="{{url + 'user/avatar/' + user.imagen}}" />
+					</div>
+
+					<div class="avatar" *ngIf="!user.imagen && !identity.imagen">
+						<img *ngIf="!identity.imagen" src="../../../assets/img/default_profile.png" />
+					</div>
+			</label>
+
+			<label class="label-upload">
+				<p class="label">Cambia tu foto de perfil:</p>
 				
-		<input type="text" name="telefono" #telefono="ngModel" [(ngModel)]="user.telefono" placeholder="introduce tu numero de telefono" />
-	</p>
+					<angular-file-uploader  
+						[config]="afuConfig"
+						[resetUpload]=resetVar
+						(ApiResponse)="avatarUpload($event)" class="file">
+					</angular-file-uploader>
+				
+			</label>
 
 
-
-	<p class="select">
-			<label>selecciona tu departamento</label>
-			<select  name="departamento" #departamento="ngModel" [(ngModel)]="user.departamento_id"   required>
-				<option selected>selecciona un departamento</option>
-				<option *ngFor="let departamento of departamentos" [value]="departamento.id">
-					{{departamento.nombre}}
-
-				</option>
-
-			</select>
-	</p>
-	<div>
-		<label>foto de perfil</label>
-		<div *ngIf="identity && identity.imagen">
-			<img src="{{url + 'user/avatar/' + identity.imagen}}" />
-		</div>
-	
-		<angular-file-uploader  
-		      [config]="afuConfig"
-		      [resetUpload]=resetVar
-		      (ApiResponse)="avatarUpload($event)">
-		</angular-file-uploader>
-	</div>
-
-
-
-	<input type="submit" value="Guardar cambios"  [disabled]="UserEditForm.invalid"/>
-</form>
+			<label>
+				<input type="submit" class="btn" appSubmit value="Guardar cambios"  [disabled]="UserEditForm.invalid"/>
+			</label>
+			<app-status style="grid-column: 1/3" *ngIf="status" [status]="status"></app-status>
+		</form>
+	</article>
+</main>

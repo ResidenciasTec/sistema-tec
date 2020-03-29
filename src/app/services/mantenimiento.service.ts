@@ -21,28 +21,28 @@ export class MantenimientoService{
 
 	//servicio para recuperar todas las solicitudes de mantenimiento
 	getMantenimientos():Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'Application/x-www-urlencoded');
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
 		return this._http.get(this.url+'mantenimiento', {headers: headers});
 	}
 
 	//servicio para recuperar una solicitud de mantenimiento por medio de su id.
 	getMantenimiento(id):Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'Application/x-www-urlencoded');
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
 		return this._http.get(this.url+'mantenimiento/'+id, {headers: headers});
 	}
 
 	//servicio para recuperar una solicitud de mantenimiento de un usuario.
 	getByUser(id):Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-urlencoded');
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
 		return this._http.get(this.url+'mantenimiento/user/'+id, {headers: headers});
 	}
 
 	//servicio para recuperar una solicitud de mantenimiento por su status.
 	getStatus(status):Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-urlencoded');
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 		return this._http.get(this.url+'mantenimiento/status/'+status, {headers: headers})
 	}
 
@@ -50,7 +50,7 @@ export class MantenimientoService{
 	createMantenimiento(token, mantenimiento): Observable<any>{
 		let json = JSON.stringify(mantenimiento);
 		let params = 'json='+json;
-		let headers = new HttpHeaders().set('Content-Type', 'Application/x-www-urlencoded')
+		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
 									   .set('Authorization', token);
 
 		return this._http.post(this.url+'mantenimiento', params, {headers: headers});
@@ -61,7 +61,7 @@ export class MantenimientoService{
 	updateMantenimiento(token, mantenimiento, id): Observable<any>{
 		let json = JSON.stringify(mantenimiento);
 		let params = 'json='+json;
-		let headers = new HttpHeaders().set('Content-Type', 'Application/x-www-urlencoded')
+		let headers = new HttpHeaders().set('Content-Type', 'Application/x-www-form-urlencoded')
 									   .set('Authorization', token);
 
 		return this._http.put(this.url+'mantenimiento/'+id, params, {headers: headers});
@@ -70,7 +70,7 @@ export class MantenimientoService{
 
 	//servicio para borrar una solicitud de mantenimiento de la base de datos.
 	deleteMantenimiento(token, id){
-		let headers = new HttpHeaders().set('Content-Type', 'Application/x-www-urlencoded')
+		let headers = new HttpHeaders().set('Content-Type', 'Application/x-www-form-urlencoded')
 									   .set('Authorization', token);
 
 		return this._http.delete(this.url+'mantenimiento/'+id, {headers: headers});

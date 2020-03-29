@@ -51,7 +51,8 @@ export class LoginComponent implements OnInit {
 
 	  						//persistir al usuario identificado
 	  						localStorage.setItem('token', this.token);
-	  						localStorage.setItem('identity', JSON.stringify(this.identity));
+							localStorage.setItem('identity', JSON.stringify(this.identity));
+							localStorage.setItem('logueado', JSON.stringify(this.identity));
 
 	  						//redirigir al inicio
 	  						this._router.navigate(['inicio']);
@@ -81,7 +82,8 @@ export class LoginComponent implements OnInit {
 
   		if(logout == 1){
   			localStorage.removeItem('identity');
-  			localStorage.removeItem('token');
+			  localStorage.removeItem('token');
+			  localStorage.removeItem('logueado');
 
   			this.token = null;
   			this.identity = null;

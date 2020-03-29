@@ -12,9 +12,9 @@ export class UserGuard implements CanActivate{
 	}
 
 	canActivate():boolean {
-		let identity = this._userService.getIdentity();
+		let identity = localStorage.getItem('logueado');
 
-		if(identity && (identity.rol == 'usuario' || identity.rol == 'administrador')){
+		if(identity){
 			return true;
 		}else{
 			this._router.navigate(['/login']);

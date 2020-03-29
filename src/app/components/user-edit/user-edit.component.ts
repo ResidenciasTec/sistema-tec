@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router, ActivatedRoute, Params} from "@angular/router";
+
 import {User} from "../../models/user";
 import {UserService} from "../../services/user.service";
 import {global} from "../../services/global";
@@ -19,6 +21,8 @@ export class UserEditComponent implements OnInit {
   public resetVar;
   public url;
   public departamentos;
+  public img;
+  public logueado;
 
   public afuConfig = {
     multiple: false,
@@ -41,12 +45,15 @@ export class UserEditComponent implements OnInit {
 
   constructor(
     private _userService: UserService,
-    private _departamentoService: departamentoService
+    private _departamentoService: departamentoService,
+    private _router: Router,
+    private _route: ActivatedRoute,
     ) 
   {
   	this.title = "editar usuario";
     this.user = new User(1,'','','','','','','','','','','');
     this.identity = _userService.getIdentity();
+    this.logueado = JSON.parse(localStorage.getItem('logueado'));
     this.token = _userService.getToken();
     this.url = global.url;
 
@@ -60,15 +67,16 @@ export class UserEditComponent implements OnInit {
           '',
           '',
           this.identity.departamento_id,
+          this.identity.telefono,
           '',
-          '',
-          '',
+          this.identity.descripcion,
           this.identity.imagen
       );
   }
 
   ngOnInit(): void {
     this.getDepartamentos();
+    this.identity.imagen;
   }
 
   onSubmit(form){
@@ -112,8 +120,14 @@ export class UserEditComponent implements OnInit {
             this.user.imagen = response.changes.imagen;
           }
 
+
           this.identity = this.user;
           localStorage.setItem('identity', JSON.stringify(this.identity));
+
+          setTimeout (() => {
+                this._router.navigate(['/perfil']); 
+            }, 2000);
+         
         }else{
           this.status = "error";
         }

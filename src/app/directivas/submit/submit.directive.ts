@@ -6,7 +6,7 @@ import { Directive, HostBinding } from '@angular/core';
 export class SubmitDirective {
 
 	@HostBinding('class')
-  	elementClass = 'btn'
+  	elementClass = 'submit-btn'
 
   constructor() { }
 
