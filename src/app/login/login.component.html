@@ -1,25 +1,48 @@
 <div id="Login-form">
 
-	<div><img src="../assets/img/logo.png" alt="logo"/></div>
-	
+	<div><img src="../assets/img/logo.png" alt="logo" /></div>
+
 	<h1>{{title}}</h1>
-	<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" >
+	<form *ngIf="!loading" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
 		<p>
-			
-			<input id="user" placeholder="Numero de Control" type="email" name="correo" #correo="ngModel" [(ngModel)]="user.correo" required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"/>
-			<small *ngIf="!correo.valid && correo.touched">El correo no es correcto.</small>
+
+			<input id="user" placeholder="correo" formControlName="email" type="email" />
+			<small *ngIf="this.form.get('email').invalid && (this.form.get('email').dirty || this.form.get('email').touched)">
+				<div *ngIf="this.form.get('email').errors.email">
+					El correo electornico no es valido.
+				</div>
+			</small>
+
 		</p>
 		<p>
-			
-			<input id="contras" placeholder="Contraseña" type="password" name="contrasena" #contrasena="ngModel" [(ngModel)]="user.contrasena" required />
-			<small *ngIf="!contrasena.valid && contrasena.touched">La contrasena no es correcta.</small>
+
+			<input id="contras"  placeholder="Contraseña" formControlName="password" type="password"
+				name="contrasena"/>
+				<small *ngIf="this.form.get('password').invalid && (this.form.get('password').dirty || this.form.get('password').touched)">
+
+					<div *ngIf="this.form.get('password').errors.required">
+						necesitas introducir un password
+					</div>
+					<div *ngIf="this.form.get('password').errors.minlength">
+						esa pasword debe tener al menos 5 caracteres.
+					</div>
+	
+				</small>
+
 		</p>
 		<p>
-			<input id="boton" type="submit" value="Entrar" [disabled]="loginForm.invalid" />
+			<input id="boton" type="submit" value="Entrar" [disabled]="form.invalid" />
 		</p>
+		<div *ngIf="status == 'error'" class="error"><p>parece que tienes algunos errores en tus datos!</p></div>
+		
 		<p>Olvidaste tu contraseña? Ingresa aquí para obtener una nueva. </p>
 		
-	
+
+
+
+	</form>
+	<form class="loading" *ngIf="loading">
+		<h4>cargando la pagina ...</h4>
 	</form>
 
 </div>

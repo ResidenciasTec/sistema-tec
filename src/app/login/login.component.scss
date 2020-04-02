@@ -10,7 +10,8 @@
 	grid-template-columns: 1fr;
     grid-template-rows:12em 3em 1fr;
     margin-top: 2.5em;
-    margin-bottom: 2em;
+	margin-bottom: 2em;
+	justify-content: center;
 
     div{
     	display: flex;
@@ -30,18 +31,49 @@
 		color: #9F3133;
 		margin-top: 1em;
  
-    }
+	}
+	.loading{
+		width: 100%;
+		height: 10em;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		h4{
+			color: #9F3133;
+		}
+	}
     form{
 		display: grid;
 		width: 100%;
 		height: 100%;
-		grid-template-columns: 1fr;
+		grid-template-columns: 1fr 1fr 1fr;
 		grid-template-rows: 1fr 1fr 1fr 1fr ;
     	justify-content: center;
     	align-items: center;
 		font-size: 1.5em;
 
+		.error{
+			grid-column: 2/3;
+			color: black;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 2em;
+			width: 100%;
+			border-radius: 10px;
+
+			p{
+				display: flex;
+				justify-content: center;
+				background-color: #ff5151;
+				width: 24em;
+				height: 2.5em;
+				border-radius: 10px;
+			}
+		}
 		p{
+			grid-column: 2/3;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;

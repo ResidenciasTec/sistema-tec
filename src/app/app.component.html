@@ -10,7 +10,7 @@
     </header>
 
 
-    <header id="header-silog" *ngIf="identity && identity.nombre">
+    <header id="header-silog" *ngIf="identity">
         <div></div>
         <ul>
             <li><a [routerLink]="['/inicio']">Inicio</a></li>
@@ -51,8 +51,8 @@
         
 
             <div *ngIf="submenu_user == true" class="submenu-user show">
-                <p><strong>{{identity.nombre}}</strong></p>
-                <p><strong>{{identity.apellidos}}</strong></p>
+                <p><strong>{{identity.name}}</strong></p>
+                <p><strong>{{identity.surname}}</strong></p>
                 <hr/>
                 <p [routerLink]="['/perfil']">Perfil</p>
                 <p [routerLink]="['/perfil/editar']">Editar Perfil</p>

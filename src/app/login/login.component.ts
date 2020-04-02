@@ -1,97 +1,116 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router, ActivatedRoute, Params } from "@angular/router";
-import {User} from "../models/user";
-import { UserService} from "../services/user.service";
+import { UserService } from "../services/user.service";
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Login } from '../interfaces/login';
 
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  providers: [UserService]
+	selector: 'app-login',
+	templateUrl: './login.component.html',
+	styleUrls: ['./login.component.scss'],
+	providers: [UserService]
 })
 
-export class LoginComponent implements OnInit {
-  public title: string;
-  public status: string;
-  public user: User;
-  public token;
-  public identity;
+export class LoginComponent implements OnInit, DoCheck {
+	public title: string;
+	public status: string;
+	public token;
+	public identity;
+	public loading: boolean;
 
-  constructor(
-  	private _userService: UserService,
-  	private _router: Router,
-  	private _route: ActivatedRoute,
-   	) 
-  { 
-    this.title = "Inicia sesión para ingresar";
-    this.user = new User(1,'','','','','','','','','','','');
-  }
+	public form: FormGroup;
 
-  ngOnInit(): void {
-  	//se ejecuta siempre y cierra sesion solo cuando le llega el parametro sure por url
-  	this.logout();
-  }
 
-  onSubmit(form){
-  	this._userService.signup(this.user).subscribe(
-	  		response => {
-	  			//token
-	  			if(response.status != 'error'){
-	  				this.status = 'success';
-	  				this.token = response;
+	constructor(
+		private _userService: UserService,
+		private _router: Router,
+		private _route: ActivatedRoute,
+		private _formBuilder: FormBuilder
+	) {
+		this.title = "Inicia sesión para ingresar";
+		this.loading = false;
 
-	  				//OBJETO DE USUARIO IDENTIFICADO
+	}
 
-	  				this._userService.signup(this.user, true).subscribe(
-	  					response =>{
-	  						this.identity = response;
-	  						console.log(this.token);
-	  						console.log(this.identity);
+	ngOnInit(): void {
+		//se ejecuta siempre y cierra sesion solo cuando le llega el parametro sure por url
+		this.logout();
+		this.buildForm();
+	}
 
-	  						//persistir al usuario identificado
-	  						localStorage.setItem('token', this.token);
-							localStorage.setItem('identity', JSON.stringify(this.identity));
-							localStorage.setItem('logueado', JSON.stringify(this.identity));
+	ngDoCheck() {
+		this.loading;
+	}
 
-	  						//redirigir al inicio
-	  						this._router.navigate(['inicio']);
-	  					},
-	  					error =>{
-	  						this.status = 'error';
-	  						console.log(<any>error);
-	  					}
-	  					
-	  					);
-	  			}else{
-	  				this.status = 'error';
-	  			}
+	private buildForm() {
 
-	  		},
-	  		error => {
-	  			this.status = 'error';
-	  			console.log(<any>error);
-	  	}
-  	);
+		this.form = this._formBuilder.group({
+			email: new FormControl('', { validators: [Validators.required, Validators.email], updateOn: 'change' }),
+			password: new FormControl('', { validators: [Validators.required, Validators.minLength(5)], updateOn: 'change' })
+		});
 
-  }
+	}
 
-  logout(){
-  	this._route.params.subscribe(params =>{
-  		let logout = +params['sure'];
+	clickami(event) {
+		this.loading = true;
 
-  		if(logout == 1){
-  			localStorage.removeItem('identity');
-			  localStorage.removeItem('token');
-			  localStorage.removeItem('logueado');
+		if (this.loading == true) {
+			this.loading = false;
+		}
+	}
 
-  			this.token = null;
-  			this.identity = null;
+	onSubmit(form) {
+		this.loading = true;
+		this._userService.signup(form).subscribe(
+			response => {
 
-  			//redireccion a inicio
-  			this._router.navigate(['inicio']);
-  		}
-  	});
-  }
+				if (response.status == 'success') {
+					this.status = 'success';
+
+					this.identity = response.usuario;
+					this.token = response.acceso.token;
+
+					//persistir al usuario identificado
+					localStorage.setItem('token', this.token);
+					localStorage.setItem('identity', JSON.stringify(this.identity));
+					localStorage.setItem('logueado', JSON.stringify(this.identity));
+					this.loading = false;				
+					
+					//redirigir al inicio
+					this._router.navigate(['inicio']);
+
+				}else{
+					this.loading = false;
+					this.status = 'error';
+				}
+;
+			},
+			error => {
+				this.loading = false;
+				this.status = 'error';
+				console.log(<any>error);
+			}
+
+		);
+	}
+
+	logout() {
+		this._route.params.subscribe(params => {
+			let logout = +params['sure'];
+
+			if (logout == 1) {
+				localStorage.removeItem('identity');
+				localStorage.removeItem('token');
+				localStorage.removeItem('logueado');
+
+				this.token = null;
+				this.identity = null;
+
+				//redireccion a inicio
+				this._router.navigate(['inicio']);
+			}
+		});
+	}
 
 }
