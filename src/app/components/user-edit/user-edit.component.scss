@@ -33,6 +33,11 @@
                     grid-template-rows: .3fr 1fr;
                 }
 
+                &:nth-child(7){
+                    display: flex;
+
+                }
+
 				input{
 					font-size: 1.2em;
 					font-weight: normal;
@@ -73,6 +78,7 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    max-width: 10em;
                 }
             }
 

@@ -5,7 +5,8 @@
     <div>
         <article class="article">
             <div class="section-banner">
-                <img src="{{url + 'user/avatar/' + identity.imagen}}">
+                <img *ngIf="identity.imagen" src="{{url + 'user/avatar/' + identity.imagen}}">
+                <img *ngIf="!identity.imagen" src="../../../assets/img/default_profile.png">
                 <h3>{{identity.nombre}} {{identity.apellidos}}</h3>
                 <p *ngIf="identity.descripcion">{{identity.descripcion}}</p>
                 <p *ngIf="!identity.descripcion">edita tu perfil para que puedas agregar una descripcion breve sobre ti</p>
