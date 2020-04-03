@@ -29,5 +29,3 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## primer commit desde fork jesusEMH
 ### aqui pongo un ejemplo de un cambio hecho en fork hacia la rama developer de origin
-### cambio hecho desde rama developer en origin.
-### cambio de testing a developer
