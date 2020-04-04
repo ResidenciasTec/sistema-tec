@@ -1,32 +1,22 @@
-
 <div id="Registro-form">
-	<div class="img-container"><img src="../assets/img/logo.png" alt="logo"/></div>
 
-	<h1>{{title}}</h1>
-
-	<div class="status" *ngIf="!status">
-
-		**Registrate en el sistema si no tienes una cuenta actualmente.
-	</div>
-
-	<div class="status" *ngIf="status == 'success'">
-		El registro se ha completado correctamente, <a [routerLink]="['/login']">logueate aqui</a>
-	</div>
-
-
-	<div class="status" *ngIf="status == 'error'">
-		El registro no se ha completado, intentalo mas tarde
-	</div>
 
 	<div id="Contenedor-formulario">
+		<article>
+			<h1>Sistema de Materiales</h1>
+			<p>gestiona los eventos, solicitues de mantenimiento y salidas de vehiculos, en un solo lugar.</p>
+			<div><img src="../assets/img/logo.png" alt="logo" /></div>
 
-		<form *ngIf="!loading" [formGroup]="form" (ngSubmit)="onSubmit(form.value)" >
+		</article>
+
+		<form *ngIf="!loading" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+			<h2>{{title}}</h2>
 			<label>
-				<p class="label">escribe tu nombre:</p>
 				<input type="text" appInput formControlName="name" placeholder="introduce tu nombre..." />
 
-				<div *ngIf="this.form.get('name').invalid && (this.form.get('name').dirty || this.form.get('name').touched)">
-					
+				<div
+					*ngIf="this.form.get('name').invalid && (this.form.get('name').dirty || this.form.get('name').touched)">
+
 					<div *ngIf="this.form.get('name').errors.minLenght">
 						El nombre debe contener al menos 3 caracteres.
 					</div>
@@ -39,28 +29,29 @@
 			</label>
 
 			<label>
-				<p class="label">escribe tus apellidos:</p>
-				<input type="text" appInput formControlName="surname" pattern="[a-zA-Z]+" placeholder="introduce tu apellido..." />
-				
-				<div *ngIf="this.form.get('surname').invalid && (this.form.get('surname').dirty || this.form.get('surname').touched)">
-					
+				<input type="text" appInput formControlName="surname" pattern="[a-zA-Z]+"
+					placeholder="introduce tu apellido..." />
+
+				<div
+					*ngIf="this.form.get('surname').invalid && (this.form.get('surname').dirty || this.form.get('surname').touched)">
+
 					<div *ngIf="this.form.get('surname').errors.minLenght">
 						los nombres deben contener al menos 3 caracteres.
 					</div>
 
 					<div *ngIf="this.form.get('surname').errors.required">
-						los apellidos son  obligatorio.
+						los apellidos son obligatorio.
 					</div>
 
 				</div>
 			</label>
 
 			<label class="email">
-				<p class="label">escribe tu correo:</p>
-				<input  type="email" appInput formControlName="email" placeholder="introduce un correo electronico..." />
-				
-				<div *ngIf="this.form.get('email').invalid && (this.form.get('email').dirty || this.form.get('email').touched)">
-					
+				<input type="email" appInput formControlName="email" placeholder="introduce un correo electronico..." />
+
+				<div
+					*ngIf="this.form.get('email').invalid && (this.form.get('email').dirty || this.form.get('email').touched)">
+
 					<div *ngIf="this.form.get('email').errors.email">
 						No has escrito un correo electronico valido.
 					</div>
@@ -74,11 +65,12 @@
 			</label>
 
 			<label>
-				<p class="label">numero de control:</p>
-				<input type="text" appInput formControlName="control_number" placeholder="introduce tu numero de empleado..." />
-				
-				<div *ngIf="this.form.get('control_number').invalid && (this.form.get('control_number').dirty || this.form.get('control_number').touched)">
-					
+				<input type="text" appInput formControlName="control_number"
+					placeholder="introduce tu numero de empleado..." />
+
+				<div
+					*ngIf="this.form.get('control_number').invalid && (this.form.get('control_number').dirty || this.form.get('control_number').touched)">
+
 					<div *ngIf="this.form.get('control_number').errors.minLenght">
 						El numero de control debe tener al menos 3 digitos.
 					</div>
@@ -91,11 +83,12 @@
 			</label>
 
 			<label>
-				<p class="label">contrasena:</p>
+
 				<input type="password" appInput formControlName="password" placeholder="introduce una Contraseña..." />
-				
-				<div *ngIf="this.form.get('password').invalid && (this.form.get('password').dirty || this.form.get('password').touched)">
-					
+
+				<div
+					*ngIf="this.form.get('password').invalid && (this.form.get('password').dirty || this.form.get('password').touched)">
+
 					<div *ngIf="this.form.get('password').errors.minLenght">
 						la pasword debe tener al menos 5 digitos.
 					</div>
@@ -107,14 +100,15 @@
 				</div>
 			</label>
 
-			
+
 
 			<label>
-				<p class="label">repetir contrasena:</p>
-				<input type="text" appInput formControlName="repeat_password" placeholder="introduce tu numero de empleado..." />
-				
-				<div *ngIf="this.form.get('repeat_password').invalid && (this.form.get('repeat_password').dirty || this.form.get('repeat_password').touched)">
-					
+
+				<input type="password" appInput formControlName="repeat_password" placeholder="repita la password..." />
+
+				<div
+					*ngIf="this.form.get('repeat_password').invalid && (this.form.get('repeat_password').dirty || this.form.get('repeat_password').touched)">
+
 					<div *ngIf="this.form.get('repeat_password').errors.minLenght">
 						la password debe tener al menos 5 digitos.
 					</div>
@@ -128,14 +122,24 @@
 
 
 			<label class="Btn-box">
-				<input appSubmit type="submit" class="btn" value="registrarme"  [disabled]="form.invalid"/>
+				<input appSubmit type="submit" class="btn" value="registrarme" [disabled]="form.invalid" />
 			</label>
 
+
+			<div class="status" *ngIf="status == 'success'">
+				El registro se ha completado correctamente, <a [routerLink]="['/login']">logueate aqui</a>
+			</div>
+
+
+			<div class="status" *ngIf="status == 'error'">
+				El registro ha fallado.
+			</div>
+
 		</form>
-		
-		<form *ngIf="loading"> 
+
+		<form *ngIf="loading">
 			cargando pagina ...
 		</form>
-		
+
 	</div>
 </div>

@@ -43,7 +43,7 @@ export class RegistroComponent implements OnInit {
       control_number: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
       password: new FormControl('', { validators: [Validators.required, Validators.minLength(5)], updateOn: 'change' }),
       repeat_password: new FormControl('', { validators: [Validators.required, Validators.minLength(5)], updateOn: 'change' })
-		}, {validator: this.checkPasswords});
+		});
 
   }
 
