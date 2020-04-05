@@ -22,11 +22,9 @@ export class UserService{
 	}
 	register(user): Observable<any>{
 		let json = JSON.stringify(user);
-		let params = 'json='+json;
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-
-		return this._http.post(this.url+'register', params, {headers: headers});
+		return this._http.post(this.url+'register', json, {headers: headers});
 	}
 
 	signup(user): Observable<any>{

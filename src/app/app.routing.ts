@@ -51,7 +51,7 @@ import {UserGuard} from "./services/user.guard";
 
 //definir las rutas
 const  appRoutes: Routes = [
-    {path: '', component: LoginComponent},
+    {path: '', component: InicioComponent, canActivate:[UserGuard]},
 
     //rutas de registros
     {path: 'login', component: LoginComponent},

@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit, DoCheck {
 	public token;
 	public identity;
 	public loading: boolean;
-
 	public form: FormGroup;
 
 
@@ -28,7 +27,7 @@ export class LoginComponent implements OnInit, DoCheck {
 		private _route: ActivatedRoute,
 		private _formBuilder: FormBuilder
 	) {
-		this.title = "Inicia sesión para ingresar";
+		this.title = "entra al sistema con correo institucional y password";
 		this.loading = false;
 
 	}

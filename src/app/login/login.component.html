@@ -1,48 +1,48 @@
 <div id="Login-form">
-
-	<div><img src="../assets/img/logo.png" alt="logo" /></div>
-
-	<h1>{{title}}</h1>
-	<form *ngIf="!loading" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
-		<p>
-
-			<input id="user" placeholder="correo" formControlName="email" type="email" />
-			<small *ngIf="this.form.get('email').invalid && (this.form.get('email').dirty || this.form.get('email').touched)">
-				<div *ngIf="this.form.get('email').errors.email">
-					El correo electornico no es valido.
-				</div>
-			</small>
-
-		</p>
-		<p>
-
-			<input id="contras"  placeholder="Contraseña" formControlName="password" type="password"
-				name="contrasena"/>
-				<small *ngIf="this.form.get('password').invalid && (this.form.get('password').dirty || this.form.get('password').touched)">
-
-					<div *ngIf="this.form.get('password').errors.required">
-						necesitas introducir un password
-					</div>
-					<div *ngIf="this.form.get('password').errors.minlength">
-						esa pasword debe tener al menos 5 caracteres.
-					</div>
+	<div class="container-form">
 	
+		<form *ngIf="!loading" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+			<div><img src="../assets/img/logo.png" alt="logo" /></div>
+			<p class="form-title"> Entra a tu Cuenta</p>
+			<p>
+
+				<input id="user" placeholder="correo" formControlName="email" type="email" />
+				<small *ngIf="this.form.get('email').invalid && (this.form.get('email').dirty || this.form.get('email').touched)">
+					<div *ngIf="this.form.get('email').errors.email">
+						El correo electornico no es valido.
+					</div>
 				</small>
 
-		</p>
-		<p>
-			<input id="boton" type="submit" value="Entrar" [disabled]="form.invalid" />
-		</p>
-		<div *ngIf="status == 'error'" class="error"><p>parece que tienes algunos errores en tus datos!</p></div>
+			</p>
+
+			<p>
+
+				<input id="contras"  placeholder="Contraseña" formControlName="password" type="password"
+					name="contrasena"/>
+					<small *ngIf="this.form.get('password').invalid && (this.form.get('password').dirty || this.form.get('password').touched)">
+
+						<div *ngIf="this.form.get('password').errors.required">
+							necesitas introducir un password
+						</div>
+						<div *ngIf="this.form.get('password').errors.minlength">
+							esa pasword debe tener al menos 5 caracteres.
+						</div>
 		
-		<p>Olvidaste tu contraseña? Ingresa aquí para obtener una nueva. </p>
+					</small>
+
+			</p>
+			<p>
+				<input id="boton" type="submit" value="dame acceso" [disabled]="form.invalid" />
+			</p>
+			<div *ngIf="status == 'error'" class="error"><p>parece que tienes algunos errores en tus datos!</p></div>
+			
+		</form>
+
+		<form class="loading" *ngIf="loading">
+			<h4>cargando la pagina ...</h4>
+		</form>
 		
-
-
-
-	</form>
-	<form class="loading" *ngIf="loading">
-		<h4>cargando la pagina ...</h4>
-	</form>
+		<p class="forgot">Aun no te registras? <span [routerLink]="['/registro']"> haz click aqui </span></p>
+	</div>
 
 </div>
