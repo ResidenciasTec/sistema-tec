@@ -1,13 +1,9 @@
 <div id="Login-form">
 	<div class="container-form">
-
-		
-	<div><img src="../assets/img/logo.png" alt="logo" /></div>
-	<p class="titulo">{{title}}</p>
 	
 		<form *ngIf="!loading" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
-		
-			<p class="form-title"> Entra ahora</p>
+			<div><img src="../assets/img/logo.png" alt="logo" /></div>
+			<p class="form-title"> Entra a tu Cuenta</p>
 			<p>
 
 				<input id="user" placeholder="correo" formControlName="email" type="email" />
@@ -46,7 +42,7 @@
 			<h4>cargando la pagina ...</h4>
 		</form>
 		
-		<p class="forgot">Aun no te registras? haz click aqui</p>
+		<p class="forgot">Aun no te registras? <span [routerLink]="['/registro']"> haz click aqui </span></p>
 	</div>
 
 </div>

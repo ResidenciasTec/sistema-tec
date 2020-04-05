@@ -2,14 +2,9 @@
 
 
 	<div id="Contenedor-formulario">
-		<article>
-			<h1>Sistema de Materiales</h1>
-			<p>gestiona los eventos, solicitues de mantenimiento y salidas de vehiculos, en un solo lugar.</p>
-			<div><img src="../assets/img/logo.png" alt="logo" /></div>
-
-		</article>
 
 		<form *ngIf="!loading" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+			<div><img src="../assets/img/logo.png" alt="logo" /></div>
 			<h2>{{title}}</h2>
 			<label>
 				<input type="text" appInput formControlName="name" placeholder="introduce tu nombre..." />
@@ -138,7 +133,10 @@
 		</form>
 
 		<form *ngIf="loading">
-			cargando pagina ...
+			<article>
+				cargando pagina ...
+			</article>
+			
 		</form>
 
 	</div>
