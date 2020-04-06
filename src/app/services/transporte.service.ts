@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Vehiculo} from "../models/vehiculo";
 import {global} from "./global";
 
 @Injectable()
@@ -16,15 +15,17 @@ export class TransporteService{
 
 	}
 
-	getTransportes():Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+	getTransportes(token):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+									   .set('Authorization', 'Bearer '+token);
 
 		return this._http.get(this.url + 'vehiculos', {headers: headers});
 
 	}
 
-	getTransporte(id):Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+	getTransporte(token, id):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+										.set('Authorization', token);
 
 		return this._http.get(this.url + 'vehiculos/'+id, {headers: headers});
 
@@ -33,29 +34,27 @@ export class TransporteService{
 
 	createTransporte(token, vehiculo):Observable<any>{
 		let json = JSON.stringify(vehiculo);
-		let params = 'json='+json;
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
 									   .set('Authorization', token);
 
-		return this._http.post(this.url + 'vehiculos', params, {headers: headers});
+		return this._http.post(this.url + 'vehiculos', json, {headers: headers});
 
 
 	}
 
 	updateTransporte(token, vehiculo, id):Observable<any>{
 		let json = 	JSON.stringify(vehiculo);
-		let params = 'json='+json;
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
 									   .set('Authorization', token);
 
-		return this._http.put(this.url + 'vehiculos/'+id, params, {headers: headers});
+		return this._http.put(this.url + 'vehiculos/'+id, json, {headers: headers});
 
 
 	}
 
 	deleteTransporte(token, id):Observable<any>{
 
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
 									   .set('Authorization', token);
 
 		return this._http.delete(this.url + 'vehiculos/'+id, {headers: headers});

@@ -35,6 +35,7 @@ export class CrearSalidaComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTransportes();
+    window.scrollTo(0,0);
 
   }
 
@@ -60,7 +61,7 @@ export class CrearSalidaComponent implements OnInit {
 
   getTransportes(){
     
-    this._transporteService.getTransportes().subscribe(
+    this._transporteService.getTransportes(this.token).subscribe(
       response =>{
         if(response.status == 'success'){
           this.transportes = response.vehiculos;

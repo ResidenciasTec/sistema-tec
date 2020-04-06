@@ -29,6 +29,7 @@ export class CrearMantenimientoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0,0);
     this.getLugares();
   }
 

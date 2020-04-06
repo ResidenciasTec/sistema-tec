@@ -8,7 +8,7 @@
     </header>
 
 
-    <header id="header-silog" *ngIf="identity">
+    <header id="header-silog" *ngIf="identity && identity.name">
         <div></div>
         <ul>
             <li><a [routerLink]="['/inicio']">Inicio</a></li>
@@ -20,7 +20,7 @@
                     <li [routerLink]="['/salidas']">Salidas</li>
                 </ul>
 
-                 <ul *ngIf="submenu_panel == false" class="submenu-panel hidden">
+                 <ul *ngIf="submenu_panel == false"  class="submenu-panel hidden">
                     <li [routerLink]="['/eventos']">Eventos</li>
                     <li [routerLink]="['/mantenimiento']">Mantenimiento</li>
                     <li [routerLink]="['/salidas']">Salidas</li>
@@ -43,9 +43,9 @@
             <li></li>
         </ul>
         <div class="div-user" (click)="showMenuUser()">
-            <img *ngIf="identity.imagen" width="20px" src="{{url + 'user/avatar/' + identity.imagen}}" /> 
+            <img *ngIf="identity.image" src="{{url + 'user/avatar/' + identity.image}}" /> 
 
-            <img *ngIf="!identity.imagen" width="20px" src="../assets/img/default_profile.png" />        
+            <img *ngIf="!identity.image"  src="../assets/img/default_profile.png" />        
         
 
             <div *ngIf="submenu_user == true" class="submenu-user show">
@@ -59,23 +59,25 @@
             </div>
 
             <div *ngIf="submenu_user == false" class="submenu-user hidden">
-                <p>{{identity.nombre}}</p>
-                <p>{{identity.apellidos}}</p>
+                <p>{{identity.name}}</p>
+                <p>{{identity.surname}}</p>
                  <hr/>
                 <p [routerLink]="['/perfil']">Perfil</p>
                 <p [routerLink]="['/perfil/editar']">Editar Perfil</p>
                 <p [routerLink]="['/perfil/solicitudes']">Mis solicitudes</p>
                 <p [routerLink]="['/logout/1']">cerrar sesion</p>
             </div>
-</div>
+        </div>
 
 
     </header>
 
     
-    <router-outlet></router-outlet>
+    <router-outlet (activate)="onActivate($event, outlet)" #outlet>
 
-    <footer *ngIf="identity && identity.nombre">
+    </router-outlet>
+
+    <footer *ngIf="identity && identity.name">
         <p> Instituto Tecnológico de Matamoros</p>
         <p>Carr. Lauro Villar K.M. 6.5</p>
         <p>8688140952 y 8688140953</p>

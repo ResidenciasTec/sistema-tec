@@ -27,7 +27,7 @@ export class RegistroComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    window.scrollTo(0,0);
     console.log("'componente de registro correcto...");
     this.buildForm();
 
