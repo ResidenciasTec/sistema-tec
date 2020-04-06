@@ -8,10 +8,21 @@
     grid-template-columns: 1fr;
     grid-template-rows:5em 1fr 8em;
     min-height: 100vh;
-
+    overflow-y:hidden;
+    
+    
+    footer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #DA2643;
+        color: white;
+        font-size: 1.4em;
+        grid-gap: 1em;
+    }
 
     #header-nolog{
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
         background-color: #DA2643;
         height: 4.5em;
         display: grid;
@@ -22,7 +33,7 @@
         box-shadow: 0 1px 0 0 rgba(66,118,146,.1),0 2px 6px 0 rgba(66,118,146,.1);
         border: 1px solid #b35555;
         border-width: 0px 0px 1px 0px;
-}
+    }
         h1{
             font-size: 22px;
             font-weight: normal;
@@ -51,25 +62,22 @@
                     border-color: #F5D588; 
                     text-decoration: underline;
                 }
-        }
+            }
 
-        .active{
-            color: red;
-            
-        }
-
-             
-
+            .active{
+                color: red;
+                
+            }
 
         }
 
     }
+
     #header-silog{        
         display:grid;
         grid-template-columns: 4em 1fr 10em;
         grid-template-rows: 5em;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #F7F7F7;
+        font-family: Arial, Helvetica, sans-serif;
         background-color: #DA2643;
         /*border: 1px solid #C1BDBD;*/
         border-width: 0px 0px 1px 0px;
@@ -84,11 +92,6 @@
             justify-content: center;
             align-items: center;
             width: 100%;
-
-            img{
-                width: 100%;
-                margin-right: 1em;
-            }
 
         }
 
@@ -153,7 +156,7 @@
                 a{
                     color: black;
                 }
-
+            }
             
         }
 
@@ -177,7 +180,7 @@
 
             img{
                 width: 4em;
-                border: ipx solid #C1BDBD;
+                border: 1px solid #C1BDBD;
 
                 &:hover{
                     transition: .4s;
@@ -229,17 +232,6 @@
             }
         }
         
-    }
-
-    footer{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #DA2643;
-        color: white;
-        font-size: 1.4em;
-        grid-gap: 1em;
-    }
 
     
 }

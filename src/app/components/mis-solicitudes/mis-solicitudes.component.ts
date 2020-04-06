@@ -12,6 +12,7 @@ public titulo: String;
   }
 
   ngOnInit(): void {
+    window.scrollTo(0,0);
   }
 
 }

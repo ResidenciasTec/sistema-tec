@@ -22,6 +22,7 @@ export class PerfilComponent implements OnInit {
   ngOnInit(): void {
     this.identity = JSON.parse(localStorage.getItem("identity"));
     this.logueado = JSON.parse(localStorage.getItem('logueado'));
+    window.scrollTo(0,0);
   }
 
 }

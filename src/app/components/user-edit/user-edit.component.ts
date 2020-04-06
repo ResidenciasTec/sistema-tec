@@ -77,7 +77,9 @@ export class UserEditComponent implements OnInit {
   ngOnInit(): void {
     this.getDepartamentos();
     this.identity.imagen;
+    window.scrollTo(0,0);
   }
+
 
   onSubmit(form){
     this._userService.update(this.token, this.user).subscribe(

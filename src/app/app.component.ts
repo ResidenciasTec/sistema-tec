@@ -12,21 +12,23 @@ import {global} from "./services/global";
 export class AppComponent implements OnInit, DoCheck {
   public title = 'tec-materiales';
   public identity;
-  public token;
   public url;
   public submenu_user: boolean;
   public submenu_panel: boolean;
   public submenu_crear: boolean;
+  transportes: any;
+
 
   constructor(
-  	public _userService: UserService,
+    private _userService: UserService,
 
   	)
   {
-  	this.identity = this._userService.getIdentity();
-    this.token = this._userService.getToken();
     this.url = global.url;
     this.submenu_user = false;
+    this.submenu_crear = false;
+    this.submenu_panel = false;
+ 
   }
 
   ngOnInit(){
@@ -35,17 +37,15 @@ export class AppComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck(){
-    this.loadUser();
     this.submenu_user;
     this.submenu_crear;
     this.submenu_panel;
+    this.identity = JSON.parse(localStorage.getItem('identity'));
+    
   }
 
-  loadUser(){
-      this.identity = this._userService.getIdentity();
-      this.token = this._userService.getToken();
- 
-
+  onActivate(e, outlet){
+    outlet.scrollTop = 0;
   }
 
   showMenuUser(){

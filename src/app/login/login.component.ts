@@ -33,9 +33,11 @@ export class LoginComponent implements OnInit, DoCheck {
 	}
 
 	ngOnInit(): void {
+		window.scrollTo(0,0);
 		//se ejecuta siempre y cierra sesion solo cuando le llega el parametro sure por url
 		this.logout();
 		this.buildForm();
+		
 	}
 
 	ngDoCheck() {
