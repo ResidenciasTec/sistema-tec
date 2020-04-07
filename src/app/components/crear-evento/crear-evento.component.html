@@ -3,81 +3,88 @@
 	<app-banner-crear [titulo]="textoCrear"></app-banner-crear>
 
 	<article>
-		<form #eventoForm="ngForm" (ngSubmit)="onSubmit()">
-
-			<label id="titulo">
-				<p class="label">titulo:</p>
-				<input type="text" appInput  placeholder="titulo de la solicitud" name="titulo" #titulo="ngModel" [(ngModel)]="evento.titulo" required minlength="5">
-				<div *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)">
-					el titulo del evento es requerido
-				</div>
-			</label>
-
-			<label>
-				<p class="label">contenido:</p>
-				<textarea type="text" name="contenido" appTextarea  placeholder="contenido de la solicitud" #contenido="ngModel" [(ngModel)]="evento.contenido" required>
-				</textarea>
-					<div *ngIf="contenido.invalid && (contenido.dirty || contenido.touched)">
-					el contenido de la salida es requerida.
-				</div>
-			</label>
-
-			<label>
-				<p class="label">creado por:</p>
-				<p class="user_id" appInput>{{identity.nombre}} {{identity.apellidos}}</p>
-			</label>
-
-			
-			<label>
-				<p class="label">Locacion elegida:</p>
-				<select name="lugar_id" type="text" #lugar_id="ngModel" [(ngModel)]="evento.lugar_id">
-					<option id="seleccionado" selected>selecciona un lugar:</option>
-					<option *ngFor="let lugar of lugares" value="{{lugar.id}}">
-						{{lugar.lugar}}
-					</option>
-
-				</select>
-				<div *ngIf="lugar_id.invalid && (lugar_id.dirty || lugar_id.touched)">
-					debes seleccionar una locacion de las opciones
-				</div>
-			</label>
-		
-			
-			<label>
-				<p class="label">fecha de realizacion:</p>
-				<input type="date" name="fecha" appInput  placeholder="selecciona una fecha" #fecha="ngModel" [(ngModel)]="evento.fecha" required>
-
-				<div *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)">
-					debes seleccionar una fecha.
-				</div>
-			</label>
-
-			<label>
-				<p class="label">hora de comienzo:</p>
-				<input type="time" name="hora_inicio" appInput #hora_inicio="ngModel" [(ngModel)]="evento.hora_inicio" required>
-
-				<div *ngIf="hora_inicio.invalid && (hora_inicio.dirty || hora_inicio.touched)">
-					debes seleccionar una hora de inicio
-				</div>
-			</label>
-
-			<label>
-				<p class="label">hora de finalizacion:</p>
-				<input type="time" name="hora_final" appInput #hora_final="ngModel" [(ngModel)]="evento.hora_final" required>
-
-				<div *ngIf="hora_final.invalid && (hora_final.dirty || hora_final.touched)">
-					debes seleccionar una hora de finalizacion.
-				</div>
-			</label>
-
-			<label>
-				<input type="submit" class="btn" appSubmit [disabled]="eventoForm.invalid || eventoForm.untouched" value="Crear Solicitud">
-			</label>
-
-			<p class="aviso">
-				Las solicitudes que estes creando seran revisadas y se mantendran en estado "pendiente" hasta que la junta administrativa revise y decida aceptar la solicitud.
-			</p>
+		<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
 			<app-status style="grid-column: 1/3" *ngIf="status" [status]="status"></app-status>
+
+			<article class="requeridos">
+				
+				<label id="titulo">
+					<p class="label">titulo:</p>
+					<input type="text" formControlName="evento" appInput placeholder="titulo de la solicitud">
+				</label>
+
+				<label>
+					<p class="label">Locacion elegida:</p>
+					<select name="lugar_id" type="text" formControlName="espacio_id">
+						<option id="seleccionado" selected>selecciona un lugar:</option>
+						<option *ngFor="let espacio of espacios" value="{{espacio.id}}">
+							{{espacio.espacio}}
+						</option>
+
+					</select>
+				</label>
+
+				<label>
+					<p class="label">departamento solicitante:</p>
+					<select name="lugar_id" type="text" formControlName="depto_solicitante">
+						<option id="seleccionado" selected>selecciona un departamento:</option>
+						<option *ngFor="let departamento of departamentos" value="{{departamento.id}}">
+							{{departamento.departamento}}
+						</option>
+
+					</select>
+				</label>
+
+				<label>
+					<p class="label">fecha de realizacion:</p>
+					<input type="date" appInput placeholder="selecciona una fecha" formControlName="fecha">
+				</label>
+
+				<label>
+					<p class="label">hora de comienzo:</p>
+					<input type="time" appInput formControlName="hora_inicio">
+
+				</label>
+
+				<label>
+					<p class="label">hora de finalizacion:</p>
+					<input type="time" appInput formControlName="hora_final">
+				</label>
+
+			</article>
+
+			
+			<label class="titulo-opcional">
+				<p class="label">datos opcionales:</p>
+				<p>estos datos puedes dejarlos vacios y mas tarde rellenarlos.</p>
+			</label>
+
+			<article class="opcionales">
+				<label>
+					<p class="label">contenido:</p>
+					<textarea type="text" appTextarea formControlName="actividades" placeholder="contenido de la solicitud" >
+					</textarea>
+				</label>
+
+			</article>
+
+
+			<article class="seccion-submit">
+				<label *ngIf="!loading">
+					<input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Crear Solicitud">
+				</label>
+
+				<label class="loading" *ngIf="loading">
+					espere un momento...
+				</label>
+	
+				<p class="aviso">
+					Las solicitudes que estes creando seran revisadas y se mantendran en estado "pendiente" hasta que la
+					junta administrativa revise y decida aceptar la solicitud.
+				</p>
+
+			</article>
+
 
 
 		</form>

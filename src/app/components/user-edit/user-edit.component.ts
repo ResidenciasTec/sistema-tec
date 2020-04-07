@@ -144,7 +144,7 @@ export class UserEditComponent implements OnInit {
 
    getDepartamentos(){
     
-    this._departamentoService.getDepartamentos().subscribe(
+    this._departamentoService.getDepartamentos(this.token).subscribe(
       response =>{
         if(response.status == 'success'){
           this.departamentos = response.departamentos;

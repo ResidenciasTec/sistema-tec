@@ -1,11 +1,10 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Departamento} from "../models/departamento";
 import {global} from "./global";
 
 @Injectable()
-export class departamentoService{
+export class StatusorderService{
 	public url: string;
 
 	constructor(
@@ -16,51 +15,51 @@ export class departamentoService{
 
 	}
 
-	getDepartamentos(token):Observable<any>{
+	getServicios(token):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
 									   .set('Authorization', 'Bearer '+token);
 
-		return this._http.get(this.url + 'departamentos', {headers: headers});
+		return this._http.get(this.url + 'statusorders', {headers: headers});
 
 
 	}
 
-	getDepartamento(token, id):Observable<any>{
+	getServicio(token, id):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
 									   .set('Authorization', 'Bearer '+token);
 
-		return this._http.get(this.url + 'departamentos/'+id, {headers: headers});
+		return this._http.get(this.url + 'statusorders/'+id, {headers: headers});
 
 
 	}
 
-	createDepartamento(token, departamento):Observable<any>{
+	createServicio(token, departamento):Observable<any>{
 		let json = JSON.stringify(departamento);
 		let params = 'json='+json;
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
 									   .set('Authorization', 'Bearer '+token);
 
-		return this._http.post(this.url + 'departamentos', {headers: headers});
+		return this._http.post(this.url + 'statusorders', {headers: headers});
 
 
 	}
 
-	updateDepartamento(token, departamento, id):Observable<any>{
+	updateServicio(token, departamento, id):Observable<any>{
 		let json = JSON.stringify(departamento);
 		let params = 'json='+json;
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
 									   .set('Authorization', 'Bearer '+token);
 
-		return this._http.put(this.url + 'departamentos/'+id, params, {headers: headers});
+		return this._http.put(this.url + 'statusorders/'+id, params, {headers: headers});
 
 
 	}
 
-	deleteDepartamento(token, id):Observable<any>{
+	deleteServicio(token, id):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
 									   .set('Authorization', 'Bearer '+token);
 
-		return this._http.delete(this.url + 'departamentos/'+id, {headers: headers});
+		return this._http.delete(this.url + 'statusorders/'+id, {headers: headers});
 
 		
 	}
