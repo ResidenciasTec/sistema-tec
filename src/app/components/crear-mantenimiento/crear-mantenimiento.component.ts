@@ -1,71 +1,77 @@
 import { Component, OnInit } from '@angular/core';
-import { Mantenimiento } from '../../models/mantenimiento';
 import { MantenimientoService } from "../../services/mantenimiento.service";
-import { lugarService} from "../../services/lugar.service";
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-crear-mantenimiento',
   templateUrl: './crear-mantenimiento.component.html',
   styleUrls: ['./crear-mantenimiento.component.scss'],
-  providers: [MantenimientoService, lugarService]
+  providers: [MantenimientoService]
 })
 export class CrearMantenimientoComponent implements OnInit {
-	public mantenimiento: Mantenimiento;
   public token;
   public identity;
   public status;
   public lugares;
   public textoCrear: String;
+  public form: FormGroup;
+  public departamentos;
+  public statusorders;
+  public loading;
 
   constructor(
-  	private _mantenimientoService: MantenimientoService,
-    private _lugarService: lugarService,
+    private _mantenimientoService: MantenimientoService,
+    private _formBuilder: FormBuilder,
   	) 
   {
-  	this.mantenimiento = new Mantenimiento(1, 1 , 1 ,'','','','','','',''); 
     this.token = localStorage.getItem('token');
-    this.identity = localStorage.getItem('identity');
+    this.identity = JSON.parse(localStorage.getItem('identity'));
     this.textoCrear = "Crear una solicitud de mantenimiento";
+    this.loading = false;
+
   }
 
   ngOnInit(): void {
     window.scrollTo(0,0);
-    this.getLugares();
+    this.statusorders = JSON.parse(localStorage.getItem('statusorders'));
+    this.departamentos = JSON.parse(localStorage.getItem('departamentos'));
+    this.buildForm();
   }
 
-  getLugares(){
-    this._lugarService.getLugares().subscribe(
-      response => {
-        if(response.status == 'success'){
-          this.lugares = response.lugares;
-          
 
-        }else{
-          
-        }
+  private buildForm() {
 
-      },
-      error => {
-        console.log(<any>error);
-       
-
-      }
-      );
+		this.form = this._formBuilder.group({
+      usuario_id: new FormControl(this.identity.id),
+      servicio_id: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
+      tipo: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
+      depto_solicitante: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
+      asignado_a: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
+      trabajo_realizado: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
+      equipo_proteccion: new FormControl(''),
+      fecha: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
+      hora_inicio: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
+      hora_final: new FormControl('', { validators: [Validators.required], updateOn: 'change' })
+		});
 
   }
 
-  onSubmit(){
-    this._mantenimientoService.createMantenimiento(this.token, this.mantenimiento).subscribe(
+  onSubmit(value){
+    this.loading = true;
+    this._mantenimientoService.createMantenimiento(this.token, value).subscribe(
       response => {
-        if(response && response.status == 'success'){
+        if(response){
+          this.loading = false;
           this.status = 'success';
         }else{
+          this.loading = false;
           this.status = 'error';
         }
 
       },
       error => {
         console.log(<any>error);
+        this.loading = false;
         this.status = 'error';
       }
       );

@@ -20,60 +20,63 @@ export class MantenimientoService{
 	}
 
 	//servicio para recuperar todas las solicitudes de mantenimiento
-	getMantenimientos():Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+	getMantenimientos(token):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+								       .set('Authorization', 'Bearer '+token);
 
-		return this._http.get(this.url+'mantenimiento', {headers: headers});
+		return this._http.get(this.url+'mantenimientos', {headers: headers});
 	}
 
 	//servicio para recuperar una solicitud de mantenimiento por medio de su id.
-	getMantenimiento(id):Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+	getMantenimiento(token, id):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+									   .set('Authorization', 'Bearer '+token);
 
-		return this._http.get(this.url+'mantenimiento/'+id, {headers: headers});
+		return this._http.get(this.url+'mantenimientos/'+id, {headers: headers});
 	}
 
 	//servicio para recuperar una solicitud de mantenimiento de un usuario.
-	getByUser(id):Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+	getByUser(token, id):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+						               .set('Authorization', 'Bearer '+token);
 
-		return this._http.get(this.url+'mantenimiento/user/'+id, {headers: headers});
+		return this._http.get(this.url+'mantenimientos/user/'+id, {headers: headers});
 	}
 
 	//servicio para recuperar una solicitud de mantenimiento por su status.
-	getStatus(status):Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-		return this._http.get(this.url+'mantenimiento/status/'+status, {headers: headers})
+	getStatus(token, status):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+									   .set('Authorization', 'Bearer '+token);
+									   
+		return this._http.get(this.url+'mantenimientos/status/'+status, {headers: headers})
 	}
 
 	//servicio para crear nuevas solicitudes de mantenimiento en la base de datos.
 	createMantenimiento(token, mantenimiento): Observable<any>{
 		let json = JSON.stringify(mantenimiento);
-		let params = 'json='+json;
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-									   .set('Authorization', token);
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+		                               .set('Authorization', 'Bearer '+token);
 
-		return this._http.post(this.url+'mantenimiento', params, {headers: headers});
+		return this._http.post(this.url+'mantenimientos', json, {headers: headers});
 
 	}
 
 	//servicio para actualizar una solicitud de mantenimiento de la base de datos.
 	updateMantenimiento(token, mantenimiento, id): Observable<any>{
 		let json = JSON.stringify(mantenimiento);
-		let params = 'json='+json;
-		let headers = new HttpHeaders().set('Content-Type', 'Application/x-www-form-urlencoded')
-									   .set('Authorization', token);
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+								       .set('Authorization', 'Bearer '+token);
 
-		return this._http.put(this.url+'mantenimiento/'+id, params, {headers: headers});
+		return this._http.put(this.url+'mantenimientos/'+id, json, {headers: headers});
 
 	}
 
 	//servicio para borrar una solicitud de mantenimiento de la base de datos.
 	deleteMantenimiento(token, id){
-		let headers = new HttpHeaders().set('Content-Type', 'Application/x-www-form-urlencoded')
-									   .set('Authorization', token);
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+									   .set('Authorization', 'Bearer '+token);
 
-		return this._http.delete(this.url+'mantenimiento/'+id, {headers: headers});
+		return this._http.delete(this.url+'mantenimientos/'+id, {headers: headers});
 
 	}
 

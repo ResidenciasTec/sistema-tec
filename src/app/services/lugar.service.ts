@@ -16,18 +16,21 @@ export class lugarService{
 
 	}
 
-	getLugares():Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+	getLugares(token):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+								       .set('Authorization', 'Bearer '+token);
 
-		return this._http.get(this.url + 'lugares', {headers: headers});
+		return this._http.get(this.url + 'espacios', {headers: headers})
+
 
 	}
 
 
-	getLugar(id):Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+	getLugar(token, id):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+									  .set('Authorization', 'Bearer '+token);
 
-		return this._http.get(this.url + 'lugares/'+id, {headers: headers});
+		return this._http.get(this.url + 'espacios/'+id, {headers: headers});
 
 
 	}
@@ -35,10 +38,10 @@ export class lugarService{
 	createLugar(token, lugar):Observable<any>{
 		let json = JSON.stringify(lugar);
 		let params = 'json='+json;
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-				  				       .set('Authorization', token);
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+				  				       .set('Authorization', 'Bearer '+token);
 
-		return this._http.post(this.url + 'lugares', params, {headers: headers});
+		return this._http.post(this.url + 'espacios', params, {headers: headers});
 
 
 	}
@@ -46,18 +49,18 @@ export class lugarService{
 	updateLugar(token, lugar, id):Observable<any>{
 		let json = JSON.stringify(lugar);
 		let params = 'json='+json;
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-				  					   .set('Authorization', token);
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+				  					   .set('Authorization', 'Bearer '+token);
 
-		return this._http.put(this.url + 'lugares/'+id, params, {headers: headers});
+		return this._http.put(this.url + 'espacios/'+id, params, {headers: headers});
 
 	}
 
 	deleteLugar(token, id):Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-				  					   .set('Authorization', token);
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+				  					   .set('Authorization', 'Bearer '+token);
 
-		return this._http.delete(this.url + 'lugares/'+id, {headers: headers});
+		return this._http.delete(this.url + 'espacios/'+id, {headers: headers});
 
 		
 	}

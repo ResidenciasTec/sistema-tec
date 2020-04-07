@@ -1,78 +1,85 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, ValidatorFn, AbstractControl } from "@angular/forms";
-import { Salida } from '../../models/salida';
+import { FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, FormBuilder } from "@angular/forms";
 import { SalidaService } from "../../services/salida.service";
-import { TransporteService } from "../../services/transporte.service";
 
 
 @Component({
   selector: 'app-crear-salida',
   templateUrl: './crear-salida.component.html',
   styleUrls: ['./crear-salida.component.scss'],
-  providers: [SalidaService, TransporteService]
+  providers: [SalidaService]
 })
 export class CrearSalidaComponent implements OnInit {
-	public salida: Salida;
   public salidaForm: FormGroup;
   public identity;
   public token;
-  public transportes;
+  public vehiculos;
+  public departamentos;
   public status;
+  public loading;
   public textoCrear;
+  public form: FormGroup;
 
 
   constructor(
-  	  	private _salidaService: SalidaService, 
-        private _transporteService: TransporteService,
+        private _salidaService: SalidaService,
+        private _formBuilder: FormBuilder, 
         
   	) 
   {
-    this.salida = new Salida(1, 1 , 1 ,'','','','','','','');
-  	this.identity = localStorage.getItem('identity');
+  	this.identity = JSON.parse(localStorage.getItem('identity'));
     this.token = localStorage.getItem('token');
     this.textoCrear = "Crear una solicitud de salida";
+    this.loading = false;
   }
 
   ngOnInit(): void {
-    this.getTransportes();
     window.scrollTo(0,0);
+    this.vehiculos = JSON.parse(localStorage.getItem('vehiculos'));
+    this.departamentos = JSON.parse(localStorage.getItem('departamentos'));
+    this.buildForm();
 
   }
 
-  onSubmit(){
+  private buildForm() {
 
-    this._salidaService.createSalida(this.token, this.salida).subscribe(
+		this.form = this._formBuilder.group({
+      usuario_id: new FormControl(this.identity.id),
+      vehiculo_id: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
+      depto_solicitante: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
+      chofer: new FormControl(''),
+      destino: new FormControl(''),
+      descripcion: new FormControl(''),
+      fecha: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
+      hora_salida: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
+      hora_llegada: new FormControl('', { validators: [Validators.required], updateOn: 'change' })
+		});
+
+  }
+
+  onSubmit(value){
+    this.loading = true;
+    this._salidaService.createSalida(this.token, value).subscribe(
       response => {
       console.log("el servicio se ha ejecutado");
       if(response && response.status == 'success'){
+        this.loading = false;
         this.status = 'success';
-      }else{
+        
+      }else{ 
+        this.loading = false;
         this.status = 'error';
+       
       }
         
 
       },
       error=>{
+        this.loading = false;
         this.status = 'error';
         console.log(<any>error);
       }
       );
-  }
-
-  getTransportes(){
-    
-    this._transporteService.getTransportes(this.token).subscribe(
-      response =>{
-        if(response.status == 'success'){
-          this.transportes = response.vehiculos;
-        }
-
-      },
-      error =>{
-        console.log(error);
-
-      });
-
   }
  
 
