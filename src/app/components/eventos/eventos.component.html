@@ -1,1 +1,15 @@
-<h1>{{title}}</h1>
+<main class="body-solicitudes">
+    <app-banner-crear [titulo]="textoCrear"></app-banner-crear>
+    <div *ngIf="!loading">
+        <article *ngFor="let evento of eventos" [routerLink]="['/eventos/'+evento.id]">
+            <section>{{evento.status}}</section>
+            <section>{{evento.evento}}</section>
+            <section>{{evento.fecha}}</section>
+        </article>
+
+    </div>
+        
+    <div class="loading" *ngIf="loading">
+        <h4>cargando ...</h4>
+    </div>
+</main>

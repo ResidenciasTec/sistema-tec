@@ -1,0 +1,76 @@
+.body-solicitudes{
+    display: grid;
+    grid-template-columns: 1fr 900px 1fr;
+    grid-template-rows: 10em 1fr;
+    grid-gap: 1em;
+
+    app-banner-crear{
+        grid-column: 1/span 3;
+    }
+
+    div{
+        grid-column: 2/3;
+        grid-row: 2/3;
+        display: grid;
+        grid-gap: 1em;
+        padding: 1em 0em 6em 0em;
+                
+        article{
+            display: grid;
+            grid-template-columns: 6em 1fr  6em;
+            grid-template-rows: 1fr;
+            background-color: #f0dac6;
+            min-height: 4em;
+            min-width: 100%;
+            padding: .5em 1em .5em 1em;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px #d7a682;
+            grid-gap: 1em;
+
+            &:hover{
+                transition: background-color .2s;
+                background-color: #ecd1b9;
+            }
+            
+            
+            section{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                color: #4d3f3f;
+
+
+                &:first-child{
+                    background-color: #b3b2b24f;
+                    border-radius: 5px;
+                }
+
+
+                
+                &:last-child{
+                    background-color: #dd88884f;
+                    border-radius: 5px;
+                }
+
+                
+               
+            
+            }
+        }
+    }
+
+    .loading{
+        grid-column: 2/3;
+        grid-row: 2/3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h4{
+            color: rgb(206, 47, 47);
+            font-size: 2em;
+        }
+    }
+
+}
