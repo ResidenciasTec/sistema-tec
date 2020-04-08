@@ -23,7 +23,9 @@ export class InicioComponent implements OnInit {
   departamentos: any;
   espacios: any;
   loading;
-  mantenimientos: any;
+  public mantenimientos;
+  public eventos;
+  public salidas;
 
 
 
@@ -76,6 +78,7 @@ export class InicioComponent implements OnInit {
     this.getEventos();
     this.getMantenimientos();
     this.getSalidas();
+    this.loading = false;
   }
 
   getTransportes(token){
@@ -161,7 +164,11 @@ export class InicioComponent implements OnInit {
         if(response.status = 'success'){
           let respuesta  = response.elementos;
           localStorage.setItem('eventos', JSON.stringify(respuesta));
-          this.loading = false;
+
+          let eventoCrudo = JSON.parse(localStorage.getItem('eventos'));
+
+          this.eventos = eventoCrudo.reverse().slice(0, 4);
+
         }else{
 
         }
@@ -182,6 +189,11 @@ export class InicioComponent implements OnInit {
         if(response.status = 'success'){
           let respuesta  = response.elementos;
           localStorage.setItem('mantenimientos', JSON.stringify(respuesta));
+          this.mantenimientos = JSON.parse(localStorage.getItem('mantenimientos'));
+
+          let mantenimientoCrudo = JSON.parse(localStorage.getItem('mantenimientos'));
+
+          this.mantenimientos = mantenimientoCrudo.reverse().slice(0, 4);
 
         }else{
 
@@ -203,6 +215,11 @@ export class InicioComponent implements OnInit {
         if(response.status = 'success'){
           let respuesta  = response.elementos;
           localStorage.setItem('salidas', JSON.stringify(respuesta));
+          this.salidas = JSON.parse(localStorage.getItem('salidas'));
+
+          let salidaCrudo = JSON.parse(localStorage.getItem('salidas'));
+
+          this.salidas = salidaCrudo.reverse().slice(0, 4);
 
         }else{
 

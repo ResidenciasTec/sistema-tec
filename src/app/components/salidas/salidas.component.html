@@ -2,10 +2,10 @@
     <app-banner-crear [titulo]="textoCrear"></app-banner-crear>
     <div *ngIf="!loading">
         <article *ngFor="let salida of salidas" [routerLink]="['/salidas/'+salida.id]">
-            <section>{{salida.status}}</section>
             <section *ngIf="salida.destino">{{salida.destino}}</section>
             <section *ngIf="!salida.destino">el destino aun no se ha especificado.</section>
             <section>{{salida.fecha}}</section>
+            <section>{{salida.status}}</section>
         </article>
 
     </div>

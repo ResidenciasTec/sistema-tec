@@ -2,9 +2,9 @@
     <app-banner-crear [titulo]="textoCrear"></app-banner-crear>
     <div *ngIf="!loading">
         <article *ngFor="let mantenimiento of mantenimientos" [routerLink]="['/mantenimiento/'+mantenimiento.id]">
-            <section>{{mantenimiento.status}}</section>
             <section>{{mantenimiento.trabajo_realizado}}</section>
             <section>{{mantenimiento.fecha}}</section>
+            <section>{{mantenimiento.status}}</section>
         </article>
 
     </div>

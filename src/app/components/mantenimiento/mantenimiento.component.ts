@@ -18,7 +18,7 @@ export class MantenimientoComponent implements OnInit {
 
   	) { 
       this.title = "pagina de mantenimiento";
-      this.textoCrear = "Solicitudes de mantneimientos"
+      this.textoCrear = "Solicitudes de mantenimientos"
   }
 
   ngOnInit(): void {

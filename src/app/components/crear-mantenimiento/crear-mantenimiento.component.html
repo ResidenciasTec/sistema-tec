@@ -14,6 +14,14 @@
 						<option>interno</option>
 						<option>externo</option>
 					</select>
+					<div
+						*ngIf="this.form.get('tipo').invalid && (this.form.get('tipo').dirty || this.form.get('tipo').touched)">
+
+						<div *ngIf="this.form.get('tipo').errors.required">
+							debes selecciona una opcion.
+						</div>
+
+					</div>
 
 				</label>
 
@@ -24,12 +32,28 @@
 						<option>externo</option>
 					</select>
 
+					<div
+						*ngIf="this.form.get('asignado_a').invalid && (this.form.get('asignado_a').dirty || this.form.get('asignado_a').touched)">
+
+						<div *ngIf="this.form.get('asignado_a').errors.required">
+							debes seleccionar una opcion.
+						</div>
+
+					</div>
+
 				</label>
 
 				<label>
 					<p class="label">trabajo realizado:</p>
-					<input type="text" appInput formControlName="trabajo_realizado"
-						placeholder="trabajo realizado">
+					<input type="text" appInput formControlName="trabajo_realizado" placeholder="trabajo realizado">
+					<div
+					*ngIf="this.form.get('trabajo_realizado').invalid && (this.form.get('trabajo_realizado').dirty || this.form.get('trabajo_realizado').touched)">
+
+					<div *ngIf="this.form.get('trabajo_realizado').errors.required">
+						debes escribir algo.
+					</div>
+
+				</div>
 				</label>
 
 				<label>
@@ -40,6 +64,14 @@
 							{{statusorder.status}}
 						</option>
 					</select>
+					<div
+					*ngIf="this.form.get('servicio_id').invalid && (this.form.get('servicio_id').dirty || this.form.get('servicio_id').touched)">
+
+					<div *ngIf="this.form.get('servicio_id').errors.required">
+						debes seleccionar una opcion.
+					</div>
+
+				</div>
 				</label>
 
 				<label>
@@ -50,25 +82,56 @@
 							{{departamento.departamento}}
 						</option>
 					</select>
+					<div
+					*ngIf="this.form.get('depto_solicitante').invalid && (this.form.get('depto_solicitante').dirty || this.form.get('depto_solicitante').touched)">
+
+					<div *ngIf="this.form.get('depto_solicitante').errors.required">
+						debes seleccionar un departamento.
+					</div>
+
+				</div>
 				</label>
 
 
 				<label>
 					<p class="label">fecha de realizacion:</p>
 					<input type="date" appInput placeholder="selecciona una fecha" formControlName="fecha">
+					<div
+						*ngIf="this.form.get('fecha').invalid && (this.form.get('fecha').dirty || this.form.get('fecha').touched)">
 
+						<div *ngIf="this.form.get('fecha').errors.required">
+							debes seleccionar una fecha
+						</div>
+
+					</div>
 				</label>
 
 				<label>
 					<p class="label">hora de comienzo:</p>
 					<input type="time" appInput formControlName="hora_inicio">
+					<div
+						*ngIf="this.form.get('hora_inicio').invalid && (this.form.get('hora_inicio').dirty || this.form.get('hora_inicio').touched)">
 
+						<div *ngIf="this.form.get('hora_inicio').errors.required">
+							debes seleccionar una hora.
+						</div>
+
+					</div>
 				</label>
 
 				<label>
 					<p class="label">hora de finalizacion:</p>
 					<input type="time" appInput formControlName="hora_final">
-				</label>
+				
+				<div
+				*ngIf="this.form.get('hora_final').invalid && (this.form.get('hora_final').dirty || this.form.get('hora_final').touched)">
+
+				<div *ngIf="this.form.get('hora_final').errors.required">
+					elige una hora.
+				</div>
+
+			</div>
+		</label>
 
 			</article>
 
@@ -86,10 +149,10 @@
 				</label>
 			</article>
 
-		
+
 
 			<article class="seccion-submit">
-				<label *ngIf="!loading" >
+				<label *ngIf="!loading">
 					<input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Crear Solicitud">
 				</label>
 

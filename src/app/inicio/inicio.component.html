@@ -9,19 +9,63 @@
 			<h1>solicitudes mas recientes</h1>
 
 		<article class="eventos">
-			<h2>solciitudes de eventos</h2>
-			<div></div>
+			<div class="title-array">
+				<h2>solicitudes de eventos</h2>
+				<p [routerLink]="['/eventos']">Ver todas</p>
+			</div>
+			
+
+			<div *ngIf="loading">
+				<h3 class="loading">cargando ...</h3>
+			</div>
+
+			<div *ngIf="!loading">
+				<article  *ngFor="let evento of eventos" [routerLink]="['/eventos/'+ evento.id]">
+					<section>{{evento.evento}}</section>
+					<section>{{evento.fecha}}</section>
+					<section>{{evento.status}}</section>
+				</article>
+			</div>
 		</article>
 
 		<article class="mantenimiento">
-			<h2>solicitudes de mantenimiento</h2>
-			<div></div>
+			<div class="title-array">
+				<h2>solicitudes de mantenimiento</h2>
+				<p [routerLink]="['/mantenimiento']">Ver todas</p>
+			</div>
+	
+			<div *ngIf="loading">
+				<h3 class="loading">cargando ...</h3>
+			</div>
+
+			<div *ngIf="!loading">
+				<article *ngFor="let mantenimiento of mantenimientos" [routerLink]="['/mantenimiento/'+ mantenimiento.id]">
+					<section>{{mantenimiento.trabajo_realizado}}</section>
+					<section>{{mantenimiento.fecha}}</section>
+					<section>{{mantenimiento.status}}</section>
+				</article>
+			</div>
 
 		</article>
 
 		<article class="salidas">
-			<h2>solicitudes de salidas</h2>
-			<div></div>
+			<div class="title-array">
+				<h2>solicitudes de salidas</h2>
+				<p [routerLink]="['/salidas']">Ver todas</p>
+			</div>
+
+			<div *ngIf="loading">
+				<h3 class="loading">cargando ...</h3>
+			</div>
+
+			<div *ngIf="!loading">
+				<article *ngFor="let salida of salidas" [routerLink]="['/salidas/'+ salida.id]">
+					<section *ngIf="salida.destino">{{salida.destino}}</section>
+					<section *ngIf="!salida.destino">aun no hay un destino.</section>
+					<section>{{salida.fecha}}</section>
+					<section>{{salida.status}}</section>
+				</article>
+			</div>
 
 		</article>
 		
