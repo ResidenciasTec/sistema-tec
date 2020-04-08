@@ -19,6 +19,7 @@ export class CrearSalidaComponent implements OnInit {
   public loading;
   public textoCrear;
   public form: FormGroup;
+  salida: any;
 
 
   constructor(
@@ -65,6 +66,10 @@ export class CrearSalidaComponent implements OnInit {
       if(response && response.status == 'success'){
         this.loading = false;
         this.status = 'success';
+        let crudo = response.elemento_creado;
+        this.salida = JSON.parse(localStorage.getItem('salidas'));
+        this.salida.push(crudo);
+        localStorage.setItem('salidas', JSON.stringify(this.salida));
         
       }else{ 
         this.loading = false;

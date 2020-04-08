@@ -19,6 +19,7 @@ export class CrearEventoComponent implements OnInit {
   public departamentos;
   public espacios;
   public loading;
+  evento: any;
 
 
 
@@ -64,6 +65,10 @@ export class CrearEventoComponent implements OnInit {
           console.log(response);
           this.loading = false;
           this.status = 'success';
+          let crudo = response.elemento_creado;
+          this.evento = JSON.parse(localStorage.getItem('eventos'));
+          this.evento.push(crudo);
+          localStorage.setItem('eventos', JSON.stringify(this.evento));
 
         }else{
           this.loading = false;

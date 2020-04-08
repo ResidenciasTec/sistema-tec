@@ -23,6 +23,7 @@ export class SalidasComponent implements OnInit {
      }
 
   ngOnInit(): void {
+    window.scrollTo(0,0);
     this.salidas = JSON.parse(localStorage.getItem('salidas'));
 
     
