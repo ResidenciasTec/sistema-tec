@@ -9,8 +9,8 @@
 			<article class="requeridos">
 				
 				<label id="titulo">
-					<p class="label">titulo:</p>
-					<input type="text" formControlName="evento" appInput placeholder="titulo de la solicitud">
+					<p class="label">Evento:</p>
+					<input type="text" formControlName="evento" appInput placeholder="especifica el evento..">
 					<div
 					*ngIf="this.form.get('evento').invalid && (this.form.get('evento').dirty || this.form.get('evento').touched)">
 

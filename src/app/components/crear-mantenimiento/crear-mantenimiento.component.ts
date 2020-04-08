@@ -18,6 +18,7 @@ export class CrearMantenimientoComponent implements OnInit {
   public departamentos;
   public statusorders;
   public loading;
+  mantenimiento: any;
 
   constructor(
     private _mantenimientoService: MantenimientoService,
@@ -63,6 +64,10 @@ export class CrearMantenimientoComponent implements OnInit {
         if(response){
           this.loading = false;
           this.status = 'success';
+          let crudo = response.elemento_creado;
+          this.mantenimiento = JSON.parse(localStorage.getItem('mantenimientos'));
+          this.mantenimiento.push(crudo);
+          localStorage.setItem('mantenimientos', JSON.stringify(this.mantenimiento));
         }else{
           this.loading = false;
           this.status = 'error';

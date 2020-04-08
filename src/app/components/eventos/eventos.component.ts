@@ -23,6 +23,7 @@ export class EventosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0,0);
     this.eventos = JSON.parse(localStorage.getItem('eventos'));
 
 

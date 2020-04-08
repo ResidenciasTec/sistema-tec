@@ -22,8 +22,8 @@ export class MantenimientoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-      this.mantenimientos = JSON.parse(localStorage.getItem('mantenimientos'));
+    window.scrollTo(0,0);
+    this.mantenimientos = JSON.parse(localStorage.getItem('mantenimientos'));
 
     
 

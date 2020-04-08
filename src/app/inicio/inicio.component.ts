@@ -39,7 +39,6 @@ export class InicioComponent implements OnInit {
     private _salidaService: SalidaService,
   ) {
     this.title = "Sistema de control de inventarios del Instituto Tecnologico de Matamoros";
-    this.loading = true;
    }
 
   ngOnInit(): void {
@@ -47,38 +46,17 @@ export class InicioComponent implements OnInit {
 
     if(localStorage.getItem('identity')){
       this.identity = JSON.parse(localStorage.getItem('identity'));
-      console.log(this.identity);
+     
     }
 
     if(localStorage.getItem('token')){
       this.token = localStorage.getItem('token');
-      console.log(this.token);
+   
     }
 
-    if(!localStorage.getItem('vehiculos') && this.token){
+    this.cargar();
+    this.forms();
 
-      this.getTransportes(this.token);
-    }
-
-    if(!localStorage.getItem('departamentos') && this.token){
-
-      this.getDepartamentos(this.token);
-    }
-
-    if(!localStorage.getItem('espacios') && this.token){
-
-      this.getEspacios(this.token);
-    }
-
-    if(!localStorage.getItem('servicios') && this.token){
-
-      this.getServicios(this.token);
-    }
-
-    this.getEventos();
-    this.getMantenimientos();
-    this.getSalidas();
-    this.loading = false;
   }
 
   getTransportes(token){
@@ -228,10 +206,62 @@ export class InicioComponent implements OnInit {
       },
       error => {
         console.log(<any>error);
-
+      
       }
 
     );
   }  
+
+  cargar(){
+
+    if(localStorage.getItem('eventos')){
+      let crudo = JSON.parse(localStorage.getItem('eventos'));
+      this.eventos = crudo.reverse().slice(0, 4);
+    }else{
+       this.getEventos();
+    }
+
+    if(localStorage.getItem('mantenimientos')){
+      let crudo = JSON.parse(localStorage.getItem('mantenimientos'));
+      this.mantenimientos = crudo.reverse().slice(0, 4);
+    }else{
+       this.getMantenimientos();
+    }
+
+    if(localStorage.getItem('salidas')){
+      let crudo = JSON.parse(localStorage.getItem('salidas'));
+      this.salidas = crudo.reverse().slice(0, 4);
+    }else{
+       this.getSalidas();
+    }
+
+  }
+
+  forms(){
+
+    if(localStorage.getItem('vehiculos')){
+      this.transportes = JSON.parse(localStorage.getItem('vehiculos')); 
+    }else{
+      this.getTransportes(this.token);
+    }
+
+    if(localStorage.getItem('departamentos')){
+      this.departamentos = JSON.parse(localStorage.getItem('departamentos'));
+    }else{
+      this.getDepartamentos(this.token);
+    }
+
+    if(localStorage.getItem('espacios')){
+      this.espacios = JSON.parse(localStorage.getItem('espacios'));
+    }else{
+      this.getEspacios(this.token);
+    }
+
+    if(localStorage.getItem('servicios')){
+      this.statusorders = JSON.parse(localStorage.getItem('servicios'));
+    }else{
+      this.getServicios(this.token);
+    }
+  }
 
 }
