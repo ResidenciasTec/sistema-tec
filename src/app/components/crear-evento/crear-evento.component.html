@@ -11,6 +11,14 @@
 				<label id="titulo">
 					<p class="label">titulo:</p>
 					<input type="text" formControlName="evento" appInput placeholder="titulo de la solicitud">
+					<div
+					*ngIf="this.form.get('evento').invalid && (this.form.get('evento').dirty || this.form.get('evento').touched)">
+
+					<div *ngIf="this.form.get('evento').errors.required">
+						debes seleccionar un vehiculo.
+					</div>
+
+				</div>
 				</label>
 
 				<label>
@@ -22,6 +30,14 @@
 						</option>
 
 					</select>
+					<div
+					*ngIf="this.form.get('espacio_id').invalid && (this.form.get('espacio_id').dirty || this.form.get('espacio_id').touched)">
+
+					<div *ngIf="this.form.get('espacio_id').errors.required">
+						debes seleccionar una opcion.
+					</div>
+
+				</div>
 				</label>
 
 				<label>
@@ -33,22 +49,54 @@
 						</option>
 
 					</select>
+
+					<div
+					*ngIf="this.form.get('depto_solicitante').invalid && (this.form.get('depto_solicitante').dirty || this.form.get('depto_solicitante').touched)">
+
+					<div *ngIf="this.form.get('depto_solicitante').errors.required">
+						debes seleccionar un departamento.
+					</div>
+
+				</div>
 				</label>
 
 				<label>
 					<p class="label">fecha de realizacion:</p>
 					<input type="date" appInput placeholder="selecciona una fecha" formControlName="fecha">
+					<div
+					*ngIf="this.form.get('fecha').invalid && (this.form.get('fecha').dirty || this.form.get('fecha').touched)">
+
+					<div *ngIf="this.form.get('fecha').errors.required">
+						debes seleccionar un vehiculo.
+					</div>
+
+				</div>
 				</label>
 
 				<label>
 					<p class="label">hora de comienzo:</p>
 					<input type="time" appInput formControlName="hora_inicio">
+					<div
+					*ngIf="this.form.get('hora_inicio').invalid && (this.form.get('hora_inicio').dirty || this.form.get('hora_final').touched)">
 
+					<div *ngIf="this.form.get('hora_inicio').errors.required">
+						debes seleccionar una hora.
+					</div>
+
+				</div>
 				</label>
 
 				<label>
 					<p class="label">hora de finalizacion:</p>
 					<input type="time" appInput formControlName="hora_final">
+					<div
+					*ngIf="this.form.get('hora_final').invalid && (this.form.get('hora_final').dirty || this.form.get('hora_final').touched)">
+
+					<div *ngIf="this.form.get('hora_final').errors.required">
+						debes seleccionar una hora.
+					</div>
+
+				</div>
 				</label>
 
 			</article>
@@ -61,7 +109,7 @@
 
 			<article class="opcionales">
 				<label>
-					<p class="label">contenido:</p>
+					<p class="label">actividades a realizar:</p>
 					<textarea type="text" appTextarea formControlName="actividades" placeholder="contenido de la solicitud" >
 					</textarea>
 				</label>

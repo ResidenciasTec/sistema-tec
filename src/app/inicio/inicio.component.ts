@@ -3,12 +3,16 @@ import {TransporteService} from "../services/transporte.service";
 import {departamentoService} from "../services/departamento.service";
 import {lugarService} from "../services/lugar.service";
 import {StatusorderService} from "../services/statusorder.service";
+import { EventoService } from '../services/evento.service';
+import { MantenimientoService} from "../services/mantenimiento.service";
+import { SalidaService } from "../services/salida.service";
+
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.scss'],
-  providers: [TransporteService, departamentoService, lugarService, StatusorderService],
+  providers: [TransporteService, departamentoService, lugarService, StatusorderService, EventoService, MantenimientoService, SalidaService],
 })
 export class InicioComponent implements OnInit {
   public title:string;
@@ -18,14 +22,24 @@ export class InicioComponent implements OnInit {
   statusorders: any;
   departamentos: any;
   espacios: any;
+  loading;
+  public mantenimientos;
+  public eventos;
+  public salidas;
+
+
 
   constructor(
     private _transporteService: TransporteService,
     private _departamentoService: departamentoService,
     private _lugarService: lugarService,
     private _statusorderService: StatusorderService,
+    private _eventoService: EventoService, 
+    private _mantenimientoService: MantenimientoService,
+    private _salidaService: SalidaService,
   ) {
     this.title = "Sistema de control de inventarios del Instituto Tecnologico de Matamoros";
+    this.loading = true;
    }
 
   ngOnInit(): void {
@@ -60,6 +74,11 @@ export class InicioComponent implements OnInit {
 
       this.getServicios(this.token);
     }
+
+    this.getEventos();
+    this.getMantenimientos();
+    this.getSalidas();
+    this.loading = false;
   }
 
   getTransportes(token){
@@ -137,5 +156,82 @@ export class InicioComponent implements OnInit {
     );
 
   }
+
+  getEventos(){
+    this._eventoService.getEventos(this.token).subscribe(
+      response => {
+        console.log(response);
+        if(response.status = 'success'){
+          let respuesta  = response.elementos;
+          localStorage.setItem('eventos', JSON.stringify(respuesta));
+
+          let eventoCrudo = JSON.parse(localStorage.getItem('eventos'));
+
+          this.eventos = eventoCrudo.reverse().slice(0, 4);
+
+        }else{
+
+        }
+
+      },
+      error => {
+        console.log(<any>error);
+
+      }
+
+    );
+  }
+
+  getMantenimientos(){
+    this._mantenimientoService.getMantenimientos(this.token).subscribe(
+      response => {
+        console.log(response);
+        if(response.status = 'success'){
+          let respuesta  = response.elementos;
+          localStorage.setItem('mantenimientos', JSON.stringify(respuesta));
+          this.mantenimientos = JSON.parse(localStorage.getItem('mantenimientos'));
+
+          let mantenimientoCrudo = JSON.parse(localStorage.getItem('mantenimientos'));
+
+          this.mantenimientos = mantenimientoCrudo.reverse().slice(0, 4);
+
+        }else{
+
+        }
+
+      },
+      error => {
+        console.log(<any>error);
+
+      }
+
+    );
+  }
+
+  getSalidas(){
+    this._salidaService.getSalidas(this.token).subscribe(
+      response => {
+        console.log(response);
+        if(response.status = 'success'){
+          let respuesta  = response.elementos;
+          localStorage.setItem('salidas', JSON.stringify(respuesta));
+          this.salidas = JSON.parse(localStorage.getItem('salidas'));
+
+          let salidaCrudo = JSON.parse(localStorage.getItem('salidas'));
+
+          this.salidas = salidaCrudo.reverse().slice(0, 4);
+
+        }else{
+
+        }
+
+      },
+      error => {
+        console.log(<any>error);
+
+      }
+
+    );
+  }  
 
 }

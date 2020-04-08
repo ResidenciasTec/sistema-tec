@@ -1,20 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { SalidaService } from "../../services/salida.service";
 
 
 @Component({
   selector: 'app-salidas',
   templateUrl: './salidas.component.html',
   styleUrls: ['./salidas.component.scss'],
-  providers: [SalidaService]
+  providers: []
 })
 export class SalidasComponent implements OnInit {
 
+  public textoCrear: string;
+  public token;
+  public salidas;
+  public loading;
+
   constructor(
-  	private _salidaService: SalidaService,
-  	) { }
+ 
+    ) 
+    {
+      this.textoCrear = "Solicitudes de salidas"
+
+     }
 
   ngOnInit(): void {
+    this.salidas = JSON.parse(localStorage.getItem('salidas'));
+
+    
   }
+
+
+
 
 }

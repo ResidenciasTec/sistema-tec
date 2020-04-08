@@ -1,1 +1,16 @@
-<p>salidas works!</p>
+<main class="body-solicitudes">
+    <app-banner-crear [titulo]="textoCrear"></app-banner-crear>
+    <div *ngIf="!loading">
+        <article *ngFor="let salida of salidas" [routerLink]="['/salidas/'+salida.id]">
+            <section *ngIf="salida.destino">{{salida.destino}}</section>
+            <section *ngIf="!salida.destino">el destino aun no se ha especificado.</section>
+            <section>{{salida.fecha}}</section>
+            <section>{{salida.status}}</section>
+        </article>
+
+    </div>
+        
+    <div class="loading" *ngIf="loading">
+        <h4>cargando ...</h4>
+    </div>
+</main>

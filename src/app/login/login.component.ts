@@ -101,9 +101,8 @@ export class LoginComponent implements OnInit, DoCheck {
 			let logout = +params['sure'];
 
 			if (logout == 1) {
-				localStorage.removeItem('identity');
-				localStorage.removeItem('token');
-				localStorage.removeItem('logueado');
+				localStorage.clear();
+
 
 				this.token = null;
 				this.identity = null;
