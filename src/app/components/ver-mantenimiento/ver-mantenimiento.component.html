@@ -1,1 +1,45 @@
-<p>ver-mantenimiento works!</p>
+<main class="body-ver">
+    <div class="slider">
+        
+        <div>
+            <article *ngFor="let mnto of mantenimientos" [routerLink]="['/mantenimiento/'+ mnto.id]">
+                <section>{{mnto.trabajo_realizado}}</section>
+                <section>{{mnto.fecha}}</section>
+
+            </article>
+            <article [routerLink]="['/mantenimiento']">
+                <section>ver mas solicitudes</section>
+            </article>
+
+        </div>
+
+    </div>
+
+    <div class="container">
+        <article>
+            <section>Pedido por el departamento:</section>
+            <section></section>
+            <section>{{mantenimiento.departamento.departamento}}</section>
+            <section>{{mantenimiento.departamento.telefono}}</section>
+            <section>{{mantenimiento.departamento.correo}}</section>
+        </article>
+
+        <article>
+            <section>mantenimiento de tipo {{mantenimiento.tipo}}</section>
+            <section>{{mantenimiento.trabajo_realizado}}</section>
+            <section>se lleva a cabo el {{mantenimiento.fecha}}</section>
+            <section>empieza a las {{mantenimiento.hora_inicio}}</section>
+            <section> termina a las {{mantenimiento.hora_final}}</section>
+            <section>{{mantenimiento.status}}</section>
+            <section>creado por {{mantenimiento.user.name}} {{mantenimiento.user.surname}}</section>
+        </article>
+
+        <article>
+            <section>tipo del servicio</section>
+            <section></section>
+            <section>{{mantenimiento.servicio.status}}</section>
+
+        </article>
+    </div>
+
+</main>

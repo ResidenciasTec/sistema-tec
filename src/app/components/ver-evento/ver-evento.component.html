@@ -1,1 +1,46 @@
-<p>ver-evento works!</p>
+<main class="body-ver">
+    <div class="slider">
+        
+        <div>
+            <article *ngFor="let evnt of eventos" [routerLink]="['/eventos/'+ evnt.id]">
+                <section>{{evnt.evento}}</section>
+                <section>{{evnt.fecha}}</section>
+
+            </article>
+            <article [routerLink]="['/eventos']">
+                <section>ver mas solicitudes</section>
+            </article>
+
+        </div>
+
+    </div>
+
+    <div class="container">
+        <article>
+            <section>Pedido por el departamento:</section>
+            <section></section>
+            <section>{{evento.departamento.departamento}}</section>
+            <section>{{evento.departamento.telefono}}</section>
+            <section>{{evento.departamento.correo}}</section>
+        </article>
+
+        <article>
+            <section>{{evento.evento}}</section>
+            <section *ngIf="!evento.actividades">no hay actividades especificadas aun.</section>
+            <section *ngIf="evento.actividades">{{evento.actividades}}</section>
+            <section>se lleva a cabo el {{evento.fecha}}</section>
+            <section>empieza a las {{evento.hora_inicio}}</section>
+            <section> termina a las {{evento.hora_final}}</section>
+            <section>{{evento.status}}</section>
+            <section>creado por {{evento.user.name}} {{evento.user.surname}}</section>
+        </article>
+
+        <article>
+            <section>lugar del evento:</section>
+            <section></section>
+            <section>{{evento.espacio.espacio}}</section>
+
+        </article>
+    </div>
+
+</main>
