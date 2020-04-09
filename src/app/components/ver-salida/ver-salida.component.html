@@ -1,1 +1,49 @@
-<p>ver-salida works!</p>
+<main class="body-ver">
+    <div class="slider">
+        
+        <div>
+            <article *ngFor="let sal of salidas" [routerLink]="['/salidas/'+ sal.id]">
+                <section *ngIf="sal.destino">{{sal.destino}}</section>
+                <section *ngIf="!sal.destino">adestino sin especificar aun.</section>
+                <section>{{sal.fecha}}</section>
+
+            </article>
+            <article [routerLink]="['/salidas']">
+                <section>ver mas solicitudes</section>
+            </article>
+
+        </div>
+
+    </div>
+
+    <div class="container">
+        <article>
+            <section>Pedido por el departamento:</section>
+            <section></section>
+            <section>{{salida.departamento.departamento}}</section>
+            <section>{{salida.departamento.telefono}}</section>
+            <section>{{salida.departamento.correo}}</section>
+        </article>
+
+        <article>
+            <section *ngIf="salida.destino">{{salida.destino}}</section>
+            <section *ngIf="!salida.destino">el destino aun no se especifica.</section>
+            <section *ngIf="!salida.descripcion">no hay actividades especificadas aun.</section>
+            <section *ngIf="salida.descripcion">{{salida.descripcion}}</section>
+            <section>se lleva a cabo el {{salida.fecha}}</section>
+            <section>empieza a las {{salida.hora_salida}}</section>
+            <section> termina a las {{salida.hora_llegada}}</section>
+            <section>{{salida.status}}</section>
+            <section>creado por {{salida.user.name}} {{salida.user.surname}}</section>
+        </article>
+
+        <article>
+            <section>vehiculo escogido:</section>
+            <section></section>
+            <section>{{salida.vehiculo.vehiculo}}</section>
+            <section>{{salida.vehiculo.marca}}</section>
+
+        </article>
+    </div>
+
+</main>
