@@ -15,14 +15,14 @@
 				</small>
 
 			</p>
-
+  
 			<p>
 				<input id="contras"  placeholder="Contraseña" formControlName="password" type="password"
 					name="contrasena"/>
 					<small *ngIf="this.form.get('password').invalid && (this.form.get('password').dirty || this.form.get('password').touched)">
 
 						<div *ngIf="this.form.get('password').errors.required">
-							Necesitas introducir un password
+							Necesitas introducir una password
 						</div>
 						<div *ngIf="this.form.get('password').errors.minlength">
 							La pasword debe tener al menos 5 caracteres.
