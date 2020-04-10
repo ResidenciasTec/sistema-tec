@@ -20,7 +20,7 @@
             <section>Pedido por el departamento:</section>
             <section></section>
             <section>{{mantenimiento.departamento.departamento}}</section>
-            <section>{{mantenimiento.departamento.telefono}}</section>
+            <section>telefono: {{mantenimiento.departamento.telefono}}</section>
             <section>{{mantenimiento.departamento.correo}}</section>
         </article>
 
@@ -34,12 +34,25 @@
             <section>creado por {{mantenimiento.user.name}} {{mantenimiento.user.surname}}</section>
         </article>
 
+        <div class="botones">
+            <p [routerLink]="['/mantenimiento/actualizar/'+ mantenimiento.id]">actualizar solicitud</p>
+            <p>verificar solicitud</p>
+            <p>aprobar solicitud</p>
+        </div>
+
         <article>
             <section>tipo del servicio</section>
             <section></section>
             <section>{{mantenimiento.servicio.status}}</section>
 
         </article>
+    </div>
+
+    <div class="pendiente">
+        <p>
+            la solicitud aun esta pendiente de aceptacion, espera a que el usuario administrador la acepte para generar
+            el pdf
+        </p>
     </div>
 
 </main>
