@@ -21,7 +21,7 @@
             <section>Pedido por el departamento:</section>
             <section></section>
             <section>{{salida.departamento.departamento}}</section>
-            <section>{{salida.departamento.telefono}}</section>
+            <section>telefono: {{salida.departamento.telefono}}</section>
             <section>{{salida.departamento.correo}}</section>
         </article>
 
@@ -37,6 +37,12 @@
             <section>creado por {{salida.user.name}} {{salida.user.surname}}</section>
         </article>
 
+        <div class="botones">
+            <p [routerLink]="['/salidas/actualizar/'+ salida.id]">actualizar solicitud</p>
+            <p>verificar solicitud</p>
+            <p>aprobar solicitud</p>
+        </div>
+
         <article>
             <section>vehiculo escogido:</section>
             <section></section>
@@ -44,6 +50,13 @@
             <section>{{salida.vehiculo.marca}}</section>
 
         </article>
+    </div>
+
+    <div class="pendiente">
+        <p>
+            la solicitud aun esta pendiente de aceptacion, espera a que el usuario administrador la acepte para generar
+            el pdf
+        </p>
     </div>
 
 </main>

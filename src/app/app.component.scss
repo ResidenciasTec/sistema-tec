@@ -16,14 +16,15 @@
         justify-content: center;
         align-items: center;
         background-color: #DA2643;
-        color: white;
+        color: black;
         font-size: 1.4em;
         grid-gap: 1em;
+        border-top: 1px solid #a82e2ebd;
     }
 
     #header-nolog{
         font-family: Arial, Helvetica, sans-serif;
-        background-color: #DA2643;
+        background-color: #A43B4C;
         height: 4.5em;
         display: grid;
         grid-template-columns: 1fr 25em;
@@ -38,7 +39,7 @@
             font-size: 22px;
             font-weight: normal;
             padding-left: 1em;
-            color: #F5D588 ;
+            color: #E3C273;
             margin-top: 17px;
 
         }
@@ -51,7 +52,7 @@
            
 
             p{
-                color:  #F5D588 ;
+                color:  #E3C273;
                 text-align: center;
                 padding: 0.5em;
                 cursor: pointer;
@@ -79,6 +80,7 @@
         grid-template-rows: 5em;
         font-family: Arial, Helvetica, sans-serif;
         background-color: #DA2643;
+        background-color: #A43B4C;
         /*border: 1px solid #C1BDBD;*/
         border-width: 0px 0px 1px 0px;
         padding-left: 6em;

@@ -1,6 +1,6 @@
 <main class="body-ver">
     <div class="slider">
-        
+
         <div>
             <article *ngFor="let evnt of eventos" [routerLink]="['/eventos/'+ evnt.id]">
                 <section>{{evnt.evento}}</section>
@@ -16,11 +16,12 @@
     </div>
 
     <div class="container">
+
         <article>
             <section>Pedido por el departamento:</section>
             <section></section>
             <section>{{evento.departamento.departamento}}</section>
-            <section>{{evento.departamento.telefono}}</section>
+            <section>telefono: {{evento.departamento.telefono}}</section>
             <section>{{evento.departamento.correo}}</section>
         </article>
 
@@ -35,6 +36,13 @@
             <section>creado por {{evento.user.name}} {{evento.user.surname}}</section>
         </article>
 
+        <div class="botones">
+            <p [routerLink]="['/eventos/actualizar/'+ evento.id]">actualizar solicitud</p>
+            <p>verificar solicitud</p>
+            <p>aprobar solicitud</p>
+        </div>
+
+
         <article>
             <section>lugar del evento:</section>
             <section></section>
@@ -43,4 +51,11 @@
         </article>
     </div>
 
+    <div class="pendiente">
+        <p>
+            la solicitud aun esta pendiente de aceptacion, espera a que el usuario administrador la acepte para generar
+            el pdf
+        </p>
+    </div>
+    
 </main>
