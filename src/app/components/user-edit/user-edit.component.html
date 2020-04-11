@@ -4,62 +4,45 @@
 	<app-banner-crear [titulo]="title" ></app-banner-crear>
 
 
-	<article >
-		<form #UserEditForm="ngForm" (ngSubmit)="onSubmit(UserEditForm)" >
+	<article>
+		<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" >
 			<label>
 				<p class="label">Nombre:</p>
-				<input type="text" name="nombre" appInput #nombre="ngModel" [(ngModel)]="user.nombre" 
-				required pattern="[a-zA-Z]+"  />
+				<input type="text" appInput formControlName="name"  />
 
 			</label>
 			<label>
 				<p class="label">Apellidos:</p>
-				<input type="text" name="apellidos" appInput #apellidos="ngModel" [(ngModel)]="user.apellidos" 
-				required pattern="[a-zA-Z]+"  />
+				<input type="text" appInput formControlName="surname" />
 
 			</label>
 			<label>
 				<p class="label">Correo electronico:</p>
-				<input type="email" appInput name="correo" #correo="ngModel" [(ngModel)]="user.correo" 
-				required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" />
+				<input type="email" appInput formControlName="email" />
 			</label>
 			<label>
 				<p class="label">informacion sobre mi:</p>
-				<textarea type="text" appTextarea name="descripcion" #descripcion="ngModel" [(ngModel)]="user.descripcion" 
-				required>
+				<textarea type="text" appTextarea formControlName="description" >
 				</textarea>
 			</label>
 
 			<label>
 				<p class="label">numero de telefono:</p>		
-				<input type="tel" pattern="[0-9]{10}" appInput name="telefono" #telefono="ngModel" [(ngModel)]="user.telefono"  />
-			</label>
-
-
-			<label class="select">
-					<p class="label">selecciona tu departamento:</p>
-					<select  name="departamento" #departamento="ngModel" [(ngModel)]="user.departamento_id"   required>
-						<option selected>selecciona un departamento</option>
-						<option *ngFor="let departamento of departamentos" [value]="user.departamento_id">
-							{{departamento.nombre}}
-
-						</option>
-
-					</select>
+				<input type="tel"  appInput formControlName="phone" />
 			</label>
 
 			<label>
 				<p class="label">foto de perfil:</p>
-					<div class="avatar" *ngIf="identity && identity.imagen">
-						<img *ngIf="identity.imagen" src="{{url + 'user/avatar/' + identity.imagen}}" />
+					<div class="avatar" *ngIf="identity.image">
+						<img *ngIf="identity.image" src="{{url + 'avatar/' + identity.image}}" />
 					</div>
 
-					<div class="avatar" *ngIf="!identity.imagen && user.imagen">
-						<img  src="{{url + 'user/avatar/' + user.imagen}}" />
+					<div class="avatar" *ngIf="identity.image">
+						<img  src="{{url + 'avatar/' + identity.image}}" />
 					</div>
 
-					<div class="avatar" *ngIf="!user.imagen && !identity.imagen">
-						<img *ngIf="!identity.imagen" src="../../../assets/img/default_profile.png" />
+					<div class="avatar" *ngIf="!identity.image">
+						<img *ngIf="!identity.image" src="../../../assets/img/default_profile.png" />
 					</div>
 			</label>
 
@@ -76,7 +59,7 @@
 
 
 			<label>
-				<input type="submit" class="btn" appSubmit value="Guardar cambios"  [disabled]="UserEditForm.invalid"/>
+				<input type="submit" class="btn" appSubmit value="Guardar cambios"  [disabled]="form.invalid"/>
 			</label>
 			<app-status style="grid-column: 1/3" *ngIf="status" [status]="status"></app-status>
 		</form>

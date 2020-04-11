@@ -145,7 +145,7 @@ export class InicioComponent implements OnInit {
 
           let eventoCrudo = JSON.parse(localStorage.getItem('eventos'));
 
-          this.eventos = eventoCrudo.reverse().slice(0, 4);
+          this.eventos = eventoCrudo.slice(0, 4);
 
         }else{
 
@@ -171,7 +171,7 @@ export class InicioComponent implements OnInit {
 
           let mantenimientoCrudo = JSON.parse(localStorage.getItem('mantenimientos'));
 
-          this.mantenimientos = mantenimientoCrudo.reverse().slice(0, 4);
+          this.mantenimientos = mantenimientoCrudo.slice(0, 4);
 
         }else{
 
@@ -197,7 +197,7 @@ export class InicioComponent implements OnInit {
 
           let salidaCrudo = JSON.parse(localStorage.getItem('salidas'));
 
-          this.salidas = salidaCrudo.reverse().slice(0, 4);
+          this.salidas = salidaCrudo.slice(0, 4);
 
         }else{
 
