@@ -12,13 +12,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
-<<<<<<< HEAD
-        background-color: #802434;
+
+      
         color:  #F5D588 ;
-=======
         background-color: #DA2643;
         color: black;
->>>>>>> feafccb40db5dd059d46081d130b2c778ff8d778
+
         font-size: 1.4em;
         grid-gap: 1em;
         border-top: 1px solid #a82e2ebd;
@@ -26,11 +25,7 @@
 
     #header-nolog{
         font-family: Arial, Helvetica, sans-serif;
-<<<<<<< HEAD
         background-color: #802434;
-=======
-        background-color: #A43B4C;
->>>>>>> feafccb40db5dd059d46081d130b2c778ff8d778
         height: 4.5em;
         display: grid;
         grid-template-columns: 1fr 25em;
@@ -85,12 +80,9 @@
         grid-template-columns: 4em 1fr 10em;
         grid-template-rows: 5em;
         font-family: Arial, Helvetica, sans-serif;
-<<<<<<< HEAD
+
         background-color: #802434;
-=======
-        background-color: #DA2643;
-        background-color: #A43B4C;
->>>>>>> feafccb40db5dd059d46081d130b2c778ff8d778
+
         /*border: 1px solid #C1BDBD;*/
         border-width: 0px 0px 1px 0px;
         padding-left: 6em;
