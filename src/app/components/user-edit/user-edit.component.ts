@@ -75,7 +75,7 @@ export class UserEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getDepartamentos();
+    this.departamentos = JSON.parse(localStorage.getItem('departamentos'));
     this.identity.imagen;
     window.scrollTo(0,0);
   }

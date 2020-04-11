@@ -1,7 +1,7 @@
 .body-ver{
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 12em 1fr;
+    grid-template-rows: 12em 1fr 9em;
     grid-gap: 2em;
 
     .slider{
@@ -77,6 +77,17 @@
 
     }
 
+    .pendiente{
+        grid-column: 1/2;
+        grid-row: 3/4;
+        p{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2em;
+        }
+    }
+
     .container{
         grid-column: 1/2;
         grid-row: 2/3;
@@ -85,6 +96,35 @@
         grid-template-rows: 400px 1fr;
         grid-gap: 1em;
         margin-bottom: 4em;
+
+        .botones{
+            grid-column:1/2;
+            grid-row:2/3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            p{
+                text-align: center;
+                background-color: transparent;
+                color: #605f5f;
+                border: 1px solid #605f5f;
+                border-radius: 5px;
+                padding: .5em;
+                font-size: 1.2em;
+                width: 90%;
+
+                &:hover{
+                    transition: background-color .4s, color .5s;
+                    
+                    cursor: pointer;
+                    background-color: #605f5f;
+                    color: white;
+                }
+            }
+        }
+        
 
         article{
 
