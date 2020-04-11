@@ -1,18 +1,18 @@
 <main class="body-app">
     <header id="header-nolog" *ngIf="!identity" >
-        <h1>Recursos materiales y servicios</h1>
+        <h1><strong> ITM: Recursos materiales y servicios</strong></h1>
         <div class="Crea-cuenta">
-        <p  [routerLink]="['/login']">iniciar sesion</p>
+        <p  [routerLink]="['/login']">Iniciar Sesión</p>
         <p [routerLink]="['/registro']">Crear Cuenta</p>
         </div>
     </header>
-
+  
 
     <header id="header-silog" *ngIf="identity && identity.name">
         <div></div>
         <ul>
-            <li><a [routerLink]="['/inicio']">Inicio</a></li>
-            <li (click)="showMenuPanel()">Panel
+            <li><a  [routerLink]="['/inicio']"><strong>Inicio</strong></a></li>
+            <li (click)="showMenuPanel()"> <a><strong>Panel
 
                 <ul *ngIf="submenu_panel == true" class="submenu-panel show">
                     <li [routerLink]="['/eventos']">Eventos</li>
@@ -25,9 +25,10 @@
                     <li [routerLink]="['/mantenimiento']">Mantenimiento</li>
                     <li [routerLink]="['/salidas']">Salidas</li>
                 </ul>
+                </strong></a>
             </li>
 
-            <li class="li-crear" (click)="showMenuCrear()">Crear solicitudes
+            <li class="li-crear" (click)="showMenuCrear()">  <a><strong> Crear solicitudes
                 <ul *ngIf="submenu_crear == true" class="submenu-crear show">
                     <li [routerLink]="['/eventos/crear']">Eventos</li>
                     <li [routerLink]="['mantenimiento/crear']">Mantenimiento</li>
@@ -38,7 +39,8 @@
                     <li [routerLink]="['/eventos/crear']">Eventos</li>
                     <li [routerLink]="['mantenimiento/crear']">Mantenimiento</li>
                     <li [routerLink]="['/salidas/crear']">Salidas</li>
-                </ul>
+                </ul> 
+                </strong></a>
             </li> 
             <li></li>
         </ul>
@@ -55,7 +57,7 @@
                 <p [routerLink]="['/perfil']">Perfil</p>
                 <p [routerLink]="['/perfil/editar']">Editar Perfil</p>
                 <p [routerLink]="['/perfil/solicitudes']">Mis solicitudes</p>
-                <p [routerLink]="['/logout/1']">cerrar sesion</p>
+                <p [routerLink]="['/logout/1']">Cerrar sesion</p>
             </div>
 
             <div *ngIf="submenu_user == false" class="submenu-user hidden">
@@ -65,7 +67,7 @@
                 <p [routerLink]="['/perfil']">Perfil</p>
                 <p [routerLink]="['/perfil/editar']">Editar Perfil</p>
                 <p [routerLink]="['/perfil/solicitudes']">Mis solicitudes</p>
-                <p [routerLink]="['/logout/1']">cerrar sesion</p>
+                <p [routerLink]="['/logout/1']">Cerrar sesion</p>
             </div>
         </div>
 
@@ -78,10 +80,11 @@
     </router-outlet>
 
     <footer>
-        <p> Instituto Tecnológico de Matamoros</p>
-        <p>Carr. Lauro Villar K.M. 6.5</p>
-        <p>8688140952 y 8688140953</p>
-        <p>C.P. 87490 H. Matamoros, México.</p>
+        <p> <strong>Instituto Tecnológico de Matamoros </strong></p>
+        <p> <strong> Depto. Resursos Materiales y Servicios</strong></p>
+        <p> <strong> Tel. 8688140952 y 8688140953</strong></p>
+        
+        
     </footer>
 </main>
 

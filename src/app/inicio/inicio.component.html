@@ -6,17 +6,17 @@
 	</div>
 
 	<div class="contenido">
-			<h1>solicitudes mas recientes</h1>
+			<h1><strong>⚠ Solicitudes más recientes ⚠</strong> </h1>
 
 		<article class="eventos">
 			<div class="title-array">
-				<h2>solicitudes de eventos</h2>
+				<h2>Solicitudes de eventos</h2>
 				<p [routerLink]="['/eventos']">Ver todas</p>
 			</div>
-			
+		
 
 			<div *ngIf="loading">
-				<h3 class="loading">cargando ...</h3>
+				<h3 class="loading">Cargando ...</h3>
 			</div>
 
 			<div *ngIf="!loading">
@@ -30,12 +30,12 @@
 
 		<article class="mantenimiento">
 			<div class="title-array">
-				<h2>solicitudes de mantenimiento</h2>
+				<h2>Solicitudes de mantenimiento</h2>
 				<p [routerLink]="['/mantenimiento']">Ver todas</p>
 			</div>
 	
 			<div *ngIf="loading">
-				<h3 class="loading">cargando ...</h3>
+				<h3 class="loading">Cargando ...</h3>
 			</div>
 
 			<div *ngIf="!loading">
@@ -50,18 +50,18 @@
 
 		<article class="salidas">
 			<div class="title-array">
-				<h2>solicitudes de salidas</h2>
+				<h2>Solicitudes de salidas</h2>
 				<p [routerLink]="['/salidas']">Ver todas</p>
 			</div>
 
 			<div *ngIf="loading">
-				<h3 class="loading">cargando ...</h3>
+				<h3 class="loading">Cargando ...</h3>
 			</div>
 
 			<div *ngIf="!loading">
 				<article *ngFor="let salida of salidas" [routerLink]="['/salidas/'+ salida.id]">
 					<section *ngIf="salida.destino">{{salida.destino}}</section>
-					<section *ngIf="!salida.destino">aun no hay un destino.</section>
+					<section *ngIf="!salida.destino">Aun no hay un destino.</section>
 					<section>{{salida.fecha}}</section>
 					<section>{{salida.status}}</section>
 				</article>
