@@ -35,13 +35,19 @@ export class UserService{
 		return this._http.post(this.url+'login', json, {headers: headers});
 	}
 
-	update(token, user): Observable<any>{
+	update(token, user, id): Observable<any>{
 		let json = JSON.stringify(user);
-		let params = 'json='+json;
-		let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
-									   .set('Authorization', token);
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+									   .set('Authorization', 'bearer '+token);
 
-		return this._http.put(this.url+'user/update', params, {headers: headers});
+		return this._http.put(this.url+'update/'+id, json, {headers: headers});
+	}
+
+	detalle(id): Observable<any>{
+
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+		return this._http.get(this.url+'detail/'+id,  {headers: headers});
 	}
 
 	getIdentity(){

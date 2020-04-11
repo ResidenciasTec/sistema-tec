@@ -5,11 +5,11 @@
     <div>
         <article class="article">
             <div class="section-banner">
-                <img *ngIf="identity.imagen" src="{{url + 'user/avatar/' + identity.imagen}}">
-                <img *ngIf="!identity.imagen" src="../../../assets/img/default_profile.png">
-                <h3>{{identity.nombre}} {{identity.apellidos}}</h3>
-                <p *ngIf="identity.descripcion">{{identity.descripcion}}</p>
-                <p *ngIf="!identity.descripcion">edita tu perfil para que puedas agregar una descripcion breve sobre ti</p>
+                <img *ngIf="identity.image" src="{{url + 'user/avatar/' + identity.imagen}}">
+                <img *ngIf="!identity.image" src="../../../assets/img/default_profile.png">
+                <h3>{{identity.name}} {{identity.surname}}</h3>
+                <p *ngIf="identity.description">{{identity.description}}</p>
+                <p *ngIf="!identity.description">edita tu perfil para que puedas agregar una descripcion breve sobre ti</p>
             </div>
 
             <div class="section-info">
@@ -22,7 +22,8 @@
                 <p>CORREO ELECTRONICO:</p>
                 <p>{{identity.email}}</p>
                 <p>NUMERO TELEFONICO:</p> 
-                <p>3423423423</p>
+                <p *ngIf="identity.phone">{{identity.phone}}</p>
+                <p *ngIf="!identity.phone">no has agregado tu numero.</p>
                 <div class="submit">
                     <p class=" btn" appSubmit [routerLink]="['/perfil/editar']">editar mi perfil</p>
                 </div>

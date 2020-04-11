@@ -61,9 +61,6 @@ const  appRoutes: Routes = [
     //ruta principal
     {path: 'inicio', component: InicioComponent, canActivate:[UserGuard]},
 
-    //ruta de error
-    {path: 'error', component: ErrorComponent },
-
     //rutas de solicitudes
     {path: 'eventos', component: EventosComponent, canActivate:[UserGuard]},
     {path: 'mantenimiento', component: MantenimientoComponent, canActivate:[UserGuard]},
@@ -92,6 +89,9 @@ const  appRoutes: Routes = [
     //otras rutas
     {path: 'transporte', component: TransporteComponent, canActivate:[UserGuard]},
     {path: 'usuarios', component: UsuariosComponent, canActivate:[UserGuard]},
+
+     //ruta de error
+    {path: '**', component: ErrorComponent },
 
 ];
 

@@ -60,11 +60,11 @@
 
 			margin: 1px;
 
-font-weight: bold;
-width: 100%;
-background:rgb(255, 246, 120) ;
-border:1px solid #000000;
-		
+			font-weight: bold;
+			width: 100%;
+			background:rgb(255, 246, 120) ;
+			border:1px solid #000000;
+					
 		}
 
 		.eventos, .mantenimiento, .salidas{
@@ -76,7 +76,8 @@ border:1px solid #000000;
 			background-color: transparent;
 			border-radius: 5px;
 			min-height: 15em;
-			background-color: rgb(250, 250, 250) ;
+			background-color: rgb(250, 250, 250, 0.6) ;
+			backdrop-filter: blur(10px);
 			
   
 

@@ -84,6 +84,8 @@ export class LoginComponent implements OnInit, DoCheck {
 				}else{
 					this.loading = false;
 					this.status = 'error';
+					this.form.reset();
+					
 				}
 ;
 			},
