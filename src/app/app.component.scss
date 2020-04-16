@@ -6,21 +6,18 @@
     grid-template-rows:5em 1fr 8em;
     min-height: 100vh;
     overflow-y:hidden;
+    font-family: sans-serif;
 
       
     footer{
+        text-align: center;
         display: flex;
         justify-content: center;
         align-items: center;
-
-      
-        color:  #F5D588 ;
-        background-color: #DA2643;
-        color: black;
-
+        background-color: #802434;;
         font-size: 1.4em;
         grid-gap: 1em;
-        border-top: 1px solid #a82e2ebd;
+        color: rgb(248, 239, 190); 
     }
 
     #header-nolog{
@@ -77,7 +74,7 @@
 
     #header-silog{        
         display:grid;
-        grid-template-columns: 4em 1fr 10em;
+        grid-template-columns:  4em 1fr 10em ;
         grid-template-rows: 5em;
         font-family: Arial, Helvetica, sans-serif;
 
@@ -123,15 +120,16 @@
 
                 .submenu-panel, .submenu-crear{
                     position: absolute;
-                    background-color: #F7F7F7;
+                    background-color: rgb(243, 236, 213);
                     width: 10em;
                     height: 8em;
                     font-size: .8em;
                     padding: .5em;                    
-                    box-shadow: 1px 1px 1px #E2E2E2; 
+                    box-shadow: 1px 1px 1px #802434;; 
                     border-width: 0px 2px 2px 2px;
-                    border-radius: 10px;
+                    
                     cursor: pointer;
+                    font: .7em sans-serif;
 
                     li{
                         display: flex;
@@ -170,14 +168,14 @@
             justify-content: center;
             align-items: center;
             height: 100%;
-            border-radius: 7px;
+            
 
 
                 &::after{
                     content: url('../assets/img/Icon ionic-ios-arrow-down.png');
                     display:block;
                     position: absolute;
-                    margin-left: 5.5em;
+                    margin-left: 4.5em;
                     width: .2em;
 
 
@@ -198,14 +196,14 @@
 
             .submenu-user{
                 position: absolute;
-                background-color: #F7F7F7;
+                background-color:rgb(243, 236, 213);
                 width:11em;
                 height: 16em;
                 padding: .4em;
                 margin-top: 22em;
                 box-shadow: 1px 1px 1px #E2E2E2; 
                 border-width: 0px 2px 2px 2px;
-                border-radius: 10px;
+               
                 cursor: pointer;
                 margin-left: 2.4em;
 

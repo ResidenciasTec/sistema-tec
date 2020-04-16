@@ -6,11 +6,12 @@
         <p [routerLink]="['/registro']">Crear Cuenta</p>
         </div>
     </header>
-  
-
+   
     <header id="header-silog" *ngIf="identity && identity.name">
         <div></div>
+
         <ul>
+            <li > <a><strong> ITM</strong> </a></li>
             <li><a  [routerLink]="['/inicio']"><strong>Inicio</strong></a></li>
             <li (click)="showMenuPanel()"> <a><strong>Panel
 
