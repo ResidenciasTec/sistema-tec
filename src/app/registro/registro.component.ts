@@ -21,7 +21,7 @@ export class RegistroComponent implements OnInit {
     private _router: Router,
 		private _route: ActivatedRoute,
   	) { 
-    this.title = "Crea una cuenta";
+    this.title = "Registrar una cuenta";
     this.loading = false;
 
   }

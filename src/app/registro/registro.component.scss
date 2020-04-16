@@ -1,14 +1,17 @@
 #Registro-form{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 2em;
-    margin-top: 2em;
-
+    display:flex;
+	grid-template-columns: 1fr;
+    grid-template-rows: 1em 1fr;
+    margin-top: 1.5em;
+	margin-bottom: 2em;
+	justify-content: center;
+	min-height: 100vh;
+   
         #Contenedor-formulario{
             grid-column: 1 / 2;
             grid-row: 1/ 2;
             display: grid;
-            grid-template-columns: 1fr 500px 1fr;
+            grid-template-columns: 1fr 440px 1fr;
             grid-template-rows: 1fr;
             grid-gap: 1em;  
             justify-content: center;
@@ -25,13 +28,13 @@
 		            font-size: 1.5em;
                     grid-gap: 1em;
                     width: 100%;
-                    background-color: #ecddd4;
+                    background-color:#F5F0DC;
                     border-radius: 10px;
                     box-shadow: 0 1px 0 0 rgba(66,118,146,.1),0 2px 6px 0 rgba(66,118,146,.1);
-                    padding: 2em 1em 3em 1em;
-                    border: 1px solid #cac5c5;
-                    padding-bottom: 3em;
+                    padding:  2em 1em 3em 1em;
+                    border: 1px solid #802434;
 
+                    
                     article{
                         display: flex;
                         justify-content: center;
@@ -63,6 +66,8 @@
                     }
 
                     h2{
+                        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+				        font-weight:bold;
                         grid-column: 1 / 2;
                         grid-row: 2 / 3;
                         display: flex;
@@ -70,13 +75,15 @@
                         align-items: center;
                         font-size: 1.5em;
                         font-weight: normal;
-                        color: #917070;
+                        color: #802434;
                     }
 
                     label{
         
                         input{
                             font-weight: normal;
+                            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+				font-weight:bold;
                             
                         }
         
@@ -97,6 +104,7 @@
                             color: #9F3133;
                         }
                     }
+                    
          
                }
            

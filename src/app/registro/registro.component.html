@@ -1,6 +1,5 @@
 <div id="Registro-form">
 
-
 	<div id="Contenedor-formulario">
 
 		<form *ngIf="!loading" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
@@ -31,11 +30,11 @@
 					*ngIf="this.form.get('surname').invalid && (this.form.get('surname').dirty || this.form.get('surname').touched)">
 
 					<div *ngIf="this.form.get('surname').errors.minLenght">
-						los nombres deben contener al menos 3 caracteres.
+						Los nombres deben contener al menos 3 caracteres.
 					</div>
 
 					<div *ngIf="this.form.get('surname').errors.required">
-						los apellidos son obligatorio.
+						Los apellidos son obligatorio.
 					</div>
 
 				</div>
@@ -52,7 +51,7 @@
 					</div>
 
 					<div *ngIf="this.form.get('email').errors.required">
-						debes poner el correo.
+						Debes poner el correo.
 					</div>
 
 				</div>
@@ -71,7 +70,7 @@
 					</div>
 
 					<div *ngIf="this.form.get('control_number').errors.required">
-						el no. control es obligatorio.
+						El no. control es obligatorio.
 					</div>
 
 				</div>
@@ -85,11 +84,11 @@
 					*ngIf="this.form.get('password').invalid && (this.form.get('password').dirty || this.form.get('password').touched)">
 
 					<div *ngIf="this.form.get('password').errors.minLenght">
-						la pasword debe tener al menos 5 digitos.
+						La pasword debe tener al menos 5 digitos.
 					</div>
 
 					<div *ngIf="this.form.get('password').errors.required">
-						la password es obligatoria.
+						La password es obligatoria.
 					</div>
 
 				</div>
