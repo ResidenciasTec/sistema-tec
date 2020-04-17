@@ -52,8 +52,8 @@
         
 
             <div *ngIf="submenu_user == true" class="submenu-user show">
-                <p><strong>{{identity.name}}</strong></p>
-                <p><strong>{{identity.surname}}</strong></p>
+                <p id="usuario"><strong>{{identity.name}}  {{identity.surname}}</strong></p>
+            
                 <hr/>
                 <p [routerLink]="['/perfil']">Perfil</p>
                 <p [routerLink]="['/perfil/editar']">Editar Perfil</p>

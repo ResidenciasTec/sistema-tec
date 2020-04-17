@@ -59,7 +59,6 @@
                 &:hover{
                     transition: 1s;
                     border-color: #F5D588; 
-                    text-decoration: underline;
                 }
             }
 
@@ -107,39 +106,48 @@
             }
 
             li{
-                font-size: 1.2em;
+                
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: bold;
+                font-size: 1.3em;
                 width: 5em;
                 cursor: pointer;
-                color: black;
+                color: #E3C273 ;
+                
 
 
                 &:hover{
-                    color: black;
-                    text-decoration: underline;
+                    font-weight: bold; 
+                    
                 }
 
                 .submenu-panel, .submenu-crear{
                     position: absolute;
-                    background-color: rgb(243, 236, 213);
-                    width: 10em;
-                    height: 8em;
+                    background-color:#802434;
+                    width: 11em;
+                    height: 6em;
                     font-size: .8em;
                     padding: .5em;                    
-                    box-shadow: 1px 1px 1px #802434;; 
+                    box-shadow: 1px 1px 1px #802434; 
                     border-width: 0px 2px 2px 2px;
                     
                     cursor: pointer;
                     font: .7em sans-serif;
 
+                    
                     li{
                         display: flex;
                         justify-content: flex-start;
                         align-items: center;
+                       
 
                         &:hover{
-                            color: #802434;
-                            text-decoration: underline;
+                            color: #faf9f2;
+                           font-weight: bold; 
+                           font-size: 1.4em;
+                           
                         }
+                        
                     }
                 }
 
@@ -157,7 +165,7 @@
 
                 a{
                     color: #F5D588;
-                    font-size: 19px;
+                 
                 }
             }
             
@@ -167,7 +175,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100%;
+           
             
 
 
@@ -175,15 +183,17 @@
                     content: url('../assets/img/Icon ionic-ios-arrow-down.png');
                     display:block;
                     position: absolute;
-                    margin-left: 4.5em;
-                    width: .2em;
+                    width: .4em; 
+                    margin-left: 25px;
+                    
 
 
                 }
 
             img{
                 width: 4em;
-                border: 1px solid #C1BDBD;
+                border: 2px solid rgb(250, 249, 180); 
+                margin-right: 50px;
 
                 &:hover{
                     transition: .4s;
@@ -195,32 +205,43 @@
             }
 
             .submenu-user{
+                
+            display: flex;
                 position: absolute;
-                background-color:rgb(243, 236, 213);
-                width:11em;
-                height: 16em;
-                padding: .4em;
-                margin-top: 22em;
-                box-shadow: 1px 1px 1px #E2E2E2; 
+                background-color:#802434;
+                width:13em;
+                height: 17em;
+                margin-top: 10.5em;
                 border-width: 0px 2px 2px 2px;
-               
+                
                 cursor: pointer;
                 margin-left: 2.4em;
 
-                hr{
-                   border: 1px solid #E2E2E2;
+                #usuario{
+                    color: rgb(189, 154, 75);
+                    margin-top: 19px;
+                    margin-bottom: 19px;
+
                 }
 
                 p{
                     text-align: center;
                     width: 100%;
+                    margin-top: 1em;
+                    color: #E3C273;
+                    font-weight: bold;
+                    font-size: 1.2em;
+
 
                     &:hover{
-                        text-decoration: underline;
+                        color: #E3C273;
+                        font-weight: bold;
+                        font-size: 1.3em;
                     }
 
                     a{
                         color: black;
+
                     }
                 }
                
