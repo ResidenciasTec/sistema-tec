@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventoService } from "../../services/evento.service";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-actualizar-evento',
@@ -29,6 +30,7 @@ export class ActualizarEventoComponent implements OnInit {
 		private _route: ActivatedRoute,
     private _eventoService: EventoService,
     private _formBuilder: FormBuilder,
+    private _toastr: ToastrService,
   	) 
   {
     this.token = localStorage.getItem("token");
@@ -92,6 +94,7 @@ export class ActualizarEventoComponent implements OnInit {
                 localStorage.setItem('eventos', JSON.stringify(this.eventos));
                 this.loading = false;
                 this.status = 'success';
+                this._toastr.success('la solicitud se ha actualizado correctamente.', 'SOLICITUD EXITOSA');
 
                 //redireccion a inicio
 				        this._router.navigate(['eventos/'+this.id]);
@@ -100,7 +103,7 @@ export class ActualizarEventoComponent implements OnInit {
             },
             error =>{
               this.loading = false;
-              console.log('algo salio mal');
+              this._toastr.error('algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
             }
 
 

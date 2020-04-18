@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params } from "@angular/router";
 import { UserService } from "../services/user.service";
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Login } from '../interfaces/login';
+import {ToastrService} from "ngx-toastr";
 
 
 @Component({
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit, DoCheck {
 		private _userService: UserService,
 		private _router: Router,
 		private _route: ActivatedRoute,
-		private _formBuilder: FormBuilder
+		private _formBuilder: FormBuilder,
+		private _toastr: ToastrService
 	) {
 		this.title = "entra al sistema con correo institucional y password";
 		this.loading = false;
@@ -83,6 +85,7 @@ export class LoginComponent implements OnInit, DoCheck {
 
 				}else{
 					this.loading = false;
+					this._toastr.error('algo ha salido mal.', 'ACCESO DENEGADO');
 					this.status = 'error';
 					this.form.reset();
 					

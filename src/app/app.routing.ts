@@ -40,6 +40,14 @@ import {UserEditComponent} from "./components/user-edit/user-edit.component";
 import {PerfilComponent} from "./components/perfil/perfil.component";
 import {MisSolicitudesComponent} from "./components/mis-solicitudes/mis-solicitudes.component";
 
+//componentes de administrador
+import {AdminComponent} from "./adminComponents/admin/admin.component";
+import {DepartamentosComponent} from "./adminComponents/departamentos/departamentos.component";
+import {UbicacionesComponent} from "./adminComponents/ubicaciones/ubicaciones.component";
+import {EspaciosComponent} from "./adminComponents/espacios/espacios.component";
+import {SubdireccionesComponent} from "./adminComponents/subdirecciones/subdirecciones.component";
+import {TransportesComponent} from "./adminComponents/transportes/transportes.component";
+
 //otros componentes
 import {TransporteComponent} from "./components/transporte/transporte.component";
 import {UsuariosComponent} from "./components/usuarios/usuarios.component";
@@ -85,6 +93,14 @@ const  appRoutes: Routes = [
     {path: 'perfil', component: PerfilComponent, canActivate:[UserGuard]},    
     {path: 'perfil/editar', component: UserEditComponent, canActivate:[UserGuard]},
     {path: 'perfil/solicitudes', component: MisSolicitudesComponent, canActivate:[UserGuard]},
+
+    //rutas de usuario administrador
+    {path: 'admin', component: AdminComponent, canActivate:[UserGuard]},
+    {path: 'transportes', component: TransporteComponent, canActivate:[UserGuard]},
+    {path: 'subdirecciones', component: SubdireccionesComponent, canActivate:[UserGuard]},
+    {path: 'espacios', component: EspaciosComponent, canActivate:[UserGuard]},
+    {path: 'ubicaciones', component: UbicacionesComponent, canActivate:[UserGuard]},
+    {path: 'departamentos', component: DepartamentosComponent, canActivate:[UserGuard]},
 
     //otras rutas
     {path: 'transporte', component: TransporteComponent, canActivate:[UserGuard]},

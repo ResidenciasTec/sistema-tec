@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Evento } from '../../models/evento';
 import { EventoService } from "../../services/evento.service";
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-crear-evento',
@@ -26,6 +27,7 @@ export class CrearEventoComponent implements OnInit {
   constructor(
         private _eventoService: EventoService,
         private _formBuilder: FormBuilder,
+        private _toastr: ToastrService,
   	)
   	{
         this.token = localStorage.getItem("token");
@@ -69,6 +71,7 @@ export class CrearEventoComponent implements OnInit {
           this.evento = JSON.parse(localStorage.getItem('eventos'));
           this.evento.push(crudo);
           localStorage.setItem('eventos', JSON.stringify(this.evento));
+          this._toastr.success('la solicitud se ha creado exitosamente', 'SOLICITUD EXITOSA');
 
         }else{
           this.loading = false;
@@ -76,8 +79,8 @@ export class CrearEventoComponent implements OnInit {
 
       },
       error => {
-        console.log(<any>error);
         this.loading = false;
+        this._toastr.error('algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
         this.status = 'error';
 
       }

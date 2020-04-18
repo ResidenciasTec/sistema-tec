@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SalidaService } from "../../services/salida.service";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-actualizar-salida',
@@ -29,6 +30,7 @@ export class ActualizarSalidaComponent implements OnInit {
 		private _route: ActivatedRoute,
     private _salidaService: SalidaService,
     private _formBuilder: FormBuilder, 
+    private _toastr: ToastrService,
   	) 
   {
     this.identity = JSON.parse(localStorage.getItem('identity'));
@@ -89,6 +91,7 @@ export class ActualizarSalidaComponent implements OnInit {
                 localStorage.setItem('salidas', JSON.stringify(this.salidas));
                 this.loading = false;
                 this.status = 'success';
+                this._toastr.success('la solicitud se ha actualizado correctamente.', 'SOLICITUD EXITOSA');
 
                 //redireccion a inicio
 				        this._router.navigate(['salidas/'+this.id]);
@@ -97,7 +100,7 @@ export class ActualizarSalidaComponent implements OnInit {
             },
             error =>{
               this.loading = false;
-              console.log('algo salio mal');
+              this._toastr.error('algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
             }
 
 

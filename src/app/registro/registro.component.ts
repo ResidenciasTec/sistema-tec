@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from "../services/user.service";
 import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-registro',
@@ -19,7 +20,8 @@ export class RegistroComponent implements OnInit {
   	private _userService: UserService,
     private _formBuilder: FormBuilder,
     private _router: Router,
-		private _route: ActivatedRoute,
+    private _route: ActivatedRoute,
+    private _toastr: ToastrService,
   	) { 
     this.title = "Registrar una cuenta";
     this.loading = false;
@@ -60,8 +62,13 @@ export class RegistroComponent implements OnInit {
   this._userService.register(form).subscribe(
 	  	response =>{
 	  		if(response.status =="success"){
-	  			this.status = 'success';
-	  			console.log(response);
+          this.status = 'success';
+          this._toastr.success('los datos ingresados son correctos.', 'SOLICITUD EXITOSA');
+
+          setTimeout (() => {
+            this._router.navigate(['/login']); 
+        }, 2000);
+	  			
 
 	  		}else{
           this.loading = false;
@@ -72,6 +79,7 @@ export class RegistroComponent implements OnInit {
 	  	},
 	  	error =>{
         this.loading = false;
+        this._toastr.error('algo ha salido mal.', 'ACCESO DENEGADO');
 	  		this.status = 'error';
 	  		console.log(<any>error);
 
