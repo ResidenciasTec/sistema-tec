@@ -3,6 +3,7 @@ import {Router, ActivatedRoute, Params} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {global} from "../../services/global";
 import { Validators, FormControl, FormBuilder } from '@angular/forms';
+import {ToastrService} from "ngx-toastr";
 
 
 
@@ -48,6 +49,7 @@ export class UserEditComponent implements OnInit, DoCheck {
     private _router: Router,
     private _route: ActivatedRoute,
     private _formBuilder: FormBuilder,
+    private _toastr: ToastrService,
     ) 
   {
   	this.title = "editar usuario";
@@ -100,6 +102,7 @@ export class UserEditComponent implements OnInit, DoCheck {
               localStorage.setItem('logueado', JSON.stringify(crudo));
               this.identity = JSON.parse(localStorage.getItem('identity'));
               this.status = "success";
+              this._toastr.success('Tus datos se actualizaron con exito.', 'PERFIL ACTUALIZADO');
 
 
           setTimeout (() => {
@@ -116,6 +119,7 @@ export class UserEditComponent implements OnInit, DoCheck {
          
         }else{
           this.status = "error";
+          this._toastr.error('Algunos de tus datos no fueron correctos.', 'SOLICITUD NO EXITOSA');
         }
 
       },

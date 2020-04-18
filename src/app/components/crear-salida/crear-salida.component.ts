@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, FormBuilder } from "@angular/forms";
 import { SalidaService } from "../../services/salida.service";
+import {ToastrService} from "ngx-toastr";
 
 
 @Component({
@@ -25,6 +26,7 @@ export class CrearSalidaComponent implements OnInit {
   constructor(
         private _salidaService: SalidaService,
         private _formBuilder: FormBuilder, 
+        private _toastr: ToastrService,
         
   	) 
   {
@@ -70,6 +72,7 @@ export class CrearSalidaComponent implements OnInit {
         this.salida = JSON.parse(localStorage.getItem('salidas'));
         this.salida.push(crudo);
         localStorage.setItem('salidas', JSON.stringify(this.salida));
+        this._toastr.success('la solicitud se ha creado exitosamente', 'SOLICITUD EXITOSA');
         
       }else{ 
         this.loading = false;
@@ -81,7 +84,9 @@ export class CrearSalidaComponent implements OnInit {
       },
       error=>{
         this.loading = false;
+        
         this.status = 'error';
+        this._toastr.error('algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
         console.log(<any>error);
       }
       );

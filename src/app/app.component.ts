@@ -44,8 +44,11 @@ export class AppComponent implements OnInit, DoCheck {
     this.submenu_crear;
     this.submenu_panel;
     this.identity = JSON.parse(localStorage.getItem('identity'));
-    this.first_name = this.identity.name.trim().toUpperCase().charAt(0);
-    this.first_surname = this.identity.surname.trim().toUpperCase().charAt(0);
+    if(this.identity){
+         this.first_name = this.identity.name.trim().toUpperCase().charAt(0);
+         this.first_surname = this.identity.surname.trim().toUpperCase().charAt(0);
+    }
+ 
     
   }
 

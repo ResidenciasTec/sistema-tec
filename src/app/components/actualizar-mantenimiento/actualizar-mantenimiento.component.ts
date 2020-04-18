@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MantenimientoService } from "../../services/mantenimiento.service";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-actualizar-mantenimiento',
@@ -30,6 +31,7 @@ export class ActualizarMantenimientoComponent implements OnInit {
 		private _route: ActivatedRoute,
     private _mantenimientoService: MantenimientoService,
     private _formBuilder: FormBuilder,
+    private _toastr: ToastrService,
   	) 
   {
     this.token = localStorage.getItem('token');
@@ -91,6 +93,7 @@ export class ActualizarMantenimientoComponent implements OnInit {
                 localStorage.setItem('mantenimientos', JSON.stringify(this.mantenimientos));
                 this.loading = false;
                 this.status = 'success';
+                this._toastr.success('la solicitud se ha actualizado correctamente.', 'SOLICITUD EXITOSA');
 
                 //redireccion a inicio
 				        this._router.navigate(['mantenimiento/'+this.id]);
@@ -99,7 +102,7 @@ export class ActualizarMantenimientoComponent implements OnInit {
             },
             error =>{
               this.loading = false;
-              console.log('algo salio mal');
+              this._toastr.error('algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
             }
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MantenimientoService } from "../../services/mantenimiento.service";
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-crear-mantenimiento',
@@ -23,6 +24,7 @@ export class CrearMantenimientoComponent implements OnInit {
   constructor(
     private _mantenimientoService: MantenimientoService,
     private _formBuilder: FormBuilder,
+    private _toastr: ToastrService,
   	) 
   {
     this.token = localStorage.getItem('token');
@@ -68,6 +70,7 @@ export class CrearMantenimientoComponent implements OnInit {
           this.mantenimiento = JSON.parse(localStorage.getItem('mantenimientos'));
           this.mantenimiento.push(crudo);
           localStorage.setItem('mantenimientos', JSON.stringify(this.mantenimiento));
+          this._toastr.success('la solicitud se ha creado exitosamente', 'SOLICITUD EXITOSA');
         }else{
           this.loading = false;
           this.status = 'error';
@@ -77,6 +80,7 @@ export class CrearMantenimientoComponent implements OnInit {
       error => {
         console.log(<any>error);
         this.loading = false;
+        this._toastr.error('algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
         this.status = 'error';
       }
       );

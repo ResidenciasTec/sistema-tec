@@ -4,7 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { routing, appRoutingProviders } from "./app.routing";
 import { AngularFileUploaderModule } from "angular-file-uploader";
-
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
+import {ToastrModule} from "ngx-toastr"
 
 import { AppComponent } from './app.component';
 import { InicioComponent } from './inicio/inicio.component';
@@ -38,6 +39,12 @@ import { TextareaDirective } from './directivas/textarea/textarea.directive';
 import { BannerCrearComponent } from './reutilizables/banner-crear/banner-crear.component';
 import { StatusComponent } from './reutilizables/status/status.component';
 import { BannerInicioComponent } from './reutilizables/banner-inicio/banner-inicio.component';
+import { AdminComponent } from './adminComponents/admin/admin.component';
+import { TransportesComponent } from './adminComponents/transportes/transportes.component';
+import { EspaciosComponent } from './adminComponents/espacios/espacios.component';
+import { UbicacionesComponent } from './adminComponents/ubicaciones/ubicaciones.component';
+import { SubdireccionesComponent } from './adminComponents/subdirecciones/subdirecciones.component';
+import { DepartamentosComponent } from './adminComponents/departamentos/departamentos.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +75,13 @@ import { BannerInicioComponent } from './reutilizables/banner-inicio/banner-inic
     TextareaDirective,
     BannerCrearComponent,
     StatusComponent,
-    BannerInicioComponent
+    BannerInicioComponent,
+    AdminComponent,
+    TransportesComponent,
+    EspaciosComponent,
+    UbicacionesComponent,
+    SubdireccionesComponent,
+    DepartamentosComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +89,9 @@ import { BannerInicioComponent } from './reutilizables/banner-inicio/banner-inic
     FormsModule,
     HttpClientModule,
     AngularFileUploaderModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     appRoutingProviders,
