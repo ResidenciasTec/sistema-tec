@@ -46,12 +46,10 @@
             <li></li>
         </ul>
         <div class="div-user" (click)="showMenuUser()">
-            <img *ngIf="identity.image" src="{{url + 'user/avatar/' + identity.image}}" /> 
-
-            <img *ngIf="!identity.image"  src="../assets/img/default_profile.png" />        
+            <div id="default-image">{{this.first_name}}  {{this.first_surname}}</div>
         
 
-            <div *ngIf="submenu_user == true" class="submenu-user show">
+            <div id="firefox-error" *ngIf="submenu_user == true" class="submenu-user show">
                 <p id="usuario"><strong>{{identity.name}}  {{identity.surname}}</strong></p>
             
                 <hr/>
@@ -61,7 +59,7 @@
                 <p [routerLink]="['/logout/1']">Cerrar sesion</p>
             </div>
 
-            <div *ngIf="submenu_user == false" class="submenu-user hidden">
+            <div id="firefox-error" *ngIf="submenu_user == false" class="submenu-user hidden">
                 <p>{{identity.name}}</p>
                 <p>{{identity.surname}}</p>
                  <hr/>

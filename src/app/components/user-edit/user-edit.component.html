@@ -32,28 +32,11 @@
 			</label>
 
 			<label>
-				<p class="label">foto de perfil:</p>
-					<div class="avatar" *ngIf="identity.image">
-						<img *ngIf="identity.image" src="{{url + 'avatar/' + identity.image}}" />
-					</div>
 
-					<div class="avatar" *ngIf="identity.image">
-						<img  src="{{url + 'avatar/' + identity.image}}" />
-					</div>
-
-					<div class="avatar" *ngIf="!identity.image">
-						<img *ngIf="!identity.image" src="../../../assets/img/default_profile.png" />
-					</div>
 			</label>
 
 			<label class="label-upload">
-				<p class="label">Cambia tu foto de perfil:</p>
-				
-					<angular-file-uploader  
-						[config]="afuConfig"
-						[resetUpload]=resetVar
-						(ApiResponse)="avatarUpload($event)" class="file">
-					</angular-file-uploader>
+
 				
 			</label>
 

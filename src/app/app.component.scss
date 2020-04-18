@@ -32,6 +32,7 @@
         box-shadow: 0 1px 0 0 rgba(66,118,146,.1),0 2px 6px 0 rgba(66,118,146,.1);
         border: 2px solid #F5D588 ;
         border-width: 0px 0px 1px 0px;
+
     }
         h1{
             font-size: 22px;
@@ -86,6 +87,7 @@
         height: 5em;
         position: fixed;
         width: 100%;
+        z-index: 5;
 
         div{
             display: flex;
@@ -125,11 +127,13 @@
                     position: absolute;
                     background-color:#802434;
                     width: 11em;
-                    height: 6em;
+                    height: 9em;
                     font-size: .8em;
-                    padding: .5em;                    
+                    padding: .5em;  
+                    padding-top: 2em;                 
                     box-shadow: 1px 1px 1px #802434; 
                     border-width: 0px 2px 2px 2px;
+                    border-radius: 3px;
                     
                     cursor: pointer;
                     font: .7em sans-serif;
@@ -139,12 +143,15 @@
                         display: flex;
                         justify-content: flex-start;
                         align-items: center;
+                        padding-bottom: .6em;
                        
 
                         &:hover{
+                            transition: .3s;
                             color: #faf9f2;
                            font-weight: bold; 
-                           font-size: 1.4em;
+                           transform: scale(1.1, 1.1);
+                           
                            
                         }
                         
@@ -175,25 +182,42 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 0 0 0 0;
+          
            
-            
-
-
+        
                 &::after{
-                    content: url('../assets/img/Icon ionic-ios-arrow-down.png');
                     display:block;
                     position: absolute;
                     width: .4em; 
-                    margin-left: 25px;
+                    margin-left: 5px;
                     
 
 
                 }
 
+            #default-image{
+                background-color: #cecee6;
+                color: #333232;
+                width:  20em;
+                height: 100%;
+                margin-right: 50px;
+                font-size: 2em;
+                min-height: 2em;
+            
+
+                &:hover{
+                    transition: .6s;
+                    background-color: #333232;
+                    color: #cecee6;
+                    cursor: pointer;
+                }
+            }
+
             img{
                 width: 4em;
                 border: 2px solid rgb(250, 249, 180); 
-                margin-right: 50px;
+                
 
                 &:hover{
                     transition: .4s;
@@ -211,8 +235,10 @@
                 background-color:#802434;
                 width:13em;
                 height: 17em;
-                margin-top: 10.5em;
+                margin-top: 11em;
+                padding-bottom: 5em;
                 border-width: 0px 2px 2px 2px;
+                border-radius: 5px;
                 
                 cursor: pointer;
                 margin-left: 2.4em;
@@ -224,6 +250,7 @@
 
                 }
 
+
                 p{
                     text-align: center;
                     width: 100%;
@@ -234,9 +261,10 @@
 
 
                     &:hover{
-                        color: #E3C273;
                         font-weight: bold;
-                        font-size: 1.3em;
+                        transition: .2s;
+                        transform: scale(1.2, 1.2);
+                       
                     }
 
                     a{
@@ -255,7 +283,13 @@
                 display: block;
             }
         }
-        
+
+        @supports (-moz-appearance:none) {
+            #firefox-error { 
+                margin-top:22em; 
+            } 
+        }
+    
 
     
 }
