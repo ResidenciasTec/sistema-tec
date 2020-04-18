@@ -17,6 +17,8 @@ export class AppComponent implements OnInit, DoCheck {
   public submenu_panel: boolean;
   public submenu_crear: boolean;
   transportes: any;
+  public first_name;
+  public first_surname;
 
 
   constructor(
@@ -28,6 +30,7 @@ export class AppComponent implements OnInit, DoCheck {
     this.submenu_user = false;
     this.submenu_crear = false;
     this.submenu_panel = false;
+
  
   }
 
@@ -41,6 +44,8 @@ export class AppComponent implements OnInit, DoCheck {
     this.submenu_crear;
     this.submenu_panel;
     this.identity = JSON.parse(localStorage.getItem('identity'));
+    this.first_name = this.identity.name.trim().toUpperCase().charAt(0);
+    this.first_surname = this.identity.surname.trim().toUpperCase().charAt(0);
     
   }
 
