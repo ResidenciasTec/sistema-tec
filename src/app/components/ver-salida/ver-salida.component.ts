@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { SalidaService } from "../../services/salida.service";
+import { NgxSpinnerService } from "ngx-spinner";
+
 
 
 @Component({
@@ -22,14 +24,17 @@ export class VerSalidaComponent implements OnInit {
   constructor(
     private _router: Router,
 		private _route: ActivatedRoute,
-  	private _salidaService: SalidaService,
+    private _salidaService: SalidaService,
+    private _spinner: NgxSpinnerService,
   	) { }
 
     ngOnInit(): void {
       window.scrollTo(0,0);
+      this._spinner.show();
       this.token = localStorage.getItem('token');
-      this.lastSalidas();
+      
       this.getSalida();
+      this.lastSalidas();
 
       
 
@@ -49,12 +54,16 @@ export class VerSalidaComponent implements OnInit {
               console.log('todo ha salido bien');
               this.nombreSalida = this.salida.evento;
               console.log(this.nombreSalida);
+              this._spinner.hide();
+
             }else{
+              this._spinner.hide();
               console.log('algo ha salido mal');
             }
     
           },
           error =>{
+            this._spinner.hide();
             console.log(<any>error);
     
           }

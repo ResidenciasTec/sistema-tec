@@ -1,6 +1,9 @@
 <div id="Registro-form">
 
 	<div id="Contenedor-formulario">
+		<ngx-spinner bdColor = "rgba(44,43,43,0.8)" size = "default" color = "#d36969" type = "timer" >
+            <p style="color: white" > cargando datos... </p>
+    </ngx-spinner>
 
 		<form *ngIf="!loading" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
 			<div><img src="../assets/img/logo.png" alt="logo" /></div>
@@ -120,23 +123,9 @@
 			</label>
 
 
-			<div class="status" *ngIf="status == 'success'">
-				El registro se ha completado correctamente, <a [routerLink]="['/login']">logueate aqui</a>
-			</div>
-
-
-			<div class="status" *ngIf="status == 'error'">
-				El registro ha fallado.
-			</div>
-
 		</form>
 
-		<form *ngIf="loading">
-			<article>
-				cargando pagina ...
-			</article>
-			
-		</form>
+
 
 	</div>
 </div>

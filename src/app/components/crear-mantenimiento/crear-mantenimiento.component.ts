@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MantenimientoService } from "../../services/mantenimiento.service";
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import {ToastrService} from "ngx-toastr";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-crear-mantenimiento',
@@ -25,6 +26,7 @@ export class CrearMantenimientoComponent implements OnInit {
     private _mantenimientoService: MantenimientoService,
     private _formBuilder: FormBuilder,
     private _toastr: ToastrService,
+    private _spinner: NgxSpinnerService,
   	) 
   {
     this.token = localStorage.getItem('token');
@@ -60,7 +62,7 @@ export class CrearMantenimientoComponent implements OnInit {
   }
 
   onSubmit(value){
-    this.loading = true;
+    this._spinner.show();
     this._mantenimientoService.createMantenimiento(this.token, value).subscribe(
       response => {
         if(response){
@@ -70,16 +72,19 @@ export class CrearMantenimientoComponent implements OnInit {
           this.mantenimiento = JSON.parse(localStorage.getItem('mantenimientos'));
           this.mantenimiento.push(crudo);
           localStorage.setItem('mantenimientos', JSON.stringify(this.mantenimiento));
+          this.form.reset();
+          window.scrollTo(0,0);
           this._toastr.success('la solicitud se ha creado exitosamente', 'SOLICITUD EXITOSA');
+          this._spinner.hide();
         }else{
-          this.loading = false;
+          this._spinner.hide();
           this.status = 'error';
         }
 
       },
       error => {
         console.log(<any>error);
-        this.loading = false;
+        this._spinner.hide();
         this._toastr.error('algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
         this.status = 'error';
       }

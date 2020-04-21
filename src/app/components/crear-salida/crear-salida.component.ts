@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, FormBuilder } from "@angular/forms";
 import { SalidaService } from "../../services/salida.service";
 import {ToastrService} from "ngx-toastr";
+import { NgxSpinnerService } from "ngx-spinner";
 
 
 @Component({
@@ -27,6 +28,7 @@ export class CrearSalidaComponent implements OnInit {
         private _salidaService: SalidaService,
         private _formBuilder: FormBuilder, 
         private _toastr: ToastrService,
+        private _spinner: NgxSpinnerService,
         
   	) 
   {
@@ -61,7 +63,7 @@ export class CrearSalidaComponent implements OnInit {
   }
 
   onSubmit(value){
-    this.loading = true;
+    this._spinner.show();
     this._salidaService.createSalida(this.token, value).subscribe(
       response => {
       console.log("el servicio se ha ejecutado");
@@ -72,10 +74,13 @@ export class CrearSalidaComponent implements OnInit {
         this.salida = JSON.parse(localStorage.getItem('salidas'));
         this.salida.push(crudo);
         localStorage.setItem('salidas', JSON.stringify(this.salida));
+        this.form.reset();
+        window.scrollTo(0,0);
         this._toastr.success('la solicitud se ha creado exitosamente', 'SOLICITUD EXITOSA');
+        this._spinner.hide();
         
       }else{ 
-        this.loading = false;
+        this._spinner.hide();
         this.status = 'error';
        
       }
@@ -83,7 +88,7 @@ export class CrearSalidaComponent implements OnInit {
 
       },
       error=>{
-        this.loading = false;
+        this._spinner.hide();
         
         this.status = 'error';
         this._toastr.error('algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');

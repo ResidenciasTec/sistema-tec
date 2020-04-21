@@ -172,7 +172,7 @@
                     color: #605f5f;
                     border-radius: 5px;
                     padding: 1em;
-                    border-bottom: 1px solid #26030321;
+                    border-bottom: 1px solid #26030321;                       
 
                     &:nth-child(1), &:nth-child(2),&:nth-child(3){
                         grid-column: 1/span 2;
@@ -183,9 +183,9 @@
                     }
 
                     
-
                     &:nth-child(2){
                         align-items: flex-start;
+ 
                     }
                 }
 
@@ -211,6 +211,13 @@
                     border-radius: 5px;
                     border-bottom: 1px solid #26030321;
                     padding: 1em;
+
+                                        
+                    img{
+                        height: 80px;
+                        fill: red;
+                        
+                    }
 
                     
                     &:nth-child(2){

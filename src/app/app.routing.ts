@@ -96,7 +96,7 @@ const  appRoutes: Routes = [
 
     //rutas de usuario administrador
     {path: 'admin', component: AdminComponent, canActivate:[UserGuard]},
-    {path: 'transportes', component: TransporteComponent, canActivate:[UserGuard]},
+    {path: 'transportes', component: TransportesComponent, canActivate:[UserGuard]},
     {path: 'subdirecciones', component: SubdireccionesComponent, canActivate:[UserGuard]},
     {path: 'espacios', component: EspaciosComponent, canActivate:[UserGuard]},
     {path: 'ubicaciones', component: UbicacionesComponent, canActivate:[UserGuard]},

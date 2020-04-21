@@ -75,11 +75,40 @@ export class EventoService{
 	}
 
 	//servicio para borrar un evento de la base de datos por medio de su id.
-	deleteEvento(token, id){
+	deleteEvento(token, id):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
 								      .set('Authorization', 'Bearer '+token);
 
 		return this._http.delete(this.url+'eventos/'+id, {headers: headers});
+	}
+
+	getNextPage(token, link):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+										.set('Authorization', 'Bearer '+token);
+
+		return this._http.get(link, {headers: headers});
+	}
+
+	
+	getAntiguo(token):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+										.set('Authorization', 'Bearer '+token);
+
+		return this._http.get(this.url+'eventos/asc', {headers: headers});
+	}
+	
+	getPorMes(token):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+										.set('Authorization', 'Bearer '+token);
+
+		return this._http.get(this.url+'eventos/month', {headers: headers});
+	}
+	
+	getPorStatus(token, link):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+										.set('Authorization', 'Bearer '+token);
+
+		return this._http.get(this.url+'eventos/status', {headers: headers});
 	}
 
 }

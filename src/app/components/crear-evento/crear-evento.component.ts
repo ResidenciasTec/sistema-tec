@@ -3,6 +3,7 @@ import { Evento } from '../../models/evento';
 import { EventoService } from "../../services/evento.service";
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {ToastrService} from "ngx-toastr";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-crear-evento',
@@ -28,6 +29,7 @@ export class CrearEventoComponent implements OnInit {
         private _eventoService: EventoService,
         private _formBuilder: FormBuilder,
         private _toastr: ToastrService,
+        private _spinner: NgxSpinnerService,
   	)
   	{
         this.token = localStorage.getItem("token");
@@ -59,27 +61,29 @@ export class CrearEventoComponent implements OnInit {
   }
 
   onSubmit(value){
-    this.loading = true;
+    this._spinner.show();
     this._eventoService.crearEvento(this.token, value).subscribe(
       response =>{
 
         if(response){
           console.log(response);
-          this.loading = false;
           this.status = 'success';
           let crudo = response.elemento_creado;
           this.evento = JSON.parse(localStorage.getItem('eventos'));
           this.evento.push(crudo);
           localStorage.setItem('eventos', JSON.stringify(this.evento));
+          this.form.reset();
+          window.scrollTo(0,0);
           this._toastr.success('la solicitud se ha creado exitosamente', 'SOLICITUD EXITOSA');
+          this._spinner.hide();
 
         }else{
-          this.loading = false;
+          this._spinner.hide();
         }
 
       },
       error => {
-        this.loading = false;
+        this._spinner.hide();
         this._toastr.error('algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
         this.status = 'error';
 

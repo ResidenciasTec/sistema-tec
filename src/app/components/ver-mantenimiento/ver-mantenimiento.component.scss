@@ -36,9 +36,11 @@
                 justify-content: center;
                 align-items: center;
                 background-color: #82807e; 
+                
                 padding:1em;
                 border-radius: 5px;
                 color: #531717;
+
 
                 &:hover{
                     transition: .3s ease-in;
@@ -66,8 +68,11 @@
                 section{
                     display: flex;
                     align-items: center;
-                    justify-content: center;
+                    justify-content: flex-start;
                     font-size: 1.2em;
+                    white-space:nowrap; 
+                    overflow:hidden;
+                    text-overflow: ellipsis;
                 
 
                 }

@@ -6,6 +6,8 @@ import {StatusorderService} from "../services/statusorder.service";
 import { EventoService } from '../services/evento.service';
 import { MantenimientoService} from "../services/mantenimiento.service";
 import { SalidaService } from "../services/salida.service";
+import { NgxSpinnerService } from "ngx-spinner";
+
 
 
 @Component({
@@ -37,6 +39,7 @@ export class InicioComponent implements OnInit {
     private _eventoService: EventoService, 
     private _mantenimientoService: MantenimientoService,
     private _salidaService: SalidaService,
+    private _spinner: NgxSpinnerService,
   ) {
     this.title = "Sistema de control de inventarios del Instituto Tecnologico de Matamoros";
    }
@@ -53,9 +56,12 @@ export class InicioComponent implements OnInit {
       this.token = localStorage.getItem('token');
    
     }
-
-    this.cargar();
+  
     this.forms();
+    this.getEventos();
+    this.getSalidas();
+    this.getMantenimientos();
+
 
   }
 
@@ -140,12 +146,14 @@ export class InicioComponent implements OnInit {
       response => {
         console.log(response);
         if(response.status = 'success'){
-          let respuesta  = response.elementos;
-          localStorage.setItem('eventos', JSON.stringify(respuesta));
+          this.eventos  = response.elementos.data;
+          localStorage.setItem('eventos', JSON.stringify(this.eventos));
+          this.eventos = JSON.parse(localStorage.getItem('eventos'));
 
           let eventoCrudo = JSON.parse(localStorage.getItem('eventos'));
 
           this.eventos = eventoCrudo.slice(0, 4);
+
 
         }else{
 
@@ -165,13 +173,14 @@ export class InicioComponent implements OnInit {
       response => {
         console.log(response);
         if(response.status = 'success'){
-          let respuesta  = response.elementos;
+          let respuesta  = response.elementos.data;
           localStorage.setItem('mantenimientos', JSON.stringify(respuesta));
           this.mantenimientos = JSON.parse(localStorage.getItem('mantenimientos'));
 
           let mantenimientoCrudo = JSON.parse(localStorage.getItem('mantenimientos'));
 
           this.mantenimientos = mantenimientoCrudo.slice(0, 4);
+        
 
         }else{
 
@@ -191,7 +200,7 @@ export class InicioComponent implements OnInit {
       response => {
         console.log(response);
         if(response.status = 'success'){
-          let respuesta  = response.elementos;
+          let respuesta  = response.elementos.data;
           localStorage.setItem('salidas', JSON.stringify(respuesta));
           this.salidas = JSON.parse(localStorage.getItem('salidas'));
 
@@ -212,30 +221,7 @@ export class InicioComponent implements OnInit {
     );
   }  
 
-  cargar(){
 
-    if(localStorage.getItem('eventos')){
-      let crudo = JSON.parse(localStorage.getItem('eventos'));
-      this.eventos = crudo.reverse().slice(0, 4);
-    }else{
-       this.getEventos();
-    }
-
-    if(localStorage.getItem('mantenimientos')){
-      let crudo = JSON.parse(localStorage.getItem('mantenimientos'));
-      this.mantenimientos = crudo.reverse().slice(0, 4);
-    }else{
-       this.getMantenimientos();
-    }
-
-    if(localStorage.getItem('salidas')){
-      let crudo = JSON.parse(localStorage.getItem('salidas'));
-      this.salidas = crudo.reverse().slice(0, 4);
-    }else{
-       this.getSalidas();
-    }
-
-  }
 
   forms(){
 

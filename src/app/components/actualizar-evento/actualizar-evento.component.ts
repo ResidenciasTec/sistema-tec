@@ -3,6 +3,8 @@ import { EventoService } from "../../services/evento.service";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {ToastrService} from "ngx-toastr";
+import { NgxSpinnerService } from "ngx-spinner";
+
 
 @Component({
   selector: 'app-actualizar-evento',
@@ -31,6 +33,7 @@ export class ActualizarEventoComponent implements OnInit {
     private _eventoService: EventoService,
     private _formBuilder: FormBuilder,
     private _toastr: ToastrService,
+    private _spinner: NgxSpinnerService,
   	) 
   {
     this.token = localStorage.getItem("token");
@@ -78,13 +81,12 @@ export class ActualizarEventoComponent implements OnInit {
 
 
   onSubmit(value){
-    this.loading = true;
+    this._spinner.show();
     this._eventoService.updateEvento(this.token, value, this.found.id).subscribe(
       response =>{
 
         if(response){
           console.log(response);
-          this.loading = false;
           let crudo = JSON.stringify(response.elemento_actualizado);
 
           this._eventoService.getEventos(this.token).subscribe(
@@ -92,7 +94,8 @@ export class ActualizarEventoComponent implements OnInit {
               if(response.status == 'success'){
                 this.eventos = response.elementos;
                 localStorage.setItem('eventos', JSON.stringify(this.eventos));
-                this.loading = false;
+                this._spinner.hide();
+                window.scrollTo(0,0);
                 this.status = 'success';
                 this._toastr.success('la solicitud se ha actualizado correctamente.', 'SOLICITUD EXITOSA');
 
@@ -102,7 +105,7 @@ export class ActualizarEventoComponent implements OnInit {
 
             },
             error =>{
-              this.loading = false;
+              this._spinner.hide();
               this._toastr.error('algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
             }
 
@@ -112,13 +115,13 @@ export class ActualizarEventoComponent implements OnInit {
    
 
         }else{
-          this.loading = false;
+          this._spinner.hide();
         }
 
       },
       error => {
         console.log(<any>error);
-        this.loading = false;
+        this._spinner.hide();
         this.status = 'error';
 
       }

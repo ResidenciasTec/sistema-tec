@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { routing, appRoutingProviders } from "./app.routing";
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
 import {ToastrModule} from "ngx-toastr"
+import { NgxSpinnerModule } from "ngx-spinner";
+
 
 import { AppComponent } from './app.component';
 import { InicioComponent } from './inicio/inicio.component';
@@ -92,6 +94,10 @@ import { DepartamentosComponent } from './adminComponents/departamentos/departam
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    NgxSpinnerModule
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   providers: [
     appRoutingProviders,

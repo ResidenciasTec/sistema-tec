@@ -1,1 +1,93 @@
-<p>transportes works!</p>
+<main class="body-transportes">
+    <app-banner-crear [titulo]="textoCrear"></app-banner-crear>       
+    <ngx-spinner bdColor = "rgba(44,43,43,0.8)" size = "default" color = "#d36969" type = "timer" >
+            <p style="color: white" > cargando datos... </p>
+    </ngx-spinner>
+    <div class="elementos">
+        <article (click)="changeCrear()">AGREGAR NUEVO TRANSPORTE</article>
+ 
+        <article *ngFor="let transporte of transportes">
+            <section (click)="verDetalle(transporte)">{{transporte.vehiculo}}</section>
+            <section (click)="changeEditar(transporte)">ACTUALIZAR</section>
+        </article>
+    </div>
+    <div class="default" *ngIf="!detalle && !crear && !actualizar">
+        <p>selecciona un vehiculo para ver su informacion.</p>
+        <p>edita el vehiculo sleeccionado</p>
+        <p>crea nuevos vehiculos</p>
+    </div>
+    <div class="detalle" *ngIf="detalle">
+            <p>Nombre del  vehiculo</p>
+            <P>{{dataVehiculo.vehiculo}}</P>
+            <p><strong>Marca:</strong></p>
+            <p>{{dataVehiculo.marca}}</p>
+            <p><strong>Placas:</strong></p>
+            <p>{{dataVehiculo.placas}}</p>
+            <p><strong>estado del Kilometraje:</strong></p> 
+            <p>{{dataVehiculo.kilometraje}}</p>
+            <p><strong>estado del vehiculo:</strong></p>
+            <p>{{dataVehiculo.status_id}}</p>
+    </div>
+    <div class="formulario" *ngIf="crear">
+        <form [formGroup]="formCrear" (ngSubmit)="submitCrear(formCrear.value)">
+
+            <label>
+                <input type="text" appInput formControlName="vehiculo" placeholder="nombre del vehiculo.." >
+            </label>
+            <label>
+                <input type="text" appInput formControlName="marca" placeholder="marca del vehiculo.." >
+            </label>
+            <label>
+                <input type="text" appInput formControlName="placas" placeholder="numero de placas..." >
+            </label>
+            <label>
+                <input type="text" appInput formControlName="kilometraje" placeholder="cantidad de kilometraje..." >
+            </label>
+            <label>
+                <select formControlName="status_id" appInput>
+                    <option  selected>selecciona un status:</option>
+                    <option *ngFor="let status of statusvehiculos" value="{{status.id}}">{{status.status}}</option>
+                </select>
+            </label>
+            <label>
+                <input type="submit" class="btn" appSubmit  [disabled]="formCrear.invalid" value="crear transporte">
+            </label>
+            <label>
+                <p (click)="cerrar()">cerrar</p>
+            </label>
+        </form>
+
+    </div>
+
+    <div class="formulario" *ngIf="actualizar">
+        <form [formGroup]="formEditar" (ngSubmit)="submitActualizar(formEditar.value)">
+
+            <label>
+                <input type="text" appInput formControlName="vehiculo" >
+            </label>
+            <label>
+                <input type="text" appInput formControlName="marca" >
+            </label>
+            <label>
+                <input type="text" appInput formControlName="placas" >
+            </label>
+            <label>
+                <input type="text" appInput formControlName="kilometraje" >
+            </label>
+            <label>
+                <select formControlName="status_id" appInput>
+                    <option  selected>selecciona un status:</option>
+                    <option *ngFor="let status of statusvehiculos" value="{{status.id}}">{{status.status}}</option>
+                </select>
+            </label>
+            <label>
+                <input type="submit" class="btn" appSubmit  [disabled]="formEditar.invalid" value="actualizar transporte">
+            </label>
+            <label>
+                <p (click)="cerrar()">cerrar</p>
+            </label>
+        </form>
+
+    </div>
+
+</main>

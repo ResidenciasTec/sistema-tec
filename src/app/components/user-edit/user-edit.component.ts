@@ -4,6 +4,7 @@ import {UserService} from "../../services/user.service";
 import {global} from "../../services/global";
 import { Validators, FormControl, FormBuilder } from '@angular/forms';
 import {ToastrService} from "ngx-toastr";
+import { NgxSpinnerService } from "ngx-spinner";
 
 
 
@@ -50,6 +51,7 @@ export class UserEditComponent implements OnInit, DoCheck {
     private _route: ActivatedRoute,
     private _formBuilder: FormBuilder,
     private _toastr: ToastrService,
+    private _spinner: NgxSpinnerService,
     ) 
   {
   	this.title = "editar usuario";
@@ -88,6 +90,7 @@ export class UserEditComponent implements OnInit, DoCheck {
 
 
   onSubmit(form){
+    this._spinner.show();
     console.log(this.token);
     this._userService.update(this.token, form, this.identity.id).subscribe(
       response => {
@@ -102,15 +105,17 @@ export class UserEditComponent implements OnInit, DoCheck {
               localStorage.setItem('logueado', JSON.stringify(crudo));
               this.identity = JSON.parse(localStorage.getItem('identity'));
               this.status = "success";
+              this._spinner.hide();
               this._toastr.success('Tus datos se actualizaron con exito.', 'PERFIL ACTUALIZADO');
 
 
           setTimeout (() => {
                 this._router.navigate(['/perfil']); 
-            }, 2000);
+            }, 1000);
 
             },
             error => {
+              this._spinner.hide();
               console.log(<any>error);
             }
 
@@ -119,11 +124,13 @@ export class UserEditComponent implements OnInit, DoCheck {
          
         }else{
           this.status = "error";
+          this._spinner.hide();
           this._toastr.error('Algunos de tus datos no fueron correctos.', 'SOLICITUD NO EXITOSA');
         }
 
       },
       error => {
+        this._spinner.hide();
         console.log(<any>error);
         this.status = "error";
       }

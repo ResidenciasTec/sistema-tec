@@ -3,7 +3,7 @@
         
         <div>
             <article *ngFor="let mnto of mantenimientos" [routerLink]="['/mantenimiento/'+ mnto.id]">
-                <section>{{mnto.trabajo_realizado}}</section>
+                <section >{{mnto.trabajo_realizado}}</section>
                 <section>{{mnto.fecha}}</section>
 
             </article>

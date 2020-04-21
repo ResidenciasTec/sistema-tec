@@ -2,7 +2,7 @@
     box-sizing: border-box;
     border: 1px solid #9F3133 !important;;
     border-color: #9F3133 !important;
-    border-radius: 13px !important;
+    border-radius: 5px !important;
     color:  #9F3133 !important;
     padding: 0.5em;
     padding: 50px;
@@ -28,9 +28,8 @@
 
         &:hover:not(:disabled){
             border: 1px solid #9F3133 !important;
-            transition: .8s;
-            color: white !important;
-            background-color: #9F3133;
+            transition: .2s;
+            background-color: rgb(226, 200, 201);
             cursor: pointer;
         }
 
