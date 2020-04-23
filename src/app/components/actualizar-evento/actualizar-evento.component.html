@@ -3,8 +3,10 @@
 	<app-banner-crear [titulo]="textoCrear"></app-banner-crear>
 
 	<article>
+		<ngx-spinner bdColor = "rgba(44,43,43,0.8)" size = "default" color = "#d36969" type = "timer" >
+            <p style="color: white" > cargando datos... </p>
+    </ngx-spinner>
 		<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
-			<app-status style="grid-column: 1/3" *ngIf="status" [status]="status"></app-status>
 
 			<article class="requeridos">
 				
@@ -119,13 +121,9 @@
 
 			<article class="seccion-submit">
 				<label *ngIf="!loading">
-					<input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Crear Solicitud">
+					<input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Actualizar Solicitud">
 				</label>
 
-				<label class="loading" *ngIf="loading">
-					espere un momento...
-				</label>
-	
 				<p class="aviso">
 					Las solicitudes que estes creando seran revisadas y se mantendran en estado "pendiente" hasta que la
 					junta administrativa revise y decida aceptar la solicitud.

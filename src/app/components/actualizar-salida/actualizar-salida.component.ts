@@ -3,6 +3,8 @@ import { SalidaService } from "../../services/salida.service";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {ToastrService} from "ngx-toastr";
+import { NgxSpinnerService } from "ngx-spinner";
+
 
 @Component({
   selector: 'app-actualizar-salida',
@@ -31,6 +33,7 @@ export class ActualizarSalidaComponent implements OnInit {
     private _salidaService: SalidaService,
     private _formBuilder: FormBuilder, 
     private _toastr: ToastrService,
+    private _spinner: NgxSpinnerService,
   	) 
   {
     this.identity = JSON.parse(localStorage.getItem('identity'));
@@ -75,13 +78,12 @@ export class ActualizarSalidaComponent implements OnInit {
   }
 
   onSubmit(value){
-    this.loading = true;
+    this._spinner.show();
     this._salidaService.updateSalida(this.token, value, this.found.id).subscribe(
       response =>{
 
         if(response){
           console.log(response);
-          this.loading = false;
           let crudo = JSON.stringify(response.elemento_actualizado);
 
           this._salidaService.getSalidas(this.token).subscribe(
@@ -89,7 +91,8 @@ export class ActualizarSalidaComponent implements OnInit {
               if(response.status == 'success'){
                 this.salidas = response.elementos;
                 localStorage.setItem('salidas', JSON.stringify(this.salidas));
-                this.loading = false;
+                this._spinner.hide();
+                window.scrollTo(0,0);
                 this.status = 'success';
                 this._toastr.success('la solicitud se ha actualizado correctamente.', 'SOLICITUD EXITOSA');
 
@@ -99,7 +102,7 @@ export class ActualizarSalidaComponent implements OnInit {
 
             },
             error =>{
-              this.loading = false;
+              this._spinner.hide();
               this._toastr.error('algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
             }
 
@@ -109,13 +112,13 @@ export class ActualizarSalidaComponent implements OnInit {
    
 
         }else{
-          this.loading = false;
+          this._spinner.hide();
         }
 
       },
       error => {
         console.log(<any>error);
-        this.loading = false;
+        this._spinner.hide();
         this.status = 'error';
 
       }

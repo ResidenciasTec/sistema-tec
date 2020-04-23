@@ -19,12 +19,16 @@
                     <li [routerLink]="['/eventos']">Eventos</li>
                     <li [routerLink]="['/mantenimiento']">Mantenimiento</li>
                     <li [routerLink]="['/salidas']">Salidas</li>
+                    <li [routerLink]="['/departamentos']">departamentos</li>
+                    <li [routerLink]="['/transportes']">transportes</li>
                 </ul>
 
                  <ul *ngIf="submenu_panel == false"  class="submenu-panel hidden">
                     <li [routerLink]="['/eventos']">Eventos</li>
                     <li [routerLink]="['/mantenimiento']">Mantenimiento</li>
                     <li [routerLink]="['/salidas']">Salidas</li>
+                    <li [routerLink]="['/departamentos']">departamentos</li>
+                    <li [routerLink]="['/transportes']">transportes</li>
                 </ul>
                 </strong></a>
             </li>
@@ -46,7 +50,7 @@
             <li></li>
         </ul>
         <div class="div-user" (click)="showMenuUser()">
-            <div id="default-image">{{this.first_name}}  {{this.first_surname}}</div>
+            <div id="default-image"><span>{{this.first_name}}  {{this.first_surname}}</span></div>
         
 
             <div id="firefox-error" *ngIf="submenu_user == true" class="submenu-user show">

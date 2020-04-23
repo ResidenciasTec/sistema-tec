@@ -25,7 +25,7 @@ export class TransporteService{
 
 	getTransporte(token, id):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
-										.set('Authorization', token);
+										.set('Authorization', 'Bearer '+token);
 
 		return this._http.get(this.url + 'vehiculos/'+id, {headers: headers});
 
@@ -35,7 +35,7 @@ export class TransporteService{
 	createTransporte(token, vehiculo):Observable<any>{
 		let json = JSON.stringify(vehiculo);
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
-									   .set('Authorization', token);
+										.set('Authorization', 'Bearer '+token);
 
 		return this._http.post(this.url + 'vehiculos', json, {headers: headers});
 
@@ -45,7 +45,7 @@ export class TransporteService{
 	updateTransporte(token, vehiculo, id):Observable<any>{
 		let json = 	JSON.stringify(vehiculo);
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
-									   .set('Authorization', token);
+										.set('Authorization', 'Bearer '+token);
 
 		return this._http.put(this.url + 'vehiculos/'+id, json, {headers: headers});
 
@@ -55,7 +55,7 @@ export class TransporteService{
 	deleteTransporte(token, id):Observable<any>{
 
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
-									   .set('Authorization', token);
+										.set('Authorization', 'Bearer '+token);
 
 		return this._http.delete(this.url + 'vehiculos/'+id, {headers: headers});
 

@@ -1,15 +1,30 @@
 <main class="body-solicitudes">
     <app-banner-crear [titulo]="textoCrear"></app-banner-crear>
-    <div *ngIf="!loading">
-        <article *ngFor="let evento of eventos" [routerLink]="['/eventos/'+evento.id]">
-            <section>{{evento.evento}}</section>
+    <ngx-spinner bdColor = "rgba(44,43,43,0.8)" size = "default" color = "#d36969" type = "timer" >
+        <p style="color: white" > cargando datos... </p>
+</ngx-spinner>
+    <div class="list">
+        <article *ngFor="let evento of eventos" [routerLink]="['/eventos/'+evento.id]">   
             <section>{{evento.fecha}}</section>
+            <section>{{evento.evento}}</section>
             <section>{{evento.status}}</section>
         </article>
 
     </div>
-        
-    <div class="loading" *ngIf="loading">
-        <h4>cargando ...</h4>
+    <div class="filtrado">
+        <h2>filtrar por:</h2>
+        <p (click)="getEventos()">mas recientes</p>
+        <p (click)="getAntiguos()">mas antiguas</p>
+        <p (click)="getPorMes()">por mes</p>
+        <p (click)="getPorStatus()">aceptadas</p>
     </div>
+
+    <div class="pagination">
+        <P (click)="previousPage()">PAGINA ANTERIOR</P>
+        <p>pagina {{current_page}} de {{last_page}}</p>
+        <P (click)="nextPage()">PAGINA SIGUIENTE</P>
+
+    </div>
+        
+
 </main>

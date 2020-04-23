@@ -3,9 +3,10 @@
 	<app-banner-crear [titulo]="textoCrear"></app-banner-crear>
 
 	<article>
+		<ngx-spinner bdColor = "rgba(44,43,43,0.8)" size = "default" color = "#d36969" type = "timer" >
+            <p style="color: white" > cargando datos... </p>
+    </ngx-spinner>
 		<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" >
-
-		<app-status style="grid-column: 1/2" *ngIf="status" [status]="status"></app-status>
 
 			<article class="requeridos">
 
@@ -93,19 +94,19 @@
 
 				<label id="titulo">
 					<p class="label">chofer:</p>
-					<input type="text" formControlName="chofer" appInput placeholder="titulo de la solicitud">
+					<input type="text" formControlName="chofer" appInput placeholder="escriba un nombre..">
 
 				</label>
 
 				<label id="titulo">
 					<p class="label">destino:</p>
-					<input type="text" formControlName="destino" appInput placeholder="titulo de la solicitud">
+					<input type="text" formControlName="destino" appInput placeholder="describa el destino..">
 				</label>
 
 				<label>
 					<p class="label">descripcion:</p>
 					<textarea type="text" formControlName="descripcion" appTextarea
-						placeholder="contenido de la solicitud">
+						placeholder="actividades a realizar..">
 					</textarea>
 
 				</label>
@@ -114,10 +115,6 @@
 			<article class="seccion-submit">
 				<label *ngIf="!loading">
 					<input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Crear Solicitud">
-				</label>
-
-				<label class="loading" *ngIf="loading">
-					espere un momento...
 				</label>
 	
 				<p class="aviso">

@@ -79,10 +79,40 @@ export class SalidaService{
 	//servicio para borrar una solicitud de salida en la base de datos.
 	deleteSalida(token, id):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
-									  .set('Authorization', token);
+									  .set('Authorization', 'Bearer '+token);
 
 		return this._http.delete(this.url+'salidas/'+id, {headers: headers});
 
 
+	}
+
+	
+	getNextPage(token, link):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+										.set('Authorization', 'Bearer '+token);
+
+		return this._http.get(link, {headers: headers});
+	}
+
+	
+	getAntiguo(token):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+										.set('Authorization', 'Bearer '+token);
+
+		return this._http.get(this.url+'salidas/asc', {headers: headers});
+	}
+	
+	getPorMes(token):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+										.set('Authorization', 'Bearer '+token);
+
+		return this._http.get(this.url+'salidas/month', {headers: headers});
+	}
+	
+	getPorStatus(token, link):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+										.set('Authorization', 'Bearer '+token);
+
+		return this._http.get(this.url+'salidas/status', {headers: headers});
 	}
 }

@@ -3,6 +3,8 @@ import { MantenimientoService } from "../../services/mantenimiento.service";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {ToastrService} from "ngx-toastr";
+import { NgxSpinnerService } from "ngx-spinner";
+
 
 @Component({
   selector: 'app-actualizar-mantenimiento',
@@ -32,6 +34,7 @@ export class ActualizarMantenimientoComponent implements OnInit {
     private _mantenimientoService: MantenimientoService,
     private _formBuilder: FormBuilder,
     private _toastr: ToastrService,
+    private _spinner: NgxSpinnerService,
   	) 
   {
     this.token = localStorage.getItem('token');
@@ -77,13 +80,12 @@ export class ActualizarMantenimientoComponent implements OnInit {
   }
 
   onSubmit(value){
-    this.loading = true;
+    this._spinner.show();
     this._mantenimientoService.updateMantenimiento(this.token, value, this.found.id).subscribe(
       response =>{
 
         if(response){
           console.log(response);
-          this.loading = false;
           let crudo = JSON.stringify(response.elemento_actualizado);
 
           this._mantenimientoService.getMantenimientos(this.token).subscribe(
@@ -91,7 +93,8 @@ export class ActualizarMantenimientoComponent implements OnInit {
               if(response.status == 'success'){
                 this.mantenimientos = response.elementos;
                 localStorage.setItem('mantenimientos', JSON.stringify(this.mantenimientos));
-                this.loading = false;
+                this._spinner.hide();
+                window.scrollTo(0,0);
                 this.status = 'success';
                 this._toastr.success('la solicitud se ha actualizado correctamente.', 'SOLICITUD EXITOSA');
 
@@ -101,7 +104,7 @@ export class ActualizarMantenimientoComponent implements OnInit {
 
             },
             error =>{
-              this.loading = false;
+              this._spinner.hide();
               this._toastr.error('algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
             }
 
@@ -111,13 +114,13 @@ export class ActualizarMantenimientoComponent implements OnInit {
    
 
         }else{
-          this.loading = false;
+          this._spinner.hide();
         }
 
       },
       error => {
         console.log(<any>error);
-        this.loading = false;
+        this._spinner.hide();
         this.status = 'error';
 
       }
