@@ -59,6 +59,7 @@ export class VerSalidaComponent implements OnInit {
             }else{
               this._spinner.hide();
               console.log('algo ha salido mal');
+              console.log('salio mal')
             }
     
           },
