@@ -1,4 +1,6 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <main class="body-app">
+
     <header id="header-nolog" *ngIf="!identity" >
         <h1><strong> ITM: Recursos materiales y servicios</strong></h1>
         <div class="Crea-cuenta">
@@ -8,10 +10,12 @@
     </header>
    
     <header id="header-silog" *ngIf="identity && identity.name">
-        <div></div>
+        <div class="hamburguer" *ngIf="hamburguer">
+            menu fsdfdsfsdf ds fsdfds
+        </div>
 
         <ul>
-            <li > <a><strong> ITM</strong> </a></li>
+            <li> <a><strong> ITM</strong> </a></li>
             <li><a  [routerLink]="['/inicio']"><strong>Inicio</strong></a></li>
             <li (click)="showMenuPanel()"> <a><strong>Panel
 
