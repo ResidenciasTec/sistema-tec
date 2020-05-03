@@ -19,6 +19,8 @@ export class AppComponent implements OnInit, DoCheck {
   transportes: any;
   public first_name;
   public first_surname;
+  public hamburguer;
+  public subhamburguer;
 
 
   constructor(
@@ -30,6 +32,8 @@ export class AppComponent implements OnInit, DoCheck {
     this.submenu_user = false;
     this.submenu_crear = false;
     this.submenu_panel = false;
+    this.hamburguer = false;
+    this.subhamburguer = false;
 
  
   }
@@ -81,6 +85,18 @@ export class AppComponent implements OnInit, DoCheck {
     }else{
       this.submenu_crear = true;
     }
+  }
+
+  hamburguerOpen(){
+    window.scrollTo(0,0);
+    if(this.hamburguer){
+      this.hamburguer = false;
+      console.log(this.hamburguer);
+    }else{
+      this.hamburguer = true;
+      console.log(this.hamburguer);
+    }
+    
   }
 
 

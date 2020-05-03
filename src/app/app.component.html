@@ -1,4 +1,6 @@
-<main class="body-app">
+
+<main [className]="hamburguer ? 'body-app move' : 'body-app'">
+
     <header id="header-nolog" *ngIf="!identity" >
         <h1><strong> ITM: Recursos materiales y servicios</strong></h1>
         <div class="Crea-cuenta">
@@ -8,10 +10,42 @@
     </header>
    
     <header id="header-silog" *ngIf="identity && identity.name">
-        <div></div>
+
+        <ul [className]="hamburguer ? 'nav-hamburguer nav-show' : 'nav-hamburguer'">
+            <li (click)="hamburguerOpen()" [routerLink]="['/inicio']">inicio</li>
+            <li>panel
+                <ul [className]="subhamburguer ? 'subnav-hamburguer' : 'subnav-hamburguer'">
+                    <li (click)="hamburguerOpen()" [routerLink]="['/eventos']">Eventos</li>
+                    <li (click)="hamburguerOpen()" [routerLink]="['/mantenimiento']">Mantenimiento</li>
+                    <li (click)="hamburguerOpen()" [routerLink]="['/salidas']">Salidas</li>
+                    <li (click)="hamburguerOpen()" [routerLink]="['/departamentos']">departamentos</li>
+                    <li (click)="hamburguerOpen()" [routerLink]="['/transportes']">transportes</li>
+                </ul>
+            </li>
+            <li>crear solicitudes
+                <ul>
+                    <li (click)="hamburguerOpen()" [routerLink]="['/eventos/crear']">Eventos</li>
+                    <li (click)="hamburguerOpen()" [routerLink]="['mantenimiento/crear']">Mantenimiento</li>
+                    <li (click)="hamburguerOpen()" [routerLink]="['/salidas/crear']">Salidas</li>
+                </ul>
+            </li>
+             <li>perfil
+                 <ul>
+                    <li (click)="hamburguerOpen()" [routerLink]="['/perfil']">Perfil</li>
+                    <li (click)="hamburguerOpen()" [routerLink]="['/perfil/editar']">Editar Perfil</li>
+                    <li (click)="hamburguerOpen()" [routerLink]="['/perfil/solicitudes']">Mis solicitudes</li>
+                    <li (click)="hamburguerOpen()" [routerLink]="['/logout/1']">Cerrar sesion</li>
+                 </ul>
+             </li>
+        </ul>        
+        
+        <div class="hamburguer" (click)="hamburguerOpen()">
+            <img src="../assets/img/icons8-menú-26.png" >        
+        </div>
+
 
         <ul>
-            <li > <a><strong> ITM</strong> </a></li>
+            <li> <a><strong> ITM</strong> </a></li>
             <li><a  [routerLink]="['/inicio']"><strong>Inicio</strong></a></li>
             <li (click)="showMenuPanel()"> <a><strong>Panel
 

@@ -8,7 +8,15 @@
 		display: grid;
 		grid-template-columns: 1fr 650px 1fr;
 		grid-template-rows: 1fr;
-		margin-top: 4em;
+		margin-top: 2em;
+
+		@media (max-width: 650px){
+			grid-template-columns: 2em 1fr 2em;
+		}
+
+		@media (max-width: 500px){
+			grid-template-columns: 1em 1fr 1em;
+		}
 
 		form{
 			grid-column: 2/3;
@@ -18,6 +26,10 @@
 			grid-template-rows: 1fr 5em 1fr 14em;
 			grid-gap: 1em;
 			padding: 1em;
+
+			@media (max-width: 540px){
+				grid-template-rows: 1fr 5em .4fr 10em;
+			}
 
 			.requeridos, .opcionales{
 				display: grid;
@@ -37,10 +49,19 @@
 				grid-template-columns: 1fr 1fr;
 				grid-template-rows: 1fr 1fr 1fr 1fr;
 
+				@media (max-width: 565px){
+					grid-template-columns: 1fr;
+					grid-template-rows: repeat(5, 1fr);
+				}
+
 				label{
 				
 					&:nth-child(1), &:nth-child(2), &:nth-child(3){
 						grid-column: 1/ span 2;
+
+						@media (max-width: 565px){
+							grid-column: 1/2;
+						}
 					}
 	
 					input{
@@ -106,9 +127,19 @@
 				grid-template-columns: 1fr 1fr;
 				grid-template-rows: 1fr 3fr;
 
+				@media (max-width: 565px){
+					grid-template-columns: 1fr;
+					grid-template-rows: 5em 5em 1fr;
+					max-height: 500px;
+				}
+
 				label{
 					&:nth-child(3){
 						grid-column: 1/span 2;
+
+						@media (max-width: 565px){
+							grid-column: 1/2;
+						}
 					}
 
 					input{
