@@ -14,11 +14,11 @@
 				<div
 					*ngIf="this.form.get('name').invalid && (this.form.get('name').dirty || this.form.get('name').touched)">
 
-					<div *ngIf="this.form.get('name').errors.minLenght">
+					<div class="errors" *ngIf="this.form.get('name').errors.minLenght">
 						El nombre debe contener al menos 3 caracteres.
 					</div>
 
-					<div *ngIf="this.form.get('name').errors.required">
+					<div class="errors" *ngIf="this.form.get('name').errors.required">
 						El nombre es obligatorio.
 					</div>
 
