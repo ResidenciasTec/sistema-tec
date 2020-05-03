@@ -1,11 +1,19 @@
 //ESTILOS UNICOS DEL COMPONENTE
+.move{
+    transition: transform .2s;
+    transform: translateX(250px);
+}
+
+
+
 .body-app{
+    grid-column: 1/2;
+    grid-row: 1/2;
     background-color: #F6EFCF;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows:5em 1fr 8em;
     min-height: 100vh;
-    overflow-y:hidden;
     font-family: sans-serif;
 
     @media (max-width: 612px){
@@ -118,17 +126,65 @@
 
         }
 
+        .nav-hamburguer{
+            display: none;   
+            z-index: 18;
+            cursor: default;
+            font-size: .9em;
+
+            li{
+                font-size: 1.5em;
+                width: 100%;
+                ul{
+                    display: flex;
+                    flex-direction: column;
+                    font-size: .5em;
+                     li{
+                         margin-left: 4em;
+                     }
+                    
+                }
+
+                .subshow{
+                    display: flex;
+                }
+            }
+    
+        }
+    
+        .nav-show{
+            display: inline-flex;
+            flex-direction: column;
+            width: 250px;
+            min-height: 100vh;
+            background-color: #802434f0;
+            margin-left: -334px;
+            padding: 1em;
+            position: fixed;
+        }
+
         .hamburguer{
             grid-column: 1/2;
             display: none;
             cursor: pointer;
-            background-color: yellow;
-
+            margin: auto;
+        
             @media (max-width: 917px){
                 display: block;
-                background-color: yellow;
+        
+                img{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+        
+                }
+        
+                
             }
+
         }
+
 
         ul{
             grid-column: 2/3;
@@ -224,6 +280,12 @@
             justify-content: center;
             align-items: center;
             padding: 0 0 0 0;
+
+            @media (max-width: 917px){
+                display: none;
+
+        
+            }
           
            
         
