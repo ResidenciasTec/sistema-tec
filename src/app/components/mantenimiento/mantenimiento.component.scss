@@ -19,7 +19,9 @@
     }
 
     @media (max-width: 687px){
-        grid-template-columns: 1em 1fr 1em;
+        grid-gap: 0px;
+        grid-template-columns: 10px 1fr 10px;
+       
     }
 
     @media (max-width: 602px){
