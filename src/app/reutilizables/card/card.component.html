@@ -1,0 +1,16 @@
+
+<article *ngIf="evento"  [routerLink]="['/eventos/'+ evento.id]">
+        <section class="replace">{{evento.evento}}</section>
+        <section>{{evento.status}}</section>
+</article>
+
+<article *ngIf="mantenimiento"  [routerLink]="['/mantenimiento/'+ mantenimiento.id]">
+    <section class="replace">{{mantenimiento.trabajo_realizado}}</section>
+    <section>{{mantenimiento.status}}</section>
+</article>
+
+<article *ngIf="salida" [routerLink]="['/salidas/'+ salida.id]">
+    <section *ngIf="salida.destino"class="replace">{{salida.destino}}</section>
+    <section *ngIf="!salida.destino">Aun no hay un destino.</section>
+    <section>{{salida.status}}</section>
+</article>

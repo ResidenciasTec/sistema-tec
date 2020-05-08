@@ -1,0 +1,33 @@
+
+<article class="eventos" *ngIf="eventos">
+	<div class="title-array">
+		<h2>Solicitudes de eventos</h2>
+		<p [routerLink]="['/eventos']">Ver todas</p>
+	</div>
+
+	<div>
+		<app-card *ngFor="let evento of eventos" [evento]="evento"></app-card>
+	</div>
+</article>
+
+<article class="mantenimiento" *ngIf="mantenimientos">
+	<div class="title-array">
+		<h2>Solicitudes de mantenimiento</h2>
+		<p [routerLink]="['/mantenimiento']">Ver todas</p>
+	</div>
+
+	<div>
+		<app-card *ngFor="let mantenimiento of mantenimientos" [mantenimiento]="mantenimiento"></app-card>
+	</div>
+</article>
+
+<article class="salidas" *ngIf="salidas">
+	<div class="title-array">
+		<h2>Solicitudes de salidas</h2>
+		<p [routerLink]="['/salidas']">Ver todas</p>
+	</div>
+
+	<div>
+		<app-card *ngFor="let salida of salidas" [salida]="salida"></app-card>
+	</div>
+</article>

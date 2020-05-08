@@ -28,6 +28,7 @@ export class InicioComponent implements OnInit {
   public mantenimientos;
   public eventos;
   public salidas;
+  public replace;
 
 
 
@@ -46,6 +47,8 @@ export class InicioComponent implements OnInit {
 
   ngOnInit(): void {
     window.scrollTo(0,0);
+
+      
 
     if(localStorage.getItem('identity')){
       this.identity = JSON.parse(localStorage.getItem('identity'));
@@ -142,6 +145,7 @@ export class InicioComponent implements OnInit {
   }
 
   getEventos(){
+    this._spinner.show();
     this._eventoService.getEventos(this.token).subscribe(
       response => {
         console.log(response);
@@ -152,7 +156,7 @@ export class InicioComponent implements OnInit {
 
           let eventoCrudo = JSON.parse(localStorage.getItem('eventos'));
 
-          this.eventos = eventoCrudo.slice(0, 4);
+          this.eventos = eventoCrudo.slice(0, 6);
 
 
         }else{
@@ -179,7 +183,8 @@ export class InicioComponent implements OnInit {
 
           let mantenimientoCrudo = JSON.parse(localStorage.getItem('mantenimientos'));
 
-          this.mantenimientos = mantenimientoCrudo.slice(0, 4);
+          this.mantenimientos = mantenimientoCrudo.slice(0, 6);
+          this._spinner.hide();
         
 
         }else{
@@ -206,7 +211,7 @@ export class InicioComponent implements OnInit {
 
           let salidaCrudo = JSON.parse(localStorage.getItem('salidas'));
 
-          this.salidas = salidaCrudo.slice(0, 4);
+          this.salidas = salidaCrudo.slice(0, 6);
 
         }else{
 

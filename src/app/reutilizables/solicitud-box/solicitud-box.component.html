@@ -1,0 +1,32 @@
+<article class="information" *ngIf="evento">
+    <section>actividades realizadas:</section>
+    <section class="description"  *ngIf="evento.actividades">{{evento.actividades}}</section>
+    <section class="description"  *ngIf="!evento.actividades">no hay actividades especificadas aun.</section>
+    <section>fecha de realizacion:</section>
+    <section>se lleva a cabo el {{fecha}}</section>
+    <section>horario:</section>
+    <section>empieza a las {{evento.hora_inicio}} y termina a las {{evento.hora_final}}</section>
+    <section>{{evento.status}}</section>
+</article>
+
+<article class="information" *ngIf="mantenimiento">
+    <section>actividades realizadas:</section>
+    <section class="description"  *ngIf="mantenimiento.trabajo_realizado">{{mantenimiento.trabajo_realizado}}</section>
+    <section class="description"  *ngIf="!mantenimiento.trabajo_realizado">no hay actividades especificadas aun.</section>
+    <section>fecha de realizacion:</section>
+    <section>se lleva a cabo el {{fecha}}</section>
+    <section>horario:</section>
+    <section>empieza a las {{mantenimiento.hora_inicio}} y termina a las {{mantenimiento.hora_final}}</section>
+    <section>{{mantenimiento.status}}</section>
+</article>
+
+<article class="information" *ngIf="salida">
+    <section>descripcion de las actividades:</section>
+    <section class="description"  *ngIf="salida.descripcion">{{salida.descripcion}}</section>
+    <section class="description"  *ngIf="!salida.descripcion">no hay actividades especificadas aun.</section>
+    <section>fecha de realizacion:</section>
+    <section>se lleva a cabo el {{fecha}}</section>
+    <section>horario:</section>
+    <section>empieza a las {{salida.hora_salida}} y termina a las {{salida.hora_llegada}}</section>
+    <section>{{salida.status}}</section>
+</article>

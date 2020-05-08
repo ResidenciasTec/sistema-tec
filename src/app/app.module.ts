@@ -47,6 +47,14 @@ import { EspaciosComponent } from './adminComponents/espacios/espacios.component
 import { UbicacionesComponent } from './adminComponents/ubicaciones/ubicaciones.component';
 import { SubdireccionesComponent } from './adminComponents/subdirecciones/subdirecciones.component';
 import { DepartamentosComponent } from './adminComponents/departamentos/departamentos.component';
+import { CardComponent } from './reutilizables/card/card.component';
+import { CardCarrouselComponent } from './reutilizables/card-carrousel/card-carrousel.component';
+import { CardGridComponent } from './reutilizables/card-grid/card-grid.component';
+import { CardFilterComponent } from './reutilizables/card-filter/card-filter.component';
+import { SolicitudBoxComponent } from './reutilizables/solicitud-box/solicitud-box.component';
+import { SolicitudCardComponent } from './reutilizables/solicitud-card/solicitud-card.component';
+import { SolicitudBotonesComponent } from './reutilizables/solicitud-botones/solicitud-botones.component';
+import { SolicitudCardsDatosComponent } from './reutilizables/solicitud-cards-datos/solicitud-cards-datos.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +91,15 @@ import { DepartamentosComponent } from './adminComponents/departamentos/departam
     EspaciosComponent,
     UbicacionesComponent,
     SubdireccionesComponent,
-    DepartamentosComponent
+    DepartamentosComponent,
+    CardComponent,
+    CardCarrouselComponent,
+    CardGridComponent,
+    CardFilterComponent,
+    SolicitudBoxComponent,
+    SolicitudCardComponent,
+    SolicitudBotonesComponent,
+    SolicitudCardsDatosComponent
   ],
   imports: [
     BrowserModule,

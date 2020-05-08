@@ -5,9 +5,10 @@
     min-height: 100%;
     max-width: 100vw;
     font-size: 1.5em;
-    background-color: #DA2643;
-    background-color: #393939;
-    color: #E9E3E3;
+    background-image: linear-gradient(to left, #c8baba, #f4e8c4);		
+    border: 1px solid #d0b6b6;
+    border-width: 0px 0px 1px 0px;
+    color: #6C5050;
 
     @media (max-width: 650px){
 

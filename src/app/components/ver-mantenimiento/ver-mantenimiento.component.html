@@ -1,51 +1,34 @@
+
 <main class="body-ver">
-    <div class="slider">
-        
-        <div>
-            <article *ngFor="let mnto of mantenimientos" [routerLink]="['/mantenimiento/'+ mnto.id]">
-                <section >{{mnto.trabajo_realizado}}</section>
-                <section>{{mnto.fecha}}</section>
 
-            </article>
-            <article [routerLink]="['/mantenimiento']">
-                <section>ver mas solicitudes</section>
-            </article>
+    <app-banner-crear [titulo]="mantenimiento.tipo"></app-banner-crear>
 
-        </div>
-
-    </div>
+    <ngx-spinner bdColor="rgba(44,43,43,0.8)" size="default" color="#d36969" type="timer">
+        <p style="color: white"> cargando datos... </p>
+    </ngx-spinner>
 
     <div class="container">
-        <article>
-            <section>Pedido por el departamento:</section>
-            <section></section>
-            <section>{{mantenimiento.departamento.departamento}}</section>
-            <section>telefono: {{mantenimiento.departamento.telefono}}</section>
-            <section>{{mantenimiento.departamento.correo}}</section>
-        </article>
 
-        <article>
-            <section>mantenimiento de tipo {{mantenimiento.tipo}}</section>
-            <section>{{mantenimiento.trabajo_realizado}}</section>
-            <section>se lleva a cabo el {{mantenimiento.fecha}}</section>
-            <section>empieza a las {{mantenimiento.hora_inicio}}</section>
-            <section> termina a las {{mantenimiento.hora_final}}</section>
-            <section>{{mantenimiento.status}}</section>
-            <section>creado por {{mantenimiento.user.name}} {{mantenimiento.user.surname}}</section>
-        </article>
+        <app-solicitud-box [mantenimiento]="mantenimiento" [fecha]="fecha"></app-solicitud-box>
 
-        <div class="botones">
-            <p [routerLink]="['/mantenimiento/actualizar/'+ mantenimiento.id]">actualizar solicitud</p>
-            <p>verificar solicitud</p>
-            <p>aprobar solicitud</p>
+
+        <div class="datos">
+            <div>
+                <app-solicitud-card [title]="departamento_text" [description]="mantenimiento.departamento.departamento"></app-solicitud-card>
+            </div>
+
+            <div>
+                <app-solicitud-card [title]="servicio_text" [description]="mantenimiento.servicio.status"></app-solicitud-card>
+
+            </div>
+
+            <div>
+                <app-solicitud-card [title]="user_text" [description]="mantenimiento.user.name +' ' +mantenimiento.user.surname"></app-solicitud-card>
+            </div>
         </div>
 
-        <article>
-            <section>tipo del servicio</section>
-            <section></section>
-            <section>{{mantenimiento.servicio.status}}</section>
+        <app-solicitud-botones [mantenimiento]="mantenimiento"></app-solicitud-botones>
 
-        </article>
     </div>
 
     <div class="pendiente">
@@ -55,4 +38,8 @@
         </p>
     </div>
 
+    <app-card-carrousel [mantenimientos]="mantenimientos"></app-card-carrousel>
+
 </main>
+
+

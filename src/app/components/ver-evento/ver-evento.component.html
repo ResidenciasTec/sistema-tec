@@ -1,54 +1,33 @@
 <main class="body-ver">
-    <div class="slider">
 
-        <div>
-            <article *ngFor="let evnt of eventos" [routerLink]="['/eventos/'+ evnt.id]">
-                <section>{{evnt.evento}}</section>
-                <section>{{evnt.fecha}}</section>
+    <app-banner-crear [titulo]="textoCrear"></app-banner-crear>
 
-            </article>
-            <article [routerLink]="['/eventos']">
-                <section>ver mas solicitudes</section>
-            </article>
-
-        </div>
-
-    </div>
+    <ngx-spinner bdColor="rgba(44,43,43,0.8)" size="default" color="#d36969" type="timer">
+        <p style="color: white"> cargando datos... </p>
+    </ngx-spinner>
 
     <div class="container">
 
-        <article>
-            <section>Pedido por el departamento:</section>
-            <section></section>
-            <section>{{evento.departamento.departamento}}</section>
-            <section>telefono: {{evento.departamento.telefono}}</section>
-            <section>{{evento.departamento.correo}}</section>
-        </article>
+        <app-solicitud-box [evento]="evento" [fecha]="fecha"></app-solicitud-box>
 
-        <article>
-            <section>{{evento.evento}}</section>
-            <section *ngIf="!evento.actividades">no hay actividades especificadas aun.</section>
-            <section *ngIf="evento.actividades">{{evento.actividades}}</section>
-            <section>se lleva a cabo el {{evento.fecha}}</section>
-            <section>empieza a las {{evento.hora_inicio}}</section>
-            <section> termina a las {{evento.hora_final}}</section>
-            <section>{{evento.status}}</section>
-            <section>creado por {{evento.user.name}} {{evento.user.surname}}</section>
-        </article>
 
-        <div class="botones">
-            <p [routerLink]="['/eventos/actualizar/'+ evento.id]">actualizar solicitud</p>
-            <p>verificar solicitud</p>
-            <p>aprobar solicitud</p>
+        <div class="datos">
+            <div class="departamento">
+                <app-solicitud-card [title]="departamento_text" [description]="evento.departamento.departamento"></app-solicitud-card>
+            </div>
+
+            <div class="evento">
+                <app-solicitud-card [title]="evento_text" [description]="evento.espacio.espacio"></app-solicitud-card>
+
+            </div>
+
+            <div>
+                <app-solicitud-card [title]="user_text" [description]="evento.user.name +' ' +evento.user.surname"></app-solicitud-card>
+            </div>
         </div>
 
+        <app-solicitud-botones [evento]="evento"></app-solicitud-botones>
 
-        <article>
-            <section>lugar del evento:</section>
-            <section></section>
-            <section>{{evento.espacio.espacio}}</section>
-
-        </article>
     </div>
 
     <div class="pendiente">
@@ -57,5 +36,7 @@
             el pdf
         </p>
     </div>
-    
+
+    <app-card-carrousel [eventos]="eventos"></app-card-carrousel>
+
 </main>
