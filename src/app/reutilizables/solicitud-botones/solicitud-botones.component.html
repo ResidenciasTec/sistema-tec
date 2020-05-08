@@ -1,0 +1,17 @@
+<div class="botones" *ngIf="evento">
+    <p [routerLink]="['/eventos/actualizar/'+ evento.id]">actualizar solicitud</p>
+    <p>verificar solicitud</p>
+    <p>aprobar solicitud</p>
+</div>
+
+<div class="botones" *ngIf="mantenimiento">
+    <p [routerLink]="['/mantenimiento/actualizar/'+ mantenimiento.id]">actualizar solicitud</p>
+    <p>verificar solicitud</p>
+    <p>aprobar solicitud</p>
+</div>
+
+<div class="botones" *ngIf="salida">
+    <p [routerLink]="['/salidas/actualizar/'+ salida.id]">actualizar solicitud</p>
+    <p>verificar solicitud</p>
+    <p>aprobar solicitud</p>
+</div>

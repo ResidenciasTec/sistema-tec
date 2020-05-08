@@ -1,0 +1,31 @@
+article{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2em 1fr;
+    background-color: #ecd1b9;
+    border-radius: 5px;
+    min-height: 100%;
+    min-width: 30em;
+
+    color: #605f5f;
+    white-space: hidden;
+
+    section{
+        padding: .5em;
+        font-size: 1.3em; 
+        
+
+        &:first-child{
+           padding: .5em;
+           background-color: #d0b5a3;
+           font-size: 1.1em;
+           border-top-left-radius: 5px;
+           border-top-right-radius: 5px;
+        }
+
+        
+
+    }
+}

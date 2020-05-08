@@ -1,60 +1,35 @@
+
 <main class="body-ver">
-    <div class="slider">
-        
-        <div>
-            <article *ngFor="let sal of salidas" [routerLink]="['/salidas/'+ sal.id]">
-                <section *ngIf="sal.destino">{{sal.destino}}</section>
-                <section *ngIf="!sal.destino">adestino sin especificar aun.</section>
-                <section>{{sal.fecha}}</section>
 
-            </article>
-            <article [routerLink]="['/salidas']">
-                <section>ver mas solicitudes</section>
-            </article>
+    <app-banner-crear *ngIf="salida.destino" [titulo]="salida.destino"></app-banner-crear>
+    <app-banner-crear *nIf="!salida.destino" [titulo]="textoCrear"></app-banner-crear>
 
-        </div>
-
-    </div>
-    <ngx-spinner bdColor = "rgba(44,43,43,0.8)" size = "default" color = "#d36969" type = "timer" >
-        <p style="color: white" > cargando datos... </p>
-</ngx-spinner>
+    <ngx-spinner bdColor="rgba(44,43,43,0.8)" size="default" color="#d36969" type="timer">
+        <p style="color: white"> cargando datos... </p>
+    </ngx-spinner>
 
     <div class="container">
-        <article>
-            <section>Pedido por el departamento:</section>
-            <section></section>
-            <section>{{salida.departamento.departamento}}</section>
-            <section>telefono: {{salida.departamento.telefono}}</section>
-            <section>{{salida.departamento.correo}}</section>
-        </article>
 
-        <article>
-            <section *ngIf="salida.destino">{{salida.destino}}</section>
-            <section *ngIf="!salida.destino">el destino aun no se especifica.</section>
-            <section *ngIf="!salida.descripcion">no hay actividades especificadas aun.</section>
-            <section *ngIf="salida.descripcion">{{salida.descripcion}}</section>
-            <section>se lleva a cabo el {{salida.fecha}}</section>
-            <section>empieza a las {{salida.hora_salida}}</section>
-            <section> termina a las {{salida.hora_llegada}}</section>
-            <section>{{salida.status}}</section>
-            <section>creado por {{salida.user.name}} {{salida.user.surname}}</section>
-        </article>
+        <app-solicitud-box [salida]="salida" [fecha]="fecha"></app-solicitud-box>
 
-        <div class="botones">
-            <p [routerLink]="['/salidas/actualizar/'+ salida.id]">actualizar solicitud</p>
-            <p>verificar solicitud</p>
-            <p>aprobar solicitud</p>
+
+        <div class="datos">
+            <div>
+                <app-solicitud-card [title]="departamento_text" [description]="salida.departamento.departamento"></app-solicitud-card>
+            </div>
+
+            <div>
+                <app-solicitud-card [title]="vehiculo_text" [description]="salida.vehiculo.vehiculo"></app-solicitud-card>
+
+            </div>
+
+            <div>
+                <app-solicitud-card [title]="user_text" [description]="salida.user.name +' ' +salida.user.surname"></app-solicitud-card>
+            </div>
         </div>
 
-        <article>
-            <section>vehiculo escogido:</section>
-<section></section>
+        <app-solicitud-botones [salida]="salida"></app-solicitud-botones>
 
- 
-            <section>{{salida.vehiculo.vehiculo}}</section>
-            <section>{{salida.vehiculo.marca}}</section>
-
-        </article>
     </div>
 
     <div class="pendiente">
@@ -63,5 +38,7 @@
             el pdf
         </p>
     </div>
+
+    <app-card-carrousel [salidas]="salidas"></app-card-carrousel>
 
 </main>

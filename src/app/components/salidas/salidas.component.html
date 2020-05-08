@@ -4,29 +4,23 @@
         <p style="color: white" > cargando datos... </p>
 </ngx-spinner>
 
+<app-card-grid [salidas]="salidas"></app-card-grid>
+
+<div class="filtrado">
+    <h2>filtrar solicitudes por: </h2>
+    <select appInput>
+        <option (click)="getSalidas()">mas recientes</option>
+        <option (click)="getAntiguos()">mas antiguos</option>
+        <option (click)="getPorMes()">por mes</option>
+        <option (click)="getPorStatus()">por estado</option>
+    </select>      
+</div>
+
+<div class="pagination">
     <div>
-        <article *ngFor="let salida of salidas" [routerLink]="['/salidas/'+salida.id]">
-            <section>{{salida.fecha}}</section>
-            <section *ngIf="salida.destino">{{salida.destino}}</section>
-            <section *ngIf="!salida.destino">el destino aun no se ha especificado.</section>
-            <section>{{salida.status}}</section>
-        </article>
-
-    </div>
-        
-    <div class="filtrado">
-        <h2>filtrar por:</h2>
-        <p (click)="getSalidas()">mas recientes</p>
-        <p (click)="getAntiguos()">mas antiguas</p>
-        <p (click)="getPorMes()">por mes</p>
-        <p (click)="getPorStatus()">aceptadas</p>
-    </div>
-
-    <div class="pagination">
         <P (click)="previousPage()">PAGINA ANTERIOR</P>
         <p>pagina {{current_page}} de {{last_page}}</p>
         <P (click)="nextPage()">PAGINA SIGUIENTE</P>
-
     </div>
-
+</div>
 </main>

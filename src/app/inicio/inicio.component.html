@@ -1,75 +1,18 @@
 
 <main class="body-inicio">
-	<div class="banner">
-		<h1>{{title}}</h1>
-		<p><a [routerLink]="['/perfil/solicitudes']">Ver mis solicitudes</a></p>
-	</div>
-
+	<app-banner-inicio [title]="title"></app-banner-inicio>
 
 	<div class="contenido">
 
-			<h1><strong>⚠ Solicitudes más recientes ⚠</strong> </h1>
+		<ngx-spinner bdColor = "rgba(44,43,43,0.8)" size = "default" color = "#d36969" type = "timer" >
+			<p style="color: white" > cargando datos... </p>
+		</ngx-spinner>
 
-		<article class="eventos">
-			<div class="title-array">
-				<h2>Solicitudes de eventos</h2>
-				<p [routerLink]="['/eventos']">Ver todas</p>
-			</div>
-		
+		<h1><strong>⚠ Solicitudes más recientes ⚠</strong> </h1>
 
-			<div *ngIf="loading">
-				<h3 class="loading">Cargando ...</h3>
-			</div>
-
-			<div *ngIf="!loading">
-				<article  *ngFor="let evento of eventos" [routerLink]="['/eventos/'+ evento.id]">
-					<section>{{evento.evento}}</section>
-					<section>{{evento.fecha}}</section>
-					<section>{{evento.status}}</section>
-				</article>
-			</div>
-		</article>
-
-		<article class="mantenimiento">
-			<div class="title-array">
-				<h2>Solicitudes de mantenimiento</h2>
-				<p [routerLink]="['/mantenimiento']">Ver todas</p>
-			</div>
-	
-			<div *ngIf="loading">
-				<h3 class="loading">Cargando ...</h3>
-			</div>
-
-			<div *ngIf="!loading">
-				<article *ngFor="let mantenimiento of mantenimientos" [routerLink]="['/mantenimiento/'+ mantenimiento.id]">
-					<section>{{mantenimiento.trabajo_realizado}}</section>
-					<section>{{mantenimiento.fecha}}</section>
-					<section>{{mantenimiento.status}}</section>
-				</article>
-			</div>
-
-		</article>
-
-		<article class="salidas">
-			<div class="title-array">
-				<h2>Solicitudes de salidas</h2>
-				<p [routerLink]="['/salidas']">Ver todas</p>
-			</div>
-
-			<div *ngIf="loading">
-				<h3 class="loading">Cargando ...</h3>
-			</div>
-
-			<div *ngIf="!loading">
-				<article *ngFor="let salida of salidas" [routerLink]="['/salidas/'+ salida.id]">
-					<section *ngIf="salida.destino">{{salida.destino}}</section>
-					<section *ngIf="!salida.destino">Aun no hay un destino.</section>
-					<section>{{salida.fecha}}</section>
-					<section>{{salida.status}}</section>
-				</article>
-			</div>
-
-		</article>
+		<app-card-carrousel [eventos]="eventos"></app-card-carrousel>
+		<app-card-carrousel [mantenimientos]="mantenimientos"></app-card-carrousel>
+		<app-card-carrousel [salidas]="salidas"></app-card-carrousel>
 		
 	</div>
 

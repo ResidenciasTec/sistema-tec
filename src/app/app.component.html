@@ -1,5 +1,5 @@
 
-<main [className]="hamburguer ? 'body-app move' : 'body-app'">
+<main [className]="hamburguer ? 'body-app move' : 'body-app scrollOff'">
 
     <header id="header-nolog" *ngIf="!identity" >
         <h1><strong> ITM: Recursos materiales y servicios</strong></h1>
@@ -11,7 +11,7 @@
    
     <header id="header-silog" *ngIf="identity && identity.name">
 
-        <ul [className]="hamburguer ? 'nav-hamburguer nav-show' : 'nav-hamburguer'">
+        <ul [className]="hamburguer ? 'nav-hamburguer nav-show scrollOff' : 'nav-hamburguer'">
             <li (click)="hamburguerOpen()" [routerLink]="['/inicio']">inicio</li>
             <li>panel
                 <ul [className]="subhamburguer ? 'subnav-hamburguer' : 'subnav-hamburguer'">

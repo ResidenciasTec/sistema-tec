@@ -47,6 +47,7 @@ export class SalidasComponent implements OnInit {
     this._spinner.show();
     this._salidaService.getSalidas(this.token).subscribe(
       response => {
+        this._spinner.show();
         if(response.status == 'success'){
           this.salidas = response.elementos.data;
           localStorage.setItem('eventos',JSON.stringify(response.elementos.data));
