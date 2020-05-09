@@ -63,6 +63,7 @@
                     <li [routerLink]="['/salidas']">Salidas</li>
                     <li [routerLink]="['/departamentos']">departamentos</li>
                     <li [routerLink]="['/transportes']">transportes</li>
+                    <li [routerLink]="['/departamentos']">departamentos</li>
                 </ul>
                 </strong></a>
             </li>
@@ -73,12 +74,15 @@
                     <li [routerLink]="['mantenimiento/crear']">Mantenimiento</li>
                     <li [routerLink]="['/salidas/crear']">Salidas</li>
                     <li [routerLink]="['/vehiculos/crear']">vehiculos</li>
+                    <li [routerLink]="['/departamento/crear']">departamentos</li>
                 </ul>
 
                 <ul *ngIf="submenu_crear == false" class="submenu-crear hidden">
                     <li [routerLink]="['/eventos/crear']">Eventos</li>
                     <li [routerLink]="['mantenimiento/crear']">Mantenimiento</li>
                     <li [routerLink]="['/salidas/crear']">Salidas</li>
+                    <li [routerLink]="['/vehiculos/crear']">vehiculos</li>
+                    <li [routerLink]="['/departamento/crear']">departamentos</li>
                 </ul> 
                 </strong></a>
             </li> 

@@ -1,87 +1,29 @@
-<main class="body-departamentos">
+<main class="body-solicitudes">
+
     <app-banner-crear [titulo]="textoCrear"></app-banner-crear>
+
     <ngx-spinner bdColor = "rgba(44,43,43,0.8)" size = "default" color = "#d36969" type = "timer" >
         <p style="color: white" > cargando datos... </p>
-    </ngx-spinner>
-    <div class="elementos">
-        <article (click)="changeCrear()">AGREGAR NUEVO DEPARTAMENTO</article>
-        <article *ngFor="let departamento of departamentos">
-            <section (click)="verDetalle(departamento)">{{departamento.departamento}}</section>
-            <section (click)="changeEditar(departamento)">ACTUALIZAR</section>
-        </article>
+</ngx-spinner>
+
+    <app-card-grid [departamentos]="departamentos"></app-card-grid>
+
+    <div class="filtrado">
+        <h2>filtrar solicitudes por: </h2>
+        <select appInput>
+            <option>selecciona:</option>
+            <option>mas recientes</option>
+
+        </select>      
+    </div>
+
+    <div class="pagination">
+        <div>
+            <P>PAGINA ANTERIOR</P>
+            <p>pagina 1 de 2</p>
+            <P>PAGINA SIGUIENTE</P>
+        </div>
+    </div>
         
-    </div>
-    <div class="default" *ngIf="!detalle && !crear && !actualizar">
-        <p>selecciona un departamento para ver su informacion.</p>
-        <p>edita el departamento seleccionado</p>
-        <p>crea nuevos departamentos</p>
-    </div>
-    <div class="detalle" *ngIf="detalle">
-            <p>Nombre del  departamento</p>
-            <P>{{dataDepartamento.departamento}}</P>
-            <p><strong>Telefono:</strong></p>
-            <p>{{dataDepartamento.telefono}}</p>
-            <p><strong>Correo:</strong></p>
-            <p>{{dataDepartamento.correo}}</p>
-            <p><strong>Subdireccion:</strong></p>
-            <p>{{dataDepartamento.subdireccion_id}}</p>
-    </div>
-    <div class="formulario" *ngIf="crear">
-        <form [formGroup]="formCrear" (ngSubmit)="submitCrear(formCrear.value)">
-
-            <label>
-                <input type="text" appInput formControlName="departamento" placeholder="nombre del departamento.." >
-            </label>
-            <label>
-                <input type="tel" appInput formControlName="telefono" placeholder="telefono de contacto.." >
-            </label>
-            <label>
-                <input type="text" appInput formControlName="correo" placeholder="correo de contacto..." >
-            </label>
-
-            <label>
-                <select formControlName="subdireccion_id" appInput>
-                    <option  selected>selecciona una subdireccion:</option>
-                    <option *ngFor="let subdireccion of subdirecciones" value="{{subdireccion.id}}">{{subdireccion.subdireccion}}</option>
-                </select>
-            </label>
-            <label>
-                <input type="submit" class="btn" appSubmit  [disabled]="formCrear.invalid" value="crear departamento">
-            </label>
-            <label>
-                <p (click)="cerrar()">cerrar</p>
-            </label>
-        </form>
-
-    </div>
-
-    <div class="formulario" *ngIf="actualizar">
-        <form [formGroup]="formEditar" (ngSubmit)="submitActualizar(formEditar.value)">
-
-            <label>
-                <input type="text" appInput formControlName="departamento" >
-            </label>
-            <label>
-                <input type="text" appInput formControlName="telefono" >
-            </label>
-            <label>
-                <input type="text" appInput formControlName="correo" >
-            </label>
-
-            <label>
-                <select formControlName="subdireccion_id" appInput>
-                    <option  selected>selecciona una subdireccion:</option>
-                    <option *ngFor="let subdireccion of subdirecciones" value="{{subdireccion.id}}">{{subdireccion.subdireccion}}</option>
-                </select>
-            </label>
-            <label>
-                <input type="submit" class="btn" appSubmit  [disabled]="formEditar.invalid" value="actualizar departamento">
-            </label>
-            <label>
-                <p (click)="cerrar()">cerrar</p>
-            </label>
-        </form>
-
-    </div>
 
 </main>

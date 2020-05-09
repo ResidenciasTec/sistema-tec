@@ -40,3 +40,14 @@
     <section>{{vehiculo.kilometraje}}</section>
     <section>{{vehiculo.status_id}}</section>
 </article>
+
+<article class="information" *ngIf="departamento">
+    <section>descripcion de las actividades:</section>
+    <section class="description">descripcion del departamento y sus actividades realizadas.</section>
+    <section>numero de telefono:</section>
+    <section>{{departamento.telefono}}</section>
+    <section>correo electronico:</section>
+    <section>{{departamento.correo}}</section>
+    <section>{{departamento.subdireccion_id}}</section>
+</article>
+

@@ -124,7 +124,7 @@ const  appRoutes: Routes = [
 
     //rutas de usuario administrador para crear
     {path: 'vehiculos/crear', component: CrearTransporteComponent, canActivate:[UserGuard]},
-    {path: 'departamentos/crear', component: CrearDepartamentoComponent, canActivate:[UserGuard]},
+    {path: 'departamento/crear', component: CrearDepartamentoComponent, canActivate:[UserGuard]},
     
     //otras rutas 
     {path: 'usuarios', component: UsuariosComponent, canActivate:[UserGuard]},
