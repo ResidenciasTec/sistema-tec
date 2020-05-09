@@ -10,6 +10,9 @@ export class SolicitudBotonesComponent implements OnInit {
   @Input() evento: any;
   @Input() mantenimiento: any;
   @Input() salida: any;
+  @Input() vehiculo: any;
+  @Input() departamento: any;
+  
   constructor() { }
 
   ngOnInit(): void {

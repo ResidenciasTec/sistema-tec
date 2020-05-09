@@ -48,6 +48,18 @@ import {EspaciosComponent} from "./adminComponents/espacios/espacios.component";
 import {SubdireccionesComponent} from "./adminComponents/subdirecciones/subdirecciones.component";
 import {TransportesComponent} from "./adminComponents/transportes/transportes.component";
 
+//componentes de administrador para ver
+import {VerTransporteComponent} from "./adminComponents/ver-transporte/ver-transporte.component";
+import {VerDepartamentoComponent} from "./adminComponents/ver-departamento/ver-departamento.component";
+
+//componentes de adminsitrador para actualizar
+import {ActualizarTransporteComponent} from "./adminComponents/actualizar-transporte/actualizar-transporte.component";
+import {ActualizarDepartamentoComponent} from "./adminComponents/actualizar-departamento/actualizar-departamento.component";
+
+//componentes de administrador para crear
+import {CrearTransporteComponent} from "./adminComponents/crear-transporte/crear-transporte.component";
+import {CrearDepartamentoComponent} from "./adminComponents/crear-departamento/crear-departamento.component";
+
 //otros componentes
 import {TransporteComponent} from "./components/transporte/transporte.component";
 import {UsuariosComponent} from "./components/usuarios/usuarios.component";
@@ -55,7 +67,7 @@ import {UsuariosComponent} from "./components/usuarios/usuarios.component";
 //importar guards
 import {UserGuard} from "./services/user.guard";
 
-
+ 
 
 //definir las rutas
 const  appRoutes: Routes = [
@@ -102,8 +114,19 @@ const  appRoutes: Routes = [
     {path: 'ubicaciones', component: UbicacionesComponent, canActivate:[UserGuard]},
     {path: 'departamentos', component: DepartamentosComponent, canActivate:[UserGuard]},
 
-    //otras rutas
-    {path: 'transporte', component: TransporteComponent, canActivate:[UserGuard]},
+    //rutas de usuario administrador para ver
+    {path: 'vehiculo/:id', component: VerTransporteComponent, canActivate:[UserGuard] },
+    {path: 'departamentos/:id', component: VerDepartamentoComponent, canActivate:[UserGuard]},
+
+    //rutas de usuario administrador para actualizar
+    {path: 'vehiculos/actualizar/:id', component: ActualizarTransporteComponent, canActivate:[UserGuard]},
+    {path: 'departamentos/actualizar/:id', component: ActualizarDepartamentoComponent, canActivate:[UserGuard]},
+
+    //rutas de usuario administrador para crear
+    {path: 'vehiculos/crear', component: CrearTransporteComponent, canActivate:[UserGuard]},
+    {path: 'departamentos/crear', component: CrearDepartamentoComponent, canActivate:[UserGuard]},
+    
+    //otras rutas 
     {path: 'usuarios', component: UsuariosComponent, canActivate:[UserGuard]},
 
      //ruta de error

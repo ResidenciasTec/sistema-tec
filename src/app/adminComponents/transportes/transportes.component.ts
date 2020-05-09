@@ -17,11 +17,6 @@ export class TransportesComponent implements OnInit {
   textoCrear: String;
   token;
   transportes;
-  formCrear: FormGroup;
-  formEditar: FormGroup;
-  crear: Boolean;
-  actualizar: Boolean;
-  detalle: Boolean;
   statusvehiculos: any;
   dataVehiculo: any
 
@@ -40,9 +35,6 @@ export class TransportesComponent implements OnInit {
   ) {
     this.textoCrear = "todos los vehiculos"
     this.token = this._variableService.getToken();
-    this.crear = false;
-    this.actualizar = false;
-    this.detalle = false;
    }
 
   ngOnInit(): void {
@@ -51,31 +43,7 @@ export class TransportesComponent implements OnInit {
     this.getStatusvehiculos();
 
   }
-
-  private crearForm() {
-
-		this.formCrear = this._formBuilder.group({
-      vehiculo: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
-      marca: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
-      placas: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
-      kilometraje: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
-      status_id: new FormControl('', { validators: [Validators.required], updateOn: 'change'})
-		});
-
-  }  
-
-  private editarForm(data) {
-    this.dataVehiculo = data;
-
-		this.formEditar = this._formBuilder.group({
-      vehiculo: new FormControl(data.vehiculo, { validators: [Validators.required], updateOn: 'change' }),
-      marca: new FormControl(data.marca, { validators: [Validators.required], updateOn: 'change' }),
-      placas: new FormControl(data.placas, { validators: [Validators.required], updateOn: 'change' }),
-      kilometraje: new FormControl(data.kilometraje, { validators: [Validators.required], updateOn: 'change' }),
-      status_id: new FormControl(data.status_id, { validators: [Validators.required], updateOn: 'change'})
-		});
-
-  }  
+ 
 
   getTransportes(){
     this._spinner.show();
@@ -118,83 +86,5 @@ export class TransportesComponent implements OnInit {
     )
 
   }
-
-  changeCrear(){
-    this.crear = true;
-    this.actualizar = false;
-    this.detalle = false;
-    this.crearForm();
-    this.textoCrear = "agrega un vehiculo nuevo"
-
-  }
-
-  changeEditar(data){
-      this.actualizar = true;
-      this.crear = false;
-      this.detalle = false;
-      this.editarForm(data);
-      this.textoCrear = "edita el vehiculo seleccionado";
-  }
-
-  verDetalle(data){
-    this.dataVehiculo = data;
-    this.actualizar = false;
-    this.crear = false;
-    this.detalle = true;
-    this.textoCrear = "datos del vehiculo";
-
-  }
-
-  submitCrear(form){
-    this._transporteService.createTransporte(this.token, form).subscribe(
-      response => {
-        if(response.status == 'success'){
-          this._toastr.success('el vehiculo se ha creado con exito', 'LISTO');
-          this.getTransportes();
-
-        }else{
-          this._toastr.error('parece que ha habido algun error','OOPS');
-
-        }
-      },
-      error => {
-        this._toastr.error('parece que los datos han sido erroneos','OOPS');
-        console.log(<any>error);
-
-      }
-    );
-
-  }
-
-  submitActualizar(form){
-    this._transporteService.updateTransporte(this.token, form, this.dataVehiculo.id).subscribe(
-      response => {
-        if(response.status == 'success'){
-          this._toastr.success('el vehiculo se ha actualizado correctamente', 'LISTO');
-          this.getTransportes();
-
-        }else{
-          this._toastr.error('parece que ango anda mal, intentalo nuevamente', 'UPS');
-
-        }
-      },
-      error =>{
-        console.log(<any>error);
-        this._toastr.error('parece que los datos ingresados no son correctos', 'UPS');
-
-      }
-    )
-
-  }
-
-  cerrar(){
-
-    this.crear = false;
-    this.actualizar = false;
-    this.detalle = false;
-    this.textoCrear = "todos los vehiculos"
-    
-  }
-
 
 }

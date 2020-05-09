@@ -31,3 +31,14 @@
 		<app-card *ngFor="let salida of salidas" [salida]="salida"></app-card>
 	</div>
 </article>
+
+<article class="salidas" *ngIf="vehiculos">
+	<div class="title-array">
+		<h2>vehiculos</h2>
+		<p [routerLink]="['/transportes']">Ver todas</p>
+	</div>
+
+	<div>
+		<app-card *ngFor="let vehiculo of vehiculos" [vehiculo]="vehiculo"></app-card>
+	</div>
+</article>

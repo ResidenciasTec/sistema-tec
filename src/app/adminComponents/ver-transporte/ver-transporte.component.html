@@ -1,0 +1,31 @@
+
+<main class="body-ver">
+
+    <app-banner-crear [titulo]="vehiculo.vehiculo"></app-banner-crear>
+
+    <ngx-spinner bdColor="rgba(44,43,43,0.8)" size="default" color="#d36969" type="timer">
+        <p style="color: white"> cargando datos... </p>
+    </ngx-spinner>
+
+    <div class="container">
+
+        <app-solicitud-box [vehiculo]="vehiculo"></app-solicitud-box>
+
+
+        <div class="datos">
+
+        </div>
+
+        <app-solicitud-botones [vehiculo]="vehiculo"></app-solicitud-botones>
+
+    </div>
+
+    <div class="pendiente">
+        <p>
+            el vehiculo solo puede ser creado por el usuario administrador.
+        </p>
+    </div>
+
+    <app-card-carrousel [vehiculos]="vehiculos"></app-card-carrousel>
+
+</main>

@@ -8,11 +8,9 @@
 
 <div class="filtrado">
     <h2>filtrar solicitudes por: </h2>
-    <select appInput>
-        <option (click)="getMantenimientos()">mas recientes</option>
-        <option (click)="getAntiguos()">mas antiguos</option>
-        <option (click)="getPorMes()">por mes</option>
-        <option (click)="getPorStatus()">por estado</option>
+    <select appInput #t (change)="getOptions(t.value)">
+        <option>seleccionar:</option>
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
     </select>      
 </div>
 

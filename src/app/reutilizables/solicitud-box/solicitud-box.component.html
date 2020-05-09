@@ -30,3 +30,13 @@
     <section>empieza a las {{salida.hora_salida}} y termina a las {{salida.hora_llegada}}</section>
     <section>{{salida.status}}</section>
 </article>
+
+<article class="information" *ngIf="vehiculo">
+    <section>marca del vehiculo:</section>
+    <section class="description">{{vehiculo.marca}}</section>
+    <section>placas del vehiculo</section>
+    <section>{{vehiculo.placas}}</section>
+    <section>estado del vehiculo</section>
+    <section>{{vehiculo.kilometraje}}</section>
+    <section>{{vehiculo.status_id}}</section>
+</article>

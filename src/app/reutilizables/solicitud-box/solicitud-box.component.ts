@@ -11,6 +11,8 @@ export class SolicitudBoxComponent implements OnInit {
   @Input() mantenimiento: any;
   @Input() salida: any;
   @Input() fecha: any;
+  @Input() vehiculo: any;
+  @Input() departamento: any;
   
   constructor() { }
 

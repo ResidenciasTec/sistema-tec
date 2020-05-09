@@ -21,8 +21,9 @@ export class MantenimientoComponent implements OnInit {
   public current_page;
   public next_page_url;
   public prev_page_url;
-
-
+  types: string[];
+  order: { type: string; };
+  
   constructor(
     private _mantenimientoService: MantenimientoService,
     private _spinner: NgxSpinnerService,
@@ -33,6 +34,11 @@ export class MantenimientoComponent implements OnInit {
       this.title = "pagina de mantenimiento";
       this.textoCrear = "Solicitudes de mantenimientos"
       this.token = this._variableService.getToken();
+      this.types = [ 'mas recientes', 'mas antiguos', 'por mes', 'por estado' ];
+      
+      this.order = {
+        type: 'type1'          
+    }; 
   }
 
   ngOnInit(): void {
@@ -145,6 +151,30 @@ export class MantenimientoComponent implements OnInit {
   }
 
   getPorStatus(){
+
+  }
+
+  getOptions(value){
+    let data = this.order.type=value;
+
+    switch(data){
+      case 'mas recientes':
+        this.getMantenimientos();
+      break;
+
+      case 'mas antiguos':
+        this.getAntiguos();
+      break;
+
+      case 'por mes':
+        this.getPorMes();
+      break;
+
+      case 'por status':
+        this.getPorStatus();
+      break;
+
+    }
 
   }
 

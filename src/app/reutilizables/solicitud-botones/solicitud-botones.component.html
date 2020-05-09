@@ -15,3 +15,9 @@
     <p>verificar solicitud</p>
     <p>aprobar solicitud</p>
 </div>
+
+<div class="botones" *ngIf="vehiculo">
+    <p [routerLink]="['/vehiculos/actualizar/'+ vehiculo.id]">actualizar vehiculo</p>
+    <p>verificar vehiculo</p>
+    <p>aprobar vehiculo</p>
+</div>
