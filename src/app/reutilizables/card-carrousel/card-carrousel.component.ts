@@ -10,6 +10,8 @@ export class CardCarrouselComponent implements OnInit {
   @Input() eventos: any;
   @Input() mantenimientos: any;
   @Input() salidas: any;
+  @Input() vehiculos: any;
+  @Input() departamentos: any;
   
   constructor() { }
 

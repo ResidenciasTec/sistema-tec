@@ -55,6 +55,12 @@ import { SolicitudBoxComponent } from './reutilizables/solicitud-box/solicitud-b
 import { SolicitudCardComponent } from './reutilizables/solicitud-card/solicitud-card.component';
 import { SolicitudBotonesComponent } from './reutilizables/solicitud-botones/solicitud-botones.component';
 import { SolicitudCardsDatosComponent } from './reutilizables/solicitud-cards-datos/solicitud-cards-datos.component';
+import { VerTransporteComponent } from './adminComponents/ver-transporte/ver-transporte.component';
+import { VerDepartamentoComponent } from './adminComponents/ver-departamento/ver-departamento.component';
+import { ActualizarTransporteComponent } from './adminComponents/actualizar-transporte/actualizar-transporte.component';
+import { ActualizarDepartamentoComponent } from './adminComponents/actualizar-departamento/actualizar-departamento.component';
+import { CrearDepartamentoComponent } from './adminComponents/crear-departamento/crear-departamento.component';
+import { CrearTransporteComponent } from './adminComponents/crear-transporte/crear-transporte.component';
 
 @NgModule({
   declarations: [
@@ -99,7 +105,13 @@ import { SolicitudCardsDatosComponent } from './reutilizables/solicitud-cards-da
     SolicitudBoxComponent,
     SolicitudCardComponent,
     SolicitudBotonesComponent,
-    SolicitudCardsDatosComponent
+    SolicitudCardsDatosComponent,
+    VerTransporteComponent,
+    VerDepartamentoComponent,
+    ActualizarTransporteComponent,
+    ActualizarDepartamentoComponent,
+    CrearDepartamentoComponent,
+    CrearTransporteComponent
   ],
   imports: [
     BrowserModule,

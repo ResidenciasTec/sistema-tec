@@ -10,6 +10,8 @@ export class CardComponent implements OnInit {
   @Input() evento: any;
   @Input() mantenimiento: any;
   @Input() salida: any;
+  @Input() vehiculo: any;
+  @Input() departamento: any;
 
   constructor() { }
 

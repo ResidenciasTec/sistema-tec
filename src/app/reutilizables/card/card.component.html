@@ -14,3 +14,13 @@
     <section *ngIf="!salida.destino">Aun no hay un destino.</section>
     <section>{{salida.status}}</section>
 </article>
+ 
+<article *ngIf="vehiculo" [routerLink]="['/vehiculo/'+ vehiculo.id]">
+    <section *ngIf="vehiculo.vehiculo"class="replace">{{vehiculo.vehiculo}}</section>
+    <section>{{vehiculo.status}}</section>
+</article>
+
+<article *ngIf="departamento" [routerLink]="['/departamentos/'+ departamento.id]">
+    <section *ngIf="departamento.departamento"class="replace">{{departamento.departamento}}</section>
+    <section>{{departamento.status}}</section>
+</article>

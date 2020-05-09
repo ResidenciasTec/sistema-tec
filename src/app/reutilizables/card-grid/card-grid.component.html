@@ -9,3 +9,11 @@
 <div class="list" *ngIf="salidas">
     <app-card *ngFor="let salida of salidas" [salida]="salida"></app-card>
 </div>
+
+<div class="list" *ngIf="vehiculos">
+    <app-card *ngFor="let vehiculo of vehiculos" [vehiculo]="vehiculo"></app-card>
+</div>
+
+<div class="list" *ngIf="departamentos">
+    <app-card *ngFor="let departamento of departamentos" [departamento]="departamento"></app-card>
+</div>
