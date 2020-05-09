@@ -43,6 +43,7 @@ export class VerTransporteComponent implements OnInit {
 
       let id = +params['id'];
       this._spinner.show();
+      window.scrollTo(0,0);
 
       this._transporteService.getTransporte(this.token, id).subscribe(
         response =>{
