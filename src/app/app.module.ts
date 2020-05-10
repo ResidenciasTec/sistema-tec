@@ -61,6 +61,11 @@ import { ActualizarTransporteComponent } from './adminComponents/actualizar-tran
 import { ActualizarDepartamentoComponent } from './adminComponents/actualizar-departamento/actualizar-departamento.component';
 import { CrearDepartamentoComponent } from './adminComponents/crear-departamento/crear-departamento.component';
 import { CrearTransporteComponent } from './adminComponents/crear-transporte/crear-transporte.component';
+import { PrintComponent } from './adminComponents/print/print.component';
+import { EventopdfComponent } from './adminComponents/eventopdf/eventopdf.component';
+import { MantenimientopdfComponent } from './adminComponents/mantenimientopdf/mantenimientopdf.component';
+import { SalidapdfComponent } from './adminComponents/salidapdf/salidapdf.component';
+import { ButtonComponent } from './reutilizables/button/button.component';
 
 @NgModule({
   declarations: [
@@ -111,7 +116,12 @@ import { CrearTransporteComponent } from './adminComponents/crear-transporte/cre
     ActualizarTransporteComponent,
     ActualizarDepartamentoComponent,
     CrearDepartamentoComponent,
-    CrearTransporteComponent
+    CrearTransporteComponent,
+    PrintComponent,
+    EventopdfComponent,
+    MantenimientopdfComponent,
+    SalidapdfComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,

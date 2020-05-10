@@ -60,6 +60,11 @@ import {ActualizarDepartamentoComponent} from "./adminComponents/actualizar-depa
 import {CrearTransporteComponent} from "./adminComponents/crear-transporte/crear-transporte.component";
 import {CrearDepartamentoComponent} from "./adminComponents/crear-departamento/crear-departamento.component";
 
+//componentes para generar pdf
+import {EventopdfComponent} from "./adminComponents/eventopdf/eventopdf.component";
+import {MantenimientopdfComponent} from "./adminComponents/mantenimientopdf/mantenimientopdf.component";
+import {SalidapdfComponent} from "./adminComponents/salidapdf/salidapdf.component";
+
 //otros componentes
 import {TransporteComponent} from "./components/transporte/transporte.component";
 import {UsuariosComponent} from "./components/usuarios/usuarios.component";
@@ -126,8 +131,14 @@ const  appRoutes: Routes = [
     {path: 'vehiculos/crear', component: CrearTransporteComponent, canActivate:[UserGuard]},
     {path: 'departamento/crear', component: CrearDepartamentoComponent, canActivate:[UserGuard]},
     
+    //rutas para generar solicictudes en pdf
+    {path: 'eventos/pdf/:id', component: EventopdfComponent, canActivate: [UserGuard]},
+    {path: 'mantenimientos/pdf/:id', component: MantenimientopdfComponent, canActivate: [UserGuard]},
+    {path: 'salidas/pdf/:id', component: SalidapdfComponent, canActivate:[UserGuard]},
+
     //otras rutas 
     {path: 'usuarios', component: UsuariosComponent, canActivate:[UserGuard]},
+
 
      //ruta de error
     {path: '**', component: ErrorComponent },

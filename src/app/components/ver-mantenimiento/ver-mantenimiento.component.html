@@ -25,17 +25,30 @@
             <div>
                 <app-solicitud-card [title]="user_text" [description]="mantenimiento.user.name +' ' +mantenimiento.user.surname"></app-solicitud-card>
             </div>
+
+            <div>
+                <app-button (click)="showPdf()" [text]="generar_pdf"></app-button>
+                <app-button (click)="downloadPdf()" [text]="descargar_pdf"></app-button>
+            </div>
         </div>
 
         <app-solicitud-botones [mantenimiento]="mantenimiento"></app-solicitud-botones>
 
     </div>
 
-    <div class="pendiente">
+    <div class="pendiente" *ngIf="admin">
         <p>
             la solicitud aun esta pendiente de aceptacion, espera a que el usuario administrador la acepte para generar
             el pdf
         </p>
+    </div>
+
+    
+    <div class="pendiente" *ngIf="!admin">
+            <p>
+                puedes generar un pdf de esta solicitud y descargarla para su posterios uso en el departamento
+            </p>
+    
     </div>
 
     <app-card-carrousel [mantenimientos]="mantenimientos"></app-card-carrousel>

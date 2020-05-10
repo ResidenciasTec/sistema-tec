@@ -1,0 +1,19 @@
+p{
+    text-align: center;
+    background-color: transparent;
+    color: #605f5f;
+    border: 1px solid #605f5f;
+    border-radius: 5px;
+    padding: .5em;
+    font-size: 1.1em;
+    min-width: 12em;
+    min-height: 2.5em;
+
+    &:hover{
+        transition: background-color .4s, color .5s;
+        
+        cursor: pointer;
+        background-color: #605f5f;
+        color: white;
+    }
+}

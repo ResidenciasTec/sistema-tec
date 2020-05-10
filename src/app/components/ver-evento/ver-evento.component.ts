@@ -5,6 +5,16 @@ import { NgxSpinnerService } from "ngx-spinner";
 import * as moment from 'moment';
 import 'moment/locale/es';
 
+import * as jsPDF from 'jspdf';
+import 'jspdf-autotable'
+import {UserOptions} from "jspdf-autotable"
+
+
+interface solicitud extends jsPDF {
+
+  autoTable: (options: UserOptions) => jsPDF;
+}
+
 
 @Component({
   selector: 'app-ver-evento',
@@ -26,6 +36,9 @@ export class VerEventoComponent implements OnInit {
   departamento_text;
   user_text;
   evento_text;
+  admin;
+  generar_pdf;
+  descargar_pdf;
 
   constructor(
     private _router: Router,
@@ -37,7 +50,11 @@ export class VerEventoComponent implements OnInit {
       this.departamento_text = "pedido por el departamento:";
       this.user_text = "creado por el usuario:";
       this.evento_text = "lugar del evento";
+      this.generar_pdf = "generar pdf";
+      this.descargar_pdf = "descargar pdf";
      }
+
+
 
   ngOnInit(): void {
     window.scrollTo(0,0);
@@ -45,8 +62,7 @@ export class VerEventoComponent implements OnInit {
     this.lastEvents();
     this.getEvento();
   
-    
-    
+
   }
 
   getEvento(){
@@ -96,6 +112,45 @@ export class VerEventoComponent implements OnInit {
     let crudo = JSON.parse(localStorage.getItem('eventos'));
     this.eventos = crudo.reverse().slice(0, 7);
 
+  }
+
+  downloadPdf(){
+    this._spinner.show();
+    const doc = new jsPDF('portrait', 'px', 'a4');
+
+    doc.autoTable({
+      head: [
+        ['Solicitud de eventos', '']
+      ],
+      body: [
+        ['evento solicitado'],
+        [this.evento.evento],
+        ['pedido por el departamento', this.evento.departamento.departamento],
+        ['se llevara a cabo', 'empieza a ' + this.evento.hora_inicio + ' y termina a las'+ this.evento.hora_final ],
+        ['lugar del evento', this.evento.espacio ]
+      ]
+  })
+    this._spinner.hide();
+    doc.save('document.pdf');
+  }
+
+  showPdf(){
+    const doc = new jsPDF('portrait', 'px', 'a4');
+    
+    doc.autoTable({
+      head: [
+        ['Solicitud de eventos', '']
+      ],
+      body: [
+        ['evento solicitado'],
+        [this.evento.evento],
+        ['pedido por el departamento', this.evento.departamento.departamento],
+        ['se llevara a cabo', 'empieza a ' + this.evento.hora_inicio + ' y termina a las'+ this.evento.hora_final ],
+        ['lugar del evento', this.evento.espacio.espacio ]
+      ]
+  })
+
+    doc.output('dataurlnewwindow');
   }
 
 }
