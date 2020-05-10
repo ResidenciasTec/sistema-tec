@@ -1,0 +1,21 @@
+<main class="body-ver">
+
+    <app-banner-crear [titulo]="textoCrear"></app-banner-crear>
+
+    <article>
+        <ngx-spinner bdColor="rgba(44,43,43,0.8)" size="default" color="#d36969" type="timer">
+            <p style="color: white"> cargando datos... </p>
+        </ngx-spinner>
+
+
+        <div id="generador" #generador>
+        <h2 style="color: red">hola</h2>
+        <p style="border: 1px solid red">hola</p>
+        </div>
+        <div class="botones">
+                <button (click)="openPDF()">abrir pdf</button>
+                <button (click)="downloadPDF()">descargar pdf</button>
+        </div>
+
+    </article>
+</main>

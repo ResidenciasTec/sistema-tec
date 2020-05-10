@@ -22,6 +22,8 @@
     "angular-file-uploader": "4.1.4",
     "angular-froala-wysiwyg": "^2.9.1",
     "bootstrap": "^3.4.1",
+    "jspdf": "^1.5.3",
+    "jspdf-autotable": "^3.5.3",
     "moment": "^2.25.3",
     "ngx-spinner": "^9.0.2",
     "ngx-toastr": "^12.0.1",

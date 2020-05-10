@@ -6,6 +6,11 @@ import * as moment from 'moment';
 import 'moment/locale/es';
 import { Observable } from 'rxjs';
 
+import * as jsPDF from 'jspdf';
+import 'jspdf-autotable'
+import {UserOptions} from "jspdf-autotable"
+
+
 
 @Component({
   selector: 'app-ver-salida',
@@ -29,6 +34,9 @@ export class VerSalidaComponent implements OnInit {
   fecha: string;
   textoCrear;
   loading;
+  generar_pdf: string;
+  descargar_pdf: string;
+  admin;
 
   constructor(
     private _router: Router,
@@ -41,6 +49,8 @@ export class VerSalidaComponent implements OnInit {
       this.user_text = "creado por el usuario";
       this.textoCrear = "el destino no se ha especificado";
       this.loading = false;
+      this.generar_pdf = "generar pdf";
+      this.descargar_pdf = "descargar pdf";
     }
 
     ngOnInit(): void {
@@ -96,6 +106,45 @@ export class VerSalidaComponent implements OnInit {
       let crudo = JSON.parse(localStorage.getItem('salidas'));
       this.salidas = crudo.reverse().slice(0, 7);
   
+    }
+
+    downloadPdf(){
+      this._spinner.show();
+      const doc = new jsPDF('portrait', 'px', 'a4');
+  
+      doc.autoTable({
+        head: [
+          ['solicitud de la salida', '']
+        ],
+        body: [
+          ['destino de la salida'],
+          ['aqui va el destino de la salida...'],
+          ['pedido por el departamento', this.salida.departamento.departamento],
+          ['se llevara a cabo', 'empieza a ' + this.salida.hora_salida + ' y termina a las '+ this.salida.hora_llegada ],
+          ['status de la salida', this.salida.status ]
+        ]
+    })
+      this._spinner.hide();
+      doc.save('document.pdf');
+    }
+  
+    showPdf(){
+      const doc = new jsPDF('portrait', 'px', 'a4');
+      
+      doc.autoTable({
+        head: [
+          ['solicitud de salida', '']
+        ],
+        body: [
+          ['destino de la salida'],
+          ['aqui va el destino de la salida...'],
+          ['pedido por el departamento', this.salida.departamento.departamento],
+          ['se llevara a cabo', 'empieza a ' + this.salida.hora_salida + ' y termina a las '+ this.salida.hora_llegada ],
+          ['status de la salida', this.salida.status ]
+        ]
+    })
+  
+      doc.output('dataurlnewwindow');
     }
 
 }

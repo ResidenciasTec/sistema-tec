@@ -5,6 +5,11 @@ import { NgxSpinnerService } from "ngx-spinner";
 import * as moment from 'moment';
 import 'moment/locale/es';
 
+import * as jsPDF from 'jspdf';
+import 'jspdf-autotable'
+import {UserOptions} from "jspdf-autotable"
+
+
 @Component({
   selector: 'app-ver-mantenimiento',
   templateUrl: './ver-mantenimiento.component.html',
@@ -26,6 +31,9 @@ export class VerMantenimientoComponent implements OnInit {
   fechados: moment.Moment;
   fecha: string;
   textoCrear;
+  generar_pdf: string;
+  descargar_pdf: string;
+  admin;
 
   constructor(
     private _router: Router,
@@ -36,6 +44,8 @@ export class VerMantenimientoComponent implements OnInit {
       this.departamento_text = "pedido por el departamento:";
       this.servicio_text = "tipo de servicio:";
       this.user_text = "creado por el usuario";
+      this.generar_pdf = "generar pdf";
+      this.descargar_pdf = "descargar pdf";
      }
 
     ngOnInit(): void {
@@ -88,5 +98,45 @@ export class VerMantenimientoComponent implements OnInit {
       let crudo = JSON.parse(localStorage.getItem('mantenimientos'));
       this.mantenimientos = crudo.reverse().slice(0, 7);
   
+    }
+
+
+    downloadPdf(){
+      this._spinner.show();
+      const doc = new jsPDF('portrait', 'px', 'a4');
+  
+      doc.autoTable({
+        head: [
+          ['soliccitud de mantenimiento', '']
+        ],
+        body: [
+          ['mantenimiento de tipo'],
+          [this.mantenimiento.tipo],
+          ['pedido por el departamento', this.mantenimiento.departamento.departamento],
+          ['se llevara a cabo', 'empieza a ' + this.mantenimiento.hora_inicio + ' y termina a las '+ this.mantenimiento.hora_final ],
+          ['status del servicio', this.mantenimiento.servicio.status ]
+        ]
+    })
+      this._spinner.hide();
+      doc.save('document.pdf');
+    }
+  
+    showPdf(){
+      const doc = new jsPDF('portrait', 'px', 'a4');
+      
+      doc.autoTable({
+        head: [
+          ['soliccitud de mantenimiento', '']
+        ],
+        body: [
+          ['mantenimiento de tipo'],
+          [this.mantenimiento.tipo],
+          ['pedido por el departamento', this.mantenimiento.departamento.departamento],
+          ['se llevara a cabo', 'empieza a ' + this.mantenimiento.hora_inicio + ' y termina a las '+ this.mantenimiento.hora_final ],
+          ['status del servicio', this.mantenimiento.servicio.status ]
+        ]
+    })
+  
+      doc.output('dataurlnewwindow');
     }
 }
