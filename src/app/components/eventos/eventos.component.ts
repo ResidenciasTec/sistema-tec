@@ -143,15 +143,29 @@ export class EventosComponent implements OnInit {
 
     getAntiguos(){
       this._spinner.show();
-      this._eventoService.getAntiguo(this.token).subscribe(
-        response => {  
-
+      this._eventoService.getAntiguos(this.token).subscribe(
+        response => { 
+          if(response.status == 'success'){
+            this.eventos = response.elementos.data;
+            this.total = response.elementos.total;
+            this.last_page = response.elementos.last_page;
+            this.current_page = response.elementos.current_page;
+            this.next_page_url = response.elementos.next_page_url;
+            this.prev_page_url = response.elementos.prev_page_url;
+            window.scrollTo(0,0);
             this._spinner.hide();
+
+          } else{
+            console.log('entra y se regresa')
+            this._spinner.hide();
+          }
                
 
         },
         error => {
           this._spinner.hide();
+          console.log(<any>error);
+
         }
       )
 
@@ -160,10 +174,64 @@ export class EventosComponent implements OnInit {
 
   
     getPorMes(){
+      this._spinner.show();
+      this._eventoService.getPorMes(this.token).subscribe(
+        response => {
+          if(response.status == 'success'){
+            this.eventos = response.elementos.data;
+            this.total = response.elementos.total;
+            this.last_page = response.elementos.last_page;
+            this.current_page = response.elementos.current_page;
+            this.next_page_url = response.elementos.next_page_url;
+            this.prev_page_url = response.elementos.prev_page_url;
+            window.scrollTo(0,0);
+            this._spinner.hide();
+
+          }else{
+            console.log('entra y se regresa')
+            this._spinner.hide();
+
+          }
+          
+
+        },
+        error => {
+          this._spinner.hide();
+          console.log(<any>error);
+
+        }
+      )
   
     }
   
     getPorStatus(){
+      this._spinner.show();
+      this._eventoService.getPorStatus(this.token).subscribe(
+        response =>{
+          if(response.status == 'success'){
+            this.eventos = response.elementos.data;
+            this.total = response.elementos.total;
+            this.last_page = response.elementos.last_page;
+            this.current_page = response.elementos.current_page;
+            this.next_page_url = response.elementos.next_page_url;
+            this.prev_page_url = response.elementos.prev_page_url;
+            window.scrollTo(0,0);
+            this._spinner.hide();
+
+          }else{
+            console.log('entra y se regresa')
+            this._spinner.hide();
+
+          }
+          
+
+        },
+        error =>{
+          this._spinner.hide();
+          console.log(<any>error);
+
+        }
+      )
   
     }
 

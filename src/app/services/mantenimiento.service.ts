@@ -88,26 +88,27 @@ export class MantenimientoService{
 		return this._http.get(link, {headers: headers});
 	}
 
-	
-	getAntiguo(token):Observable<any>{
+
+
+	getAntiguos(token):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
 										.set('Authorization', 'Bearer '+token);
 
-		return this._http.get(this.url+'mantenimientos/asc', {headers: headers});
+		return this._http.get(this.url+'mantenimientoantiguos', {headers: headers});
 	}
 	
 	getPorMes(token):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
 										.set('Authorization', 'Bearer '+token);
 
-		return this._http.get(this.url+'mantenimientos/month', {headers: headers});
+		return this._http.get(this.url+'mantenimientopormes', {headers: headers});
 	}
 	
-	getPorStatus(token, link):Observable<any>{
+	getPorStatus(token):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
 										.set('Authorization', 'Bearer '+token);
 
-		return this._http.get(this.url+'mantenimientos/status', {headers: headers});
+		return this._http.get(this.url+'mantenimientostatus', {headers: headers});
 	}
 
 }
