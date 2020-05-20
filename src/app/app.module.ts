@@ -66,6 +66,12 @@ import { EventopdfComponent } from './adminComponents/eventopdf/eventopdf.compon
 import { MantenimientopdfComponent } from './adminComponents/mantenimientopdf/mantenimientopdf.component';
 import { SalidapdfComponent } from './adminComponents/salidapdf/salidapdf.component';
 import { ButtonComponent } from './reutilizables/button/button.component';
+import { CrearCargoComponent } from './adminComponents/crear-cargo/crear-cargo.component';
+import { EditarCargoComponent } from './adminComponents/editar-cargo/editar-cargo.component';
+import { CargosComponent } from './adminComponents/cargos/cargos.component';
+import { PermisosComponent } from './adminComponents/permisos/permisos.component';
+import { EditarPermisosComponent } from './adminComponents/editar-permisos/editar-permisos.component';
+import { CrearPermisosComponent } from './adminComponents/crear-permisos/crear-permisos.component';
 
 @NgModule({
   declarations: [
@@ -121,7 +127,13 @@ import { ButtonComponent } from './reutilizables/button/button.component';
     EventopdfComponent,
     MantenimientopdfComponent,
     SalidapdfComponent,
-    ButtonComponent
+    ButtonComponent,
+    CrearCargoComponent,
+    EditarCargoComponent,
+    CargosComponent,
+    PermisosComponent,
+    EditarPermisosComponent,
+    CrearPermisosComponent
   ],
   imports: [
     BrowserModule,

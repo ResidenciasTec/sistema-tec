@@ -94,25 +94,25 @@ export class SalidaService{
 		return this._http.get(link, {headers: headers});
 	}
 
-	
-	getAntiguo(token):Observable<any>{
+
+	getAntiguos(token):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
 										.set('Authorization', 'Bearer '+token);
 
-		return this._http.get(this.url+'salidas/asc', {headers: headers});
+		return this._http.get(this.url+'salidaantiguos', {headers: headers});
 	}
 	
 	getPorMes(token):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
 										.set('Authorization', 'Bearer '+token);
 
-		return this._http.get(this.url+'salidas/month', {headers: headers});
+		return this._http.get(this.url+'salidapormes', {headers: headers});
 	}
 	
-	getPorStatus(token, link):Observable<any>{
+	getPorStatus(token):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
 										.set('Authorization', 'Bearer '+token);
 
-		return this._http.get(this.url+'salidas/status', {headers: headers});
+		return this._http.get(this.url+'salidastatus', {headers: headers});
 	}
 }
