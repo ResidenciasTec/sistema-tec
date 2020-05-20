@@ -65,6 +65,15 @@ import {EventopdfComponent} from "./adminComponents/eventopdf/eventopdf.componen
 import {MantenimientopdfComponent} from "./adminComponents/mantenimientopdf/mantenimientopdf.component";
 import {SalidapdfComponent} from "./adminComponents/salidapdf/salidapdf.component";
 
+//componentes de administrador para permisos
+import {CargosComponent} from "./adminComponents/cargos/cargos.component";
+import {CrearCargoComponent} from "./adminComponents/crear-cargo/crear-cargo.component";
+import {EditarCargoComponent} from "./adminComponents/editar-cargo/editar-cargo.component";
+
+import {PermisosComponent} from "./adminComponents/permisos/permisos.component";
+import {EditarPermisosComponent} from "./adminComponents/editar-permisos/editar-permisos.component";
+import {CrearPermisosComponent} from "./adminComponents/crear-permisos/crear-permisos.component";
+
 //otros componentes
 import {TransporteComponent} from "./components/transporte/transporte.component";
 import {UsuariosComponent} from "./components/usuarios/usuarios.component";
@@ -135,6 +144,16 @@ const  appRoutes: Routes = [
     {path: 'eventos/pdf/:id', component: EventopdfComponent, canActivate: [UserGuard]},
     {path: 'mantenimientos/pdf/:id', component: MantenimientopdfComponent, canActivate: [UserGuard]},
     {path: 'salidas/pdf/:id', component: SalidapdfComponent, canActivate:[UserGuard]},
+
+    //rutas para permisos
+    {path: 'permisos', component: PermisosComponent, canActivate: [UserGuard]},
+    {path: 'permisos/crear', component: CrearPermisosComponent, canActivate: [UserGuard]},
+    {path: 'permisos/editar/:id', component: EditarPermisosComponent, canActivate: [UserGuard]},
+
+    //rutas para cargos
+    {path: 'cargos', component: CargosComponent, canActivate: [UserGuard]},
+    {path: 'cargos/editar/:id', component: EditarCargoComponent, canActivate: [UserGuard]},
+    {path: 'cargos/crear', component: CrearCargoComponent, canActivate: [UserGuard]},
 
     //otras rutas 
     {path: 'usuarios', component: UsuariosComponent, canActivate:[UserGuard]},
