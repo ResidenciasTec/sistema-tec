@@ -48,14 +48,6 @@ export class EventoService{
 		return this._http.get(this.url+'eventos/user/'+id, {headers: headers});
 	}
 
-	//servicio para recuperar una solicitud de eventos por su status.
-	getStatus(token, status):Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/json')
-									   .set('Authorization', 'Bearer '+token);
-
-		return this._http.get(this.url+'eventos/status/'+status, {headers: headers} );
-	}
-
 	//servicio para guardar un nuevo evento en la base de datos
 	crearEvento(token, evento): Observable<any>{
 		let json = JSON.stringify(evento);
@@ -90,25 +82,25 @@ export class EventoService{
 	}
 
 	
-	getAntiguo(token):Observable<any>{
+	getAntiguos(token):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
 										.set('Authorization', 'Bearer '+token);
 
-		return this._http.get(this.url+'eventos/asc', {headers: headers});
+		return this._http.get(this.url+'eventoantiguos', {headers: headers});
 	}
 	
 	getPorMes(token):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
 										.set('Authorization', 'Bearer '+token);
 
-		return this._http.get(this.url+'eventos/month', {headers: headers});
+		return this._http.get(this.url+'eventopormes', {headers: headers});
 	}
 	
-	getPorStatus(token, link):Observable<any>{
+	getPorStatus(token):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
 										.set('Authorization', 'Bearer '+token);
 
-		return this._http.get(this.url+'eventos/status', {headers: headers});
+		return this._http.get(this.url+'eventostatus', {headers: headers});
 	}
 
 }
