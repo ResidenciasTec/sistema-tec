@@ -29,3 +29,10 @@
     <section *ngIf="cargo.cargo"class="replace">{{cargo.cargo}}</section>
     <section>editar cargo</section>
 </article>
+
+<article class="permiso" *ngIf="permiso" [routerLink]="['/permisos/editar/'+ permiso.id]">
+    <section *ngIf="permiso.user"class="replace">{{permiso.user.name}} {{permiso.user.surname}}</section>
+    <section>{{permiso.departamento.departamento}}</section>
+    <section *ngIf="permiso.cargo.cargo">{{permiso.cargo.cargo}}</section>
+    <section>editar permiso</section>
+</article>

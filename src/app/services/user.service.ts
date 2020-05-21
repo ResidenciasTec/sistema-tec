@@ -20,6 +20,15 @@ export class UserService{
 	test(){
 		return "hola mundo desde un servicio";
 	}
+
+	
+	getUsers(token): Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+									   .set('Authorization', 'bearer '+token);
+
+		return this._http.get(this.url+'users', {headers: headers});
+	}
+
 	register(user): Observable<any>{
 		let json = JSON.stringify(user);
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');

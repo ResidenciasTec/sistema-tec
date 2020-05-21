@@ -1,1 +1,74 @@
-<p>editar-permisos works!</p>
+<main class="body-create">
+
+    <app-banner-crear [titulo]="textoCrear"></app-banner-crear>
+
+    <article>
+        <ngx-spinner bdColor="rgba(44,43,43,0.8)" size="default" color="#d36969" type="timer">
+            <p style="color: white"> cargando datos... </p>
+        </ngx-spinner>
+
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+            <article class="requeridos">
+
+                <label>
+                    <p class="label">usuario seleccionado:</p>
+                    <select formControlName="usuario_id" appInput>
+                        <option selected>selecciona un usuario:</option>
+                        <option *ngFor="let user of users" value="{{user.id}}">
+                            {{user.name}} {{user.surname}}</option>
+                    </select>
+                    <div
+                        *ngIf="this.form.get('usuario_id').invalid && (this.form.get('usuario_id').dirty || this.form.get('usuario_id').touched)">
+
+                        <div *ngIf="this.form.get('usuario_id').errors.required">
+                            el usuario es requerido.
+                        </div>
+                    </div>
+                </label>
+
+                <label>
+                    <p class="label">departamento perteneciente:</p>
+                    <select formControlName="departamento_id" appInput>
+                        <option selected>selecciona un departamento:</option>
+                        <option *ngFor="let departamento of departamentos" value="{{departamento.id}}">
+                            {{departamento.departamento}}</option>
+                    </select>
+                    <div
+                        *ngIf="this.form.get('departamento_id').invalid && (this.form.get('departamento_id').dirty || this.form.get('departamento_id').touched)">
+
+                        <div *ngIf="this.form.get('departamento_id').errors.required">
+                            el departamento es requerido.
+                        </div>
+                    </div>
+                </label>
+
+                <label>
+                    <p class="label">cargo a ocupar:</p>
+                    <select formControlName="cargo_id" appInput>
+                        <option selected>selecciona un cargo:</option>
+                        <option *ngFor="let cargo of cargos" value="{{cargo.id}}">
+                            {{cargo.cargo}}</option>
+                    </select>
+                    <div
+                        *ngIf="this.form.get('cargo_id').invalid && (this.form.get('cargo_id').dirty || this.form.get('cargo_id').touched)">
+
+                        <div *ngIf="this.form.get('cargo_id').errors.required">
+                            el cargo es requerido.
+                        </div>
+                    </div>
+                </label>
+
+
+                <label>
+                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="crear permiso">
+                </label>
+
+            </article>
+
+        </form>
+
+
+    </article>
+</main>
