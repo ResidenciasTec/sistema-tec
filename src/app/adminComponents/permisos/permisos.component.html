@@ -19,9 +19,9 @@
 
     <div class="pagination">
         <div>
-            <P>PAGINA ANTERIOR</P>
-            <p>pagina 1 de 2</p>
-            <P>PAGINA SIGUIENTE</P>
+            <P (click)="previousPage()">PAGINA ANTERIOR</P>
+            <p>pagina {{current_page}} de {{last_page}}</p>
+            <P (click)="nextPage()">PAGINA SIGUIENTE</P>
         </div>
     </div>
         

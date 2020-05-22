@@ -129,7 +129,7 @@ export class InicioComponent implements OnInit {
     this._departamentoService.getDepartamentos(token).subscribe(
       response => {
         console.log(response);
-        this.departamentos = response.elementos;
+        this.departamentos = response.elementos.data;
         console.log(this.departamentos);
 
         localStorage.setItem('departamentos', JSON.stringify(this.departamentos));

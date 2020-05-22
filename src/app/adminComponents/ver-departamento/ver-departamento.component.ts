@@ -74,7 +74,7 @@ export class VerDepartamentoComponent implements OnInit {
     this._departamentoService.getDepartamentos(this.token).subscribe(
       response =>{
         if(response.status == 'success'){
-          this.departamentos = response.elementos;
+          this.departamentos = response.elementos.data;
           localStorage.setItem('departamentos', JSON.stringify(this.departamentos));
           this._spinner.hide();
         }else{

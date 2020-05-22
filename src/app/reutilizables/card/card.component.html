@@ -22,7 +22,7 @@
 
 <article *ngIf="departamento" [routerLink]="['/departamentos/'+ departamento.id]">
     <section *ngIf="departamento.departamento"class="replace">{{departamento.departamento}}</section>
-    <section>{{departamento.telefono}}</section>
+    <section>{{departamento.subdireccion.subdireccion}}</section>
 </article>
 
 <article *ngIf="cargo" [routerLink]="['/cargos/editar/'+ cargo.id]">

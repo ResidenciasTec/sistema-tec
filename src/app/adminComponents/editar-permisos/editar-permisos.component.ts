@@ -25,6 +25,8 @@ export class EditarPermisosComponent implements OnInit {
   cargos: any;
   permiso;
   permisos;
+  cargoUpdate: any;
+  json: { role: any; };
 
   constructor(    
     private _formBuilder: FormBuilder,
@@ -75,9 +77,43 @@ export class EditarPermisosComponent implements OnInit {
 
   onSubmit(form){
     this._spinner.show();
+    this.cargoUpdate = this.cargos.find(element => element.id == this.form.value.cargo_id);
+
+    if(this.cargoUpdate){
+      this.json = {
+        "role": this.cargoUpdate.cargo   
+      }
+    
+      }
     this._permisoService.updatePermiso(this.token, form, this.permiso.id).subscribe(
       response => {
         if(response.status == 'success'){
+
+          this._userService.update(this.token, this.json, this.permiso.usuario_id).subscribe(
+            response => {
+              if(response.status == 'success'){
+                this._toastr.success('el permiso se ha asignado correctamente', 'LISTO');
+                window.scrollTo(0,0);
+                this.form.reset();
+                this._spinner.hide();
+                console.log('entro correctamente')
+                console.log(this.form.value.usuario_id);
+
+              }else{
+                console.log('error');
+                this._toastr.error('el permiso no se ha asignado correctamente', 'MAL');
+                this._spinner.hide();
+              }
+
+            },
+            error => {
+              this._spinner.hide();
+              console.log(<any>error);
+              this._toastr.error('el permiso no se ha asignado correctamente', 'MAL');
+
+            }
+          )
+
           this._toastr.success('el permiso se ha actualizado correctamente', 'LISTO');
           window.scrollTo(0,0);
           this._spinner.hide();
