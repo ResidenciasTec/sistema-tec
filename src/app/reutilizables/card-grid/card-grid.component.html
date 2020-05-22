@@ -21,3 +21,7 @@
 <div class="list" *ngIf="cargos">
     <app-card *ngFor="let cargo of cargos" [cargo]="cargo"></app-card>
 </div>
+
+<div class="list" *ngIf="permisos">
+    <app-card *ngFor="let permiso of permisos" [permiso]="permiso"></app-card>
+</div>
