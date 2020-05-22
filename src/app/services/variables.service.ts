@@ -40,4 +40,11 @@ export class variableService{
 
 	}
 
+	getNextPage(token, link):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+										.set('Authorization', 'Bearer '+token);
+
+		return this._http.get(link, {headers: headers});
+	}
+
 }

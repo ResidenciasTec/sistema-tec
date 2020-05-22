@@ -41,7 +41,6 @@ export class ActualizarDepartamentoComponent implements OnInit {
     window.scrollTo(0,0);
     this.getSubdirecciones();
     this.getDepartamento();
-    this.editarForm();
   }
 
   private editarForm() {
@@ -62,6 +61,10 @@ export class ActualizarDepartamentoComponent implements OnInit {
       this.id = +params['id'];
 
         this.departamento = this.departamentos.find(element => element.id == this.id);
+
+        if(this.departamento){
+          this.editarForm();
+        }
       });
   }
 

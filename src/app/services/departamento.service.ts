@@ -63,5 +63,12 @@ export class departamentoService{
 		
 	}
 
+	getFiltrado(token, data):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+										.set('Authorization', 'Bearer '+token);
+
+		return this._http.get(this.url+'depsubdireccion/'+data, {headers: headers});
+	}
+
 
 }

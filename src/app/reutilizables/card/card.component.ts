@@ -13,6 +13,7 @@ export class CardComponent implements OnInit {
   @Input() vehiculo: any;
   @Input() departamento: any;
   @Input() cargo: any;
+  @Input() permiso: any;
 
   constructor() { }
 
