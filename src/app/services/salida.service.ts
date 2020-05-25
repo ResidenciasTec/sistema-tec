@@ -115,4 +115,11 @@ export class SalidaService{
 
 		return this._http.get(this.url+'salidastatus', {headers: headers});
 	}
+
+	byUser(token, id):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+										.set('Authorization', 'Bearer '+token);
+
+		return this._http.get(this.url+'salidabyuser/'+id, {headers: headers});
+	}
 }

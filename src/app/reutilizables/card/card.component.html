@@ -36,3 +36,32 @@
     <section *ngIf="permiso.cargo.cargo">{{permiso.cargo.cargo}}</section>
     <section>editar permiso</section>
 </article>
+
+<article *ngIf="subdireccion" [routerLink]="['/subdirecciones/editar/'+ subdireccion.id]">
+    <section *ngIf="subdireccion.subdireccion"class="replace">{{subdireccion.subdireccion}}</section>
+    <section>editar cargo</section>
+</article>
+
+<article *ngIf="statusvehiculo" [routerLink]="['/vehiculo/status/editar/'+ statusvehiculo.id]">
+    <section *ngIf="statusvehiculo.status"class="replace">{{statusvehiculo.status}}</section>
+    <section>editar status</section>
+</article>
+
+<article *ngIf="statusorder" [routerLink]="['/status/mantenimiento/editar/'+ statusorder.id]">
+    <section *ngIf="statusorder.status"class="replace">{{statusorder.status}}</section>
+    <section>editar status</section>
+</article>
+
+<article *ngIf="espacio" [routerLink]="['/espacios/editar/'+ espacio.id]">
+    <section *ngIf="espacio.espacio"class="replace">{{espacio.espacio}}</section>
+    <section>editar espacio</section>
+</article>
+
+<article *ngIf="ubicacion" [routerLink]="['/ubicaciones/editar/'+ ubicacion.id]">
+    <section *ngIf="ubicacion.ubicacion"class="replace">{{ubicacion.ubicacion}}</section>
+    <section>editar ubicacion</section>
+</article>
+
+
+
+

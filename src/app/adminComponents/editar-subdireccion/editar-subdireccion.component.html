@@ -1,0 +1,38 @@
+<main class="body-create">
+
+    <app-banner-crear [titulo]="textoCrear"></app-banner-crear>
+
+    <article>
+        <ngx-spinner bdColor="rgba(44,43,43,0.8)" size="default" color="#d36969" type="timer">
+            <p style="color: white"> cargando datos... </p>
+        </ngx-spinner>
+
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+            <article class="requeridos">
+
+                <label>
+                    <p class="label">nombre de la subdireccion:</p>
+                    <input type="text" appInput formControlName="subdireccion" placeholder="nombre de la subdireccion..">
+                    <div
+                        *ngIf="this.form.get('subdireccion').invalid && (this.form.get('subdireccion').dirty || this.form.get('subdireccion').touched)">
+
+                        <div *ngIf="this.form.get('subdireccion').errors.required">
+                            debes seleccionar un nombre de subdireccion valido.
+                        </div>
+                    </div>
+                </label>
+
+
+                <label>
+                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="editar subdireccion">
+                </label>
+
+            </article>
+
+        </form>
+
+
+    </article>
+</main>

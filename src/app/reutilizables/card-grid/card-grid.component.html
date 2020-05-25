@@ -25,3 +25,23 @@
 <div class="list" *ngIf="permisos">
     <app-card *ngFor="let permiso of permisos" [permiso]="permiso"></app-card>
 </div>
+
+<div class="list" *ngIf="subdirecciones">
+    <app-card *ngFor="let subdireccion of subdirecciones" [subdireccion]="subdireccion"></app-card>
+</div>
+
+<div class="list" *ngIf="espacios">
+    <app-card *ngFor="let espacio of espacios" [espacio]="espacio"></app-card>
+</div>
+
+<div class="list" *ngIf="statusvehiculos">
+    <app-card *ngFor="let statusvehiculo of statusvehiculos" [statusvehiculo]="statusvehiculo"></app-card>
+</div>
+
+<div class="list" *ngIf="statusorders">
+    <app-card *ngFor="let statusorder of statusorders" [statusorder]="statusorder"></app-card>
+</div>
+
+<div class="list" *ngIf="ubicaciones">
+    <app-card *ngFor="let ubicacion of ubicaciones" [ubicacion]="ubicacion"></app-card>
+</div>

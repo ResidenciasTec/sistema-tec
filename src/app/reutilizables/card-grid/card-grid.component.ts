@@ -14,6 +14,11 @@ export class CardGridComponent implements OnInit {
   @Input() departamentos: any;
   @Input() cargos: any;
   @Input() permisos: any;
+  @Input() espacios: any;
+  @Input() ubicaciones: any;
+  @Input() statusvehiculos: any;
+  @Input() statusorders: any;
+  @Input() subdirecciones: any;
   
   constructor() { }
 

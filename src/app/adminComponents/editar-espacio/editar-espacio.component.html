@@ -1,0 +1,55 @@
+<main class="body-create">
+
+    <app-banner-crear [titulo]="textoCrear"></app-banner-crear>
+
+    <article>
+        <ngx-spinner bdColor="rgba(44,43,43,0.8)" size="default" color="#d36969" type="timer">
+            <p style="color: white"> cargando datos... </p>
+        </ngx-spinner>
+
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+            <article class="requeridos">
+
+                <label>
+                    <p class="label">nombre del espacio:</p>
+                    <input type="text" appInput formControlName="espacio" placeholder="nombre de la ubicacion..">
+                    <div
+                        *ngIf="this.form.get('espacio').invalid && (this.form.get('espacio').dirty || this.form.get('espacio').touched)">
+
+                        <div *ngIf="this.form.get('espacio').errors.required">
+                            debes seleccionar un nombre de espacio valido.
+                        </div>
+                    </div>
+                </label>
+
+                
+                <label>
+                    <p class="label">pertenece a la ubicacion:</p>
+                    <select formControlName="ubicacion_id" appInput>
+                        <option selected>selecciona una ubicacion:</option>
+                        <option *ngFor="let ubicacion of ubicaciones" value="{{ubicacion.id}}">
+                            {{ubicacion.ubicacion}}</option>
+                    </select>
+                    <div
+                        *ngIf="this.form.get('ubicacion_id').invalid && (this.form.get('ubicacion_id').dirty || this.form.get('ubicacion_id').touched)">
+
+                        <div *ngIf="this.form.get('ubicacion_id').errors.required">
+                            la ubicacion es requerida.
+                        </div>
+                    </div>
+                </label>
+
+
+                <label>
+                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="actualizar ubicacion">
+                </label>
+
+            </article>
+
+        </form>
+
+
+    </article>
+</main>

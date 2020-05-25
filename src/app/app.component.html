@@ -57,6 +57,11 @@
                     <li [routerLink]="['/transportes']">transportes</li>
                     <li [routerLink]="['/cargos']">cargos</li>
                     <li [routerLink]="['/permisos']">permisos</li>
+                    <li [routerLink]="['/espacios']">espacios</li>
+                    <li [routerLink]="['/subdirecciones']">subdirecciones</li>
+                    <li [routerLink]="['/ubicaciones']">ubicaciones</li>
+                    <li [routerLink]="['/status/vehiculo']">status de vehiculos</li>
+                    <li [routerLink]="['/status/mantenimiento']">status de solicitudes</li>
                 </ul>
 
                  <ul *ngIf="submenu_panel == false"  class="submenu-panel hidden">
@@ -70,7 +75,7 @@
                 </strong></a>
             </li>
 
-            <li class="li-crear" (click)="showMenuCrear()">  <a><strong> Crear solicitudes
+            <li class="li-crear" (click)="showMenuCrear()">  <a><strong> Crear solicitudes 
                 <ul *ngIf="submenu_crear == true" class="submenu-crear show">
                     <li [routerLink]="['/eventos/crear']">Eventos</li>
                     <li [routerLink]="['mantenimiento/crear']">Mantenimiento</li>
@@ -79,6 +84,11 @@
                     <li [routerLink]="['/departamento/crear']">departamentos</li>
                     <li [routerLink]="['/cargos/crear']">cargos</li>
                     <li [routerLink]="['/permisos/crear']">permisos</li>
+                    <li [routerLink]="['/espacios/crear']">espacios</li>
+                    <li [routerLink]="['/subdirecciones/crear']">subdirecciones</li>
+                    <li [routerLink]="['/ubicaciones/crear']">ubicaciones</li>
+                    <li [routerLink]="['/status/vehiculo/crear']">status de vehiculos</li>
+                    <li [routerLink]="['/status/mantenimiento/crear']">status de solicitudes</li>
                 </ul>
 
                 <ul *ngIf="submenu_crear == false" class="submenu-crear hidden">
@@ -89,7 +99,8 @@
                     <li [routerLink]="['/departamento/crear']">departamentos</li>
                 </ul> 
                 </strong></a>
-            </li> 
+            </li>
+             
             <li></li>
         </ul>
         <div class="div-user" (click)="showMenuUser()">
