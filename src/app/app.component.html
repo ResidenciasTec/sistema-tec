@@ -1,14 +1,13 @@
-
 <main [className]="hamburguer ? 'body-app move' : 'body-app scrollOff'">
 
-    <header id="header-nolog" *ngIf="!identity" >
+    <header id="header-nolog" *ngIf="!identity">
         <h1><strong> ITM: Recursos materiales y servicios</strong></h1>
         <div class="Crea-cuenta">
-        <p  [routerLink]="['/login']">Iniciar Sesión</p>
-        <p [routerLink]="['/registro']">Crear Cuenta</p>
+            <p [routerLink]="['/login']">Iniciar Sesión</p>
+            <p [routerLink]="['/registro']">Crear Cuenta</p>
         </div>
     </header>
-   
+
     <header id="header-silog" *ngIf="identity && identity.name">
 
         <ul [className]="hamburguer ? 'nav-hamburguer nav-show scrollOff' : 'nav-hamburguer'">
@@ -29,88 +28,98 @@
                     <li (click)="hamburguerOpen()" [routerLink]="['/salidas/crear']">Salidas</li>
                 </ul>
             </li>
-             <li>perfil
-                 <ul>
+            <li>perfil
+                <ul>
                     <li (click)="hamburguerOpen()" [routerLink]="['/perfil']">Perfil</li>
                     <li (click)="hamburguerOpen()" [routerLink]="['/perfil/editar']">Editar Perfil</li>
                     <li (click)="hamburguerOpen()" [routerLink]="['/perfil/solicitudes']">Mis solicitudes</li>
                     <li (click)="hamburguerOpen()" [routerLink]="['/logout/1']">Cerrar sesion</li>
-                 </ul>
-             </li>
-        </ul>        
-        
+                </ul>
+            </li>
+        </ul>
+
         <div class="hamburguer" (click)="hamburguerOpen()">
-            <img src="../assets/img/icons8-menú-26.png" >        
+            <img src="../assets/img/icons8-menú-26.png">
         </div>
 
 
         <ul>
             <li> <a><strong> ITM</strong> </a></li>
-            <li><a  [routerLink]="['/inicio']"><strong>Inicio</strong></a></li>
+            <li><a [routerLink]="['/inicio']"><strong>Inicio</strong></a></li>
             <li (click)="showMenuPanel()"> <a><strong>Panel
 
-                <ul *ngIf="submenu_panel == true" class="submenu-panel show">
-                    <li [routerLink]="['/eventos']">Eventos</li>
-                    <li [routerLink]="['/mantenimiento']">Mantenimiento</li>
-                    <li [routerLink]="['/salidas']">Salidas</li>
-                    <li [routerLink]="['/departamentos']">departamentos</li>
-                    <li [routerLink]="['/transportes']">transportes</li>
-                    <li [routerLink]="['/cargos']">cargos</li>
-                    <li [routerLink]="['/permisos']">permisos</li>
-                    <li [routerLink]="['/espacios']">espacios</li>
-                    <li [routerLink]="['/subdirecciones']">subdirecciones</li>
-                    <li [routerLink]="['/ubicaciones']">ubicaciones</li>
-                    <li [routerLink]="['/status/vehiculo']">status de vehiculos</li>
-                    <li [routerLink]="['/status/mantenimiento']">status de solicitudes</li>
-                </ul>
+                        <ul *ngIf="submenu_panel == true" class="submenu-panel show">
+                            <li [routerLink]="['/eventos']">Eventos</li>
+                            <li [routerLink]="['/mantenimiento']">Mantenimiento</li>
+                            <li [routerLink]="['/salidas']">Salidas</li>
+                            <li class="admin">administrador
+                                <ul class="admin-submenu">
+                                    <li [routerLink]="['/departamentos']">departamentos</li>
+                                    <li [routerLink]="['/transportes']">transportes</li>
+                                    <li [routerLink]="['/cargos']">cargos</li>
+                                    <li [routerLink]="['/espacios']">espacios</li>
+                                    <li [routerLink]="['/subdirecciones']">subdirecciones</li>
+                                    <li [routerLink]="['/ubicaciones']">ubicaciones</li>
+                                    <li [routerLink]="['/status/vehiculo']">status de vehiculos</li>
+                                    <li [routerLink]="['/status/mantenimiento']">status de solicitudes</li>
+                                </ul>
+                            </li>
+                            <li [routerLink]="['/permisos']">permisos</li>
 
-                 <ul *ngIf="submenu_panel == false"  class="submenu-panel hidden">
-                    <li [routerLink]="['/eventos']">Eventos</li>
-                    <li [routerLink]="['/mantenimiento']">Mantenimiento</li>
-                    <li [routerLink]="['/salidas']">Salidas</li>
-                    <li [routerLink]="['/departamentos']">departamentos</li>
-                    <li [routerLink]="['/transportes']">transportes</li>
-                    <li [routerLink]="['/departamentos']">departamentos</li>
-                </ul>
-                </strong></a>
+                        </ul>
+
+                        <ul *ngIf="submenu_panel == false" class="submenu-panel hidden">
+                            <li [routerLink]="['/eventos']">Eventos</li>
+                            <li [routerLink]="['/mantenimiento']">Mantenimiento</li>
+                            <li [routerLink]="['/salidas']">Salidas</li>
+                            <li [routerLink]="['/departamentos']">departamentos</li>
+                            <li [routerLink]="['/transportes']">transportes</li>
+                            <li [routerLink]="['/departamentos']">departamentos</li>
+                        </ul>
+                    </strong></a>
             </li>
 
-            <li class="li-crear" (click)="showMenuCrear()">  <a><strong> Crear solicitudes 
-                <ul *ngIf="submenu_crear == true" class="submenu-crear show">
-                    <li [routerLink]="['/eventos/crear']">Eventos</li>
-                    <li [routerLink]="['mantenimiento/crear']">Mantenimiento</li>
-                    <li [routerLink]="['/salidas/crear']">Salidas</li>
-                    <li [routerLink]="['/vehiculos/crear']">vehiculos</li>
-                    <li [routerLink]="['/departamento/crear']">departamentos</li>
-                    <li [routerLink]="['/cargos/crear']">cargos</li>
-                    <li [routerLink]="['/permisos/crear']">permisos</li>
-                    <li [routerLink]="['/espacios/crear']">espacios</li>
-                    <li [routerLink]="['/subdirecciones/crear']">subdirecciones</li>
-                    <li [routerLink]="['/ubicaciones/crear']">ubicaciones</li>
-                    <li [routerLink]="['/status/vehiculo/crear']">status de vehiculos</li>
-                    <li [routerLink]="['/status/mantenimiento/crear']">status de solicitudes</li>
-                </ul>
+            <li class="li-crear" (click)="showMenuCrear()"> <a><strong> Crear solicitudes
+                        <ul *ngIf="submenu_crear == true" class="submenu-crear show">
+                            <li [routerLink]="['/eventos/crear']">Eventos</li>
+                            <li [routerLink]="['mantenimiento/crear']">Mantenimiento</li>
+                            <li [routerLink]="['/salidas/crear']">Salidas</li>
+                            <li class="admin">administrador
+                                <ul class="admin-submenu">
+                                    <li [routerLink]="['/permisos/crear']">permisos</li>
+                                    <li [routerLink]="['/vehiculos/crear']">vehiculos</li>
+                                    <li [routerLink]="['/departamento/crear']">departamentos</li>
+                                    <li [routerLink]="['/cargos/crear']">cargos</li>
+                                    <li [routerLink]="['/espacios/crear']">espacios</li>
+                                    <li [routerLink]="['/subdirecciones/crear']">subdirecciones</li>
+                                    <li [routerLink]="['/ubicaciones/crear']">ubicaciones</li>
+                                    <li [routerLink]="['/status/vehiculo/crear']">status de vehiculos</li>
+                                    <li [routerLink]="['/status/mantenimiento/crear']">status de solicitudes</li>
+                                </ul>
+                            </li>
 
-                <ul *ngIf="submenu_crear == false" class="submenu-crear hidden">
-                    <li [routerLink]="['/eventos/crear']">Eventos</li>
-                    <li [routerLink]="['mantenimiento/crear']">Mantenimiento</li>
-                    <li [routerLink]="['/salidas/crear']">Salidas</li>
-                    <li [routerLink]="['/vehiculos/crear']">vehiculos</li>
-                    <li [routerLink]="['/departamento/crear']">departamentos</li>
-                </ul> 
-                </strong></a>
+                        </ul>
+
+                        <ul *ngIf="submenu_crear == false" class="submenu-crear hidden">
+                            <li [routerLink]="['/eventos/crear']">Eventos</li>
+                            <li [routerLink]="['mantenimiento/crear']">Mantenimiento</li>
+                            <li [routerLink]="['/salidas/crear']">Salidas</li>
+                            <li [routerLink]="['/vehiculos/crear']">vehiculos</li>
+                            <li [routerLink]="['/departamento/crear']">departamentos</li>
+                        </ul>
+                    </strong></a>
             </li>
-             
+
             <li></li>
         </ul>
         <div class="div-user" (click)="showMenuUser()">
-            <div id="default-image"><span>{{this.first_name}}  {{this.first_surname}}</span></div>
-        
+            <div id="default-image"><img src="../assets/img/articles-57236_img_destacada.png"></div>
+
 
             <div id="firefox-error" *ngIf="submenu_user == true" class="submenu-user show">
-                <p id="usuario"><strong>{{identity.name}}  {{identity.surname}}</strong></p>
-            
-                <hr/>
+                <p id="usuario"><strong>{{identity.name}} {{identity.surname}}</strong></p>
+
+                <hr />
                 <p [routerLink]="['/perfil']">Perfil</p>
                 <p [routerLink]="['/perfil/editar']">Editar Perfil</p>
                 <p [routerLink]="['/perfil/solicitudes']">Mis solicitudes</p>
@@ -120,7 +129,7 @@
             <div id="firefox-error" *ngIf="submenu_user == false" class="submenu-user hidden">
                 <p>{{identity.name}}</p>
                 <p>{{identity.surname}}</p>
-                 <hr/>
+                <hr />
                 <p [routerLink]="['/perfil']">Perfil</p>
                 <p [routerLink]="['/perfil/editar']">Editar Perfil</p>
                 <p [routerLink]="['/perfil/solicitudes']">Mis solicitudes</p>
@@ -131,7 +140,7 @@
 
     </header>
 
-    
+
     <router-outlet (activate)="onActivate($event, outlet)" #outlet>
 
     </router-outlet>
@@ -140,9 +149,7 @@
         <p> <strong>Instituto Tecnológico de Matamoros </strong></p>
         <p> <strong> Depto. Resursos Materiales y Servicios</strong></p>
         <p> <strong> Tel. 8688140952 y 8688140953</strong></p>
-        
-        
+
+
     </footer>
 </main>
-
-

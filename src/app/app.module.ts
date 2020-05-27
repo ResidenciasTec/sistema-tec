@@ -35,6 +35,7 @@ import { ActualizarMantenimientoComponent } from './components/actualizar-manten
 //servicios
 import {UserService} from "./services/user.service";
 import {UserGuard} from "./services/user.guard";
+import {AdminGuard} from "./services/admin.guard";
 import { InputDirective } from './directivas/forms/input.directive';
 import { SubmitDirective } from './directivas/submit/submit.directive';
 import { TextareaDirective } from './directivas/textarea/textarea.directive';
@@ -176,7 +177,8 @@ import { EditarSubdireccionComponent } from './adminComponents/editar-subdirecci
   providers: [
     appRoutingProviders,
     UserService,
-    UserGuard
+    UserGuard,
+    AdminGuard
   ],
   bootstrap: [AppComponent]
 })

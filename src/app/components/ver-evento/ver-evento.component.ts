@@ -31,6 +31,7 @@ export class VerEventoComponent implements OnInit {
   espacio: any;
   usuario: any;
   textoCrear: any;
+  privilegios: any;
   fecha;
   fechados;
   departamento_text;
@@ -39,6 +40,7 @@ export class VerEventoComponent implements OnInit {
   admin;
   generar_pdf;
   descargar_pdf;
+  no_privilegios: string;
 
   constructor(
     private _router: Router,
@@ -59,11 +61,13 @@ export class VerEventoComponent implements OnInit {
   ngOnInit(): void {
     window.scrollTo(0,0);
     this.token = localStorage.getItem('token');
+    
     this.lastEvents();
     this.getEvento();
   
 
   }
+
 
   getEvento(){
     

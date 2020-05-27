@@ -73,8 +73,10 @@ export class AppComponent implements OnInit, DoCheck {
     
     if(this.submenu_panel == true){
       this.submenu_panel = false;
+      this.submenu_crear = false;
     }else{
       this.submenu_panel = true;
+      this.submenu_crear = false;
     }
   }
 
@@ -82,8 +84,10 @@ export class AppComponent implements OnInit, DoCheck {
     
     if(this.submenu_crear == true){
       this.submenu_crear = false;
+      this.submenu_panel = false;
     }else{
       this.submenu_crear = true;
+      this.submenu_panel = false;
     }
   }
 
