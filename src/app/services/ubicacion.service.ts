@@ -16,49 +16,49 @@ export class ubicacionService{
 
 	}
 
-	getUbicaciones():Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+	getUbicaciones(token):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+									   .set('Authorization', 'Bearer '+token);
 
-		return this._http.get(this.url + 'ubicaciones', {headers: headers});
+		return this._http.get(this.url + 'ubications', {headers: headers});
 
 
 	}
 
-	getUbicacion(id):Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+	getUbicacion(token, id):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+									   .set('Authorization', 'Bearer '+token);
 
-		return this._http.get(this.url + 'ubicaciones/'+id, {headers: headers});
-
+		return this._http.get(this.url + 'ubications/'+id, {headers: headers});
+ 
 
 	}
 
 	createUbicacion(token, ubicacion):Observable<any>{
 		let json = JSON.stringify(ubicacion);
-		let params = 'json='+json;
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-		  							   .set('Authorization', token);
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+									   .set('Authorization', 'Bearer '+token);
 
-		return this._http.post(this.url + 'ubicaciones', params, {headers: headers});
+		return this._http.post(this.url + 'ubications', json, {headers: headers});
 
 
 	}
 
 	updateUbicacion(token, ubicacion, id):Observable<any>{
 		let json = JSON.stringify(ubicacion);
-		let params = 'json='+json;
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-		  							   .set('Authorization', token);
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+									   .set('Authorization', 'Bearer '+token);
 
-		return this._http.put(this.url + 'ubicaciones/'+id,  params, {headers: headers});
+		return this._http.put(this.url + 'ubications/'+id, json, {headers: headers});
 
 
 	}
 
 	deleteUbicacion(token, id):Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-		  							  .set('Authorization', token);
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+									   .set('Authorization', 'Bearer '+token);
 
-		return this._http.delete(this.url + 'ubicaciones/'+id, {headers: headers});
+		return this._http.delete(this.url + 'ubications/'+id, {headers: headers});
 
 		
 	}

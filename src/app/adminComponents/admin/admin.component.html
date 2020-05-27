@@ -1,1 +1,22 @@
-<p>admin works!</p>
+<main class="main-verificado">
+
+    <div class="image">
+       <img src="../../../assets/img/PrivacidadYMarketing-655x470.png"> 
+    </div>
+
+    <div class="text" *ngIf="verificado">
+        <h2>SOLICITUD VERIFICADA CON EXITO!</h2>
+        <p>La solicitud se ha verificado exitosamente, ahora falta que el el usuario con permisos de jefe apruebe la solicitud.</p>
+    </div>
+
+    <div class="text" *ngIf="aprobado">
+        <h2>SOLICITUD APROBADA CON EXITO!</h2>
+        <p>La solicitud ha sido aprobada exitosamente, ahora es posible imprimir el formato pdf.</p>
+    </div>
+
+    <div class="buttons">    
+        <app-button [text]="volver" (click)="back()"></app-button>
+        <app-button [text]="solicitudes" [routerLink]="['/inicio']"></app-button>
+    </div>
+
+</main>

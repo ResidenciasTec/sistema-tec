@@ -6,15 +6,16 @@ import {StatusorderService} from "../services/statusorder.service";
 import { EventoService } from '../services/evento.service';
 import { MantenimientoService} from "../services/mantenimiento.service";
 import { SalidaService } from "../services/salida.service";
+import {PermisoService} from "../services/permiso.service";
+import {CargoService} from "../services/cargo.service";
 import { NgxSpinnerService } from "ngx-spinner";
-
 
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.scss'],
-  providers: [TransporteService, departamentoService, lugarService, StatusorderService, EventoService, MantenimientoService, SalidaService],
+  providers: [TransporteService, departamentoService, CargoService, lugarService, StatusorderService, EventoService, MantenimientoService, SalidaService, PermisoService],
 })
 export class InicioComponent implements OnInit {
   public title:string;
@@ -32,6 +33,7 @@ export class InicioComponent implements OnInit {
 
 
 
+
   constructor(
     private _transporteService: TransporteService,
     private _departamentoService: departamentoService,
@@ -40,6 +42,8 @@ export class InicioComponent implements OnInit {
     private _eventoService: EventoService, 
     private _mantenimientoService: MantenimientoService,
     private _salidaService: SalidaService,
+    private _permisoService: PermisoService,
+    private _cargoService: CargoService,
     private _spinner: NgxSpinnerService,
   ) {
     this.title = "Sistema de control de inventarios del Instituto Tecnologico de Matamoros";
@@ -61,9 +65,11 @@ export class InicioComponent implements OnInit {
     }
   
     this.forms();
+    this.getPermiso();
     this.getEventos();
     this.getSalidas();
     this.getMantenimientos();
+    this.getCargos();
 
 
   }
@@ -198,6 +204,37 @@ export class InicioComponent implements OnInit {
       }
 
     );
+  }
+  
+  getPermiso(){
+    this._permisoService.byUser(this.token, this.identity.id).subscribe(
+      response => {
+        if(response.status == 'success'){
+          let respuesta  = response.elementos;
+          localStorage.setItem('privilegios', JSON.stringify(response.elementos[0]));
+        }else{
+          localStorage.setItem('no-privilegios', "el usuario no tiene los privilegios necesarios para ver esta informacion");
+        }
+
+      },
+      error =>{
+        console.log(<any>error);
+      }
+    )
+  }
+
+  getCargos(){
+    this._cargoService.getCargos(this.token).subscribe(
+      response => {
+        if(response.status == 'success'){
+          localStorage.setItem('cargos', JSON.stringify(response.cargos));
+        }
+
+      },
+      error =>{
+        console.log(<any>error);
+      }
+    )
   }
 
   getSalidas(){

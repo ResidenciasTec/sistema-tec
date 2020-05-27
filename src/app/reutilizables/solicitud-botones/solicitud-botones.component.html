@@ -1,19 +1,34 @@
 <div class="botones" *ngIf="evento">
     <p [routerLink]="['/eventos/actualizar/'+ evento.id]">actualizar solicitud</p>
-    <p>verificar solicitud</p>
-    <p>aprobar solicitud</p>
+    <p *ngIf="privilegios.cargo.cargo == 'administrador' && (evento.status == 'pendiente')" (click)="verificarEvento()">verificar solicitud</p>
+    <span *ngIf="privilegios.cargo.cargo !== 'administrador' && (evento.status == 'pendiente')">no tienes permitido verificar la solicitud</span>
+    <span class="verificado" *ngIf="evento.status !== 'pendiente'" >solicitud verificada</span>
+    <p *ngIf="privilegios.departamento.departamento == evento.departamento.departamento && (evento.status == 'verificado')" (click)="aprobarEvento()">aprobar solicitud</p>
+    <span *ngIf="privilegios.departamento.departamento == evento.departamento.departamento && (evento.status == 'pendiente')">no tienes permitido aprobar esta solicitud</span>
+    <span *ngIf="privilegios.departamento.departamento !== evento.departamento.departamento && (evento.status !== 'aprobado')">no tienes permitido aprobar esta solicitud</span>
+    <span class="verificado" *ngIf="evento.status == 'aprobado'" >solicitud aprobada</span>
 </div>
 
 <div class="botones" *ngIf="mantenimiento">
     <p [routerLink]="['/mantenimiento/actualizar/'+ mantenimiento.id]">actualizar solicitud</p>
-    <p>verificar solicitud</p>
-    <p>aprobar solicitud</p>
+    <p *ngIf="privilegios.cargo.cargo == 'administrador' && (mantenimiento.status == 'pendiente')" (click)="verificarMantenimiento()">verificar solicitud</p>
+    <span *ngIf="privilegios.cargo.cargo !== 'administrador' && (mantenimiento.status == 'pendiente')">no tienes permitido verificar la solicitud</span>
+    <span class="verificado" *ngIf="mantenimiento.status !== 'pendiente'" >solicitud verificada</span>
+    <p *ngIf="privilegios.departamento.departamento == mantenimiento.departamento.departamento && (mantenimiento.status == 'verificado')" (click)="aprobarMantenimiento()">aprobar solicitud</p>
+    <span *ngIf="privilegios.departamento.departamento == mantenimiento.departamento.departamento && (mantenimiento.status == 'pendiente')">no tienes permitido aprobar esta solicitud</span>
+    <span *ngIf="privilegios.departamento.departamento !== mantenimiento.departamento.departamento && (mantenimiento.status !== 'aprobado')">no tienes permitido aprobar esta solicitud</span>
+    <span class="verificado" *ngIf="mantenimiento.status == 'aprobado'" >solicitud aprobada</span>
 </div>
 
 <div class="botones" *ngIf="salida">
     <p [routerLink]="['/salidas/actualizar/'+ salida.id]">actualizar solicitud</p>
-    <p>verificar solicitud</p>
-    <p>aprobar solicitud</p>
+    <p *ngIf="privilegios.cargo.cargo == 'administrador' && (salida.status == 'pendiente')" (click)="verificarSalida()">verificar solicitud</p>
+    <span *ngIf="privilegios.cargo.cargo !== 'administrador' && (salida.status == 'pendiente')">no tienes permitido verificar la solicitud</span>
+    <span class="verificado" *ngIf="salida.status !== 'pendiente'" >solicitud verificada</span>
+    <p *ngIf="privilegios.departamento.departamento == salida.departamento.departamento && (salida.status == 'verificado')" (click)="aprobarSalida()">aprobar solicitud</p>
+    <span *ngIf="privilegios.departamento.departamento == salida.departamento.departamento && (salida.status == 'pendiente')">no tienes permitido aprobar esta solicitud</span>
+    <span *ngIf="privilegios.departamento.departamento !== salida.departamento.departamento && (salida.status !== 'aprobado')">no tienes permitido aprobar esta solicitud</span>
+    <span class="verificado" *ngIf="salida.status == 'aprobado'" >solicitud aprobada</span>
 </div>
 
 <div class="botones" *ngIf="vehiculo">
