@@ -35,6 +35,7 @@ import { ActualizarMantenimientoComponent } from './components/actualizar-manten
 //servicios
 import {UserService} from "./services/user.service";
 import {UserGuard} from "./services/user.guard";
+import {AdminGuard} from "./services/admin.guard";
 import { InputDirective } from './directivas/forms/input.directive';
 import { SubmitDirective } from './directivas/submit/submit.directive';
 import { TextareaDirective } from './directivas/textarea/textarea.directive';
@@ -72,6 +73,18 @@ import { CargosComponent } from './adminComponents/cargos/cargos.component';
 import { PermisosComponent } from './adminComponents/permisos/permisos.component';
 import { EditarPermisosComponent } from './adminComponents/editar-permisos/editar-permisos.component';
 import { CrearPermisosComponent } from './adminComponents/crear-permisos/crear-permisos.component';
+import { StatusvehiculosComponent } from './adminComponents/statusvehiculos/statusvehiculos.component';
+import { StatusordersComponent } from './adminComponents/statusorders/statusorders.component';
+import { CrearStatusorderComponent } from './adminComponents/crear-statusorder/crear-statusorder.component';
+import { CrearStatusvehiculoComponent } from './adminComponents/crear-statusvehiculo/crear-statusvehiculo.component';
+import { EditarStatusvehiculoComponent } from './adminComponents/editar-statusvehiculo/editar-statusvehiculo.component';
+import { EditarStatusorderComponent } from './adminComponents/editar-statusorder/editar-statusorder.component';
+import { CrearEspacioComponent } from './adminComponents/crear-espacio/crear-espacio.component';
+import { EditarEspacioComponent } from './adminComponents/editar-espacio/editar-espacio.component';
+import { CrearSubdireccionComponent } from './adminComponents/crear-subdireccion/crear-subdireccion.component';
+import { CrearUbicacionComponent } from './adminComponents/crear-ubicacion/crear-ubicacion.component';
+import { EditarUbicacionComponent } from './adminComponents/editar-ubicacion/editar-ubicacion.component';
+import { EditarSubdireccionComponent } from './adminComponents/editar-subdireccion/editar-subdireccion.component';
 
 @NgModule({
   declarations: [
@@ -133,7 +146,19 @@ import { CrearPermisosComponent } from './adminComponents/crear-permisos/crear-p
     CargosComponent,
     PermisosComponent,
     EditarPermisosComponent,
-    CrearPermisosComponent
+    CrearPermisosComponent,
+    StatusvehiculosComponent,
+    StatusordersComponent,
+    CrearStatusorderComponent,
+    CrearStatusvehiculoComponent,
+    EditarStatusvehiculoComponent,
+    EditarStatusorderComponent,
+    CrearEspacioComponent,
+    EditarEspacioComponent,
+    CrearSubdireccionComponent,
+    CrearUbicacionComponent,
+    EditarUbicacionComponent,
+    EditarSubdireccionComponent
   ],
   imports: [
     BrowserModule,
@@ -152,7 +177,8 @@ import { CrearPermisosComponent } from './adminComponents/crear-permisos/crear-p
   providers: [
     appRoutingProviders,
     UserService,
-    UserGuard
+    UserGuard,
+    AdminGuard
   ],
   bootstrap: [AppComponent]
 })

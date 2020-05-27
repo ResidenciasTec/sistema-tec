@@ -74,12 +74,36 @@ import {PermisosComponent} from "./adminComponents/permisos/permisos.component";
 import {EditarPermisosComponent} from "./adminComponents/editar-permisos/editar-permisos.component";
 import {CrearPermisosComponent} from "./adminComponents/crear-permisos/crear-permisos.component";
 
+//componentes de administrador para espacios
+import {CrearEspacioComponent} from "./adminComponents/crear-espacio/crear-espacio.component";
+import {EditarEspacioComponent} from "./adminComponents/editar-espacio/editar-espacio.component";
+
+//componentes de administrador para subdirecciones
+import {CrearSubdireccionComponent} from "./adminComponents/crear-subdireccion/crear-subdireccion.component";
+import {EditarSubdireccionComponent} from "./adminComponents/editar-subdireccion/editar-subdireccion.component";
+
+//componentes de administrador para ubicaciones
+import {CrearUbicacionComponent} from "./adminComponents/crear-ubicacion/crear-ubicacion.component";
+import {EditarUbicacionComponent} from "./adminComponents/editar-ubicacion/editar-ubicacion.component";
+
+//componentes de administrador para status de los vehiculos
+import {StatusvehiculosComponent} from "./adminComponents/statusvehiculos/statusvehiculos.component";
+import {CrearStatusvehiculoComponent} from "./adminComponents/crear-statusvehiculo/crear-statusvehiculo.component";
+import {EditarStatusvehiculoComponent} from "./adminComponents/editar-statusvehiculo/editar-statusvehiculo.component";
+
+//componentes de administrador para status de las solicitudes
+import {StatusordersComponent} from "./adminComponents/statusorders/statusorders.component";
+import {CrearStatusorderComponent} from "./adminComponents/crear-statusorder/crear-statusorder.component";
+import {EditarStatusorderComponent} from "./adminComponents/editar-statusorder/editar-statusorder.component";
+
+
 //otros componentes
 import {TransporteComponent} from "./components/transporte/transporte.component";
 import {UsuariosComponent} from "./components/usuarios/usuarios.component";
 
 //importar guards
 import {UserGuard} from "./services/user.guard";
+import {AdminGuard} from "./services/admin.guard";
 
  
 
@@ -121,11 +145,8 @@ const  appRoutes: Routes = [
     {path: 'perfil/solicitudes', component: MisSolicitudesComponent, canActivate:[UserGuard]},
 
     //rutas de usuario administrador
-    {path: 'admin', component: AdminComponent, canActivate:[UserGuard]},
+    {path: 'admin/:id', component: AdminComponent, canActivate:[UserGuard]},
     {path: 'transportes', component: TransportesComponent, canActivate:[UserGuard]},
-    {path: 'subdirecciones', component: SubdireccionesComponent, canActivate:[UserGuard]},
-    {path: 'espacios', component: EspaciosComponent, canActivate:[UserGuard]},
-    {path: 'ubicaciones', component: UbicacionesComponent, canActivate:[UserGuard]},
     {path: 'departamentos', component: DepartamentosComponent, canActivate:[UserGuard]},
 
     //rutas de usuario administrador para ver
@@ -133,8 +154,8 @@ const  appRoutes: Routes = [
     {path: 'departamentos/:id', component: VerDepartamentoComponent, canActivate:[UserGuard]},
 
     //rutas de usuario administrador para actualizar
-    {path: 'vehiculos/actualizar/:id', component: ActualizarTransporteComponent, canActivate:[UserGuard]},
-    {path: 'departamentos/actualizar/:id', component: ActualizarDepartamentoComponent, canActivate:[UserGuard]},
+    {path: 'vehiculos/actualizar/:id', component: ActualizarTransporteComponent, canActivate:[UserGuard, AdminGuard]},
+    {path: 'departamentos/actualizar/:id', component: ActualizarDepartamentoComponent, canActivate:[UserGuard, AdminGuard]},
 
     //rutas de usuario administrador para crear
     {path: 'vehiculos/crear', component: CrearTransporteComponent, canActivate:[UserGuard]},
@@ -146,14 +167,39 @@ const  appRoutes: Routes = [
     {path: 'salidas/pdf/:id', component: SalidapdfComponent, canActivate:[UserGuard]},
 
     //rutas para permisos
-    {path: 'permisos', component: PermisosComponent, canActivate: [UserGuard]},
-    {path: 'permisos/crear', component: CrearPermisosComponent, canActivate: [UserGuard]},
-    {path: 'permisos/editar/:id', component: EditarPermisosComponent, canActivate: [UserGuard]},
+    {path: 'permisos', component: PermisosComponent, canActivate: [AdminGuard]},
+    {path: 'permisos/crear', component: CrearPermisosComponent, canActivate: [UserGuard, AdminGuard]},
+    {path: 'permisos/editar/:id', component: EditarPermisosComponent, canActivate: [UserGuard, AdminGuard]},
 
     //rutas para cargos
-    {path: 'cargos', component: CargosComponent, canActivate: [UserGuard]},
-    {path: 'cargos/editar/:id', component: EditarCargoComponent, canActivate: [UserGuard]},
-    {path: 'cargos/crear', component: CrearCargoComponent, canActivate: [UserGuard]},
+    {path: 'cargos', component: CargosComponent, canActivate: [UserGuard, AdminGuard]},
+    {path: 'cargos/editar/:id', component: EditarCargoComponent, canActivate: [UserGuard, AdminGuard]},
+    {path: 'cargos/crear', component: CrearCargoComponent, canActivate: [UserGuard, AdminGuard]},
+
+    //rutas para espacios
+    {path: 'espacios', component: EspaciosComponent, canActivate:[UserGuard, AdminGuard]},
+    {path: 'espacios/editar/:id', component: EditarEspacioComponent, canActivate: [UserGuard, AdminGuard]},
+    {path: 'espacios/crear', component: CrearEspacioComponent, canActivate: [UserGuard, AdminGuard]},
+
+    //rutas para subdirecciones
+    {path: 'subdirecciones', component: SubdireccionesComponent, canActivate:[UserGuard, AdminGuard]},
+    {path: 'subdirecciones/editar/:id', component: EditarSubdireccionComponent, canActivate: [UserGuard, AdminGuard]},
+    {path: 'subdirecciones/crear', component: CrearSubdireccionComponent, canActivate: [UserGuard, AdminGuard]},
+
+    //rutas para ubicaciones
+    {path: 'ubicaciones', component: UbicacionesComponent, canActivate:[UserGuard, AdminGuard]},
+    {path: 'ubicaciones/editar/:id', component: EditarUbicacionComponent, canActivate: [UserGuard, AdminGuard]},
+    {path: 'ubicaciones/crear', component: CrearUbicacionComponent, canActivate: [UserGuard , AdminGuard]},
+
+    //rutas para statusvehiculos
+    {path: 'status/vehiculo', component: StatusvehiculosComponent, canActivate: [UserGuard, AdminGuard]},
+    {path: 'status/vehiculo/editar/:id', component: EditarStatusvehiculoComponent, canActivate: [UserGuard, AdminGuard]},
+    {path: 'status/vehiculo/crear', component: CrearStatusorderComponent, canActivate: [UserGuard, AdminGuard]},
+
+    //rutas para statusorders
+    {path: 'status/mantenimiento', component: StatusordersComponent, canActivate: [UserGuard, AdminGuard]},
+    {path: 'status/mantenimiento/editar/:id', component: EditarStatusorderComponent, canActivate: [UserGuard, AdminGuard]},
+    {path: 'status/mantenimiento/crear', component: CrearStatusorderComponent, canActivate: [UserGuard, AdminGuard]},
 
     //otras rutas 
     {path: 'usuarios', component: UsuariosComponent, canActivate:[UserGuard]},
