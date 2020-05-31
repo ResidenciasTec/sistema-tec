@@ -85,6 +85,8 @@ import { CrearSubdireccionComponent } from './adminComponents/crear-subdireccion
 import { CrearUbicacionComponent } from './adminComponents/crear-ubicacion/crear-ubicacion.component';
 import { EditarUbicacionComponent } from './adminComponents/editar-ubicacion/editar-ubicacion.component';
 import { EditarSubdireccionComponent } from './adminComponents/editar-subdireccion/editar-subdireccion.component';
+import { VerificarComponent } from './adminComponents/verificar/verificar.component';
+import { AprobarComponent } from './adminComponents/aprobar/aprobar.component';
 
 @NgModule({
   declarations: [
@@ -158,7 +160,9 @@ import { EditarSubdireccionComponent } from './adminComponents/editar-subdirecci
     CrearSubdireccionComponent,
     CrearUbicacionComponent,
     EditarUbicacionComponent,
-    EditarSubdireccionComponent
+    EditarSubdireccionComponent,
+    VerificarComponent,
+    AprobarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,18 +1,18 @@
 
 <article *ngIf="evento"  [routerLink]="['/eventos/'+ evento.id]">
         <section class="replace">{{evento.evento}}</section>
-        <section  [className]="evento.status == 'aprobado' ? 'replace aprobado' : 'replace'">{{evento.status}}</section>
+        <section  [className]="evento.status == 'aprobado' || evento.verificado == true ? 'replace aprobado' : 'replace'">{{evento.status}}</section>
 </article>
 
 <article *ngIf="mantenimiento"  [routerLink]="['/mantenimiento/'+ mantenimiento.id]">
     <section class="replace">{{mantenimiento.trabajo_realizado}}</section>
-    <section [className]="mantenimiento.status == 'aprobado' ? 'replace aprobado' : 'replace'">{{mantenimiento.status}}</section>
+    <section [className]="mantenimiento.status == 'aprobado' || mantenimiento.verificado == true ? 'replace aprobado' : 'replace'">{{mantenimiento.status}}</section>
 </article>
 
 <article *ngIf="salida" [routerLink]="['/salidas/'+ salida.id]">
     <section *ngIf="salida.destino"class="replace">{{salida.destino}}</section>
     <section *ngIf="!salida.destino">Aun no hay un destino.</section>
-    <section [className]="salida.status == 'aprobado' ? 'replace aprobado' : 'replace'">{{salida.status}}</section>
+    <section [className]="salida.status == 'aprobado' || salida.verificado == true ? 'replace aprobado' : 'replace'">{{salida.status}}</section>
 </article>
  
 <article *ngIf="vehiculo" [routerLink]="['/vehiculo/'+ vehiculo.id]">

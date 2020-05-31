@@ -1,47 +1,59 @@
 <div class="list" *ngIf="eventos">
     <app-card *ngFor="let evento of eventos" [evento]="evento"></app-card>
+    <div class="div" *ngIf="eventos.length == 0"><h2 class="messsage">{{message}}</h2></div>
 </div>
 
 <div class="list" *ngIf="mantenimientos">
     <app-card *ngFor="let mantenimiento of mantenimientos" [mantenimiento]="mantenimiento"></app-card>
+    <div class="div" *ngIf="mantenimientos.length == 0"><h2 class="messsage">{{message}}</h2></div>
 </div>
 
 <div class="list" *ngIf="salidas">
     <app-card *ngFor="let salida of salidas" [salida]="salida"></app-card>
+    <div class="div" *ngIf="salidas.length == 0"><h2 class="messsage">{{message}}</h2></div>
 </div>
 
 <div class="list" *ngIf="vehiculos">
     <app-card *ngFor="let vehiculo of vehiculos" [vehiculo]="vehiculo"></app-card>
+    <div class="div" *ngIf="vehiculos.length == 0"><h2 class="messsage">{{message}}</h2></div>
 </div>
 
 <div class="list" *ngIf="departamentos">
     <app-card *ngFor="let departamento of departamentos" [departamento]="departamento"></app-card>
+    <div class="div" *ngIf="departamentos.length == 0"><h2 class="messsage">{{message}}</h2></div>
 </div>
 
 <div class="list" *ngIf="cargos">
     <app-card *ngFor="let cargo of cargos" [cargo]="cargo"></app-card>
+    <div class="div" *ngIf="cargos.length == 0"><h2 class="messsage">{{message}}</h2></div>
 </div>
 
 <div class="list" *ngIf="permisos">
     <app-card *ngFor="let permiso of permisos" [permiso]="permiso"></app-card>
+    <div class="div" *ngIf="permisos.length == 0"><h2 class="messsage">{{message}}</h2></div>
 </div>
 
 <div class="list" *ngIf="subdirecciones">
     <app-card *ngFor="let subdireccion of subdirecciones" [subdireccion]="subdireccion"></app-card>
+    <div class="div" *ngIf="subdirecciones.length == 0"><h2 class="messsage">{{message}}</h2></div>
 </div>
 
 <div class="list" *ngIf="espacios">
     <app-card *ngFor="let espacio of espacios" [espacio]="espacio"></app-card>
+    <div class="div" *ngIf="espacios.length == 0"><h2 class="messsage">{{message}}</h2></div>
 </div>
 
 <div class="list" *ngIf="statusvehiculos">
     <app-card *ngFor="let statusvehiculo of statusvehiculos" [statusvehiculo]="statusvehiculo"></app-card>
+    <div class="div" *ngIf="statusvehiculos.length == 0"><h2 class="messsage">{{message}}</h2></div>
 </div>
 
 <div class="list" *ngIf="statusorders">
     <app-card *ngFor="let statusorder of statusorders" [statusorder]="statusorder"></app-card>
+    <div class="div" *ngIf="statusorders.length == 0"><h2 class="messsage">{{message}}</h2></div>
 </div>
 
 <div class="list" *ngIf="ubicaciones">
     <app-card *ngFor="let ubicacion of ubicaciones" [ubicacion]="ubicacion"></app-card>
+    <div class="div" *ngIf="ubicaciones.length == 0"><h2 class="messsage">{{message}}</h2></div>
 </div>
