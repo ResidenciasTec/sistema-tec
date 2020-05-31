@@ -19,8 +19,11 @@ export class CardGridComponent implements OnInit {
   @Input() statusvehiculos: any;
   @Input() statusorders: any;
   @Input() subdirecciones: any;
+  message: String;
   
-  constructor() { }
+  constructor() {
+    this.message = 'no hay datos para mostrar.'
+   }
 
   ngOnInit(): void {
   }

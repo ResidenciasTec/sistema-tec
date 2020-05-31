@@ -59,6 +59,16 @@ export class UserService{
 		return this._http.get(this.url+'detail/'+id,  {headers: headers});
 	}
 
+	clave(token, user): Observable<any>{
+
+		let json = JSON.stringify(user);
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+									   .set('cors', 'Access-Control-Allow-Origin')
+									   .set('Authorization', 'Bearer '+token);
+
+		return this._http.post(this.url+'userloginClave', json, {headers: headers});
+	}
+
 	getIdentity(){
 		let identity = JSON.parse(localStorage.getItem('identity'));
 

@@ -96,6 +96,9 @@ import {StatusordersComponent} from "./adminComponents/statusorders/statusorders
 import {CrearStatusorderComponent} from "./adminComponents/crear-statusorder/crear-statusorder.component";
 import {EditarStatusorderComponent} from "./adminComponents/editar-statusorder/editar-statusorder.component";
 
+//componentes de administrador para aprobar y verificar solicitudes
+import {VerificarComponent} from "./adminComponents/verificar/verificar.component";
+import {AprobarComponent} from "./adminComponents/aprobar/aprobar.component";
 
 //otros componentes
 import {TransporteComponent} from "./components/transporte/transporte.component";
@@ -201,6 +204,10 @@ const  appRoutes: Routes = [
     {path: 'status/mantenimiento/editar/:id', component: EditarStatusorderComponent, canActivate: [UserGuard, AdminGuard]},
     {path: 'status/mantenimiento/crear', component: CrearStatusorderComponent, canActivate: [UserGuard, AdminGuard]},
 
+    //rutas para aprobar y verificar solicitudes
+    {path: 'verificar/:solicitud/:id', component: VerificarComponent, canActivate: [UserGuard, AdminGuard]},
+    {path: 'aprobar/:solicitud/:id', component: AprobarComponent, canActivate: [UserGuard]},
+    
     //otras rutas 
     {path: 'usuarios', component: UsuariosComponent, canActivate:[UserGuard]},
 
