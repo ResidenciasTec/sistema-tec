@@ -37,16 +37,25 @@
             font-size: 1.3em;
         }
 
-        &:last-child{
+        &:last-child(){
             display: flex;
             justify-content: center;
             background-color: #e1cfcfb5;
             border-radius: 5px;
             border: none;
-            color: #8c1212;
-
+            color: #8c1212; 
         }
+
+
+
+    }
+
+    .aprobado{
+        background-color: #acdee3 !important;
+
     }
 
 
 }
+
+

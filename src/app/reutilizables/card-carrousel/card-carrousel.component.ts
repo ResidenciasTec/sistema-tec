@@ -12,8 +12,11 @@ export class CardCarrouselComponent implements OnInit {
   @Input() salidas: any;
   @Input() vehiculos: any;
   @Input() departamentos: any;
+  message: string;
   
-  constructor() { }
+  constructor() {
+    this.message = 'no hay datos para mostrar.'
+   }
 
   ngOnInit(): void {
   }

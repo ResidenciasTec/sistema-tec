@@ -138,7 +138,7 @@ export class VerEventoComponent implements OnInit {
     doc.save('document.pdf');
   }
 
-  showPdf(){
+  showPdfnone(){
     const doc = new jsPDF('portrait', 'px', 'a4');
     
     doc.autoTable({
@@ -146,15 +146,45 @@ export class VerEventoComponent implements OnInit {
         ['Solicitud de eventos', '']
       ],
       body: [
-        ['evento solicitado'],
-        [this.evento.evento],
-        ['pedido por el departamento', this.evento.departamento.departamento],
-        ['se llevara a cabo', 'empieza a ' + this.evento.hora_inicio + ' y termina a las'+ this.evento.hora_final ],
+        [{ content: 'evento solicitado', colSpan: 2, rowSpan: 1, styles: { halign: 'center' } }],
+        [{ content: this.evento.evento, colSpan: 1, rowSpan: 1, styles: { halign: 'center' } }],
+        [{ content: 'pedido por el departamento', colSpan: 1, rowSpan: 1, styles: { halign: 'center' } }, this.evento.departamento.departamento],
+        [{ content: 'se llevara a cabo', colSpan: 1, rowSpan: 1, styles: { halign: 'center' } }, 'empieza a ' + this.evento.hora_inicio + ' y termina a las'+ this.evento.hora_final],
         ['lugar del evento', this.evento.espacio.espacio ]
       ]
   })
 
     doc.output('dataurlnewwindow');
   }
+
+  showPdf(){
+    
+      var columns = [
+        {title: "ID", dataKey: "id"},
+        {title: "Name", dataKey: "name"}, 
+        {title: "Country", dataKey: "country"}, 
+       
+    ];
+    var rows = [
+        {"id": 1, "name": "Shaw", "country": "Tanzania"},
+        {"id": 2, "name": "Nelson", "country": "Kazakhstan"},
+        {"id": 3, "name": "Garcia", "country": "Madagascar"},
+        
+    ];
+     
+    var doc = new jsPDF('p', 'pt');
+    doc.autoTable(columns, rows, {
+        styles: {fillColor: [100, 255, 255]},
+        columnStyles: {
+          id: {fillColor: 255}
+        },
+        margin: {top: 60},
+        beforePageContent: function(data) {
+          doc.text("Header", 40, 30);
+        }
+    });
+    doc.output('dataurlnewwindow');
+    }
+  
 
 }
