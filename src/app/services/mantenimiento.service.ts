@@ -118,4 +118,11 @@ export class MantenimientoService{
 		return this._http.get(this.url+'mantenimientobyuser/'+id, {headers: headers});
 	}
 
+	everyMonth(token, inicio, final):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+										.set('Authorization', 'Bearer '+token);
+
+		return this._http.get(this.url+'mantenimientoEveryMonth/'+inicio+'/'+final, {headers: headers});
+	}
+
 }

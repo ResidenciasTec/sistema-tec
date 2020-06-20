@@ -1,0 +1,38 @@
+<main class="body-calendario">
+
+    <app-banner-crear [titulo]="textoCrear"></app-banner-crear>
+
+    <ngx-spinner bdColor = "rgba(44,43,43,0.8)" size = "default" color = "#d36969" type = "timer" >
+        <p style="color: white" > cargando datos... </p>
+    </ngx-spinner>
+
+    <div id="calendario">
+        <div class="header_calendar">
+            <button (click)="prevMonth()">&lt;</button>
+            <p>{{mesActual}}</p>
+            <button (click)="nextMonth()">></button>
+            <span *ngFor="let day of daysOfWeek">{{day}}</span>
+        </div>
+        <div class="box_calendar">
+            <span *ngFor="let day of daysMonth" (click)="dayClick(day)">
+                <span class="number">{{day}}</span>
+                <span *ngIf="eventoNumbers && evaluateEventoDay(day)" class="event">evento</span>
+                <span *ngIf="mantenimientoNumbers && evaluateMantenimientoDay(day)" class="mante">mantenim.</span>
+                <span *ngIf="salidaNumbers && evaluateSalidaDay(day)" class="sal">salida</span>
+            </span>
+        </div>
+
+    </div>
+
+    <div id="cards">
+        <h2>solicitudes pendientes para el dia seleccionado:</h2>
+        <div>
+            <p *ngIf="!eventosDay && !mantenimientosDay && !salidasDay">selecciona un dia para ver las solicitudes pendientes</p>
+            <app-card *ngFor="let ev of eventosDay" [evento]="ev"></app-card>
+            <app-card *ngFor="let ma of mantenimientosDay" [mantenimiento]="ma"></app-card>
+            <app-card *ngFor="let sa of salidasDay" [salida]="sa"></app-card>
+        </div>
+    </div>
+
+
+</main>

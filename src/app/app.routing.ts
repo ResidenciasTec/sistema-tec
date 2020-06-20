@@ -104,6 +104,9 @@ import {AprobarComponent} from "./adminComponents/aprobar/aprobar.component";
 import {TransporteComponent} from "./components/transporte/transporte.component";
 import {UsuariosComponent} from "./components/usuarios/usuarios.component";
 
+//componentes de administrador para calendarii
+import {ClndrioComponent} from "./adminComponents/clndrio/clndrio.component";
+
 //importar guards
 import {UserGuard} from "./services/user.guard";
 import {AdminGuard} from "./services/admin.guard";
@@ -207,6 +210,9 @@ const  appRoutes: Routes = [
     //rutas para aprobar y verificar solicitudes
     {path: 'verificar/:solicitud/:id', component: VerificarComponent, canActivate: [UserGuard, AdminGuard]},
     {path: 'aprobar/:solicitud/:id', component: AprobarComponent, canActivate: [UserGuard]},
+
+    //rutas para calendario
+    {path: 'calendario', component: ClndrioComponent, canActivate: [UserGuard]},
     
     //otras rutas 
     {path: 'usuarios', component: UsuariosComponent, canActivate:[UserGuard]},

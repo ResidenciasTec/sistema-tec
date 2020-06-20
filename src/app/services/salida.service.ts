@@ -122,4 +122,11 @@ export class SalidaService{
 
 		return this._http.get(this.url+'salidabyuser/'+id, {headers: headers});
 	}
+
+	everyMonth(token, inicio, final):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+										.set('Authorization', 'Bearer '+token);
+
+		return this._http.get(this.url+'salidaEveryMonth/'+inicio+'/'+final, {headers: headers});
+	}
 }

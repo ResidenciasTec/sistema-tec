@@ -87,6 +87,7 @@ import { EditarUbicacionComponent } from './adminComponents/editar-ubicacion/edi
 import { EditarSubdireccionComponent } from './adminComponents/editar-subdireccion/editar-subdireccion.component';
 import { VerificarComponent } from './adminComponents/verificar/verificar.component';
 import { AprobarComponent } from './adminComponents/aprobar/aprobar.component';
+import { ClndrioComponent } from './adminComponents/clndrio/clndrio.component';
 
 @NgModule({
   declarations: [
@@ -162,7 +163,8 @@ import { AprobarComponent } from './adminComponents/aprobar/aprobar.component';
     EditarUbicacionComponent,
     EditarSubdireccionComponent,
     VerificarComponent,
-    AprobarComponent
+    AprobarComponent,
+    ClndrioComponent
   ],
   imports: [
     BrowserModule,
