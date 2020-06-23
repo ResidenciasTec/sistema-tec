@@ -28,6 +28,7 @@
         <h2>solicitudes pendientes para el dia seleccionado:</h2>
         <div>
             <p *ngIf="!eventosDay && !mantenimientosDay && !salidasDay">selecciona un dia para ver las solicitudes pendientes</p>
+            <p *ngIf="salidaResult == 0 && eventoResult == 0 && mantenimientoResult == 0">este dia no tiene ninguna solicitud asignada.</p>
             <app-card *ngFor="let ev of eventosDay" [evento]="ev"></app-card>
             <app-card *ngFor="let ma of mantenimientosDay" [mantenimiento]="ma"></app-card>
             <app-card *ngFor="let sa of salidasDay" [salida]="sa"></app-card>
