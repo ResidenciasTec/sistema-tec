@@ -35,6 +35,7 @@ export class ClndrioComponent implements OnInit {
   eventoNumbers: any[];
   salidaNumbers: any[];
   mantenimientoNumbers: any[];
+  number: Boolean;
 
 
   constructor(
@@ -54,10 +55,12 @@ export class ClndrioComponent implements OnInit {
     this.eventoNumbers = [];
     this.mantenimientoNumbers = [];
     this.salidaNumbers = [];
+    this.number = false;
 
   }
 
   ngOnInit(): void {
+    window.scrollTo(0,0);
     const startOfMonth = moment().startOf('month').format('YYYY-MM-DD');
     const endOfMonth = moment().endOf('month').format('YYYY-MM-DD');
     let weekDay = moment().startOf('month').weekday();
@@ -280,12 +283,18 @@ export class ClndrioComponent implements OnInit {
     this.SalidaPorDia(day);
 
     if(!isNaN(day)){
+      this.number = false;
       this.eventosDay = this.eventoResult;
       this.mantenimientosDay = this.mantenimientoResult;
       this.salidasDay = this.salidaResult;
-      
-      window.scrollTo(0, 900);
+
+      window.scroll({
+        top : 900,
+        left : 0,
+        behavior : 'smooth'
+    });
     }else{
+      this.number = true;
 
     }
 
