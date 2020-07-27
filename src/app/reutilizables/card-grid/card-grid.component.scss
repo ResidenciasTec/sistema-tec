@@ -1,12 +1,12 @@
 .list{   
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 14em 14em 14em;
+    grid-template-rows: 14em 14em;
     justify-content: center;
     align-items: center;
     grid-gap: 1em;
     padding: 1em 0em 6em 0em;
-    height: 700px;
+    height: 470px;
 
     .div{
         grid-column: 1/span 5;
