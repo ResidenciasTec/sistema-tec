@@ -58,7 +58,7 @@
                 font-size: 2em;
             }
 
-        }
+        } 
 
         .box_calendar{
             display: grid;
@@ -81,7 +81,7 @@
                 filter: blur();
 
                 &:hover{
-                    background-color: #f5d577;
+                    background-color: #bebebefb;
                     color: black;
                     transition: .2s;
                     cursor: pointer;
@@ -95,7 +95,7 @@
                     min-height: .5em;
 
                     &:hover{
-                        background-color: #c142425e;
+                        background-color: #f7a63e91;
                         color: black;
                         transition: .2s;
                         cursor: pointer;
@@ -122,11 +122,21 @@
                 }
 
                 .event, .mante, .sal{
-                    background-color: #c142425e;
+                    background-color: #f7a63e91;
                     color: #862525;
 
+                }
 
+                .event{
+                    background-color: #1ab0f991;
+                }
 
+                .sal{
+                    background-color: #f7a63e91;
+                }
+
+                .mante{
+                    background-color: #e8334d91;
                 }
 
             }

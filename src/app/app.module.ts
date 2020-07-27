@@ -88,6 +88,7 @@ import { EditarSubdireccionComponent } from './adminComponents/editar-subdirecci
 import { VerificarComponent } from './adminComponents/verificar/verificar.component';
 import { AprobarComponent } from './adminComponents/aprobar/aprobar.component';
 import { ClndrioComponent } from './adminComponents/clndrio/clndrio.component';
+import { StatsComponent } from './reutilizables/stats/stats.component';
 
 @NgModule({
   declarations: [
@@ -164,7 +165,8 @@ import { ClndrioComponent } from './adminComponents/clndrio/clndrio.component';
     EditarSubdireccionComponent,
     VerificarComponent,
     AprobarComponent,
-    ClndrioComponent
+    ClndrioComponent,
+    StatsComponent
   ],
   imports: [
     BrowserModule,
