@@ -1,20 +1,46 @@
 //ESTILOS UNICOS DEL COMPONENTE
-.move{
-    transition: transform .2s;
-    transform: translateX(250px);
-}
 
+//variables
+$body-background: #F6EFCF;
+$body-background-image: linear-gradient(#E8E8E8, #FFF9EE); 
+$menu-backgorund: #802434;
+$menu-background-hover: #6f1524;
+$submenu-background: #E3C273;
+$submenu-background-hover: #d1aa4f;
+$submenu-color: #802434;         
+$submenu-color-hover: rgb(80, 9, 9);
+
+
+//mixins
+@mixin submenu($margin){
+    display: flex;
+    position: absolute;
+    background-color:$submenu-background;
+    margin-top: $margin;
+    margin-left: 10em;    
+    padding-top: 2em;
+    padding-bottom: 2em;       
+    border-width: 0px 2px 2px 2px;
+    border-radius: 3px;
+    transform: scaley(0);
+    scale: start-to-top;
+    min-width: 15em;
+    font-size: 1.2rem; 
+    font-weight: normal;
+
+
+  }
+
+  //estilos
 .scrollOff{
     overflow-x: hidden;
 }
 
-
-
 .body-app{
     grid-column: 1/2;
     grid-row: 1/2;
-    background-color: #F6EFCF;
-    background-image: linear-gradient(#E8E8E8, #FFF9EE);
+    background-color: $body-background;
+    background-image: $body-background-image;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows:5em 1fr 8em;
@@ -30,7 +56,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #802434;;
+        background-color: $menu-backgorund;
         font-size: 1.4em;
         grid-gap: 1em;
         color: rgb(248, 239, 190); 
@@ -40,7 +66,7 @@
 
     #header-nolog{
         font-family: Arial, Helvetica, sans-serif;
-        background-color: #802434;
+        background-color: $menu-backgorund;
         height: 4.5em;
         display: grid;
         grid-template-columns: 1fr 25em;
@@ -95,10 +121,10 @@
 
     #header-silog{        
         display:grid;
-        grid-template-columns:  4em 1fr 9em ;
+        grid-template-columns:  4em 1fr 14em;
         grid-template-rows: 5em;
         font-family: Arial, Helvetica, sans-serif;
-        background-color: #802434;
+        background-color: $menu-backgorund;
         border-width: 0px 0px 1px 0px;
         padding-left: 6em;
         padding-right: 6em;
@@ -108,128 +134,151 @@
         z-index: 5;
         box-shadow: 1px solid #999595;
 
-        .div-user{
-            grid-column: 3/4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-
-        }
-
-        .nav-hamburguer{
-            display: none;
-            z-index: 18;
-            cursor: default;
-            font-size: .9em;
-           
-
-            li{
-                font-size: 1.5em;
-                width: 100%;
-                padding-bottom: .5em;
-                ul{
-                    display: flex;
-                    flex-direction: column;
-                    font-size: .5em;
-                     li{
-                         margin-left: 4em;
-                         padding-bottom: .5em;
-                     }
-                    
-                }
-
-                .subshow{
-                    display: flex;
-                }
-            }
-    
-        }
-    
-        .nav-show{
-            display: inline-flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            width: 250px;
-            min-height: 100vh;
-            background-color: #802434f0;
-            margin-top: 0px;
-          
-            -webkit-margin-start: -334px;
-            padding: 1em;
-        }
-
-        .hamburguer{
-            grid-column: 1/2;
-            grid-row: 1/2;
-            display: none;
-            cursor: pointer;
-            margin: auto;
-
-        }
-
-
         ul{
             grid-column: 2/3;
-            display: flex;
+            display: grid;
+            grid-template-columns: 5em 5em 7em 10em 1fr;
+            grid-template-rows: 1fr;
             align-items: center;
             justify-content: flex-start;
-            grid-gap: 1em;
+            min-width: 100%;
+            height: inherit;
+            margin: 0px;
 
+            #submenu-crear{
+                display: flex;
+                width: inherit;
+                height: inherit;
+                justify-content: center;
+                align-items: center;
 
-            .li-crear{
-                width: 9em;
-            }
+                #submenu-crear-link{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-width: 100%;
+                    min-height: 100%;
 
-            li{
-                
-                font-family: Arial, Helvetica, sans-serif;
-                font-weight: bold;
-                font-size: 1.1em;
-                width: 5em;
-                cursor: pointer;
-                color: #E3C273 ;
-                
+                    .submenu-crear{
+                        @include submenu(20em);
 
+                        li{
+                            display: flex;
+                            flex-direction: column;
+                            min-width: 100%;
+                            padding: .5em;
+                            color: $submenu-color;
 
-                &:hover{
-                    font-weight: bold; 
-                    
-                }
-
-                .submenu-panel, .submenu-crear, .admin-submenu{
-                    position: absolute;
-                    background-color:#a23f50;
-                    width: 12em;
-                    font-size: .8em; 
-                    padding-top: 2em;                 
-                    border-width: 0px 2px 2px 2px;
-                    border-radius: 3px;
-                    padding-bottom: .5em; 
-                    
-                    cursor: pointer;
-
-                    
-                    li{
-                        display: flex;
-                        justify-content: flex-start;
-                        align-items: center;
-                        padding-bottom: .6em;
-                        width: 100%;
-                        padding: .5em; 
-                        font-size: 1.1em;
-                        
-                       
-
-                        &:hover{
-                            transition: .2s;
-                            font-weight: bold;
-                            background-color: rgb(231, 190, 95);
-                            color: #943142; 
-                    
+                            &:hover{
+                                transition: .2s background-color;
+                                background-color: $submenu-background-hover;
+                                color: $submenu-color-hover;
+                                
+                            }
+                             
                         }
                         
                     }
+                }
+                
+                &:hover{
+                    background-color: $menu-background-hover;
+                    transition: .3s ease;
+                }
+
+                &:hover > #submenu-crear-link > .submenu-crear{
+                    flex-direction: column;
+                    transform: scale(1);
+                }
+                
+            }
+
+            #submenu-panel{
+                display: flex;
+                width: inherit;
+                height: inherit;
+                justify-content: center;
+                align-items: center;
+
+                #submenu-panel-link{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-width: 100%;
+                    min-height: 100%;
+
+                    .submenu-panel{
+                        @include submenu(25em);
+
+                        li{
+                            display: flex;
+                            flex-direction: column;
+                            min-width: 100%;
+                            padding: .5em;
+                            color: #802434;
+
+                            &:hover{
+                                transition: .2s background-color;
+                                background-color: #d1aa4f;
+                                color: rgb(80, 9, 9);
+                                
+                            }
+                             
+                        }
+                    }
+                }
+
+                &:hover{
+                    background-color: #6f1524;
+                    transition: .3s;
+                }
+
+                &:hover > #submenu-panel-link > .submenu-panel{
+                    flex-direction: column;
+                    transform: scale(1);
+                }
+            }
+
+            #submenu-inicio{
+                display: flex;
+                width: inherit;
+                height: inherit;
+                justify-content: center;
+                align-items: center;
+
+                #submenu-inicio-link{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-width: 100%;
+                    min-height: 100%;
+
+                }
+
+                &:hover{
+                    background-color: #6f1524;
+                    transition: .3s ease;
+                }
+            }
+
+            #submenu-itm{
+                display: flex;
+                width: inherit;
+                height: inherit;
+                justify-content: center;
+                align-items: center; 
+            }
+
+
+            li{
+                font-size: 1.1em;
+                cursor: pointer;
+
+                 .admin-submenu{
+                    @include submenu(0);
+                    margin-left: 0px;
+                    margin-top: -5em;
+                    cursor: pointer;
                 }
 
                 .submenu-crear{
@@ -242,11 +291,13 @@
                         &:hover > .admin-submenu{
                             display: flex;
                             flex-direction: column;
-                            transform: translate(140px, 110px);
+                            transform: translate(140px, 0px);
                             width: 15em;
                         }
 
                         .admin-submenu{
+                            @include submenu(0);
+                            margin-left: 0px;
                             display: none;
                             position: absolute;
                             padding-top: 0em; 
@@ -266,7 +317,7 @@
                         &:hover > .admin-submenu{
                             display: flex;
                             flex-direction: column;
-                            transform: translate(140px, 110px); 
+                            transform: translate(150px, 50px); 
                             width: 15em;
                         }
 
@@ -288,140 +339,113 @@
         }
 
         .div-user{
+            grid-column: 3/4;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
-            padding: 0 0 0 0;
-        
-           
-        
-                &::after{
-                    display:block;
-                    position: absolute;
-                    width: .4em; 
-                    margin-left: 5px;
-                    
+            min-width: 100%;
+            min-height: 100%;
+            color: 1em;
+            color: $submenu-background;
+
+            .submenu-user{
+                @include submenu(20em);
+                flex-direction: column;
+                margin-left: 0px;
+                max-width: 100%;
 
 
-                }
-
-            #default-image{
-
-                span{
+                li{
                     display: flex;
-                    justify-content: center;
+                    justify-content: flex-start;
                     align-items: center;
-                    background-color: #bfbfbf;
-                    color: #333232;                  
-                    margin-top: .5em;
-                    margin-bottom: .5em; 
-                    width:  2.5em;
-                    height: 100%;                  
-                    margin-right: 50px;
-                    font-size: 2em;
-                    min-height: 2em;   
-                    border-radius: 5px;        
-                        
+                    color: $submenu-color;
+                    min-width: 100%;
+                    padding: .5em;
+
                     &:hover{
-                    transition: .6s;
-                    background-color: #333232;
-                    color: white;
-                    cursor: pointer;
+                        transition: .2s background-color;
+                        background-color: #d1aa4f;
+                        color: rgb(80, 9, 9);
+                        
                     }
                 }
+          
 
-            }
+                  
+       
+             }
 
-            img{
-                width: 4em;
-                cursor: pointer;
 
-                &:hover{
-                    transition: .4s;
-                    transform: scale(1.1,1.1);
-                }
-                
-            }
+            #default-image{
+                display: grid;
+                grid-template-columns: 4em 1fr;
+                grid-template-rows: 1fr;
+                min-width: 100%;
 
-            .submenu-user{   
-                display: flex;
-                position: absolute;
-                background-color:#a23f4ff1;
-                width:13em;
-                height: 20em;
-                margin-top: 13em;
-                padding-bottom: 5em;
-                border-width: 0px 2px 2px 2px;
-                border-radius: 5px;
-                cursor: pointer;
-                margin-right: 3em;
-                grid-gap: 0em;
-
-                #usuario{
-                    margin-top: 19px;
-                    margin-bottom: 19px;
-
+                img{
+                    grid-column: 1/2;
+                    grid-row: 1/2;
+                    width: 3em;
+                    cursor: pointer;
+    
+                    &:hover{
+                        transition: .4s;
+                        transform: scale(1.1,1.1);
+                    }
+                    
                 }
 
                 p{
                     display: flex;
-                    justify-content: center;
                     align-items: center;
-                    text-align: center;
-                    width: 100%;
-                    height: 2em;
-                    color: #E3C273;
-                    font-weight: bold;
-                    font-size: 1.1em;
-
-                    &:hover{
-                        font-weight: bold;
-                        transition: .2s;
-                        background-color: rgb(231, 190, 95);
-                        color: #943142; 
-                       
-                    }
-
-                    a{
-                        color: black;
-
-                    }
+                    grid-column: 2/3;
+                    grid-row: 1/2;
+                    margin-top: .5em;
                 }
-               
+
+
             }
 
-            .hide{
-                display: none;
+            &:hover{
+                transition: .3s background-color;
+                background-color: $menu-background-hover;
+                cursor: pointer;
             }
 
-            .show{
-                display: block;
-            }
-        }
-
-        @supports (-moz-appearance:none) {
-            #firefox-error { 
-                margin-top:22em; 
-            } 
-
-            .nav-show{
-                margin-left: -278px;
-                margin-top: 0px;
+            &:hover > .submenu-user{
+                transform: scaley(1);
             }
 
-            .nav-hamburguer{
-                li{
-                    padding-bottom: 0px;
-                    ul{
-                        li{
-                            padding-bottom: 0px;
+
+            @supports (-moz-appearance:none) {
+                #firefox-error { 
+                    margin-top:22em; 
+                } 
+    
+                .nav-show{
+                    margin-left: -278px;
+                    margin-top: 0px;
+                }
+    
+                .nav-hamburguer{
+                    li{
+                        padding-bottom: 0px;
+                        ul{
+                            li{
+                                padding-bottom: 0px;
+                            }
                         }
                     }
                 }
+    
+    
             }
 
 
         }
+
+
     
 
     
