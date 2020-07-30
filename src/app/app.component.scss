@@ -3,30 +3,68 @@
 //variables
 $body-background: #F6EFCF;
 $body-background-image: linear-gradient(#E8E8E8, #FFF9EE); 
-$menu-backgorund: #802434;
+$menu-background: #802434;
 $menu-background-hover: #6f1524;
-$submenu-background: #E3C273;
-$submenu-background-hover: #d1aa4f;
+$menu-color: #E3C273;
+$submenu-background: #e0dcca;
+$submenu-background-hover: #d6d5ce;
 $submenu-color: #802434;         
-$submenu-color-hover: rgb(80, 9, 9);
+$submenu-color-hover: rgb(36, 35, 34);
+$submenu-color-border: #beb4b5;
+$box-shadow: 0 1px 0 0 rgba(66,118,146,.1),0 2px 6px 0 rgba(66,118,146,.1);
 
 
 //mixins
 @mixin submenu($margin){
     display: flex;
+    flex-direction: column;
     position: absolute;
     background-color:$submenu-background;
-    margin-top: $margin;
+    top: $margin;
     margin-left: 10em;    
     padding-top: 2em;
     padding-bottom: 2em;       
-    border-width: 0px 2px 2px 2px;
+    border: 1px solid $submenu-color-border;
     border-radius: 3px;
+    box-shadow: $box-shadow;
     transform: scaley(0);
     scale: start-to-top;
     min-width: 15em;
-    font-size: 1.2rem; 
+    font-size: 1.4rem; 
     font-weight: normal;
+
+    li{
+        display: flex;
+        flex-direction: column;
+        min-width: 100%;
+        padding: .5em;
+        color: $submenu-color;
+        border: 1px solid $submenu-color-border;
+        border-width: 0px 0px 1px 0px;
+
+        &:hover{
+            transition: .1s;
+            color: $submenu-color-hover;
+            background-color: $submenu-background-hover;
+        }
+         
+    }
+    .admin-panel{
+        &:hover{
+            transition: .3s;
+            transform: translatex(10px);
+            background-color: transparent;
+        }
+    }
+
+    .admin-crear{
+        &:hover{
+            transition: .3s;
+            transform: translatex(10px);
+            background-color: transparent;
+        }
+    }
+
 
 
   }
@@ -56,25 +94,25 @@ $submenu-color-hover: rgb(80, 9, 9);
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: $menu-backgorund;
+        background-color: $menu-background;
         font-size: 1.4em;
         grid-gap: 1em;
-        color: rgb(248, 239, 190); 
+        color: $menu-color; 
         width: 100vw;
 
     }
 
     #header-nolog{
         font-family: Arial, Helvetica, sans-serif;
-        background-color: $menu-backgorund;
+        background-color: $menu-background;
         height: 4.5em;
         display: grid;
-        grid-template-columns: 1fr 25em;
+        grid-template-columns: 1fr 17em;
         grid-template-rows: 5em;
         position: fixed;
         width: 100%;
-        box-shadow: 0 1px 0 0 rgba(66,118,146,.1),0 2px 6px 0 rgba(66,118,146,.1);
-        border: 2px solid #F5D588 ;
+        box-shadow: $box-shadow;
+        border: 2px solid $menu-color;
         border-width: 0px 0px 1px 0px;
         z-index: 5;
 
@@ -95,25 +133,32 @@ $submenu-color-hover: rgb(80, 9, 9);
             justify-content: center;
             align-items: center;
             grid-gap: .5em; 
+            width: inherit;
+            height: inherit;
 
         
             p{
-                color:  #E3C273;
+                display: flex;
+                color:  $menu-color;
                 text-align: center;
                 padding: 0.5em;
                 cursor: pointer;
                 font-size: 1.2em;
+                width: inherit;
+                height: inherit;
+                justify-content: center;
+                align-items: center;
+                
 
                 &:hover{
-                    transition: 1s;
-                    border-color: #F5D588; 
+                    background-color: $menu-background-hover;
+                    transition: .3s ease;
+                    text-decoration: underline;
                 }
-            }
-
-            .active{
-                color: red;
                 
             }
+
+
 
         }
 
@@ -124,7 +169,7 @@ $submenu-color-hover: rgb(80, 9, 9);
         grid-template-columns:  4em 1fr 14em;
         grid-template-rows: 5em;
         font-family: Arial, Helvetica, sans-serif;
-        background-color: $menu-backgorund;
+        background-color: $menu-background;
         border-width: 0px 0px 1px 0px;
         padding-left: 6em;
         padding-right: 6em;
@@ -160,23 +205,7 @@ $submenu-color-hover: rgb(80, 9, 9);
                     min-height: 100%;
 
                     .submenu-crear{
-                        @include submenu(20em);
-
-                        li{
-                            display: flex;
-                            flex-direction: column;
-                            min-width: 100%;
-                            padding: .5em;
-                            color: $submenu-color;
-
-                            &:hover{
-                                transition: .2s background-color;
-                                background-color: $submenu-background-hover;
-                                color: $submenu-color-hover;
-                                
-                            }
-                             
-                        }
+                        @include submenu(5em);
                         
                     }
                 }
@@ -208,28 +237,13 @@ $submenu-color-hover: rgb(80, 9, 9);
                     min-height: 100%;
 
                     .submenu-panel{
-                        @include submenu(25em);
-
-                        li{
-                            display: flex;
-                            flex-direction: column;
-                            min-width: 100%;
-                            padding: .5em;
-                            color: #802434;
-
-                            &:hover{
-                                transition: .2s background-color;
-                                background-color: #d1aa4f;
-                                color: rgb(80, 9, 9);
-                                
-                            }
-                             
-                        }
+                        @include submenu(5em);
+ 
                     }
                 }
 
                 &:hover{
-                    background-color: #6f1524;
+                    background-color: $menu-background-hover;
                     transition: .3s;
                 }
 
@@ -237,6 +251,8 @@ $submenu-color-hover: rgb(80, 9, 9);
                     flex-direction: column;
                     transform: scale(1);
                 }
+
+                
             }
 
             #submenu-inicio{
@@ -256,7 +272,7 @@ $submenu-color-hover: rgb(80, 9, 9);
                 }
 
                 &:hover{
-                    background-color: #6f1524;
+                    background-color: $menu-background-hover;
                     transition: .3s ease;
                 }
             }
@@ -274,35 +290,33 @@ $submenu-color-hover: rgb(80, 9, 9);
                 font-size: 1.1em;
                 cursor: pointer;
 
-                 .admin-submenu{
-                    @include submenu(0);
+                 .admin-submenu-panel{
+                    @include submenu(-5em);
+                    margin-top: 2em;
                     margin-left: 0px;
-                    margin-top: -5em;
+                    padding-top: 0;
+                    cursor: pointer;
+                }
+
+
+                .admin-submenu-crear{
+                    @include submenu(-1.5em);
+                    margin-top: 2em;
+                    margin-left: 0px;
+                    padding-top: 0;
                     cursor: pointer;
                 }
 
                 .submenu-crear{
-                    margin-left: 3em;
-                    margin-top: 1em;
-                    min-height: 10em;
+                    margin-left: -1em;
                     cursor: pointer;
 
-                    .admin{
-                        &:hover > .admin-submenu{
+                    .admin-crear{
+                        &:hover > .admin-submenu-crear{
                             display: flex;
                             flex-direction: column;
                             transform: translate(140px, 0px);
                             width: 15em;
-                        }
-
-                        .admin-submenu{
-                            @include submenu(0);
-                            margin-left: 0px;
-                            display: none;
-                            position: absolute;
-                            padding-top: 0em; 
-                            
-                            
                         }
                     }
 
@@ -310,11 +324,9 @@ $submenu-color-hover: rgb(80, 9, 9);
 
                 .submenu-panel{
                     margin-left: -1em;
-                    margin-top: 1.3em;
-                    min-height: 14em;
 
-                    .admin{
-                        &:hover > .admin-submenu{
+                    .admin-panel{
+                        &:hover > .admin-submenu-panel{
                             display: flex;
                             flex-direction: column;
                             transform: translate(150px, 50px); 
@@ -346,33 +358,13 @@ $submenu-color-hover: rgb(80, 9, 9);
             min-width: 100%;
             min-height: 100%;
             color: 1em;
-            color: $submenu-background;
+            color: $menu-color;
 
             .submenu-user{
-                @include submenu(20em);
+                @include submenu(4.7em);
                 flex-direction: column;
-                margin-left: 0px;
-                max-width: 100%;
-
-
-                li{
-                    display: flex;
-                    justify-content: flex-start;
-                    align-items: center;
-                    color: $submenu-color;
-                    min-width: 100%;
-                    padding: .5em;
-
-                    &:hover{
-                        transition: .2s background-color;
-                        background-color: #d1aa4f;
-                        color: rgb(80, 9, 9);
-                        
-                    }
-                }
-          
-
-                  
+                margin-left: 1em;
+                max-width: 90%;
        
              }
 
@@ -419,25 +411,7 @@ $submenu-color-hover: rgb(80, 9, 9);
 
 
             @supports (-moz-appearance:none) {
-                #firefox-error { 
-                    margin-top:22em; 
-                } 
-    
-                .nav-show{
-                    margin-left: -278px;
-                    margin-top: 0px;
-                }
-    
-                .nav-hamburguer{
-                    li{
-                        padding-bottom: 0px;
-                        ul{
-                            li{
-                                padding-bottom: 0px;
-                            }
-                        }
-                    }
-                }
+
     
     
             }

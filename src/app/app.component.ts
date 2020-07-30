@@ -16,6 +16,7 @@ export class AppComponent implements OnInit, DoCheck {
   transportes: any;
   public first_name;
   public first_surname;
+  public privilegios;
 
 
   constructor(
@@ -38,6 +39,11 @@ export class AppComponent implements OnInit, DoCheck {
     if(this.identity){
          this.first_name = this.identity.name.trim().toUpperCase().charAt(0);
          this.first_surname = this.identity.surname.trim().toUpperCase().charAt(0);
+    }
+    
+    if(localStorage.getItem("privilegios")){
+      let privilegio = JSON.parse(localStorage.getItem("privilegios"));
+      this.privilegios = privilegio.cargo.cargo;
     }
  
     

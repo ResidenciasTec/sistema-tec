@@ -10,7 +10,7 @@
 			<p class="form-title"> Iniciar Sesión </p>
 			<p>
 
-				<input id="user" placeholder="Correo" formControlName="email" type="email" />
+				<input id="user" appInput placeholder="Correo" formControlName="email" type="email" />
 				<small *ngIf="this.form.get('email').invalid && (this.form.get('email').dirty || this.form.get('email').touched)">
 					<div *ngIf="this.form.get('email').errors.email">
 						El correo electornico no es valido.
@@ -20,7 +20,7 @@
 			</p>
   
 			<p>
-				<input id="contras"  placeholder="Contraseña" formControlName="password" type="password"
+				<input id="contras" appInput  placeholder="Contraseña" formControlName="password" type="password"
 					name="contrasena"/>
 					<small *ngIf="this.form.get('password').invalid && (this.form.get('password').dirty || this.form.get('password').touched)">
 
@@ -35,14 +35,10 @@
 
 			</p>
 			<p>
-				<input id="boton" type="submit" value="Dame acceso" [disabled]="form.invalid" />
+				<input id="boton" class="btn" appSubmit  type="submit" value="Dame acceso" [disabled]="form.invalid" />
 			</p>
 			
 			
-		</form>
-
-		<form class="loading" *ngIf="loading">
-			<h4>Cargando la pagina ...</h4>
 		</form>
 		
 		<p class="forgot">Aun no te registras? <span [routerLink]="['/registro']"> Haz click aqui </span></p>

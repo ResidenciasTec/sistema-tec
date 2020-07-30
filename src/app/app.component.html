@@ -18,8 +18,8 @@
                             <li [routerLink]="['/mantenimiento']">Mantenimiento</li>
                             <li [routerLink]="['/salidas']">Salidas</li>
                             <li [routerLink]="['/calendario']">calendario</li>
-                            <li class="admin">administrador
-                                <ul class="admin-submenu">
+                            <li class="admin-panel" *ngIf="privilegios === 'administrador'" >administrador
+                                <ul class="admin-submenu-panel">
                                     <li [routerLink]="['/departamentos']">departamentos</li>
                                     <li [routerLink]="['/transportes']">transportes</li>
                                     <li [routerLink]="['/cargos']">cargos</li>
@@ -28,9 +28,9 @@
                                     <li [routerLink]="['/ubicaciones']">ubicaciones</li>
                                     <li [routerLink]="['/status/vehiculo']">status de vehiculos</li>
                                     <li [routerLink]="['/status/mantenimiento']">status de solicitudes</li>
+                                    <li [routerLink]="['/permisos']">permisos</li>
                                 </ul>
                             </li>
-                            <li [routerLink]="['/permisos']">permisos</li>
                         </ul>
                     </a>
             </li>
@@ -40,8 +40,8 @@
                             <li [routerLink]="['/eventos/crear']">Eventos</li>
                             <li [routerLink]="['mantenimiento/crear']">Mantenimiento</li>
                             <li [routerLink]="['/salidas/crear']">Salidas</li>
-                            <li class="admin">administrador
-                                <ul class="admin-submenu">
+                            <li class="admin-crear" *ngIf="privilegios === 'administrador'">administrador
+                                <ul class="admin-submenu-crear">
                                     <li [routerLink]="['/permisos/crear']">permisos</li>
                                     <li [routerLink]="['/vehiculos/crear']">vehiculos</li>
                                     <li [routerLink]="['/departamento/crear']">departamentos</li>

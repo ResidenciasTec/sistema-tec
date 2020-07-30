@@ -24,7 +24,7 @@
             grid-template-rows: 1fr 1fr;
             justify-content: center;
             align-items: center;
-            background-color: #802434;
+            background-color: transparent;
             min-height: 2em;
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
@@ -36,8 +36,9 @@
                 justify-content: center;
                 align-items: center;
                 padding-top: .3em;
-                color: white;
+                color: #0f0f0d;
                 font-size: 2em;
+           
             }
 
             span{
@@ -45,15 +46,18 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                color: white;
+                color: #dab561;
                 min-height: inherit;
+                font-size: 1.2em;
+                background-color: #a94442;
+                min-height: 100%;
             }
 
             button{
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: white;
+                color: #201f1d;
                 background-color: transparent;
                 font-size: 2em;
             }
