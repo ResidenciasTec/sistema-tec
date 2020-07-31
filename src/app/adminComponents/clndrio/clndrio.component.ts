@@ -36,6 +36,14 @@ export class ClndrioComponent implements OnInit {
   salidaNumbers: any[];
   mantenimientoNumbers: any[];
   number: Boolean;
+  statEvento: number;
+  statSalida: number;
+  statMantenimiento: number;
+  statTotal: number;
+  statAprobadas: number;
+  statPendientes: number;
+  statVerificadas: number;
+  statArray: any[];
 
 
   constructor(
@@ -56,6 +64,7 @@ export class ClndrioComponent implements OnInit {
     this.mantenimientoNumbers = [];
     this.salidaNumbers = [];
     this.number = false;
+    this.statTotal = 0;
 
   }
 
@@ -65,11 +74,23 @@ export class ClndrioComponent implements OnInit {
     const endOfMonth = moment().endOf('month').format('YYYY-MM-DD');
     let weekDay = moment().startOf('month').weekday();
 
+    try{
+      this.dayMonth(startOfMonth, endOfMonth, weekDay);
+      this.EventoEveryMes(startOfMonth, endOfMonth);
+      this.MantenimientoEveryMes(startOfMonth, endOfMonth);
+      this.SalidaEveryMes(startOfMonth, endOfMonth);
+    }
+    catch(e){
 
-    this.dayMonth(startOfMonth, endOfMonth, weekDay);
-    this.EventoEveryMes(startOfMonth, endOfMonth);
-    this.MantenimientoEveryMes(startOfMonth, endOfMonth);
-    this.SalidaEveryMes(startOfMonth, endOfMonth);
+    }
+    finally{
+      this.statTotal = this.statEvento;
+    }
+
+  }
+
+  ngDoCheck(){
+    this.statTotal = this.statEvento + this.statSalida + this.statMantenimiento;
   }
 
   dayMonth(start, end, week){
@@ -158,6 +179,7 @@ export class ClndrioComponent implements OnInit {
           this.eventoNumbers = [];
           this.ArrayDays('evento');
           this._spinner.hide();
+          this.statEvento = response.elementos.total;
         }else{
           this._spinner.hide();
         }
@@ -202,6 +224,7 @@ export class ClndrioComponent implements OnInit {
           this.mantenimientoNumbers = [];
           this.ArrayDays('mantenimiento');
           this._spinner.hide();
+          this.statMantenimiento = response.elementos.total;
         }else{
           this._spinner.hide();
         }
@@ -224,6 +247,7 @@ export class ClndrioComponent implements OnInit {
           this.salidaNumbers = [];
           this.ArrayDays('salida');
           this._spinner.hide();
+          this.statSalida = response.elementos.total;
         }else{
           this._spinner.hide();
         }
@@ -289,7 +313,7 @@ export class ClndrioComponent implements OnInit {
       this.salidasDay = this.salidaResult;
 
       window.scroll({
-        top : 900,
+        top : 1050,
         left : 0,
         behavior : 'smooth'
     });
@@ -371,6 +395,29 @@ export class ClndrioComponent implements OnInit {
 
   evaluateSalidaDay(day){
     return this.salidaNumbers.find(e => e == day);
+  }
+
+  statsRefresh(startOfMonth, endOfMonth, weekDay){
+    try{
+      this.dayMonth(startOfMonth, endOfMonth, weekDay);
+      this.EventoEveryMes(startOfMonth, endOfMonth);
+      this.MantenimientoEveryMes(startOfMonth, endOfMonth);
+      this.SalidaEveryMes(startOfMonth, endOfMonth);
+    }
+    catch(e){
+
+    }
+    finally{
+      this.statTotal = this.statEvento;
+      this.statArray = [...this.eventos, ...this.mantenimientos, ...this.salidas];
+      let pendientes = this.statArray.filter(array => array.status == "pendiente");
+      let verificadas = this.statArray.filter(array => array.verificado === true);
+      let aprobadas = this.statArray.filter(array => array.status == "aprobado");
+
+      this.statPendientes = pendientes.length;
+      this.statAprobadas = aprobadas.length; 
+      this.statVerificadas = verificadas.length;
+    }
   }
 
 }

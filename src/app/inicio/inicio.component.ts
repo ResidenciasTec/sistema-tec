@@ -63,33 +63,41 @@ export class InicioComponent implements OnInit {
       this.token = localStorage.getItem('token');
    
     }
-  
-    this.forms();
-    this.getPermiso();
-    this.getEventos();
-    this.getSalidas();
-    this.getMantenimientos();
-    this.getCargos();
 
+    try{
+      this.forms();
+      this.getPermiso();
+      this.getEventos();
+      this.getSalidas();
+      this.getMantenimientos();
+      this.getCargos();
+
+    }
+    catch(err){
+      console.log("no hay internet");
+    }
+
+  
 
   }
 
   getTransportes(token){
-    this._transporteService.getTransportes(token).subscribe(
-      response => {
-        console.log(response);
-        this.transportes = response.elementos;
-        console.log(this.transportes);
+      this._transporteService.getTransportes(token).subscribe(
+        response => {
+          console.log(response);
+          this.transportes = response.elementos;
+          console.log(this.transportes);
 
-        localStorage.setItem('vehiculos', JSON.stringify(this.transportes));
+          localStorage.setItem('vehiculos', JSON.stringify(this.transportes));
 
-      },
-      error => {
-        console.log(error);
-        console.log(JSON.stringify(this.token));
-      }
+        },
+        error => {
+          console.log(error);
+          console.log(JSON.stringify(this.token));
+        }
       
-    );
+      );
+
 
   }
 
@@ -205,7 +213,7 @@ export class InicioComponent implements OnInit {
 
     );
   }
-  
+   
   getPermiso(){
     this._permisoService.byUser(this.token, this.identity.id).subscribe(
       response => {
