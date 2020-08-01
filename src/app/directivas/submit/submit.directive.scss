@@ -1,0 +1,40 @@
+.submit-btn{
+    box-sizing: border-box;
+    border: 1px solid #9F3133 !important;;
+    border-color: #9F3133 !important;
+    border-radius: 5px !important;
+    color:  #9F3133 !important;
+    padding: 0.5em;
+    padding: 50px;
+    background: transparent;
+    width: 100%;
+    min-height: 2.6em;
+    cursor: pointer;
+    font-size: 2em;
+
+
+        &:hover{
+            background-color: none;
+
+        }
+
+        &:disabled {
+          box-sizing: border-box;
+          background-color: transparent;
+          color: white;
+          cursor: not-allowed;
+          border: 1px solid #9F3133;
+        }
+
+        &:hover:not(:disabled){
+            border: 1px solid #9F3133 !important;
+            transition: .2s;
+            background-color: rgb(226, 200, 201);
+            cursor: pointer;
+        }
+
+        &:placeholder{
+        color: gray;
+
+    }
+}    

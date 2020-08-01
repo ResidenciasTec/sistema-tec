@@ -20,34 +20,53 @@ export class UserService{
 	test(){
 		return "hola mundo desde un servicio";
 	}
+
+	
+	getUsers(token): Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+									   .set('Authorization', 'bearer '+token);
+
+		return this._http.get(this.url+'users', {headers: headers});
+	}
+
 	register(user): Observable<any>{
 		let json = JSON.stringify(user);
-		let params = 'json='+json;
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-
-		return this._http.post(this.url+'register', params, {headers: headers});
+		return this._http.post(this.url+'register', json, {headers: headers});
 	}
 
-	signup(user, gettoken = null): Observable<any>{
-		if(gettoken != null){
-			user.gettoken = 'true';
-		}
+	signup(user): Observable<any>{
 
 		let json = JSON.stringify(user);
-		let params = 'json='+json;
-		let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+		let headers = new HttpHeaders().set('Content-Type', 'application/json').set('cors', 'Access-Control-Allow-Origin');
 
-		return this._http.post(this.url+'login', params, {headers: headers});
+		return this._http.post(this.url+'login', json, {headers: headers});
 	}
 
-	update(token, user): Observable<any>{
+	update(token, user, id): Observable<any>{
 		let json = JSON.stringify(user);
-		let params = 'json='+json;
-		let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
-									   .set('Authorization', token);
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+									   .set('Authorization', 'bearer '+token);
 
-		return this._http.put(this.url+'user/update', params, {headers: headers});
+		return this._http.put(this.url+'update/'+id, json, {headers: headers});
+	}
+
+	detalle(id): Observable<any>{
+
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+		return this._http.get(this.url+'detail/'+id,  {headers: headers});
+	}
+
+	clave(token, user): Observable<any>{
+
+		let json = JSON.stringify(user);
+		let headers = new HttpHeaders().set('Content-Type', 'application/json')
+									   .set('cors', 'Access-Control-Allow-Origin')
+									   .set('Authorization', 'Bearer '+token);
+
+		return this._http.post(this.url+'userloginClave', json, {headers: headers});
 	}
 
 	getIdentity(){

@@ -1,31 +1,94 @@
-<main class="body-app">
-    <header id="header-nolog" *ngIf="!identity" >
-        <h1><strong>TEC MATERIALES:</strong> Organiza tus eventos, solicitudes y recursos del itm.</h1>
+<main class="body-app scrollOff">
+
+    <header id="header-nolog" *ngIf="!identity">
+        <h1><strong> ITM: Recursos materiales y servicios</strong></h1>
         <div class="Crea-cuenta">
-        <p [routerLink]="['/registro']">Crear Cuenta</p>
+            <p [routerLink]="['/login']">Iniciar Sesión</p>
+            <p [routerLink]="['/registro']">Crear Cuenta</p>
         </div>
     </header>
 
-
-
-    <header id="header-silog" *ngIf="identity && identity.nombre">
-        
+    <header id="header-silog" *ngIf="identity && identity.name">
         <ul>
-            <li><a [routerLink]="['/inicio']">Inicio</a></li>
-            <li><a [routerLink]="['/transporte']">Transporte</a></li>
-            <li><a [routerLink]="['/eventos']">Eventos</a></li>
-            <li><a [routerLink]="['/mantenimiento']">Mantenimiento</a></li>
-            <li></li> 
+            <li id="submenu-itm"> <a><strong> ITM</strong> </a></li>
+            <li id="submenu-inicio"><a id="submenu-inicio-link" [routerLink]="['/inicio']">Inicio</a></li>
+            <li id="submenu-panel"> <a id="submenu-panel-link">Consultar
+                        <ul class="submenu-panel">
+                            <li [routerLink]="['/eventos']">Eventos</li>
+                            <li [routerLink]="['/mantenimiento']">Mantenimiento</li>
+                            <li [routerLink]="['/salidas']">Salidas</li>
+                            <li [routerLink]="['/calendario']">calendario</li>
+                            <li class="admin-panel" *ngIf="privilegios === 'administrador'" >administrador
+                                <ul class="admin-submenu-panel">
+                                    <li [routerLink]="['/departamentos']">departamentos</li>
+                                    <li [routerLink]="['/transportes']">transportes</li>
+                                    <li [routerLink]="['/cargos']">cargos</li>
+                                    <li [routerLink]="['/espacios']">espacios</li>
+                                    <li [routerLink]="['/subdirecciones']">subdirecciones</li>
+                                    <li [routerLink]="['/ubicaciones']">ubicaciones</li>
+                                    <li [routerLink]="['/status/vehiculo']">status de vehiculos</li>
+                                    <li [routerLink]="['/status/mantenimiento']">status de solicitudes</li>
+                                    <li [routerLink]="['/permisos']">permisos</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </a>
+            </li>
+
+            <li id="submenu-crear"> <a id="submenu-crear-link">Crear solicitudes 
+                        <ul class="submenu-crear">
+                            <li [routerLink]="['/eventos/crear']">Eventos</li>
+                            <li [routerLink]="['mantenimiento/crear']">Mantenimiento</li>
+                            <li [routerLink]="['/salidas/crear']">Salidas</li>
+                            <li class="admin-crear" *ngIf="privilegios === 'administrador'">administrador
+                                <ul class="admin-submenu-crear">
+                                    <li [routerLink]="['/permisos/crear']">permisos</li>
+                                    <li [routerLink]="['/vehiculos/crear']">vehiculos</li>
+                                    <li [routerLink]="['/departamento/crear']">departamentos</li>
+                                    <li [routerLink]="['/cargos/crear']">cargos</li>
+                                    <li [routerLink]="['/espacios/crear']">espacios</li>
+                                    <li [routerLink]="['/subdirecciones/crear']">subdirecciones</li>
+                                    <li [routerLink]="['/ubicaciones/crear']">ubicaciones</li>
+                                    <li [routerLink]="['/status/vehiculo/crear']">status de vehiculos</li>
+                                    <li [routerLink]="['/status/mantenimiento/crear']">status de solicitudes</li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </a>
+            </li>
+
+            <li></li>
         </ul>
-        <p>
-            <img width="20px" src="{{url + 'user/avatar/' + identity.imagen}}" />
-            {{identity.nombre + ' ' + identity.apellidos}}</p>
-             <p [routerLink]="['/perfil']">Perfil</p>
-             <p [routerLink]="['/logout/1']">cerrar sesion</p>
+        <div class="div-user">
+            <div id="default-image">
+                <img src="../assets/img/articles-57236_img_destacada.png">
+                <p>{{identity.name}} {{identity.surname}} &#x25BC;</p>
+
+
+
+            </div>
+            <ul id="firefox-error" class="submenu-user">
+                <li [routerLink]="['/perfil']">Perfil</li>
+                <li [routerLink]="['/perfil/editar']">Editar Perfil</li>
+                <li [routerLink]="['/perfil/solicitudes']">Mis solicitudes</li>
+                <li [routerLink]="['/logout/1']">Cerrar sesion</li>
+            </ul>
+        </div>
+
+
     </header>
-    
-    
-    <router-outlet></router-outlet>
+
+
+    <router-outlet (activate)="onActivate($event, outlet)" #outlet>
+
+    </router-outlet>
+
+    <footer>
+        <p> <strong>Instituto Tecnológico de Matamoros </strong></p>
+        <p> <strong> Depto. Resursos Materiales y Servicios</strong></p>
+        <p> <strong> Tel. 8688140952 y 8688140953</strong></p>
+
+
+    </footer>
 </main>
-
-

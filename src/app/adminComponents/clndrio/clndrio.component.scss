@@ -1,0 +1,265 @@
+//variables css
+$box-shadow:  0 1px 0 0 rgba(66,118,146,.1),0 2px 6px 0 rgba(66,118,146,.1);
+$calendar-title-color: #0f0f0d;
+$calendar-months-color: #dab561;
+$calendar-header-background: #a94442;
+$calendar-arrows-color: #201f1d;
+$calendar-grid-background: #e2dbdb;
+$calendar-grid-background-hover: #dacbcb;
+$calendar-grid-border: #c4abab;
+$calendar-event-background: #1ab0f991;
+$calendar-salida-background: #f7a63e91;
+$calendar-mantenimiento-background: #e8334d91;
+$card-background: #80808033;
+
+//mixins
+@mixin subtitulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7em;
+    margin-bottom: .5em;
+}
+
+//codigo css
+.body-calendario{
+    display: grid;
+    grid-template-columns: 6em 1fr 6em;
+    grid-template-rows: 12em 1fr .4fr 40em;
+    grid-gap: 1.4em;
+    scroll-behavior: smooth !important;
+ 
+    app-banner-crear{
+        grid-column: 1/span 3;
+    }
+
+    #calendario{
+        grid-column: 2/3;
+        grid-row: 2/3;
+        min-width: 100%;
+        min-height: 50em;
+        margin-bottom: 2em;
+        box-shadow: $box-shadow;
+
+        h2{
+            @include subtitulo;
+        }
+        .header_calendar{
+            grid-column: 1/2;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-template-rows: 1fr 1fr;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+            min-height: 2em;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+
+            p{
+                grid-column: 2/span 5;
+                grid-row: 1/2;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-top: .3em;
+                color: $calendar-title-color;
+                font-size: 1.5em;
+           
+            }
+
+            span{
+                grid-row: 2/3;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: $calendar-months-color;
+                min-height: inherit;
+                font-size: 1.2em;
+                background-color: $calendar-header-background;
+                min-height: 100%;
+            }
+
+            button{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: $calendar-arrows-color;
+                background-color: transparent;
+                font-size: 2em;
+            }
+
+        } 
+
+        .box_calendar{
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            
+
+            span{
+                display: grid;
+                grid-template-columns: .5fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr;
+                grid-gap: .3em;
+                max-height: 8em;
+                min-height: 8em;
+                background-color: $calendar-grid-background;
+                padding: .5em;
+                font-size: 1.3em;
+                border: 1px solid $calendar-grid-border;
+                box-sizing: content-box;
+         
+                &:hover{
+                    background-color: $calendar-grid-background-hover;
+                    color: black;
+                    transition: .2s;
+                    cursor: pointer;
+                    filter: blur();
+                }
+
+                span{
+                    font-size: .5em;
+                    border: none;
+                    background-color: transparent;
+                    font-size: .9em;
+                    min-height: .5em;
+
+                    &:hover{
+                        background-color: #f7a63e91;
+                        color: black;
+                        transition: .2s;
+                        cursor: pointer;
+                    }
+                }
+
+                .number{
+                    grid-column: 1/2;
+                    grid-row: 1/span 3;;
+                    border: none;
+                    font-size: .8em;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-rows: 1fr 1fr 1fr;
+                    background-color: transparent;
+
+                    &:hover{
+                        background-color: transparent;
+                        color: black;
+                        transition: .2s;
+                        cursor: pointer;
+                    }
+
+                }
+
+                .event, .mante, .sal{
+                    background-color: #f7a63e91;
+                    color: #862525;
+
+                }
+
+                .event{
+                    background-color: $calendar-event-background;
+                }
+
+                .sal{
+                    background-color: $calendar-salida-background;
+                }
+
+                .mante{
+                    background-color: $calendar-mantenimiento-background;
+                }
+
+            }
+        }
+    }
+
+    #cards{
+        grid-column: 2/3;
+        grid-row: 3/4; 
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 2em 1fr;
+        grid-gap: 2em;
+        margin-bottom: 2em;
+        
+
+        h2{
+            @include subtitulo;
+            
+        }
+
+        div{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: $card-background;
+            padding: .3em;
+            bordeR: 1px solid rgb(189, 183, 183);
+            border-radius: 5px;
+            min-height: 5em;
+            grid-gap: 1em;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 0em 1em 0em 1em;
+            box-shadow: $box-shadow;
+
+            
+            p{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: inherit;
+                height: inherit;
+                font-size: 1.3em;
+                width: 100%;
+            }
+
+            .card{
+                width: 100%;
+                height: inherit;
+
+            }
+
+            app-card{
+                margin-left: 1em;
+            }
+        }
+    }
+
+    #stats{
+        grid-column: 2/3;
+        grid-row: 4/5;
+
+        h2{
+           @include subtitulo;
+        }
+
+        ul{
+            display: flex;
+            flex-direction: column;
+            grid-gap: .7em;
+
+            li{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.3em;
+                min-height: 3em;
+                background-color: rgba(228, 217, 217, 0.884);
+                border-radius: 3px;
+                border: 1px solid rgb(206, 200, 200);
+                box-shadow: $box-shadow;
+
+                span{
+                    padding-left: 1em;
+                    font-weight: bold;
+                    color: rgb(146, 45, 45);
+                }
+            }
+        }
+
+    }
+
+
+}

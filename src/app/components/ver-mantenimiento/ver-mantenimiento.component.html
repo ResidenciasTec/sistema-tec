@@ -1,0 +1,58 @@
+
+<main class="body-ver">
+
+    <app-banner-crear [titulo]="mantenimiento.tipo"></app-banner-crear>
+
+    <ngx-spinner bdColor="rgba(44,43,43,0.8)" size="default" color="#d36969" type="timer">
+        <p style="color: white"> cargando datos... </p>
+    </ngx-spinner>
+
+    <div class="container">
+
+        <app-solicitud-box [mantenimiento]="mantenimiento" [fecha]="fecha"></app-solicitud-box>
+
+
+        <div class="datos">
+            <div>
+                <app-solicitud-card [title]="departamento_text" [description]="mantenimiento.departamento.departamento"></app-solicitud-card>
+            </div>
+
+            <div>
+                <app-solicitud-card [title]="servicio_text" [description]="mantenimiento.servicio.status"></app-solicitud-card>
+
+            </div>
+
+            <div>
+                <app-solicitud-card [title]="user_text" [description]="mantenimiento.user.name +' ' +mantenimiento.user.surname"></app-solicitud-card>
+            </div>
+
+            <div>
+                <app-button (click)="showPdf()" [text]="generar_pdf"></app-button>
+                <app-button (click)="downloadPdf()" [text]="descargar_pdf"></app-button>
+            </div>
+        </div>
+
+        <app-solicitud-botones [mantenimiento]="mantenimiento"></app-solicitud-botones>
+
+    </div>
+
+    <div class="pendiente" *ngIf="admin">
+        <p>
+            la solicitud aun esta pendiente de aceptacion, espera a que el usuario administrador la acepte para generar
+            el pdf
+        </p>
+    </div>
+
+    
+    <div class="pendiente" *ngIf="!admin">
+            <p>
+                puedes generar un pdf de esta solicitud y descargarla para su posterios uso en el departamento
+            </p>
+    
+    </div>
+
+    <app-card-carrousel [mantenimientos]="mantenimientos"></app-card-carrousel>
+
+</main>
+
+

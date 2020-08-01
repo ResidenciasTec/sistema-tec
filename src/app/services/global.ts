@@ -1,3 +1,3 @@
 export var global = {
-	url: 'http://tec-materiales-api.com.devel/api/'
+	url: 'http://apricot-crumble-28875.herokuapp.com/api/'
 }

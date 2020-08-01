@@ -1,59 +1,42 @@
-<h1>{{title}}</h1>
-
-<div *ngIf="!status">
-	Modifica tus datos pesonales
-</div>
-<div *ngIf="status == 'success'">
-	Los datos se han guardado correctamente!!
-</div>
-
-<div *ngIf="status == 'error'">
-	Los datos no se han guardado, intenta nuevamete.
-</div>
-
-<form #UserEditForm="ngForm" (ngSubmit)="onSubmit(UserEditForm)" >
-	<p>
-		<label for="nombre">Nombre</label>
-		<input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="user.nombre" 
-		required pattern="[a-zA-Z]+"  />
-
-	</p>
-	<p>
-		<label for="apellidos">Apellidos</label>
-		<input type="text" name="apellidos" #apellidos="ngModel" [(ngModel)]="user.apellidos" 
-		required pattern="[a-zA-Z]+"  />
-
-	</p>
-	<p>
-		<label for="correo">Correo electronico</label>
-		<input type="email" name="correo" #correo="ngModel" [(ngModel)]="user.correo" 
-		required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" />
-	</p>
-	<p>
-		<label for="descripcion">Descripcion sobre mi</label>
-		<input type="text" name="descripcion" #descripcion="ngModel" [(ngModel)]="user.descripcion" 
-		required />
-	</p>
-
-	<p>
-		<label for="departmento">departamento</label>
-		<input type="text" name="departmento" #departmento="ngModel" [(ngModel)]="user.departmento" 
-		required />
-	</p>
-	<div>
-		<label>foto de perfil</label>
-		<div *ngIf="identity && identity.imagen">
-			<img src="{{url + 'user/avatar/' + identity.imagen}}" />
-		</div>
-	
-		<angular-file-uploader  
-		      [config]="afuConfig"
-		      [resetUpload]=resetVar
-		      (ApiResponse)="avatarUpload($event)">
-		</angular-file-uploader>
-	</div>
+<main class="body-editUser">
 
 
+	<app-banner-crear [titulo]="title" ></app-banner-crear>
 
-	<input type="submit" value="Guardar cambios"  [disabled]="UserEditForm.invalid"/>
-</form>
+		<ngx-spinner bdColor = "rgba(44,43,43,0.8)" size = "default" color = "#d36969" type = "timer" >
+            <p style="color: white" > cargando datos... </p>
+    </ngx-spinner>
+	<article>
+
+		<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" >
+			<label>
+				<p class="label">Nombre:</p>
+				<input type="text" appInput formControlName="name"  />
+
+			</label>
+			<label>
+				<p class="label">Apellidos:</p>
+				<input type="text" appInput formControlName="surname" />
+
+			</label>
+			<label>
+				<p class="label">Correo electronico:</p>
+				<input type="email" appInput formControlName="email" />
+			</label>
+			<label>
+				<p class="label">informacion sobre mi:</p>
+				<textarea type="text" appTextarea formControlName="description" >
+				</textarea>
+			</label>
+
+			<label>
+				<p class="label">numero de telefono:</p>		
+				<input type="tel"  appInput formControlName="phone" />
+			</label>
+
+			<label>
+				<input type="submit" class="btn" appSubmit value="Guardar cambios"  [disabled]="form.invalid"/>
+			</label>
+		</form>
+	</article>
+</main>

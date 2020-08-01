@@ -1,0 +1,133 @@
+<main class="body-create">
+
+	<app-banner-crear [titulo]="textoCrear"></app-banner-crear>
+
+	<article>
+		<ngx-spinner bdColor = "rgba(44,43,43,0.8)" size = "default" color = "#d36969" type = "timer" >
+            <p style="color: white" > cargando datos... </p>
+    </ngx-spinner>
+		<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" >
+
+			<article class="requeridos">
+
+				<label>
+					<p class="label">vehiculo elegido:</p>
+					<select type="text" formControlName="vehiculo_id">
+						<option id="seleccionado" selected>selecciona un lugar:</option>
+						<option *ngFor="let vehiculo of vehiculos" value="{{vehiculo.id}}">
+							{{vehiculo.vehiculo}}
+						</option>
+					</select>
+					<div
+						*ngIf="this.form.get('vehiculo_id').invalid && (this.form.get('vehiculo_id').dirty || this.form.get('vehiculo_id').touched)">
+
+						<div *ngIf="this.form.get('vehiculo_id').errors.required">
+							debes seleccionar un vehiculo.
+						</div>
+
+					</div>
+				</label>
+
+				<label>
+					<p class="label">departamento solicitante:</p>
+					<select type="text" formControlName="depto_solicitante">
+						<option id="seleccionado" selected>selecciona un lugar:</option>
+						<option *ngFor="let departamento of departamentos" value="{{departamento.id}}">
+							{{departamento.departamento}}
+						</option>
+					</select>
+					<div
+						*ngIf="this.form.get('depto_solicitante').invalid && (this.form.get('depto_solicitante').dirty || this.form.get('depto_solicitante').touched)">
+
+						<div *ngIf="this.form.get('depto_solicitante').errors.required">
+							debes seleccionar un departamento.
+						</div>
+
+					</div>
+				</label>
+
+
+				<label>
+					<p class="label">fecha de realizacion:</p>
+					<input type="date" formControlName="fecha" appInput placeholder="selecciona una fecha">
+					<div
+						*ngIf="this.form.get('fecha').invalid && (this.form.get('fecha').dirty || this.form.get('fecha').touched)">
+
+						<div *ngIf="this.form.get('fecha').errors.required">
+							la fecha es requerida.
+						</div>
+
+					</div>
+				</label>
+
+				<label>
+					<p class="label">hora de comienzo:</p>
+					<input type="time" formControlName="hora_salida" appInput>
+					<div
+						*ngIf="this.form.get('hora_salida').invalid && (this.form.get('hora_salida').dirty || this.form.get('hora_salida').touched)">
+
+						<div *ngIf="this.form.get('hora_salida').errors.required">
+							la hora es requerida.
+						</div>
+					</div>
+				</label>
+
+				<label>
+					<p class="label">hora de finalizacion:</p>
+					<input type="time" formControlName="hora_llegada" appInput>
+					<div
+						*ngIf="this.form.get('hora_llegada').invalid && (this.form.get('hora_llegada').dirty || this.form.get('hora_llegada').touched)">
+
+						<div *ngIf="this.form.get('hora_llegada').errors.required">
+							la hora es rquerida.
+						</div>
+					</div>
+				</label>
+			</article>
+
+			<label class="titulo-opcional">
+				<p class="label">datos opcionales:</p>
+				<p>estos datos puedes dejarlos vacios y mas tarde rellenarlos.</p>
+			</label>
+
+			<article class="opcionales">
+
+				<label id="titulo">
+					<p class="label">chofer:</p>
+					<input type="text" formControlName="chofer" appInput placeholder="agrega el nombre del conductor">
+
+				</label>
+
+				<label id="titulo">
+					<p class="label">destino:</p>
+					<input type="text" formControlName="destino" appInput placeholder="agrega el destino">
+				</label>
+
+				<label>
+					<p class="label">descripcion:</p>
+					<textarea type="text" formControlName="descripcion" appTextarea
+						placeholder="describe las actividades a realizar en el destino...">
+					</textarea>
+
+				</label>
+			</article>
+
+			<article class="seccion-submit">
+				<label *ngIf="!loading">
+					<input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Actualizar Solicitud">
+				</label>
+
+	
+				<p class="aviso">
+					Las solicitudes que estes creando seran revisadas y se mantendran en estado "pendiente" hasta que la
+					junta administrativa revise y decida aceptar la solicitud.
+				</p>
+
+			</article>
+
+
+
+		</form>
+
+	</article>
+</main>

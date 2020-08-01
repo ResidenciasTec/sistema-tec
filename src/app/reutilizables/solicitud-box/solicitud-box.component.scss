@@ -1,0 +1,61 @@
+.information{
+    display: grid;
+    align-items: flex-start;
+    grid-template-rows: 2em 3fr 2em 1fr 2em 1fr 3em ;
+    border: 1px solid #ddbaa9;
+    background-color: #ecddd4;
+    border-radius: 5px;
+    grid-gap: 0px;
+    white-space: normal;
+    min-height: 100%;
+    max-height: 100%;
+    min-height: 570px;
+    max-height: 570px;
+    box-shadow: 0 1px 0 0 rgba(66,118,146,.1),0 2px 6px 0 rgba(66,118,146,.1);
+
+    section{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: .5em;
+        border: 1px solid #ccbaba;
+        border-width: 0px 0px 1px 0px;
+        min-height: 100%;
+        
+
+        &:nth-child(odd){
+            background-color: transparent;
+            color: #5b5353;
+        }
+
+        &:nth-child(even){
+            color: black;
+            font-size: 1.1em;
+        }
+
+        &:nth-child(2){
+            font-size: 1.3em;
+        }
+
+        &:last-child(){
+            display: flex;
+            justify-content: center;
+            background-color: #e1cfcfb5;
+            border-radius: 5px;
+            border: none;
+            color: #8c1212; 
+        }
+
+
+
+    }
+
+    .aprobado{
+        background-color: #acdee3 !important;
+
+    }
+
+
+}
+
+

@@ -1,0 +1,82 @@
+<main class="body-create">
+
+    <app-banner-crear [titulo]="textoCrear"></app-banner-crear>
+
+    <article>
+        <ngx-spinner bdColor="rgba(44,43,43,0.8)" size="default" color="#d36969" type="timer">
+            <p style="color: white"> cargando datos... </p>
+        </ngx-spinner>
+
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+            <article class="requeridos">
+
+                <label>
+                    <p class="label">nombre del departamento:</p>
+                    <input type="text" appInput formControlName="departamento" placeholder="nombre del departamento..">
+                    <div
+                        *ngIf="this.form.get('departamento').invalid && (this.form.get('departamento').dirty || this.form.get('departamento').touched)">
+
+                        <div *ngIf="this.form.get('departamento').errors.required">
+                            debes seleccionar un departamento valido.
+                        </div>
+                    </div>
+                </label>
+
+                <label>
+                    <p class="label">numero de telefono:</p>
+                    <input type="tel" appInput formControlName="telefono" placeholder="telefono de contacto..">
+                    <div
+                        *ngIf="this.form.get('telefono').invalid && (this.form.get('telefono').dirty || this.form.get('telefono').touched)">
+
+                        <div *ngIf="this.form.get('telefono').errors.required">
+                            debes seleccionar un telefono valido.
+                        </div>
+
+                    </div>
+                </label>
+
+
+                <label>
+                    <p class="label">correo electronico:</p>
+                    <input type="text" appInput formControlName="correo" placeholder="correo de contacto...">
+                    <div
+                        *ngIf="this.form.get('correo').invalid && (this.form.get('correo').dirty || this.form.get('correo').touched)">
+
+                        <div *ngIf="this.form.get('correo').errors.required">
+                            el correo debe ser valido.
+                        </div>
+
+                    </div>
+                </label>
+
+
+                <label>
+                    <p class="label">pertenece a la subdireccion:</p>
+                    <select formControlName="subdireccion_id" appInput>
+                        <option selected>selecciona una subdireccion:</option>
+                        <option *ngFor="let subdireccion of subdirecciones" value="{{subdireccion.id}}">
+                            {{subdireccion.subdireccion}}</option>
+                    </select>
+                    <div
+                        *ngIf="this.form.get('subdireccion_id').invalid && (this.form.get('subdireccion_id').dirty || this.form.get('status_id').touched)">
+
+                        <div *ngIf="this.form.get('subdireccion_id').errors.required">
+                            la subdireccion es requerida.
+                        </div>
+                    </div>
+                </label>
+
+
+                <label>
+                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="actualizar departamento">
+                </label>
+
+            </article>
+
+        </form>
+
+
+    </article>
+</main>

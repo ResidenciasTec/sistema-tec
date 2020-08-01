@@ -1,0 +1,36 @@
+article{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2em 1fr;
+    background-color: #ecd1b9;
+    border: 1px solid #ddbaa9;
+    background-color: #ecddd4;
+    box-shadow: 0 1px 0 0 rgba(66,118,146,.1),0 2px 6px 0 rgba(66,118,146,.1);
+    border-radius: 5px;
+    min-height: 100%;
+    min-width: 30em;
+
+    color: #605f5f;
+    white-space: hidden;
+
+    section{
+        padding: .5em;
+        font-size: 1.3em; 
+        
+
+        &:first-child{
+           padding: .5em;
+           background-color: #ddd6cf;
+           font-size: 1.1em;
+           border: 1px solid #ddbaa9;
+           border-width: 0px 0px 1px 0px;
+           border-top-left-radius: 5px;
+           border-top-right-radius: 5px;
+        }
+
+        
+
+    }
+}

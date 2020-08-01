@@ -1,4 +1,20 @@
 
-<h1>{{title}}</h1>
+<main class="body-inicio">
+	<app-banner-inicio [title]="title"></app-banner-inicio>
+
+	<div class="contenido">
+
+		<ngx-spinner bdColor = "rgba(44,43,43,0.8)" size = "default" color = "#d36969" type = "timer" >
+			<p style="color: white" > cargando datos... </p>
+		</ngx-spinner>
+
+		<h1><strong>⚠ Solicitudes más recientes ⚠</strong> </h1>
+
+		<app-card-carrousel [eventos]="eventos"></app-card-carrousel>
+		<app-card-carrousel [mantenimientos]="mantenimientos"></app-card-carrousel>
+		<app-card-carrousel [salidas]="salidas"></app-card-carrousel>
+		
+	</div>
 
 
+</main>

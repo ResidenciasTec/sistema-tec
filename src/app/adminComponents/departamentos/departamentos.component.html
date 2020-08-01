@@ -1,0 +1,30 @@
+<main class="body-solicitudes">
+
+    <app-banner-crear [titulo]="textoCrear"></app-banner-crear>
+
+    <ngx-spinner bdColor = "rgba(44,43,43,0.8)" size = "default" color = "#d36969" type = "timer" >
+        <p style="color: white" > cargando datos... </p>
+</ngx-spinner>
+
+    <app-card-grid [departamentos]="departamentos"></app-card-grid>
+
+    <div class="filtrado">
+        <h2>filtrar departamentos por: </h2>
+        <select appInput #t (change)="getOptions(t.value)">
+            <option>subdirecciones:</option>
+            <option *ngFor="let type of types" [value]="type">{{type}}</option>
+
+
+        </select>      
+    </div>
+
+    <div class="pagination">
+        <div>
+            <P (click)="previousPage()">PAGINA ANTERIOR</P>
+            <p>pagina {{current_page}} de {{last_page}}</p>
+            <P (click)="nextPage()">PAGINA SIGUIENTE</P>
+        </div>
+    </div>
+        
+
+</main>

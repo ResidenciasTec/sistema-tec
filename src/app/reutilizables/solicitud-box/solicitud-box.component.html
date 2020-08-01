@@ -1,0 +1,53 @@
+<article class="information" *ngIf="evento">
+    <section>actividades realizadas:</section>
+    <section class="description"  *ngIf="evento.actividades">{{evento.actividades}}</section>
+    <section class="description"  *ngIf="!evento.actividades">no hay actividades especificadas aun.</section>
+    <section>fecha de realizacion:</section>
+    <section>se lleva a cabo el {{fecha}}</section>
+    <section>horario:</section>
+    <section>empieza a las {{evento.hora_inicio}} y termina a las {{evento.hora_final}}</section>
+    <section [className]="evento.status == 'aprobado' || evento.verificado == true ? 'aprobado' : 'pendiente'">{{evento.status}}</section>
+</article>
+  
+<article class="information" *ngIf="mantenimiento">
+    <section>actividades realizadas:</section>
+    <section class="description"  *ngIf="mantenimiento.trabajo_realizado">{{mantenimiento.trabajo_realizado}}</section>
+    <section class="description"  *ngIf="!mantenimiento.trabajo_realizado">no hay actividades especificadas aun.</section>
+    <section>fecha de realizacion:</section>
+    <section>se lleva a cabo el {{fecha}}</section>
+    <section>horario:</section>
+    <section>empieza a las {{mantenimiento.hora_inicio}} y termina a las {{mantenimiento.hora_final}}</section>
+    <section [className]="mantenimiento.status == 'aprobado' || mantenimiento.verificado == true ? 'aprobado' : 'pendiente'">{{mantenimiento.status}}</section>
+</article>
+
+<article class="information" *ngIf="salida">
+    <section>descripcion de las actividades:</section>
+    <section class="description"  *ngIf="salida.descripcion">{{salida.descripcion}}</section>
+    <section class="description"  *ngIf="!salida.descripcion">no hay actividades especificadas aun.</section>
+    <section>fecha de realizacion:</section>
+    <section>se lleva a cabo el {{fecha}}</section>
+    <section>horario:</section>
+    <section>empieza a las {{salida.hora_salida}} y termina a las {{salida.hora_llegada}}</section>
+    <section [className]="salida.status == 'aprobado' || salida.verificado == true ? 'aprobado' : 'pendiente'">{{salida.status}}</section>
+</article>
+
+<article class="information" *ngIf="vehiculo">
+    <section>marca del vehiculo:</section>
+    <section class="description">{{vehiculo.marca}}</section>
+    <section>placas del vehiculo</section>
+    <section>{{vehiculo.placas}}</section>
+    <section>estado del vehiculo</section>
+    <section>{{vehiculo.kilometraje}}</section>
+    <section>{{vehiculo.status_id}}</section>
+</article>
+
+<article class="information" *ngIf="departamento">
+    <section>descripcion de las actividades:</section>
+    <section class="description">descripcion del departamento y sus actividades realizadas.</section>
+    <section>numero de telefono:</section>
+    <section>{{departamento.telefono}}</section>
+    <section>correo electronico:</section>
+    <section>{{departamento.correo}}</section>
+    <section>pertenece a la subdireccion {{departamento.subdireccion.subdireccion}}</section>
+</article>
+

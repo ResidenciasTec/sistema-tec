@@ -1,0 +1,34 @@
+.body-error{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 92vh;
+
+    h1{
+        font-size: 3em;
+        color: #826b6b;
+        margin-bottom: 1em;
+     
+
+    }
+
+    p{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2em;
+        padding: 1em;
+        color: white;
+        background-color: #826b6b;
+        border-radius: 5px;
+
+        &:hover{
+            transition: .4s;
+            background-color: #514a4a;
+            color: white;
+            cursor: pointer;
+        }
+    }
+
+}

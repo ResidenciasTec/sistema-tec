@@ -1,0 +1,24 @@
+div{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    min-width: 100%;
+
+    h3{
+        display: flex;
+        justify-content: center;
+        min-width: inherit;
+    }
+
+    div{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        min-width: inherit;
+
+        app-button{
+            grid-column: 2/3;
+        }
+    }
+}

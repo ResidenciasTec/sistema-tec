@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import {User} from "../../models/user";
+import { Component, OnInit, DoCheck } from '@angular/core';
+import {Router, ActivatedRoute, Params} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {global} from "../../services/global";
+import { Validators, FormControl, FormBuilder } from '@angular/forms';
+import {ToastrService} from "ngx-toastr";
+import { NgxSpinnerService } from "ngx-spinner";
+
+
 
 @Component({
   selector: 'app-user-edit',
@@ -9,27 +14,30 @@ import {global} from "../../services/global";
   styleUrls: ['./user-edit.component.scss'],
   providers: [UserService]
 })
-export class UserEditComponent implements OnInit {
+export class UserEditComponent implements OnInit, DoCheck {
 	public title: string;
-  public user: User;
   public identity;
   public token;
   public status;
   public resetVar;
   public url;
+  public departamentos;
+  public img;
+  public logueado;
+  public form;
 
   public afuConfig = {
     multiple: false,
     formatsAllowed: ".jpg, .png, .gif, .jpeg",
     maxSize: "100",
     uploadAPI:  {
-      url: global.url+'user/upload',
+      url: global.url+'upload',
       headers: {
-       "Authorization" : this._userService.getToken()
+       "Authorization" : 'bearer ' + this.token
       }
     },
     theme: "attachPinBtn",
-    hideProgressBar: false,
+    hideProgressBar: true,
     hideResetBtn: true,
     hideSelectBtn: false,
     attachPinText: "sube tu imagen de usuario"
@@ -38,80 +46,91 @@ export class UserEditComponent implements OnInit {
 
 
   constructor(
-    private _userService: UserService
+    private _userService: UserService,
+    private _router: Router,
+    private _route: ActivatedRoute,
+    private _formBuilder: FormBuilder,
+    private _toastr: ToastrService,
+    private _spinner: NgxSpinnerService,
     ) 
   {
   	this.title = "editar usuario";
-    this.user = new User(1,'','','','usuario','','','','','','','');
-    this.identity = _userService.getIdentity();
-    this.token = _userService.getToken();
+    this.identity = JSON.parse(localStorage.getItem('identity'));
+    this.logueado = JSON.parse(localStorage.getItem('logueado'));
+    this.token = localStorage.getItem('token');
     this.url = global.url;
 
-    //rellenar objeto usuario
-    this.user = new User(
-          this.identity.sub,
-          this.identity.nombre,
-          this.identity.apellidos,
-          '',
-          this.identity.rol,
-          this.identity.correo,
-          '',
-          '',
-          this.identity.departmento,
-          '',
-          this.identity.descripcion,
-          this.identity.imagen
-      );
   }
 
   ngOnInit(): void {
+    window.scrollTo(0,0);
+    this.buildForm();
+   
+    
   }
 
+
+  ngDoCheck(){
+     this.identity.image;
+  }
+
+  private buildForm() {
+
+		this.form = this._formBuilder.group({
+      name: new FormControl(this.identity.name, { validators: [Validators.required], updateOn: 'change' }),
+      surname: new FormControl(this.identity.surname, { validators: [Validators.required], updateOn: 'change' }),
+      email: new FormControl(this.identity.email, { validators: [Validators.required, Validators.email], updateOn: 'change' }),
+      description: new FormControl(this.identity.description),
+      phone: new FormControl(this.identity.phone),
+      image: new FormControl(this.identity.image),
+		});
+
+  }  
+
+
+
   onSubmit(form){
-    this._userService.update(this.token, this.user).subscribe(
+    this._spinner.show();
+    console.log(this.token);
+    this._userService.update(this.token, form, this.identity.id).subscribe(
       response => {
-        if(response && response.status){
-          this.status = "success";
-
+        if(response.status == 'success'){
+          
           //actualizar al usuario en sesion
+          this._userService.detalle(this.identity.id).subscribe(
+            response => {
+              let crudo = response.user;
 
-          if(response.changes.nombre){
-            this.user.nombre = response.changes.nombre;
-          }
-
-
-          if(response.changes.apellidos){
-            this.user.apellidos = response.changes.apellidos;
-          }
-
-
-          if(response.changes.correo){
-            this.user.correo = response.changes.correo;
-          }
+              localStorage.setItem('identity', JSON.stringify(crudo));
+              localStorage.setItem('logueado', JSON.stringify(crudo));
+              this.identity = JSON.parse(localStorage.getItem('identity'));
+              this.status = "success";
+              this._spinner.hide();
+              this._toastr.success('Tus datos se actualizaron con exito.', 'PERFIL ACTUALIZADO');
 
 
-          if(response.changes.descripcion){
-            this.user.descripcion = response.changes.descripcion;
-          }
+          setTimeout (() => {
+                this._router.navigate(['/perfil']); 
+            }, 1000);
 
+            },
+            error => {
+              this._spinner.hide();
+              console.log(<any>error);
+            }
 
-          if(response.changes.departmento){
-            this.user.departmento = response.changes.departmento;
-          }
+          );
 
-
-          if(response.changes.imagen){
-            this.user.imagen = response.changes.imagen;
-          }
-
-          this.identity = this.user;
-          localStorage.setItem('identity', JSON.stringify(this.identity));
+         
         }else{
           this.status = "error";
+          this._spinner.hide();
+          this._toastr.error('Algunos de tus datos no fueron correctos.', 'SOLICITUD NO EXITOSA');
         }
 
       },
       error => {
+        this._spinner.hide();
         console.log(<any>error);
         this.status = "error";
       }
@@ -119,9 +138,10 @@ export class UserEditComponent implements OnInit {
   }
 
   avatarUpload(datos){
-    let data = JSON.parse(datos.response);
+    let data = datos.response;
      console.log(data.image);
-     this.user.imagen = data.image;
+     this.identity.image = data.image;
+     this.logueado.image = data.image;
 
   }
 

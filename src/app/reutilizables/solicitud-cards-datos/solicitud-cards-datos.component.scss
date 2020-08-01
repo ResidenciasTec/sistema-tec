@@ -1,0 +1,29 @@
+.datos{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-gap: 1em;
+    min-width: 100%;
+
+    div{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+
+        $first: 1;
+        $end: 2;
+
+        @for $i from 1 through 3 {
+            
+            &:nth-child(#{$i}){
+                grid-row: #{$first}/#{$end};
+            }
+            $first: $first + 1;
+            $end: $end + 1;
+        }
+
+    }
+
+
+
+}

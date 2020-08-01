@@ -1,0 +1,32 @@
+
+<main class="body-ver">
+
+    <app-banner-crear *ngIf="departamento" [titulo]="departamento.departamento"></app-banner-crear>
+    <app-banner-crear *ngIf="!departamento" [titulo]="textoCrear"></app-banner-crear>
+
+    <ngx-spinner bdColor="rgba(44,43,43,0.8)" size="default" color="#d36969" type="timer">
+        <p style="color: white"> cargando datos... </p>
+    </ngx-spinner>
+
+    <div class="container">
+
+        <app-solicitud-box [departamento]="departamento"></app-solicitud-box>
+
+
+        <div class="datos">
+
+        </div>
+
+        <app-solicitud-botones [departamento]="departamento"></app-solicitud-botones>
+
+    </div>
+
+    <div class="pendiente">
+        <p>
+            el departamento solo puede ser creado por el administrador.
+        </p>
+    </div>
+
+    <app-card-carrousel [departamentos]="departamentos"></app-card-carrousel>
+
+</main>

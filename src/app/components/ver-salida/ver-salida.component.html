@@ -1,0 +1,57 @@
+
+<main class="body-ver">
+
+    <app-banner-crear *ngIf="salida.destino" [titulo]="salida.destino"></app-banner-crear>
+    <app-banner-crear *nIf="!salida.destino" [titulo]="textoCrear"></app-banner-crear>
+
+    <ngx-spinner bdColor="rgba(44,43,43,0.8)" size="default" color="#d36969" type="timer">
+        <p style="color: white"> cargando datos... </p>
+    </ngx-spinner>
+
+    <div class="container">
+
+        <app-solicitud-box [salida]="salida" [fecha]="fecha"></app-solicitud-box>
+
+
+        <div class="datos">
+            <div>
+                <app-solicitud-card [title]="departamento_text" [description]="salida.departamento.departamento"></app-solicitud-card>
+            </div>
+
+            <div>
+                <app-solicitud-card [title]="vehiculo_text" [description]="salida.vehiculo.vehiculo"></app-solicitud-card>
+
+            </div>
+
+            <div>
+                <app-solicitud-card [title]="user_text" [description]="salida.user.name +' ' +salida.user.surname"></app-solicitud-card>
+            </div>
+
+            <div>
+                <app-button (click)="showPdf()" [text]="generar_pdf"></app-button>
+                <app-button (click)="downloadPdf()" [text]="descargar_pdf"></app-button>
+            </div>
+        </div>
+
+        <app-solicitud-botones [salida]="salida"></app-solicitud-botones>
+
+    </div>
+
+    <div class="pendiente" *ngIf="admin">
+        <p>
+            la solicitud aun esta pendiente de aceptacion, espera a que el usuario administrador la acepte para generar
+            el pdf
+        </p>
+    </div>
+
+    
+    <div class="pendiente" *ngIf="!admin">
+            <p>
+                puedes generar un pdf de esta solicitud y descargarla para su posterios uso en el departamento
+            </p>
+    
+    </div>
+
+    <app-card-carrousel [salidas]="salidas"></app-card-carrousel>
+
+</main>

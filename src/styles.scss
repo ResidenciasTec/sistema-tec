@@ -1,4 +1,7 @@
 /* ESTILOS GLOBALES DE LA APLICACION */
 
+@import "./app/directivas/forms/input.directive";
+@import "./app/directivas/submit/submit.directive";
+@import "./app/directivas/textarea/textarea.directive";
 @import "./assets/scss/reset";
 @import "./assets//scss/variables";

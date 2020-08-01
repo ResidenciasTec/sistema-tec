@@ -1,0 +1,20 @@
+.status{
+    grid-column: 1/ span 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    min-height: 3em;
+
+}
+
+.success{
+    background-color: #58d9a2;
+
+}
+
+.error{
+    background-color: #fb4e4e;
+    color: white;
+
+}

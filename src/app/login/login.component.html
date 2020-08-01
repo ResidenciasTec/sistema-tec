@@ -1,25 +1,47 @@
 <div id="Login-form">
 
-	<div><img src="../assets/img/logo.png" alt="logo"/></div>
+	<div class="container-form">
+		<ngx-spinner bdColor = "rgba(44,43,43,0.8)" size = "default" color = "#d36969" type = "timer" >
+            <p style="color: white" > cargando datos... </p>
+    </ngx-spinner>
 	
-	<h1>{{title}}</h1>
-	<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" >
-		<p>
-			
-			<input id="user" placeholder="Numero de Control" type="email" name="correo" #correo="ngModel" [(ngModel)]="user.correo" required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"/>
-			<small *ngIf="!correo.valid && correo.touched">El correo no es correcto.</small>
-		</p>
-		<p>
-			
-			<input id="contras" placeholder="Contraseña" type="password" name="contrasena" #contrasena="ngModel" [(ngModel)]="user.contrasena" required />
-			<small *ngIf="!contrasena.valid && contrasena.touched">La contrasena no es correcta.</small>
-		</p>
-		<p>
-			<input id="boton" type="submit" value="Entrar" [disabled]="loginForm.invalid" />
-		</p>
-		<p>Olvidaste tu contraseña? Ingresa aquí para obtener una nueva. </p>
+		<form *ngIf="!loading" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+			<div><img src="../assets/img/logo.png" alt="logo" /></div>
+			<p class="form-title"> Iniciar Sesión </p>
+			<p>
+
+				<input id="user" appInput placeholder="Correo" formControlName="email" type="email" />
+				<small *ngIf="this.form.get('email').invalid && (this.form.get('email').dirty || this.form.get('email').touched)">
+					<div *ngIf="this.form.get('email').errors.email">
+						El correo electornico no es valido.
+					</div>
+				</small>
+
+			</p>
+  
+			<p>
+				<input id="contras" appInput  placeholder="Contraseña" formControlName="password" type="password"
+					name="contrasena"/>
+					<small *ngIf="this.form.get('password').invalid && (this.form.get('password').dirty || this.form.get('password').touched)">
+
+						<div *ngIf="this.form.get('password').errors.required">
+							Necesitas introducir una password
+						</div>
+						<div *ngIf="this.form.get('password').errors.minlength">
+							La pasword debe tener al menos 5 caracteres.
+						</div>
 		
-	
-	</form>
+					</small>
+
+			</p>
+			<p>
+				<input id="boton" class="btn" appSubmit  type="submit" value="Dame acceso" [disabled]="form.invalid" />
+			</p>
+			
+			
+		</form>
+		
+		<p class="forgot">Aun no te registras? <span [routerLink]="['/registro']"> Haz click aqui </span></p>
+	</div>
 
 </div>
