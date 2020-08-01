@@ -244,12 +244,18 @@ $card-background: #80808033;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                font-size: 1.2em;
+                font-size: 1.3em;
                 min-height: 3em;
                 background-color: rgba(228, 217, 217, 0.884);
                 border-radius: 3px;
                 border: 1px solid rgb(206, 200, 200);
                 box-shadow: $box-shadow;
+
+                span{
+                    padding-left: 1em;
+                    font-weight: bold;
+                    color: rgb(146, 45, 45);
+                }
             }
         }
 

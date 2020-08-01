@@ -65,6 +65,9 @@ export class ClndrioComponent implements OnInit {
     this.salidaNumbers = [];
     this.number = false;
     this.statTotal = 0;
+    this.statPendientes = 0;
+    this.statAprobadas = 0;
+    this.statVerificadas = 0;
 
   }
 
@@ -112,6 +115,9 @@ export class ClndrioComponent implements OnInit {
 
   prevMonth(){
     this.daysMonth = [];
+    this.statPendientes = 0;
+    this.statAprobadas = 0;
+    this.statVerificadas = 0;
     let trash = moment(this.fechaDinamica).subtract(1, 'months').format('YYYY-MM-DD');
     this.mesActual = moment(this.fechaDinamica).subtract(1, 'months').format('MMMM YYYY');
     this.fechaDinamica = trash;
@@ -131,6 +137,9 @@ export class ClndrioComponent implements OnInit {
 
   nextMonth(){
     this.daysMonth = [];
+    this.statPendientes = 0;
+    this.statAprobadas = 0;
+    this.statVerificadas = 0;
     let trash = moment(this.fechaDinamica).add(1, 'months').format('YYYY-MM-DD');
     this.mesActual = moment(this.fechaDinamica).add(1, 'months').format('MMMM YYYY');
     this.fechaDinamica = trash;
@@ -338,7 +347,9 @@ export class ClndrioComponent implements OnInit {
         let numbers = this.eventos[data].fecha.substring(this.eventos[data].fecha.length-2);
         this.eventoNumbers.push(numbers);
         console.log(this.eventoNumbers);
+
         }
+        this.statsRefresh(this.eventos);
        break;
 
       case 'mantenimiento':
@@ -348,6 +359,7 @@ export class ClndrioComponent implements OnInit {
           this.mantenimientoNumbers.push(numbers);
           console.log(this.eventoNumbers);
           }
+          this.statsRefresh(this.mantenimientos);
         break;
 
       case 'salida':
@@ -357,6 +369,7 @@ export class ClndrioComponent implements OnInit {
           this.salidaNumbers.push(numbers);
           console.log(this.eventoNumbers);
           }
+          this.statsRefresh(this.salidas);
         break;
 
         default:
@@ -397,27 +410,14 @@ export class ClndrioComponent implements OnInit {
     return this.salidaNumbers.find(e => e == day);
   }
 
-  statsRefresh(startOfMonth, endOfMonth, weekDay){
-    try{
-      this.dayMonth(startOfMonth, endOfMonth, weekDay);
-      this.EventoEveryMes(startOfMonth, endOfMonth);
-      this.MantenimientoEveryMes(startOfMonth, endOfMonth);
-      this.SalidaEveryMes(startOfMonth, endOfMonth);
-    }
-    catch(e){
+  statsRefresh(array){
+      let pendientes = array.filter(array => array.status == "pendiente");
+      let verificadas = array.filter(array => array.status === "verificado");
+      let aprobadas = array.filter(array => array.status == "aprobado" || array.verificado === true);
 
+      this.statPendientes += pendientes.length;
+      this.statAprobadas += aprobadas.length; 
+      this.statVerificadas += verificadas.length;
     }
-    finally{
-      this.statTotal = this.statEvento;
-      this.statArray = [...this.eventos, ...this.mantenimientos, ...this.salidas];
-      let pendientes = this.statArray.filter(array => array.status == "pendiente");
-      let verificadas = this.statArray.filter(array => array.verificado === true);
-      let aprobadas = this.statArray.filter(array => array.status == "aprobado");
-
-      this.statPendientes = pendientes.length;
-      this.statAprobadas = aprobadas.length; 
-      this.statVerificadas = verificadas.length;
-    }
-  }
 
 }
