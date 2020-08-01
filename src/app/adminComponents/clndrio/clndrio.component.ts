@@ -36,6 +36,14 @@ export class ClndrioComponent implements OnInit {
   salidaNumbers: any[];
   mantenimientoNumbers: any[];
   number: Boolean;
+  statEvento: number;
+  statSalida: number;
+  statMantenimiento: number;
+  statTotal: number;
+  statAprobadas: number;
+  statPendientes: number;
+  statVerificadas: number;
+  statArray: any[];
 
 
   constructor(
@@ -56,6 +64,10 @@ export class ClndrioComponent implements OnInit {
     this.mantenimientoNumbers = [];
     this.salidaNumbers = [];
     this.number = false;
+    this.statTotal = 0;
+    this.statPendientes = 0;
+    this.statAprobadas = 0;
+    this.statVerificadas = 0;
 
   }
 
@@ -65,11 +77,23 @@ export class ClndrioComponent implements OnInit {
     const endOfMonth = moment().endOf('month').format('YYYY-MM-DD');
     let weekDay = moment().startOf('month').weekday();
 
+    try{
+      this.dayMonth(startOfMonth, endOfMonth, weekDay);
+      this.EventoEveryMes(startOfMonth, endOfMonth);
+      this.MantenimientoEveryMes(startOfMonth, endOfMonth);
+      this.SalidaEveryMes(startOfMonth, endOfMonth);
+    }
+    catch(e){
 
-    this.dayMonth(startOfMonth, endOfMonth, weekDay);
-    this.EventoEveryMes(startOfMonth, endOfMonth);
-    this.MantenimientoEveryMes(startOfMonth, endOfMonth);
-    this.SalidaEveryMes(startOfMonth, endOfMonth);
+    }
+    finally{
+      this.statTotal = this.statEvento;
+    }
+
+  }
+
+  ngDoCheck(){
+    this.statTotal = this.statEvento + this.statSalida + this.statMantenimiento;
   }
 
   dayMonth(start, end, week){
@@ -91,6 +115,9 @@ export class ClndrioComponent implements OnInit {
 
   prevMonth(){
     this.daysMonth = [];
+    this.statPendientes = 0;
+    this.statAprobadas = 0;
+    this.statVerificadas = 0;
     let trash = moment(this.fechaDinamica).subtract(1, 'months').format('YYYY-MM-DD');
     this.mesActual = moment(this.fechaDinamica).subtract(1, 'months').format('MMMM YYYY');
     this.fechaDinamica = trash;
@@ -110,6 +137,9 @@ export class ClndrioComponent implements OnInit {
 
   nextMonth(){
     this.daysMonth = [];
+    this.statPendientes = 0;
+    this.statAprobadas = 0;
+    this.statVerificadas = 0;
     let trash = moment(this.fechaDinamica).add(1, 'months').format('YYYY-MM-DD');
     this.mesActual = moment(this.fechaDinamica).add(1, 'months').format('MMMM YYYY');
     this.fechaDinamica = trash;
@@ -158,6 +188,7 @@ export class ClndrioComponent implements OnInit {
           this.eventoNumbers = [];
           this.ArrayDays('evento');
           this._spinner.hide();
+          this.statEvento = response.elementos.total;
         }else{
           this._spinner.hide();
         }
@@ -202,6 +233,7 @@ export class ClndrioComponent implements OnInit {
           this.mantenimientoNumbers = [];
           this.ArrayDays('mantenimiento');
           this._spinner.hide();
+          this.statMantenimiento = response.elementos.total;
         }else{
           this._spinner.hide();
         }
@@ -224,6 +256,7 @@ export class ClndrioComponent implements OnInit {
           this.salidaNumbers = [];
           this.ArrayDays('salida');
           this._spinner.hide();
+          this.statSalida = response.elementos.total;
         }else{
           this._spinner.hide();
         }
@@ -289,7 +322,7 @@ export class ClndrioComponent implements OnInit {
       this.salidasDay = this.salidaResult;
 
       window.scroll({
-        top : 900,
+        top : 1050,
         left : 0,
         behavior : 'smooth'
     });
@@ -314,7 +347,9 @@ export class ClndrioComponent implements OnInit {
         let numbers = this.eventos[data].fecha.substring(this.eventos[data].fecha.length-2);
         this.eventoNumbers.push(numbers);
         console.log(this.eventoNumbers);
+
         }
+        this.statsRefresh(this.eventos);
        break;
 
       case 'mantenimiento':
@@ -324,6 +359,7 @@ export class ClndrioComponent implements OnInit {
           this.mantenimientoNumbers.push(numbers);
           console.log(this.eventoNumbers);
           }
+          this.statsRefresh(this.mantenimientos);
         break;
 
       case 'salida':
@@ -333,6 +369,7 @@ export class ClndrioComponent implements OnInit {
           this.salidaNumbers.push(numbers);
           console.log(this.eventoNumbers);
           }
+          this.statsRefresh(this.salidas);
         break;
 
         default:
@@ -372,5 +409,15 @@ export class ClndrioComponent implements OnInit {
   evaluateSalidaDay(day){
     return this.salidaNumbers.find(e => e == day);
   }
+
+  statsRefresh(array){
+      let pendientes = array.filter(array => array.status == "pendiente");
+      let verificadas = array.filter(array => array.status === "verificado");
+      let aprobadas = array.filter(array => array.status == "aprobado" || array.verificado === true);
+
+      this.statPendientes += pendientes.length;
+      this.statAprobadas += aprobadas.length; 
+      this.statVerificadas += verificadas.length;
+    }
 
 }

@@ -13,14 +13,10 @@ export class AppComponent implements OnInit, DoCheck {
   public title = 'tec-materiales';
   public identity;
   public url;
-  public submenu_user: boolean;
-  public submenu_panel: boolean;
-  public submenu_crear: boolean;
   transportes: any;
   public first_name;
   public first_surname;
-  public hamburguer;
-  public subhamburguer;
+  public privilegios;
 
 
   constructor(
@@ -29,11 +25,6 @@ export class AppComponent implements OnInit, DoCheck {
   	)
   {
     this.url = global.url;
-    this.submenu_user = false;
-    this.submenu_crear = false;
-    this.submenu_panel = false;
-    this.hamburguer = false;
-    this.subhamburguer = false;
 
  
   }
@@ -44,13 +35,15 @@ export class AppComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck(){
-    this.submenu_user;
-    this.submenu_crear;
-    this.submenu_panel;
     this.identity = JSON.parse(localStorage.getItem('identity'));
     if(this.identity){
          this.first_name = this.identity.name.trim().toUpperCase().charAt(0);
          this.first_surname = this.identity.surname.trim().toUpperCase().charAt(0);
+    }
+    
+    if(localStorage.getItem("privilegios")){
+      let privilegio = JSON.parse(localStorage.getItem("privilegios"));
+      this.privilegios = privilegio.cargo.cargo;
     }
  
     
@@ -60,48 +53,7 @@ export class AppComponent implements OnInit, DoCheck {
     outlet.scrollTop = 0;
   }
 
-  showMenuUser(){
-    
-    if(this.submenu_user == true){
-      this.submenu_user = false;
-    }else{
-      this.submenu_user = true;
-    }
-  }
 
-    showMenuPanel(){
-    
-    if(this.submenu_panel == true){
-      this.submenu_panel = false;
-      this.submenu_crear = false;
-    }else{
-      this.submenu_panel = true;
-      this.submenu_crear = false;
-    }
-  }
-
-    showMenuCrear(){
-    
-    if(this.submenu_crear == true){
-      this.submenu_crear = false;
-      this.submenu_panel = false;
-    }else{
-      this.submenu_crear = true;
-      this.submenu_panel = false;
-    }
-  }
-
-  hamburguerOpen(){
-    window.scrollTo(0,0);
-    if(this.hamburguer){
-      this.hamburguer = false;
-      console.log(this.hamburguer);
-    }else{
-      this.hamburguer = true;
-      console.log(this.hamburguer);
-    }
-    
-  }
 
 
 
