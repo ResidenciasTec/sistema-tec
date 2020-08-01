@@ -7,6 +7,7 @@
     </ngx-spinner>
 
     <div id="calendario">
+        <h2>consulta las solicitudes por mes</h2>
         <div class="header_calendar">
             <button (click)="prevMonth()">&lt;</button>
             <p>{{mesActual}}</p>
@@ -33,6 +34,19 @@
             <app-card *ngFor="let ma of mantenimientosDay" [mantenimiento]="ma"></app-card>
             <app-card *ngFor="let sa of salidasDay" [salida]="sa"></app-card>
         </div>
+    </div>
+
+    <div id="stats">
+        <h2>estadisticas del mes de {{mesActual}}</h2>
+        <ul>
+            <li>solicitudes totales: <span>{{statTotal}}</span> </li>
+            <li>solicitudes verificadas: <span>{{statVerificadas}} </span></li>
+            <li>solicitudes aprobadas: <span>{{statAprobadas}}</span> </li>
+            <li>solicitudes pendientes: <span>{{statPendientes}}</span>  </li>
+            <li>solicitudes de eventos: <span>{{statEvento}}</span> </li>
+            <li>solicitudes de salidas: <span>{{statSalida}}</span></li>
+            <li>solicitudes de mantenimiento: <span>{{statMantenimiento}}</span> </li>
+        </ul>
     </div>
 
 
