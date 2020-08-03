@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {variableService} from "../../services/variables.service"
 import {MantenimientoService} from "../../services/mantenimiento.service"
 import { NgxSpinnerService } from "ngx-spinner";
+import { global } from "../../services/global";
 
 
 
@@ -21,6 +22,7 @@ export class MantenimientoComponent implements OnInit {
   public current_page;
   public next_page_url;
   public prev_page_url;
+  public global;
   types: string[];
   order: { type: string; };
   
@@ -31,6 +33,7 @@ export class MantenimientoComponent implements OnInit {
   	
 
   	) { 
+      this.global = global.url;
       this.title = "pagina de mantenimiento";
       this.textoCrear = "Solicitudes de mantenimientos"
       this.token = this._variableService.getToken();
@@ -58,8 +61,8 @@ export class MantenimientoComponent implements OnInit {
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
           window.scrollTo(0,0);
           this._spinner.hide();
 
@@ -87,8 +90,8 @@ export class MantenimientoComponent implements OnInit {
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
           this._spinner.hide();
 
         }else{
@@ -118,8 +121,8 @@ export class MantenimientoComponent implements OnInit {
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
           this._spinner.hide();
 
         }else{
@@ -148,8 +151,8 @@ export class MantenimientoComponent implements OnInit {
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
           this._spinner.hide();
 
         } else{
@@ -179,8 +182,8 @@ export class MantenimientoComponent implements OnInit {
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
           this._spinner.hide();
 
         }else{
@@ -209,8 +212,8 @@ export class MantenimientoComponent implements OnInit {
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
           this._spinner.hide();
 
         }else{
@@ -252,6 +255,16 @@ export class MantenimientoComponent implements OnInit {
 
     }
 
+  }
+
+  changeUrlApi(url){
+
+    if(url === null){
+      return "";
+    }
+    const restOfUrl = url.substring(47);
+
+    return `${this.global}${restOfUrl}`
   }
 
 
