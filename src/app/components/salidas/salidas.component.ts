@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {variableService} from "../../services/variables.service"
 import {SalidaService} from "../../services/salida.service"
 import { NgxSpinnerService } from "ngx-spinner";
-import { Salida } from 'src/app/models/salida';
+import { global } from "../../services/global";
 
 
 
@@ -24,16 +24,17 @@ export class SalidasComponent implements OnInit {
   public prev_page_url;
   types: string[];
   order: { type: string; };
+  public global;
 
 
   constructor(
     private _salidaService: SalidaService,
     private _spinner: NgxSpinnerService,
     private _variableService: variableService,
-  	
  
     ) 
     {
+      this.global = global.url;
       this.textoCrear = "Solicitudes de salidas"
       this.token = this._variableService.getToken();
       this.types = [ 'mas recientes', 'mas antiguos', 'por mes', 'por estado' ];
@@ -61,8 +62,10 @@ export class SalidasComponent implements OnInit {
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
+
           window.scrollTo(0,0);
           this._spinner.hide();
 
@@ -90,8 +93,9 @@ export class SalidasComponent implements OnInit {
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
           this._spinner.hide();
 
         }else{
@@ -121,8 +125,9 @@ export class SalidasComponent implements OnInit {
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
           this._spinner.hide();
 
         }else{
@@ -151,8 +156,9 @@ export class SalidasComponent implements OnInit {
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
           this._spinner.hide();
 
         } else{
@@ -182,8 +188,9 @@ export class SalidasComponent implements OnInit {
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
           this._spinner.hide();
 
         }else{
@@ -212,8 +219,9 @@ export class SalidasComponent implements OnInit {
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
           this._spinner.hide();
 
         }else{
@@ -255,6 +263,13 @@ export class SalidasComponent implements OnInit {
 
     }
 
+  }
+
+  changeUrlApi(url){
+
+    const restOfUrl = url.substring(47);
+
+    return `${this.global}${restOfUrl}`
   }
 
 }
