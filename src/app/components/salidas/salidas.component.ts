@@ -267,6 +267,9 @@ export class SalidasComponent implements OnInit {
 
   changeUrlApi(url){
 
+    if(url === null){
+      return "";
+    }
     const restOfUrl = url.substring(47);
 
     return `${this.global}${restOfUrl}`
