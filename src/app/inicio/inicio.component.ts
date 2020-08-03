@@ -64,20 +64,12 @@ export class InicioComponent implements OnInit {
    
     }
 
-    try{
       this.forms();
       this.getPermiso();
       this.getEventos();
       this.getSalidas();
       this.getMantenimientos();
       this.getCargos();
-
-    }
-    catch(err){
-      console.log("no hay internet");
-    }
-
-  
 
   }
 
