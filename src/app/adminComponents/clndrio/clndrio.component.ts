@@ -77,18 +77,13 @@ export class ClndrioComponent implements OnInit {
     const endOfMonth = moment().endOf('month').format('YYYY-MM-DD');
     let weekDay = moment().startOf('month').weekday();
 
-    try{
       this.dayMonth(startOfMonth, endOfMonth, weekDay);
       this.EventoEveryMes(startOfMonth, endOfMonth);
       this.MantenimientoEveryMes(startOfMonth, endOfMonth);
       this.SalidaEveryMes(startOfMonth, endOfMonth);
-    }
-    catch(e){
 
-    }
-    finally{
-      this.statTotal = this.statEvento;
-    }
+
+
 
   }
 
