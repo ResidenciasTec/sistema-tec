@@ -59,8 +59,8 @@ export class PermisosComponent implements OnInit {
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
           localStorage.setItem('permisos', JSON.stringify(this.permisos));
           this._spinner.hide();
 
@@ -89,8 +89,8 @@ export class PermisosComponent implements OnInit {
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
           this._spinner.hide();
 
         }else{
@@ -120,8 +120,8 @@ export class PermisosComponent implements OnInit {
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
           this._spinner.hide();
 
         }else{

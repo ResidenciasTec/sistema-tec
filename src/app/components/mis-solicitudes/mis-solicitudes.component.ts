@@ -84,8 +84,8 @@ order: { type: string; };
           this.total = response.elemento.total;
           this.last_page = response.elemento.last_page;
           this.current_page = response.elemento.current_page;
-          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
-          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
+          this.next_page_url = this.changeUrlApi(response.elemento.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elemento.prev_page_url);
           this._spinner.hide();
 
         }else{
@@ -111,8 +111,8 @@ order: { type: string; };
           this.total = response.elemento.total;
           this.last_page = response.elemento.last_page;
           this.current_page = response.elemento.current_page;
-          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
-          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
+          this.next_page_url = this.changeUrlApi(response.elemento.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elemento.prev_page_url);
           this._spinner.hide();
 
         }else{
@@ -138,8 +138,8 @@ order: { type: string; };
           this.total = response.elemento.total;
           this.last_page = response.elemento.last_page;
           this.current_page = response.elemento.current_page;
-          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
-          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
+          this.next_page_url = this.changeUrlApi(response.elemento.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elemento.prev_page_url);
           this._spinner.hide();
 
         }else{
