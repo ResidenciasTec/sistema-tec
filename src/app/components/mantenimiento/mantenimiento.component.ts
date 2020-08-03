@@ -63,7 +63,6 @@ export class MantenimientoComponent implements OnInit {
           this.current_page = response.elementos.current_page;
           this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
           this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
-          window.scrollTo(0,0);
           this._spinner.hide();
 
         }else{

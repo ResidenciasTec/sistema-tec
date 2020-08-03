@@ -17,7 +17,7 @@
  
 <article *ngIf="vehiculo" [routerLink]="['/vehiculo/'+ vehiculo.id]">
     <section *ngIf="vehiculo.vehiculo"class="replace">{{vehiculo.vehiculo}}</section>
-    <section>{{vehiculo.status}}</section>
+    <section>{{vehiculo.placas}}</section>
 </article>
 
 <article *ngIf="departamento" [routerLink]="['/departamentos/'+ departamento.id]">

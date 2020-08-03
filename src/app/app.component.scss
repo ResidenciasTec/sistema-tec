@@ -41,6 +41,7 @@ $box-shadow: 0 1px 0 0 rgba(66,118,146,.1),0 2px 6px 0 rgba(66,118,146,.1);
         color: $submenu-color;
         border: 1px solid $submenu-color-border;
         border-width: 0px 0px 1px 0px;
+        
 
         &:hover{
             transition: .1s;
@@ -86,6 +87,7 @@ $box-shadow: 0 1px 0 0 rgba(66,118,146,.1),0 2px 6px 0 rgba(66,118,146,.1);
     max-width: 100vw;
     font-family: sans-serif;
     scroll-behavior: smooth;
+
 
       
     footer{
@@ -178,6 +180,7 @@ $box-shadow: 0 1px 0 0 rgba(66,118,146,.1),0 2px 6px 0 rgba(66,118,146,.1);
         width: 100vw;
         z-index: 5;
         box-shadow: 1px solid #999595;
+        font-family: 'Karla', sans-serif;
 
         ul{
             grid-column: 2/3;
