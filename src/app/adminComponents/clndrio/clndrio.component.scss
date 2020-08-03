@@ -25,7 +25,7 @@ $card-background: #80808033;
 .body-calendario{
     display: grid;
     grid-template-columns: 6em 1fr 6em;
-    grid-template-rows: 12em 1fr .4fr 40em;
+    grid-template-rows: 12em 1fr .4fr 50em;
     grid-gap: 1.4em;
     scroll-behavior: smooth !important;
  
@@ -126,8 +126,6 @@ $card-background: #80808033;
                     min-height: .5em;
 
                     &:hover{
-                        background-color: #f7a63e91;
-                        color: black;
                         transition: .2s;
                         cursor: pointer;
                     }
@@ -230,8 +228,13 @@ $card-background: #80808033;
     #stats{
         grid-column: 2/3;
         grid-row: 4/5;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 3em 1fr 1fr 4em;
+        grid-gap: 1em;
 
         h2{
+            grid-column: 1/ span 2;
            @include subtitulo;
         }
 
@@ -250,13 +253,34 @@ $card-background: #80808033;
                 border-radius: 3px;
                 border: 1px solid rgb(206, 200, 200);
                 box-shadow: $box-shadow;
+                font-family: 'Karla', sans-serif;
 
                 span{
                     padding-left: 1em;
                     font-weight: bold;
                     color: rgb(146, 45, 45);
                 }
+
+                &:first-child{
+                    font-family: 'Karla', sans-serif;
+                    font-weight: bold;
+                }
             }
+        }
+
+        .statsLeft{
+            grid-column: 1/2;
+            grid-row: 2/3;
+
+        }
+
+        .statsRight{
+            grid-column: 2/3;
+            grid-row: 2/3;
+        }
+        .statsBottom{
+            grid-column: 1/ span 2;
+            grid-row: 3/4;
         }
 
     }
