@@ -1,0 +1,21 @@
+<main class="body-solicitudes">
+
+    <app-banner-crear [titulo]="textoCrear"></app-banner-crear>
+
+    <ngx-spinner bdColor = "rgba(44,43,43,0.8)" size = "default" color = "#d36969" type = "timer" >
+        <p style="color: white" > cargando datos... </p>
+</ngx-spinner>
+
+
+    <div class="pagination">
+        <div>
+            <P (click)="previousPage()">PAGINA ANTERIOR</P>
+            <p>pagina {{current_page}} de {{last_page}}</p>
+            <P (click)="nextPage()">PAGINA SIGUIENTE</P>
+        </div>
+    </div>
+    
+    <app-stats></app-stats>
+        
+
+</main>

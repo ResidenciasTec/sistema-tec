@@ -104,8 +104,12 @@ import {AprobarComponent} from "./adminComponents/aprobar/aprobar.component";
 import {TransporteComponent} from "./components/transporte/transporte.component";
 import {UsuariosComponent} from "./components/usuarios/usuarios.component";
 
+
 //componentes de administrador para calendarii
 import {ClndrioComponent} from "./adminComponents/clndrio/clndrio.component";
+
+//componente de administrador para la bitacora
+import {BitacoraComponent} from "./components/bitacora/bitacora.component";
 
 //importar guards
 import {UserGuard} from "./services/user.guard";
@@ -214,6 +218,8 @@ const  appRoutes: Routes = [
     //rutas para calendario
     {path: 'calendario', component: ClndrioComponent, canActivate: [UserGuard]},
     
+    //rutas para la bitacora
+    {path: 'bitacora', component: BitacoraComponent, canActivate: [UserGuard]},
     //otras rutas 
     {path: 'usuarios', component: UsuariosComponent, canActivate:[UserGuard]},
 
