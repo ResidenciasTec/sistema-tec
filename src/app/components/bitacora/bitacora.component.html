@@ -1,0 +1,34 @@
+<main class="body-solicitudes">
+
+    <app-banner-crear [titulo]="textoCrear"></app-banner-crear>
+
+    <ngx-spinner bdColor = "rgba(44,43,43,0.8)" size = "default" color = "#d36969" type = "timer" >
+        <p style="color: white" > cargando datos... </p>
+</ngx-spinner>
+
+    <div class="header">
+        <app-button [text]="mesAnterior" (click)="prevMonth()"></app-button>
+        <h3>solicitudes del mes de {{mesActual}}</h3>
+        <app-button [text]="mesSiguiente" (click)="nextMonth()"></app-button>
+    </div>
+
+
+
+    <div class="salidas">
+        <div *ngFor="let salida of salidas">
+            <p>fecha: <span>{{salida.fecha}}</span></p>
+            <p>hora de salida: <span>{{salida.hora_salida}}</span></p>
+            <p>departamento solicitante: <span>{{salida.depto_solicitante}}</span></p>
+            <p *ngIf="salida.destino">lugar: <span>{{salida.destino}}</span></p>
+            <p *ngIf="!salida.destino">lugar: <span>no hay destino asignado aun</span></p>
+            <p>vehiculo: <span>{{salida.vehiculo_id}}</span></p>
+            <p *ngIf="salida.chofer">chofer: <span>{{salida.chofer}}</span></p>
+            <p *ngIf="!salida.chofer">chofer: <span>no hay chofer asignado aun</span></p>
+            
+        </div>
+    </div>
+    
+    <app-stats></app-stats>
+        
+
+</main>

@@ -4,7 +4,7 @@ import {SalidaService} from "../../services/salida.service"
 import { NgxSpinnerService } from "ngx-spinner";
 import { Salida } from 'src/app/models/salida';
 
-
+ 
 
 @Component({
   selector: 'app-salidas',
