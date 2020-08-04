@@ -89,6 +89,7 @@ import { VerificarComponent } from './adminComponents/verificar/verificar.compon
 import { AprobarComponent } from './adminComponents/aprobar/aprobar.component';
 import { ClndrioComponent } from './adminComponents/clndrio/clndrio.component';
 import { StatsComponent } from './reutilizables/stats/stats.component';
+import { BitacoraComponent } from './components/bitacora/bitacora.component';
 
 @NgModule({
   declarations: [
@@ -166,7 +167,8 @@ import { StatsComponent } from './reutilizables/stats/stats.component';
     VerificarComponent,
     AprobarComponent,
     ClndrioComponent,
-    StatsComponent
+    StatsComponent,
+    BitacoraComponent
   ],
   imports: [
     BrowserModule,
