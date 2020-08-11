@@ -43,8 +43,6 @@ export class UserEditComponent implements OnInit, DoCheck {
     attachPinText: "sube tu imagen de usuario"
 };
 
-
-
   constructor(
     private _userService: UserService,
     private _router: Router,
@@ -72,6 +70,9 @@ export class UserEditComponent implements OnInit, DoCheck {
 
   ngDoCheck(){
      this.identity.image;
+     this.identity.name;
+     this.identity.surname;
+     this.identity.phone;
   }
 
   private buildForm() {
@@ -95,7 +96,6 @@ export class UserEditComponent implements OnInit, DoCheck {
     this._userService.update(this.token, form, this.identity.id).subscribe(
       response => {
         if(response.status == 'success'){
-          
           //actualizar al usuario en sesion
           this._userService.detalle(this.identity.id).subscribe(
             response => {
@@ -133,6 +133,7 @@ export class UserEditComponent implements OnInit, DoCheck {
         this._spinner.hide();
         console.log(<any>error);
         this.status = "error";
+        this._toastr.error('Algunos de tus datos no fueron correctos.', 'SOLICITUD NO EXITOSA');
       }
       );
   }
