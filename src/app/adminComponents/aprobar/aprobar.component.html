@@ -4,7 +4,7 @@
 
     <article>
         <ngx-spinner bdColor="rgba(44,43,43,0.8)" size="default" color="#d36969" type="timer">
-            <p style="color: white"> cargando datos... </p>
+            <p style="color: white"> Cargando datos... </p>
         </ngx-spinner>
 
 
@@ -13,13 +13,13 @@
             <article class="requeridos">
 
                 <label>
-                    <p class="label">verifica tu identidad:</p>
+                    <p class="label">Verifica tu identidad:</p>
                     <input type="password" appInput formControlName="password" placeholder="escribe tu password...">
                     <div
                         *ngIf="this.form.get('password').invalid && (this.form.get('password').dirty || this.form.get('password').touched)">
 
                         <div *ngIf="this.form.get('password').errors.required">
-                            no has escrito tu password aun.
+                            No has escrito tu password aun.
                         </div>
                     </div>
                 </label>

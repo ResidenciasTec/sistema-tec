@@ -4,16 +4,16 @@
 
 	<article>
 		<ngx-spinner bdColor = "rgba(44,43,43,0.8)" size = "default" color = "#d36969" type = "timer" >
-            <p style="color: white" > cargando datos... </p>
+            <p style="color: white" > Cargando datos... </p>
     </ngx-spinner>
 		<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" >
 
 			<article class="requeridos">
 
 				<label>
-					<p class="label">vehiculo elegido:</p>
+					<p class="label">Vehiculo elegido:</p>
 					<select type="text" formControlName="vehiculo_id">
-						<option id="seleccionado" selected>selecciona un lugar:</option>
+						<option id="seleccionado" selected>Selecciona un lugar:</option>
 						<option *ngFor="let vehiculo of vehiculos" value="{{vehiculo.id}}">
 							{{vehiculo.vehiculo}}
 						</option>
@@ -22,16 +22,16 @@
 						*ngIf="this.form.get('vehiculo_id').invalid && (this.form.get('vehiculo_id').dirty || this.form.get('vehiculo_id').touched)">
 
 						<div *ngIf="this.form.get('vehiculo_id').errors.required">
-							debes seleccionar un vehiculo.
+							Debes seleccionar un vehiculo.
 						</div>
 
 					</div>
 				</label>
 
 				<label>
-					<p class="label">departamento solcicitante:</p>
+					<p class="label">Departamento solcicitante:</p>
 					<select type="text" formControlName="depto_solicitante">
-						<option id="seleccionado" selected>selecciona un lugar:</option>
+						<option id="seleccionado" selected>Selecciona un lugar:</option>
 						<option *ngFor="let departamento of departamentos" value="{{departamento.id}}">
 							{{departamento.departamento}}
 						</option>
@@ -40,7 +40,7 @@
 						*ngIf="this.form.get('depto_solicitante').invalid && (this.form.get('depto_solicitante').dirty || this.form.get('depto_solicitante').touched)">
 
 						<div *ngIf="this.form.get('depto_solicitante').errors.required">
-							debes seleccionar un departamento.
+							Debes seleccionar un departamento.
 						</div>
 
 					</div>
@@ -48,63 +48,63 @@
 
 
 				<label>
-					<p class="label">fecha de realizacion:</p>
+					<p class="label">Fecha de realizacion:</p>
 					<input type="date" formControlName="fecha" appInput placeholder="selecciona una fecha">
 					<div
 						*ngIf="this.form.get('fecha').invalid && (this.form.get('fecha').dirty || this.form.get('fecha').touched)">
 
 						<div *ngIf="this.form.get('fecha').errors.required">
-							la fecha es requerida.
+							La fecha es requerida.
 						</div>
 
 					</div>
 				</label>
 
 				<label>
-					<p class="label">hora de comienzo:</p>
+					<p class="label">Hora de comienzo:</p>
 					<input type="time" formControlName="hora_salida" appInput>
 					<div
 						*ngIf="this.form.get('hora_salida').invalid && (this.form.get('hora_salida').dirty || this.form.get('hora_salida').touched)">
 
 						<div *ngIf="this.form.get('hora_salida').errors.required">
-							la hora es requerida.
+							La hora es requerida.
 						</div>
 					</div>
 				</label>
 
 				<label>
-					<p class="label">hora de finalizacion:</p>
+					<p class="label">Hora de finalizacion:</p>
 					<input type="time" formControlName="hora_llegada" appInput>
 					<div
 						*ngIf="this.form.get('hora_llegada').invalid && (this.form.get('hora_llegada').dirty || this.form.get('hora_llegada').touched)">
 
 						<div *ngIf="this.form.get('hora_llegada').errors.required">
-							la hora es rquerida.
+							La hora es rquerida.
 						</div>
 					</div>
 				</label>
 			</article>
 
 			<label class="titulo-opcional">
-				<p class="label">datos opcionales:</p>
-				<p>estos datos puedes dejarlos vacios y mas tarde rellenarlos.</p>
+				<p class="label">Datos opcionales:</p>
+				<p>Estos datos puedes dejarlos vacios y mas tarde rellenarlos.</p>
 			</label>
 
 			<article class="opcionales">
 
 				<label id="titulo">
-					<p class="label">chofer:</p>
+					<p class="label">Chofer:</p>
 					<input type="text" formControlName="chofer" appInput placeholder="escriba un nombre..">
 
 				</label>
 
 				<label id="titulo">
-					<p class="label">destino:</p>
+					<p class="label">Destino:</p>
 					<input type="text" formControlName="destino" appInput placeholder="describa el destino..">
 				</label>
 
 				<label>
-					<p class="label">descripcion:</p>
+					<p class="label">Descripcion:</p>
 					<textarea type="text" formControlName="descripcion" appTextarea
 						placeholder="actividades a realizar..">
 					</textarea>
