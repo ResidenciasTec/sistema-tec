@@ -3,6 +3,7 @@ import {variableService} from "../../services/variables.service"
 import {SalidaService} from "../../services/salida.service"
 import { NgxSpinnerService } from "ngx-spinner";
 import * as moment from 'moment';
+import { global } from "../../services/global";
 
 @Component({
   selector: 'app-bitacora',
@@ -28,12 +29,14 @@ export class BitacoraComponent implements OnInit {
   fecha: string;
   depto_solicitante: any;
   vehiculos: any;
+  global: string;
 
   constructor(
     private _salidaService: SalidaService,
     private _spinner: NgxSpinnerService,
     private _variableService: variableService,
   ) {
+    this.global = global.url;
     this.textoCrear = "Bitacora de vehiculos y salidas"
     this.token = this._variableService.getToken();
     this.mesActual = moment().format('MMMM YYYY');
@@ -66,8 +69,8 @@ export class BitacoraComponent implements OnInit {
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
 
           this.salidas.forEach(sal => {
 
@@ -160,6 +163,17 @@ export class BitacoraComponent implements OnInit {
     this.SalidaEveryMes(startOfMonth, endOfMonth);
     console.log(startOfMonth + endOfMonth + "probando");
   }
+
+  changeUrlApi(url){
+
+    if(url === null){
+      return "";
+    }
+    const restOfUrl = url.substring(47);
+
+    return `${this.global}${restOfUrl}`
+  }
+
 
 
 }

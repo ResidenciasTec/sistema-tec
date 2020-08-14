@@ -13,22 +13,22 @@
             <article class="requeridos">
 
                 <label>
-                    <p class="label">nombre del espacio:</p>
+                    <p class="label">Nombre del espacio:</p>
                     <input type="text" appInput formControlName="espacio" placeholder="nombre de la ubicacion..">
                     <div
                         *ngIf="this.form.get('espacio').invalid && (this.form.get('espacio').dirty || this.form.get('espacio').touched)">
 
                         <div *ngIf="this.form.get('espacio').errors.required">
-                            debes seleccionar un nombre de espacio valido.
+                            Debes seleccionar un nombre de espacio valido.
                         </div>
                     </div>
                 </label>
 
                 
                 <label>
-                    <p class="label">pertenece a la ubicacion:</p>
+                    <p class="label">Pertenece a la ubicacion:</p>
                     <select formControlName="ubicacion_id" appInput>
-                        <option selected>selecciona una ubicacion:</option>
+                        <option selected>Selecciona una ubicacion:</option>
                         <option *ngFor="let ubicacion of ubicaciones" value="{{ubicacion.id}}">
                             {{ubicacion.ubicacion}}</option>
                     </select>
@@ -36,14 +36,14 @@
                         *ngIf="this.form.get('ubicacion_id').invalid && (this.form.get('ubicacion_id').dirty || this.form.get('ubicacion_id').touched)">
 
                         <div *ngIf="this.form.get('ubicacion_id').errors.required">
-                            la ubicacion es requerida.
+                            La ubicacion es requerida.
                         </div>
                     </div>
                 </label>
 
 
                 <label>
-                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="crear ubicacion">
+                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Crear ubicacion">
                 </label>
 
             </article>

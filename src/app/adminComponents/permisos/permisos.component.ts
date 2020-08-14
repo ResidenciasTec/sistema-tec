@@ -5,6 +5,7 @@ import {UserService} from "../../services/user.service"
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import { NgxSpinnerService } from "ngx-spinner";
+import { global } from "../../services/global";
 
 @Component({
   selector: 'app-permisos',
@@ -23,6 +24,7 @@ export class PermisosComponent implements OnInit {
   next_page_url: any;
   current_page: any;
   prev_page_url: any;
+  global: string;
 
   constructor(    
     private _permisoService: PermisoService,
@@ -34,6 +36,7 @@ export class PermisosComponent implements OnInit {
     private _spinner: NgxSpinnerService,
     )
     {
+      this.global = global.url;
       this.textoCrear = "permisos de usuarios"
       this.token = this._variableService.getToken();
      }
@@ -56,8 +59,8 @@ export class PermisosComponent implements OnInit {
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
           localStorage.setItem('permisos', JSON.stringify(this.permisos));
           this._spinner.hide();
 
@@ -86,8 +89,8 @@ export class PermisosComponent implements OnInit {
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
           this._spinner.hide();
 
         }else{
@@ -117,8 +120,8 @@ export class PermisosComponent implements OnInit {
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
           this._spinner.hide();
 
         }else{
@@ -158,6 +161,16 @@ export class PermisosComponent implements OnInit {
       }
     )
 
+  }
+
+  changeUrlApi(url){
+
+    if(url === null){
+      return "";
+    }
+    const restOfUrl = url.substring(47);
+
+    return `${this.global}${restOfUrl}`
   }
 
 

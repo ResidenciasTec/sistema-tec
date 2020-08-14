@@ -1,3 +1,3 @@
 export var global = {
-	url: 'http://apricot-crumble-28875.herokuapp.com/api/'
+	url: 'https://apricot-crumble-28875.herokuapp.com/api/'
 }

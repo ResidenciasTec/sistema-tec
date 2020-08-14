@@ -5,6 +5,7 @@ import {MantenimientoService} from "../../services/mantenimiento.service"
 import {SalidaService} from "../../services/salida.service"
 import { NgxSpinnerService } from "ngx-spinner";
 import { SalidasComponent } from '../salidas/salidas.component';
+import { global } from "../../services/global";
 
 @Component({
   selector: 'app-mis-solicitudes',
@@ -32,6 +33,7 @@ public prev_page_url;
 public identity: any;
 types: string[];
 order: { type: string; };
+  global: string;
 
 
   constructor(    
@@ -41,20 +43,21 @@ order: { type: string; };
     private _spinner: NgxSpinnerService,
     private _variableService: variableService
     ) { 
-    this.titulo = "Mis solicitudes";
-    this.data = 'eventos';
-    this.evento = true;
-    this.mantenimiento = false;
-    this.salida = false;
-    this.title = "pagina de eventos";
-    this.textoCrear = "mis solicitudes de eventos"
-    this.token = this._variableService.getToken();
-    this.identity = this._variableService.getIdentity();
-    this.types = [ 'eventos', 'mantenimientos', 'salidas' ];
+      this.global = global.url;
+      this.titulo = "Mis solicitudes";
+      this.data = 'eventos';
+      this.evento = true;
+      this.mantenimiento = false;
+      this.salida = false;
+      this.title = "pagina de eventos";
+      this.textoCrear = "mis solicitudes de eventos"
+      this.token = this._variableService.getToken();
+      this.identity = this._variableService.getIdentity();
+      this.types = [ 'eventos', 'mantenimientos', 'salidas' ];
 
-    this.order = {
-      type: 'type1'          
-  }; 
+      this.order = {
+        type: 'type1'          
+    }; 
   }
 
   ngOnInit(): void {
@@ -81,8 +84,8 @@ order: { type: string; };
           this.total = response.elemento.total;
           this.last_page = response.elemento.last_page;
           this.current_page = response.elemento.current_page;
-          this.next_page_url = response.elemento.next_page_url;
-          this.prev_page_url = response.elemento.prev_page_url;
+          this.next_page_url = this.changeUrlApi(response.elemento.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elemento.prev_page_url);
           this._spinner.hide();
 
         }else{
@@ -108,8 +111,8 @@ order: { type: string; };
           this.total = response.elemento.total;
           this.last_page = response.elemento.last_page;
           this.current_page = response.elemento.current_page;
-          this.next_page_url = response.elemento.next_page_url;
-          this.prev_page_url = response.elemento.prev_page_url;
+          this.next_page_url = this.changeUrlApi(response.elemento.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elemento.prev_page_url);
           this._spinner.hide();
 
         }else{
@@ -135,8 +138,8 @@ order: { type: string; };
           this.total = response.elemento.total;
           this.last_page = response.elemento.last_page;
           this.current_page = response.elemento.current_page;
-          this.next_page_url = response.elemento.next_page_url;
-          this.prev_page_url = response.elemento.prev_page_url;
+          this.next_page_url = this.changeUrlApi(response.elemento.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elemento.prev_page_url);
           this._spinner.hide();
 
         }else{
@@ -163,8 +166,8 @@ order: { type: string; };
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
           this._spinner.hide();
 
         }else{
@@ -194,8 +197,8 @@ order: { type: string; };
           this.total = response.elementos.total;
           this.last_page = response.elementos.last_page;
           this.current_page = response.elementos.current_page;
-          this.next_page_url = response.elementos.next_page_url;
-          this.prev_page_url = response.elementos.prev_page_url;
+          this.next_page_url = this.changeUrlApi(response.elementos.next_page_url);
+          this.prev_page_url = this.changeUrlApi(response.elementos.prev_page_url);
           this._spinner.hide();
 
         }else{
@@ -245,6 +248,16 @@ order: { type: string; };
 
     }
 
+  }
+
+  changeUrlApi(url){
+
+    if(url === null){
+      return "";
+    }
+    const restOfUrl = url.substring(47);
+
+    return `${this.global}${restOfUrl}`
   }
 
 }

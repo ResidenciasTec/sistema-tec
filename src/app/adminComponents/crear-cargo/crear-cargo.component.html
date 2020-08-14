@@ -4,7 +4,7 @@
 
     <article>
         <ngx-spinner bdColor="rgba(44,43,43,0.8)" size="default" color="#d36969" type="timer">
-            <p style="color: white"> cargando datos... </p>
+            <p style="color: white"> Cargando datos... </p>
         </ngx-spinner>
 
 
@@ -13,20 +13,20 @@
             <article class="requeridos">
 
                 <label>
-                    <p class="label">nombre del cargo:</p>
+                    <p class="label">Nombre del cargo:</p>
                     <input type="text" appInput formControlName="cargo" placeholder="nombre del cargo..">
                     <div
                         *ngIf="this.form.get('cargo').invalid && (this.form.get('cargo').dirty || this.form.get('cargo').touched)">
 
                         <div *ngIf="this.form.get('cargo').errors.required">
-                            debes seleccionar un nombre de cargo valido.
+                            Debes seleccionar un nombre de cargo valido.
                         </div>
                     </div>
                 </label>
 
 
                 <label>
-                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="crear cargo">
+                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Crear cargo">
                 </label>
 
             </article>

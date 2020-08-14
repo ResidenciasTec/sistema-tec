@@ -4,7 +4,7 @@
 
 	<article>
 		<ngx-spinner bdColor = "rgba(44,43,43,0.8)" size = "default" color = "#d36969" type = "timer" >
-            <p style="color: white" > cargando datos... </p>
+            <p style="color: white" > Cargando datos... </p>
     </ngx-spinner>
 		<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
 
@@ -17,7 +17,7 @@
 					*ngIf="this.form.get('evento').invalid && (this.form.get('evento').dirty || this.form.get('evento').touched)">
 
 					<div *ngIf="this.form.get('evento').errors.required">
-						debes seleccionar un vehiculo.
+						Debes seleccionar un vehiculo.
 					</div>
 
 				</div>
@@ -26,7 +26,7 @@
 				<label>
 					<p class="label">Locacion elegida:</p>
 					<select name="lugar_id" type="text" formControlName="espacio_id">
-						<option id="seleccionado" selected>selecciona un lugar:</option>
+						<option id="seleccionado" selected>Selecciona un lugar:</option>
 						<option *ngFor="let espacio of espacios" value="{{espacio.id}}">
 							{{espacio.espacio}}
 						</option>
@@ -36,16 +36,16 @@
 					*ngIf="this.form.get('espacio_id').invalid && (this.form.get('espacio_id').dirty || this.form.get('espacio_id').touched)">
 
 					<div *ngIf="this.form.get('espacio_id').errors.required">
-						debes seleccionar una opcion.
+						Debes seleccionar una opcion.
 					</div>
 
 				</div>
 				</label>
 
 				<label>
-					<p class="label">departamento solicitante:</p>
+					<p class="label">Departamento solicitante:</p>
 					<select name="lugar_id" type="text" formControlName="depto_solicitante">
-						<option id="seleccionado" selected>selecciona un departamento:</option>
+						<option id="seleccionado" selected>Selecciona un departamento:</option>
 						<option *ngFor="let departamento of departamentos" value="{{departamento.id}}">
 							{{departamento.departamento}}
 						</option>
@@ -56,46 +56,46 @@
 					*ngIf="this.form.get('depto_solicitante').invalid && (this.form.get('depto_solicitante').dirty || this.form.get('depto_solicitante').touched)">
 
 					<div *ngIf="this.form.get('depto_solicitante').errors.required">
-						debes seleccionar un departamento.
+						Debes seleccionar un departamento.
 					</div>
 
 				</div>
 				</label>
 
 				<label>
-					<p class="label">fecha de realizacion:</p>
+					<p class="label">Fecha de realizacion:</p>
 					<input type="date" appInput placeholder="selecciona una fecha" formControlName="fecha">
 					<div
 					*ngIf="this.form.get('fecha').invalid && (this.form.get('fecha').dirty || this.form.get('fecha').touched)">
 
 					<div *ngIf="this.form.get('fecha').errors.required">
-						debes seleccionar un vehiculo.
+						Debes seleccionar un vehiculo.
 					</div>
 
 				</div>
 				</label>
 
 				<label>
-					<p class="label">hora de comienzo:</p>
+					<p class="label">Hora de comienzo:</p>
 					<input type="time" appInput formControlName="hora_inicio">
 					<div
 					*ngIf="this.form.get('hora_inicio').invalid && (this.form.get('hora_inicio').dirty || this.form.get('hora_final').touched)">
 
 					<div *ngIf="this.form.get('hora_inicio').errors.required">
-						debes seleccionar una hora.
+						Debes seleccionar una hora.
 					</div>
 
 				</div>
 				</label>
 
 				<label>
-					<p class="label">hora de finalizacion:</p>
+					<p class="label">Hora de finalizacion:</p>
 					<input type="time" appInput formControlName="hora_final">
 					<div
 					*ngIf="this.form.get('hora_final').invalid && (this.form.get('hora_final').dirty || this.form.get('hora_final').touched)">
 
 					<div *ngIf="this.form.get('hora_final').errors.required">
-						debes seleccionar una hora.
+						Debes seleccionar una hora.
 					</div>
 
 				</div>
@@ -105,13 +105,13 @@
 
 			
 			<label class="titulo-opcional">
-				<p class="label">datos opcionales:</p>
-				<p>estos datos puedes dejarlos vacios y mas tarde rellenarlos.</p>
+				<p class="label">Datos opcionales:</p>
+				<p>Estos datos puedes dejarlos vacios y mas tarde rellenarlos.</p>
 			</label>
 
 			<article class="opcionales">
 				<label>
-					<p class="label">actividades a realizar:</p>
+					<p class="label">Actividades a realizar:</p>
 					<textarea type="text" appTextarea formControlName="actividades" placeholder="contenido de la solicitud" >
 					</textarea>
 				</label>

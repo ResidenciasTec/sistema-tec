@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^9.0.7",
+    "@angular/animations": "^9.1.6",
     "@angular/common": "~9.0.2",
     "@angular/compiler": "~9.0.2",
     "@angular/core": "~9.0.2",
@@ -22,11 +22,13 @@
     "angular-file-uploader": "4.1.4",
     "angular-froala-wysiwyg": "^2.9.1",
     "bootstrap": "^3.4.1",
+    "express": "^4.17.1",
     "jspdf": "^1.5.3",
     "jspdf-autotable": "^3.5.3",
     "moment": "^2.25.3",
     "ngx-spinner": "^9.0.2",
     "ngx-toastr": "^12.0.1",
+    "path": "^0.12.7",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
