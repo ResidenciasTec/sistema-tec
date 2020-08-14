@@ -4,7 +4,7 @@
 
     <article>
         <ngx-spinner bdColor="rgba(44,43,43,0.8)" size="default" color="#d36969" type="timer">
-            <p style="color: white"> cargando datos... </p>
+            <p style="color: white"> Cargando datos... </p>
         </ngx-spinner>
 
         
@@ -13,26 +13,26 @@
             <article class="requeridos">
 
                 <label>
-                    <p class="label">nombre del vehiculo:</p>
+                    <p class="label">Nombre del vehiculo:</p>
                     <input type="text" appInput formControlName="vehiculo" placeholder="nombre del vehiculo..">
                     <div
                         *ngIf="this.form.get('vehiculo').invalid && (this.form.get('vehiculo').dirty || this.form.get('vehiculo').touched)">
 
                         <div *ngIf="this.form.get('vehiculo').errors.required">
-                            debes seleccionar un vehiculo.
+                            Debes seleccionar un vehiculo.
                         </div>
 
                     </div>
                 </label>
 
                 <label>
-                    <p class="label">marca del vehiculo:</p>
+                    <p class="label">Marca del vehiculo:</p>
                     <input type="text" appInput formControlName="marca" placeholder="marca del vehiculo..">
                     <div
                         *ngIf="this.form.get('marca').invalid && (this.form.get('marca').dirty || this.form.get('marca').touched)">
 
                         <div *ngIf="this.form.get('marca').errors.required">
-                            debes seleccionar un departamento.
+                            Debes seleccionar un departamento.
                         </div>
 
                     </div>
@@ -45,7 +45,7 @@
                         *ngIf="this.form.get('placas').invalid && (this.form.get('placas').dirty || this.form.get('placas').touched)">
 
                         <div *ngIf="this.form.get('placas').errors.required">
-                            la fecha es requerida.
+                            La fecha es requerida.
                         </div>
 
                     </div>
@@ -53,21 +53,21 @@
 
 
                 <label>
-                    <p class="label">estado del kilometraje:</p>
+                    <p class="label">Estado del kilometraje:</p>
                     <input type="text" appInput formControlName="kilometraje" placeholder="cantidad de kilometraje...">
                     <div
                         *ngIf="this.form.get('kilometraje').invalid && (this.form.get('kilometraje').dirty || this.form.get('kilometraje').touched)">
 
                         <div *ngIf="this.form.get('kilometraje').errors.required">
-                            la hora es requerida.
+                            La hora es requerida.
                         </div>
                     </div>
                 </label>
 
                 <label>
-                    <p class="label">status del vehiculo:</p>
+                    <p class="label">Status del vehiculo:</p>
                     <select formControlName="status_id" appInput>
-                        <option selected>selecciona un status:</option>
+                        <option selected>Selecciona un status:</option>
                         <option *ngFor="let status of statusvehiculos" value="{{status.id}}">{{status.status}}</option>
                     </select>
 
@@ -75,13 +75,13 @@
                         *ngIf="this.form.get('status_id').invalid && (this.form.get('status_id').dirty || this.form.get('status_id').touched)">
 
                         <div *ngIf="this.form.get('status_id').errors.required">
-                            la hora es rquerida.
+                            La hora es requerida.
                         </div>
                     </div>
                 </label>
 
                 <label>
-                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="crear transporte">
+                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Crear transporte">
                 </label>
 
             </article>

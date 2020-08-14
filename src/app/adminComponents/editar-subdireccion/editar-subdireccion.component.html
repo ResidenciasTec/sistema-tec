@@ -4,7 +4,7 @@
 
     <article>
         <ngx-spinner bdColor="rgba(44,43,43,0.8)" size="default" color="#d36969" type="timer">
-            <p style="color: white"> cargando datos... </p>
+            <p style="color: white"> Cargando datos... </p>
         </ngx-spinner>
 
 
@@ -13,20 +13,20 @@
             <article class="requeridos">
 
                 <label>
-                    <p class="label">nombre de la subdireccion:</p>
+                    <p class="label">Nombre de la subdireccion:</p>
                     <input type="text" appInput formControlName="subdireccion" placeholder="nombre de la subdireccion..">
                     <div
                         *ngIf="this.form.get('subdireccion').invalid && (this.form.get('subdireccion').dirty || this.form.get('subdireccion').touched)">
 
                         <div *ngIf="this.form.get('subdireccion').errors.required">
-                            debes seleccionar un nombre de subdireccion valido.
+                            Debes seleccionar un nombre de subdireccion valido.
                         </div>
                     </div>
                 </label>
 
 
                 <label>
-                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="editar subdireccion">
+                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Editar subdireccion">
                 </label>
 
             </article>

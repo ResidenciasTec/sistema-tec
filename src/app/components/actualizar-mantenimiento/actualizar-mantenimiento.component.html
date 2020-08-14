@@ -4,7 +4,7 @@
 
 	<article>
 		<ngx-spinner bdColor = "rgba(44,43,43,0.8)" size = "default" color = "#d36969" type = "timer" >
-            <p style="color: white" > cargando datos... </p>
+            <p style="color: white" > Cargando datos... </p>
     </ngx-spinner>
 		<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
 
@@ -13,14 +13,14 @@
 				<label id="titulo">
 					<p class="label">tipo:</p>
 					<select type="text" formControlName="tipo">
-						<option>interno</option>
-						<option>externo</option>
+						<option>Interno</option>
+						<option>Externo</option>
 					</select>
 					<div
 						*ngIf="this.form.get('tipo').invalid && (this.form.get('tipo').dirty || this.form.get('tipo').touched)">
 
 						<div *ngIf="this.form.get('tipo').errors.required">
-							debes selecciona una opcion.
+							Debes selecciona una opcion.
 						</div>
 
 					</div>
@@ -28,17 +28,17 @@
 				</label>
 
 				<label>
-					<p class="label">asignado a:</p>
+					<p class="label">Asignado a:</p>
 					<select type="text" formControlName="asignado_a">
-						<option>interno</option>
-						<option>externo</option>
+						<option>Interno</option>
+						<option>Externo</option>
 					</select>
 
 					<div
 						*ngIf="this.form.get('asignado_a').invalid && (this.form.get('asignado_a').dirty || this.form.get('asignado_a').touched)">
 
 						<div *ngIf="this.form.get('asignado_a').errors.required">
-							debes seleccionar una opcion.
+							Debes seleccionar una opcion.
 						</div>
 
 					</div>
@@ -46,22 +46,22 @@
 				</label>
 
 				<label>
-					<p class="label">trabajo realizado:</p>
+					<p class="label">Trabajo realizado:</p>
 					<input type="text" appInput formControlName="trabajo_realizado" placeholder="trabajo realizado">
 					<div
 					*ngIf="this.form.get('trabajo_realizado').invalid && (this.form.get('trabajo_realizado').dirty || this.form.get('trabajo_realizado').touched)">
 
 					<div *ngIf="this.form.get('trabajo_realizado').errors.required">
-						debes escribir algo.
+						Debes escribir algo.
 					</div>
 
 				</div>
 				</label>
 
 				<label>
-					<p class="label">servicio:</p>
+					<p class="label">Servicio:</p>
 					<select type="text" formControlName="servicio_id">
-						<option id="seleccionado" selected>selecciona un servicio:</option>
+						<option id="seleccionado" selected>Selecciona un servicio:</option>
 						<option *ngFor="let statusorder of statusorders" value="{{statusorder.id}}">
 							{{statusorder.status}}
 						</option>
@@ -70,16 +70,16 @@
 					*ngIf="this.form.get('servicio_id').invalid && (this.form.get('servicio_id').dirty || this.form.get('servicio_id').touched)">
 
 					<div *ngIf="this.form.get('servicio_id').errors.required">
-						debes seleccionar una opcion.
+						Debes seleccionar una opcion.
 					</div>
 
 				</div>
 				</label>
 
 				<label>
-					<p class="label">departamento solicitante:</p>
+					<p class="label">Departamento solicitante:</p>
 					<select type="text" formControlName="depto_solicitante">
-						<option id="seleccionado" selected>selecciona un lugar:</option>
+						<option id="seleccionado" selected>Selecciona un lugar:</option>
 						<option *ngFor="let departamento of departamentos" value="{{departamento.id}}">
 							{{departamento.departamento}}
 						</option>
@@ -88,7 +88,7 @@
 					*ngIf="this.form.get('depto_solicitante').invalid && (this.form.get('depto_solicitante').dirty || this.form.get('depto_solicitante').touched)">
 
 					<div *ngIf="this.form.get('depto_solicitante').errors.required">
-						debes seleccionar un departamento.
+						Debes seleccionar un departamento.
 					</div>
 
 				</div>
@@ -96,40 +96,40 @@
 
 
 				<label>
-					<p class="label">fecha de realizacion:</p>
+					<p class="label">Fecha de realizacion:</p>
 					<input type="date" appInput placeholder="selecciona una fecha" formControlName="fecha">
 					<div
 						*ngIf="this.form.get('fecha').invalid && (this.form.get('fecha').dirty || this.form.get('fecha').touched)">
 
 						<div *ngIf="this.form.get('fecha').errors.required">
-							debes seleccionar una fecha
+							Debes seleccionar una fecha
 						</div>
 
 					</div>
 				</label>
 
 				<label>
-					<p class="label">hora de comienzo:</p>
+					<p class="label">Hora de comienzo:</p>
 					<input type="time" appInput formControlName="hora_inicio">
 					<div
 						*ngIf="this.form.get('hora_inicio').invalid && (this.form.get('hora_inicio').dirty || this.form.get('hora_inicio').touched)">
 
 						<div *ngIf="this.form.get('hora_inicio').errors.required">
-							debes seleccionar una hora.
+							Debes seleccionar una hora.
 						</div>
 
 					</div>
 				</label>
 
 				<label>
-					<p class="label">hora de finalizacion:</p>
+					<p class="label">Hora de finalizacion:</p>
 					<input type="time" appInput formControlName="hora_final">
 				
 				<div
 				*ngIf="this.form.get('hora_final').invalid && (this.form.get('hora_final').dirty || this.form.get('hora_final').touched)">
 
 				<div *ngIf="this.form.get('hora_final').errors.required">
-					elige una hora.
+					Elige una hora.
 				</div>
 
 			</div>
@@ -138,13 +138,13 @@
 			</article>
 
 			<label class="titulo-opcional">
-				<p class="label">datos opcionales:</p>
-				<p>estos datos puedes dejarlos vacios y mas tarde rellenarlos.</p>
+				<p class="label">Datos opcionales:</p>
+				<p>Estos datos puedes dejarlos vacios y mas tarde rellenarlos.</p>
 			</label>
 
 			<article class="opcionales">
 				<label>
-					<p class="label">equipo de proteccion personal:</p>
+					<p class="label">Equipo de proteccion personal:</p>
 					<textarea type="text" formControlName="equipo_proteccion" appTextarea
 						placeholder="selecciona el equipo requerido..">
 				</textarea>

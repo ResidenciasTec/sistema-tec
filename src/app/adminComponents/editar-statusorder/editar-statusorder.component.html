@@ -4,7 +4,7 @@
 
     <article>
         <ngx-spinner bdColor="rgba(44,43,43,0.8)" size="default" color="#d36969" type="timer">
-            <p style="color: white"> cargando datos... </p>
+            <p style="color: white"> Cargando datos... </p>
         </ngx-spinner>
 
 
@@ -13,20 +13,20 @@
             <article class="requeridos">
 
                 <label>
-                    <p class="label">nombre del status:</p>
+                    <p class="label">Nombre del status:</p>
                     <input type="text" appInput formControlName="status" placeholder="nombre del status..">
                     <div
                         *ngIf="this.form.get('status').invalid && (this.form.get('status').dirty || this.form.get('status').touched)">
 
                         <div *ngIf="this.form.get('status').errors.required">
-                            debes seleccionar un nombre de status valido.
+                            Debes seleccionar un nombre de status valido.
                         </div>
                     </div>
                 </label>
 
 
                 <label>
-                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="actualizar status de solicitudes">
+                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Actualizar status de solicitudes">
                 </label>
 
             </article>

@@ -4,7 +4,7 @@
 
     <article>
         <ngx-spinner bdColor="rgba(44,43,43,0.8)" size="default" color="#d36969" type="timer">
-            <p style="color: white"> cargando datos... </p>
+            <p style="color: white"> Cargando datos... </p>
         </ngx-spinner>
 
 
@@ -13,9 +13,9 @@
             <article class="requeridos">
 
                 <label>
-                    <p class="label">usuario seleccionado:</p>
+                    <p class="label">Usuario seleccionado:</p>
                     <select formControlName="usuario_id" appInput>
-                        <option selected>selecciona un usuario:</option>
+                        <option selected>Selecciona un usuario:</option>
                         <option *ngFor="let user of users" value="{{user.id}}">
                             {{user.name}} {{user.surname}}</option>
                     </select>
@@ -23,15 +23,15 @@
                         *ngIf="this.form.get('usuario_id').invalid && (this.form.get('usuario_id').dirty || this.form.get('usuario_id').touched)">
 
                         <div *ngIf="this.form.get('usuario_id').errors.required">
-                            el usuario es requerido.
+                            El usuario es requerido.
                         </div>
                     </div>
                 </label>
 
                 <label>
-                    <p class="label">departamento perteneciente:</p>
+                    <p class="label">Departamento perteneciente:</p>
                     <select formControlName="departamento_id" appInput>
-                        <option selected>selecciona un departamento:</option>
+                        <option selected>Selecciona un departamento:</option>
                         <option *ngFor="let departamento of departamentos" value="{{departamento.id}}">
                             {{departamento.departamento}}</option>
                     </select>
@@ -39,15 +39,15 @@
                         *ngIf="this.form.get('departamento_id').invalid && (this.form.get('departamento_id').dirty || this.form.get('departamento_id').touched)">
 
                         <div *ngIf="this.form.get('departamento_id').errors.required">
-                            el departamento es requerido.
+                            El departamento es requerido.
                         </div>
                     </div>
                 </label>
 
                 <label>
-                    <p class="label">cargo a ocupar:</p>
+                    <p class="label">Cargo a ocupar:</p>
                     <select formControlName="cargo_id" appInput>
-                        <option selected>selecciona un cargo:</option>
+                        <option selected>Selecciona un cargo:</option>
                         <option *ngFor="let cargo of cargos" value="{{cargo.id}}">
                             {{cargo.cargo}}</option>
                     </select>
@@ -55,14 +55,14 @@
                         *ngIf="this.form.get('cargo_id').invalid && (this.form.get('cargo_id').dirty || this.form.get('cargo_id').touched)">
 
                         <div *ngIf="this.form.get('cargo_id').errors.required">
-                            el cargo es requerido.
+                            El cargo es requerido.
                         </div>
                     </div>
                 </label>
 
 
                 <label>
-                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="crear permiso">
+                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Crear permiso">
                 </label>
 
             </article>
