@@ -9,7 +9,7 @@ export class TransporteComponent implements OnInit {
   public title:string;
 
   constructor() { 
-    this.title = "pagina de transporte";
+    this.title = "Página de transporte";
   }
 
   ngOnInit(): void {

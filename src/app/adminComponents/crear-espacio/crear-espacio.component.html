@@ -14,12 +14,12 @@
 
                 <label>
                     <p class="label">Nombre del espacio:</p>
-                    <input type="text" appInput formControlName="espacio" placeholder="nombre de la ubicacion..">
+                    <input type="text" appInput formControlName="espacio" placeholder="Nombre de la ubicación..">
                     <div
                         *ngIf="this.form.get('espacio').invalid && (this.form.get('espacio').dirty || this.form.get('espacio').touched)">
 
                         <div *ngIf="this.form.get('espacio').errors.required">
-                            Debes seleccionar un nombre de espacio valido.
+                            Debe seleccionar un nombre de espacio válido.
                         </div>
                     </div>
                 </label>
@@ -28,7 +28,7 @@
                 <label>
                     <p class="label">Pertenece a la ubicacion:</p>
                     <select formControlName="ubicacion_id" appInput>
-                        <option selected>Selecciona una ubicacion:</option>
+                        <option selected>Selecciona una ubicación:</option>
                         <option *ngFor="let ubicacion of ubicaciones" value="{{ubicacion.id}}">
                             {{ubicacion.ubicacion}}</option>
                     </select>
@@ -36,14 +36,14 @@
                         *ngIf="this.form.get('ubicacion_id').invalid && (this.form.get('ubicacion_id').dirty || this.form.get('ubicacion_id').touched)">
 
                         <div *ngIf="this.form.get('ubicacion_id').errors.required">
-                            La ubicacion es requerida.
+                            La ubicación es requerida.
                         </div>
                     </div>
                 </label>
 
 
                 <label>
-                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Crear ubicacion">
+                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Crear Ubicación">
                 </label>
 
             </article>

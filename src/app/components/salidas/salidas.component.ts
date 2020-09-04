@@ -37,7 +37,7 @@ export class SalidasComponent implements OnInit {
       this.global = global.url;
       this.textoCrear = "Solicitudes de salidas"
       this.token = this._variableService.getToken();
-      this.types = [ 'mas recientes', 'mas antiguos', 'por mes', 'por estado' ];
+      this.types = [ 'Mas recientes', 'Mas antiguos', 'Por mes', 'Por estado' ];
       
       this.order = {
         type: 'type1'          
@@ -243,19 +243,19 @@ export class SalidasComponent implements OnInit {
     let data = this.order.type=value;
 
     switch(data){
-      case 'mas recientes':
+      case 'Mas recientes':
         this.getSalidas();
       break;
 
-      case 'mas antiguos':
+      case 'Mas antiguos':
         this.getAntiguos();
       break;
 
-      case 'por mes':
+      case 'Por mes':
         this.getPorMes();
       break;
 
-      case 'por status':
+      case 'Por status':
         this.getPorStatus();
       break;
 

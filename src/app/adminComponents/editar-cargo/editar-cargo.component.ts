@@ -32,7 +32,7 @@ export class EditarCargoComponent implements OnInit {
   ) 
   {      
     this.token = this._variableService.getToken();
-    this.textoCrear = "editar un cargo nuevo!"; 
+    this.textoCrear = "Editar un cargo nuevo!"; 
     this.cargos = JSON.parse(localStorage.getItem('cargos'));
   }
 
@@ -65,7 +65,7 @@ export class EditarCargoComponent implements OnInit {
     this._cargoService.updateCargo(this.token, form, this.cargo.id).subscribe(
       response => {
         if(response.status == 'success'){
-          this._toastr.success('el cargo se ha actualizado con exito', 'LISTO');
+          this._toastr.success('El cargo se ha actualizado con éxito', 'LISTO');
           window.scrollTo(0,0);
           this._spinner.hide();
 
@@ -75,13 +75,13 @@ export class EditarCargoComponent implements OnInit {
 
         }else{
           this._spinner.hide();
-          this._toastr.error('parece que ha habido algun error','OOPS');
+          this._toastr.error('Parece que ha habido algun error','OOPS');
 
         }
       },
       error => {
         this._spinner.hide();
-        this._toastr.error('parece que los datos han sido erroneos','OOPS');
+        this._toastr.error('Parece que los datos han sido erróneos','OOPS');
         console.log(<any>error);
 
       }

@@ -22,7 +22,7 @@ export class CardGridComponent implements OnInit {
   message: String;
   
   constructor() {
-    this.message = 'no hay datos para mostrar.'
+    this.message = 'No Hay Datos Para Mostrar.'
    }
 
   ngOnInit(): void {

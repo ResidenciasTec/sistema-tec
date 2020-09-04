@@ -33,7 +33,7 @@
 					*ngIf="this.form.get('surname').invalid && (this.form.get('surname').dirty || this.form.get('surname').touched)">
 
 					<div *ngIf="this.form.get('surname').errors.minLenght">
-						Los nombres deben contener al menos 3 caracteres.
+						Su nombre debe contener al menos 3 caracteres.
 					</div>
 
 					<div *ngIf="this.form.get('surname').errors.required">
@@ -50,11 +50,11 @@
 					*ngIf="this.form.get('email').invalid && (this.form.get('email').dirty || this.form.get('email').touched)">
 
 					<div *ngIf="this.form.get('email').errors.email">
-						No has escrito un correo electronico valido.
+						No ha escrito un correo electrónico válido.
 					</div>
 
 					<div *ngIf="this.form.get('email').errors.required">
-						Debes poner el correo.
+						Debe introducir su correo.
 					</div>
 
 				</div>
@@ -69,11 +69,11 @@
 					*ngIf="this.form.get('control_number').invalid && (this.form.get('control_number').dirty || this.form.get('control_number').touched)">
 
 					<div *ngIf="this.form.get('control_number').errors.minLenght">
-						El numero de control debe tener al menos 3 digitos.
+						El número de control debe tener al menos 3 digitos.
 					</div>
 
 					<div *ngIf="this.form.get('control_number').errors.required">
-						El no. control es obligatorio.
+						El número de control es obligatorio.
 					</div>
 
 				</div>
@@ -87,11 +87,11 @@
 					*ngIf="this.form.get('password').invalid && (this.form.get('password').dirty || this.form.get('password').touched)">
 
 					<div *ngIf="this.form.get('password').errors.minLenght">
-						La pasword debe tener al menos 5 digitos.
+						La contraseña debe tener al menos 5 digitos.
 					</div>
 
 					<div *ngIf="this.form.get('password').errors.required">
-						La password es obligatoria.
+						La contraseña es obligatoria.
 					</div>
 
 				</div>

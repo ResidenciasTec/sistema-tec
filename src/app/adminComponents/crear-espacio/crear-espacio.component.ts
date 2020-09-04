@@ -31,7 +31,7 @@ export class CrearEspacioComponent implements OnInit {
     private _spinner: NgxSpinnerService
     ) {      
       this.token = this._variableService.getToken();
-      this.textoCrear = "crea un espacio nuevo!"; 
+      this.textoCrear = "Crear un espacio nuevo!"; 
     }
 
   ngOnInit(): void {
@@ -54,7 +54,7 @@ export class CrearEspacioComponent implements OnInit {
     this._lugarService.createLugar(this.token, form).subscribe(
       response => {
         if(response.status == 'success'){
-          this._toastr.success('el espacio se ha creado con exito', 'LISTO');
+          this._toastr.success('El espacio se ha creado con éxito', 'LISTO');
           this.form.reset();
           window.scrollTo(0,0);
           this._spinner.hide();
@@ -62,13 +62,13 @@ export class CrearEspacioComponent implements OnInit {
 
         }else{
           this._spinner.hide();
-          this._toastr.error('parece que ha habido algun error','OOPS');
+          this._toastr.error('Parece que ha habido algun error','OOPS');
 
         }
       },
       error => {
         this._spinner.hide();
-        this._toastr.error('parece que los datos han sido erroneos','OOPS');
+        this._toastr.error('Parece que los datos han sido erróneos','OOPS');
         console.log(<any>error);
 
       }

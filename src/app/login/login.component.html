@@ -13,7 +13,7 @@
 				<input id="user" appInput placeholder="Correo" formControlName="email" type="email" />
 				<small *ngIf="this.form.get('email').invalid && (this.form.get('email').dirty || this.form.get('email').touched)">
 					<div *ngIf="this.form.get('email').errors.email">
-						El correo electornico no es valido.
+						El correo electrónico no es válido.
 					</div>
 				</small>
 
@@ -25,10 +25,10 @@
 					<small *ngIf="this.form.get('password').invalid && (this.form.get('password').dirty || this.form.get('password').touched)">
 
 						<div *ngIf="this.form.get('password').errors.required">
-							Necesitas introducir una password
+							Debe introducir una contraseña
 						</div>
 						<div *ngIf="this.form.get('password').errors.minlength">
-							La pasword debe tener al menos 5 caracteres.
+							La contraseña debe tener al menos 5 caracteres.
 						</div>
 		
 					</small>
@@ -41,7 +41,7 @@
 			
 		</form>
 		
-		<p class="forgot">Aun no te registras? <span [routerLink]="['/registro']"> Haz click aqui </span></p>
+		<p class="forgot">Aún no se registra? <span [routerLink]="['/registro']"> Haz click aqui </span></p>
 	</div>
 
 </div>

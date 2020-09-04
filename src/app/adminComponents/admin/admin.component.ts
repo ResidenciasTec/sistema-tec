@@ -19,8 +19,8 @@ export class AdminComponent implements OnInit {
     private _router: Router,
     private _route: ActivatedRoute,
     ) { 
-    this.volver = "volver a la solicitud";
-    this.solicitudes = "volver al inicio";
+    this.volver = "Volver a la solicitud";
+    this.solicitudes = "Volver al inicio";
     this.verificado = false;
     this.aprobado = false;
   }

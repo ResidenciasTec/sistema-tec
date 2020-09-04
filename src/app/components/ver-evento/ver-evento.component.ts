@@ -48,12 +48,12 @@ export class VerEventoComponent implements OnInit {
     private _eventoService: EventoService,
     private _spinner: NgxSpinnerService,
   	) {
-      this.textoCrear = "solicitud seleccionada",
-      this.departamento_text = "pedido por el departamento:";
-      this.user_text = "creado por el usuario:";
-      this.evento_text = "lugar del evento";
-      this.generar_pdf = "generar pdf";
-      this.descargar_pdf = "descargar pdf";
+      this.textoCrear = "Solicitud seleccionada",
+      this.departamento_text = "Pedido por el departamento:";
+      this.user_text = "Creado por el usuario:";
+      this.evento_text = "Lugar del evento";
+      this.generar_pdf = "Generar pdf";
+      this.descargar_pdf = "Descargar pdf";
      }
 
 
@@ -127,11 +127,11 @@ export class VerEventoComponent implements OnInit {
         ['Solicitud de eventos', '']
       ],
       body: [
-        ['evento solicitado'],
+        ['Evento solicitado'],
         [this.evento.evento],
-        ['pedido por el departamento', this.evento.departamento.departamento],
-        ['se llevara a cabo', 'empieza a ' + this.evento.hora_inicio + ' y termina a las'+ this.evento.hora_final ],
-        ['lugar del evento', this.evento.espacio ]
+        ['Pedido por el departamento', this.evento.departamento.departamento],
+        ['Se llevará a cabo', 'empieza a ' + this.evento.hora_inicio + ' y termina a las'+ this.evento.hora_final ],
+        ['Lugar del evento', this.evento.espacio ]
       ]
   })
     this._spinner.hide();
@@ -146,11 +146,11 @@ export class VerEventoComponent implements OnInit {
         ['Solicitud de eventos', '']
       ],
       body: [
-        [{ content: 'evento solicitado', colSpan: 2, rowSpan: 1, styles: { halign: 'center' } }],
+        [{ content: 'Evento solicitado', colSpan: 2, rowSpan: 1, styles: { halign: 'center' } }],
         [{ content: this.evento.evento, colSpan: 1, rowSpan: 1, styles: { halign: 'center' } }],
-        [{ content: 'pedido por el departamento', colSpan: 1, rowSpan: 1, styles: { halign: 'center' } }, this.evento.departamento.departamento],
-        [{ content: 'se llevara a cabo', colSpan: 1, rowSpan: 1, styles: { halign: 'center' } }, 'empieza a ' + this.evento.hora_inicio + ' y termina a las'+ this.evento.hora_final],
-        ['lugar del evento', this.evento.espacio.espacio ]
+        [{ content: 'Pedido por el departamento', colSpan: 1, rowSpan: 1, styles: { halign: 'center' } }, this.evento.departamento.departamento],
+        [{ content: 'Se llevará a cabo', colSpan: 1, rowSpan: 1, styles: { halign: 'center' } }, 'empieza a ' + this.evento.hora_inicio + ' y termina a las'+ this.evento.hora_final],
+        ['Lugar del evento', this.evento.espacio.espacio ]
       ]
   })
 

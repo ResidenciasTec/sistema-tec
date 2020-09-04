@@ -1,8 +1,8 @@
 <article class="information" *ngIf="evento">
     <section>Actividades realizadas:</section>
     <section class="description"  *ngIf="evento.actividades">{{evento.actividades}}</section>
-    <section class="description"  *ngIf="!evento.actividades">No hay actividades especificadas aun.</section>
-    <section>Fecha de realizacion:</section>
+    <section class="description"  *ngIf="!evento.actividades">No hay actividades especificadas.</section>
+    <section>Fecha de realización:</section>
     <section>Se lleva a cabo el {{fecha}}</section>
     <section>Horario:</section>
     <section>Empieza a las {{evento.hora_inicio}} y termina a las {{evento.hora_final}}</section>
@@ -12,8 +12,8 @@
 <article class="information" *ngIf="mantenimiento">
     <section>Actividades realizadas:</section>
     <section class="description"  *ngIf="mantenimiento.trabajo_realizado">{{mantenimiento.trabajo_realizado}}</section>
-    <section class="description"  *ngIf="!mantenimiento.trabajo_realizado">No hay actividades especificadas aun.</section>
-    <section>Fecha de realizacion:</section>
+    <section class="description"  *ngIf="!mantenimiento.trabajo_realizado">No hay actividades especificadas.</section>
+    <section>Fecha de realización:</section>
     <section>Se lleva a cabo el {{fecha}}</section>
     <section>Horario:</section>
     <section>Empieza a las {{mantenimiento.hora_inicio}} y termina a las {{mantenimiento.hora_final}}</section>
@@ -21,10 +21,10 @@
 </article>
 
 <article class="information" *ngIf="salida">
-    <section>Descripcion de las actividades:</section>
+    <section>Descripción de las actividades:</section>
     <section class="description"  *ngIf="salida.descripcion">{{salida.descripcion}}</section>
-    <section class="description"  *ngIf="!salida.descripcion">No hay actividades especificadas aun.</section>
-    <section>Fecha de realizacion:</section>
+    <section class="description"  *ngIf="!salida.descripcion">No hay actividades especificadas.</section>
+    <section>Fecha de realización:</section>
     <section>Se lleva a cabo el {{fecha}}</section>
     <section>Horario:</section>
     <section>Empieza a las {{salida.hora_salida}} y termina a las {{salida.hora_llegada}}</section>
@@ -32,22 +32,22 @@
 </article>
 
 <article class="information" *ngIf="vehiculo">
-    <section>Marca del vehiculo:</section>
+    <section>Marca del vehículos:</section>
     <section class="description">{{vehiculo.marca}}</section>
-    <section>Placas del vehiculo</section>
+    <section>Placas del vehículos</section>
     <section>{{vehiculo.placas}}</section>
-    <section>Estado del vehiculo</section>
+    <section>Estado del vehículo</section>
     <section>{{vehiculo.kilometraje}}</section>
     <section>{{vehiculo.status_id}}</section>
 </article>
 
 <article class="information" *ngIf="departamento">
-    <section>Descripcion de las actividades:</section>
+    <section>Descripción de las actividades:</section>
     <section class="description">Descripcion del departamento y sus actividades realizadas.</section>
-    <section>Numero de telefono:</section>
+    <section>Numero de teléfono:</section>
     <section>{{departamento.telefono}}</section>
-    <section>Correo electronico:</section>
+    <section>Correo electrónico:</section>
     <section>{{departamento.correo}}</section>
-    <section>Pertenece a la subdireccion {{departamento.subdireccion.subdireccion}}</section>
+    <section>Pertenece a la subdirección {{departamento.subdireccion.subdireccion}}</section>
 </article>
 

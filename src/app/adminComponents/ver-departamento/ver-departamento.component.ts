@@ -29,7 +29,7 @@ export class VerDepartamentoComponent implements OnInit {
     private _router: Router,
     private _route: ActivatedRoute,
   ) {
-    this.textoCrear = "departamento"
+    this.textoCrear = "Departamento"
     this.token = this._variableService.getToken();
    }
 

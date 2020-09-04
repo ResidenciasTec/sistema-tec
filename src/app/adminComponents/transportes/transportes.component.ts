@@ -33,7 +33,7 @@ export class TransportesComponent implements OnInit {
     
 
   ) {
-    this.textoCrear = "todos los vehiculos"
+    this.textoCrear = "Todos los Vehículos"
     this.token = this._variableService.getToken();
    }
 

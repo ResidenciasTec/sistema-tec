@@ -74,7 +74,7 @@ export class CrearEventoComponent implements OnInit {
           localStorage.setItem('eventos', JSON.stringify(this.evento));
           this.form.reset();
           window.scrollTo(0,0);
-          this._toastr.success('la solicitud se ha creado exitosamente', 'SOLICITUD EXITOSA');
+          this._toastr.success('La solicitud se ha creado exitosamente', 'SOLICITUD EXITOSA');
           this._spinner.hide();
 
         }else{
@@ -84,7 +84,7 @@ export class CrearEventoComponent implements OnInit {
       },
       error => {
         this._spinner.hide();
-        this._toastr.error('algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
+        this._toastr.error('Algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
         this.status = 'error';
 
       }

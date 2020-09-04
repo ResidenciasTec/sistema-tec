@@ -11,7 +11,7 @@
 			<article class="requeridos">
 
 				<label>
-					<p class="label">Vehiculo elegido:</p>
+					<p class="label">Vehículo Elegido:</p>
 					<select type="text" formControlName="vehiculo_id">
 						<option id="seleccionado" selected>Selecciona un lugar:</option>
 						<option *ngFor="let vehiculo of vehiculos" value="{{vehiculo.id}}">
@@ -22,7 +22,7 @@
 						*ngIf="this.form.get('vehiculo_id').invalid && (this.form.get('vehiculo_id').dirty || this.form.get('vehiculo_id').touched)">
 
 						<div *ngIf="this.form.get('vehiculo_id').errors.required">
-							Debes seleccionar un vehiculo.
+							Debe seleccionar un Vehículo.
 						</div>
 
 					</div>
@@ -40,7 +40,7 @@
 						*ngIf="this.form.get('depto_solicitante').invalid && (this.form.get('depto_solicitante').dirty || this.form.get('depto_solicitante').touched)">
 
 						<div *ngIf="this.form.get('depto_solicitante').errors.required">
-							Debes seleccionar un departamento.
+							Debe seleccionar un departamento.
 						</div>
 
 					</div>
@@ -48,7 +48,7 @@
 
 
 				<label>
-					<p class="label">Fecha de realizacion:</p>
+					<p class="label">Fecha de realización:</p>
 					<input type="date" formControlName="fecha" appInput placeholder="selecciona una fecha">
 					<div
 						*ngIf="this.form.get('fecha').invalid && (this.form.get('fecha').dirty || this.form.get('fecha').touched)">
@@ -87,7 +87,7 @@
 
 			<label class="titulo-opcional">
 				<p class="label">Datos opcionales:</p>
-				<p>Estos datos puedes dejarlos vacios y mas tarde rellenarlos.</p>
+				<p>Estos datos puede dejarlos vacíos y mas tarde rellenarlos.</p>
 			</label>
 
 			<article class="opcionales">
@@ -104,7 +104,7 @@
 				</label>
 
 				<label>
-					<p class="label">Descripcion:</p>
+					<p class="label">Descripción:</p>
 					<textarea type="text" formControlName="descripcion" appTextarea
 						placeholder="describe las actividades a realizar en el destino...">
 					</textarea>
@@ -119,8 +119,7 @@
 
 	
 				<p class="aviso">
-					Las solicitudes que estes creando seran revisadas y se mantendran en estado "pendiente" hasta que la
-					junta administrativa revise y decida aceptar la solicitud.
+					Las solicitudes que esté creando serán revisadas y se mantendrán en estado "pendiente" hasta que la junta administrativa revise y decida aceptar la solicitud.
 				</p>
 
 			</article>

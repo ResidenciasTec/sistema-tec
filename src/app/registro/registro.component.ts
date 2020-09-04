@@ -65,7 +65,7 @@ export class RegistroComponent implements OnInit {
 	  	response =>{
 	  		if(response.status =="success"){
           this.status = 'success';
-          this._toastr.success('los datos ingresados son correctos.', 'SOLICITUD EXITOSA');
+          this._toastr.success('Los datos ingresados son correctos.', 'SOLICITUD EXITOSA');
           window.scrollTo(0,0);
           this._spinner.hide();
           this.form.reset();
@@ -85,7 +85,7 @@ export class RegistroComponent implements OnInit {
 	  	},
 	  	error =>{
         this._spinner.hide();
-        this._toastr.error('algo ha salido mal.', 'ACCESO DENEGADO');
+        this._toastr.error('Algo ha salido mal.', 'ACCESO DENEGADO');
 	  		this.status = 'error';
 	  		console.log(<any>error);
 

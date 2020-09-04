@@ -25,7 +25,7 @@ export class StatusvehiculosComponent implements OnInit {
     private _route: ActivatedRoute,
     private _spinner: NgxSpinnerService
     ) {       
-      this.textoCrear = "status de los vehiculos"
+      this.textoCrear = "Status de los Vehículos"
       this.token = this._variableService.getToken();  
     }
 

@@ -14,12 +14,12 @@
 
                 <label>
                     <p class="label">Nombre del cargo:</p>
-                    <input type="text" appInput formControlName="cargo" placeholder="nombre del cargo..">
+                    <input type="text" appInput formControlName="cargo" placeholder="Nombre del cargo..">
                     <div
                         *ngIf="this.form.get('cargo').invalid && (this.form.get('cargo').dirty || this.form.get('cargo').touched)">
 
                         <div *ngIf="this.form.get('cargo').errors.required">
-                            Debes seleccionar un nombre de cargo valido.
+                            Debe seleccionar un nombre de cargo válido.
                         </div>
                     </div>
                 </label>

@@ -13,20 +13,20 @@
             <article class="requeridos">
 
                 <label>
-                    <p class="label">Nombre de la subdireccion:</p>
-                    <input type="text" appInput formControlName="subdireccion" placeholder="nombre de la subdireccion..">
+                    <p class="label">Nombre de la subdirección:</p>
+                    <input type="text" appInput formControlName="subdireccion" placeholder="Nombre de la subdirección..">
                     <div
                         *ngIf="this.form.get('subdireccion').invalid && (this.form.get('subdireccion').dirty || this.form.get('subdireccion').touched)">
 
                         <div *ngIf="this.form.get('subdireccion').errors.required">
-                            Debes seleccionar un nombre de subdireccion valido.
+                            Debe seleccionar un nombre de subdirección válido.
                         </div>
                     </div>
                 </label>
 
 
                 <label>
-                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Crear subdireccion">
+                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Crear Subdirección">
                 </label>
 
             </article>

@@ -39,7 +39,7 @@ export class ActualizarMantenimientoComponent implements OnInit {
   {
     this.token = localStorage.getItem('token');
     this.identity = JSON.parse(localStorage.getItem('identity'));
-    this.textoCrear = "Crear una solicitud de mantenimiento";
+    this.textoCrear = "Actualice la solicitud de mantenimiento";
     this.loading = false;
   
   }
@@ -96,7 +96,7 @@ export class ActualizarMantenimientoComponent implements OnInit {
                 this._spinner.hide();
                 window.scrollTo(0,0);
                 this.status = 'success';
-                this._toastr.success('la solicitud se ha actualizado correctamente.', 'SOLICITUD EXITOSA');
+                this._toastr.success('La solicitud se ha actualizado correctamente.', 'SOLICITUD EXITOSA');
 
                 //redireccion a inicio
 				        this._router.navigate(['mantenimiento/'+this.id]);
@@ -105,7 +105,7 @@ export class ActualizarMantenimientoComponent implements OnInit {
             },
             error =>{
               this._spinner.hide();
-              this._toastr.error('algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
+              this._toastr.error('Algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
             }
 
 

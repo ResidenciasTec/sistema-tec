@@ -41,11 +41,11 @@ export class VerMantenimientoComponent implements OnInit {
     private _mantenimientoService: MantenimientoService,
     private _spinner: NgxSpinnerService,
   	) {
-      this.departamento_text = "pedido por el departamento:";
-      this.servicio_text = "tipo de servicio:";
-      this.user_text = "creado por el usuario";
-      this.generar_pdf = "generar pdf";
-      this.descargar_pdf = "descargar pdf";
+      this.departamento_text = "Pedido por el departamento:";
+      this.servicio_text = "Tipo de servicio:";
+      this.user_text = "Creado por el usuario";
+      this.generar_pdf = "Generar pdf";
+      this.descargar_pdf = "Descargar pdf";
      }
 
     ngOnInit(): void {
@@ -76,7 +76,7 @@ export class VerMantenimientoComponent implements OnInit {
               this.fecha = moment(this.fechados).format('DD [de] MMMM [del] YYYY');
             }else{
               this._spinner.hide();
-              console.log('algo ha salido mal');
+              console.log('Algo ha salido mal');
             }
     
           },
@@ -107,14 +107,14 @@ export class VerMantenimientoComponent implements OnInit {
   
       doc.autoTable({
         head: [
-          ['soliccitud de mantenimiento', '']
+          ['solicitud de mantenimiento', '']
         ],
         body: [
-          ['mantenimiento de tipo'],
+          ['Mantenimiento de tipo'],
           [this.mantenimiento.tipo],
-          ['pedido por el departamento', this.mantenimiento.departamento.departamento],
-          ['se llevara a cabo', 'empieza a ' + this.mantenimiento.hora_inicio + ' y termina a las '+ this.mantenimiento.hora_final ],
-          ['status del servicio', this.mantenimiento.servicio.status ]
+          ['Pedido por el departamento', this.mantenimiento.departamento.departamento],
+          ['Se llevará a cabo', 'Empieza a ' + this.mantenimiento.hora_inicio + ' y termina a las '+ this.mantenimiento.hora_final ],
+          ['Status del servicio', this.mantenimiento.servicio.status ]
         ]
     })
       this._spinner.hide();
@@ -126,14 +126,14 @@ export class VerMantenimientoComponent implements OnInit {
       
       doc.autoTable({
         head: [
-          ['soliccitud de mantenimiento', '']
+          ['Solicitud de mantenimiento', '']
         ],
         body: [
-          ['mantenimiento de tipo'],
+          ['Mantenimiento de tipo'],
           [this.mantenimiento.tipo],
-          ['pedido por el departamento', this.mantenimiento.departamento.departamento],
-          ['se llevara a cabo', 'empieza a ' + this.mantenimiento.hora_inicio + ' y termina a las '+ this.mantenimiento.hora_final ],
-          ['status del servicio', this.mantenimiento.servicio.status ]
+          ['Pedido por el departamento', this.mantenimiento.departamento.departamento],
+          ['Se llevará a cabo', 'Empieza a ' + this.mantenimiento.hora_inicio + ' y termina a las '+ this.mantenimiento.hora_final ],
+          ['Status del servicio', this.mantenimiento.servicio.status ]
         ]
     })
   

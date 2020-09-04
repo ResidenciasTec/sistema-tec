@@ -13,34 +13,34 @@
             <article class="requeridos">
 
                 <label>
-                    <p class="label">Nombre del vehiculo:</p>
-                    <input type="text" appInput formControlName="vehiculo" placeholder="nombre del vehiculo..">
+                    <p class="label">Nombre del Vehículo:</p>
+                    <input type="text" appInput formControlName="vehiculo" placeholder="Nombre del Vehículo..">
                     <div
                         *ngIf="this.form.get('vehiculo').invalid && (this.form.get('vehiculo').dirty || this.form.get('vehiculo').touched)">
 
                         <div *ngIf="this.form.get('vehiculo').errors.required">
-                           Debes seleccionar un vehiculo.
+                           Debe seleccionar un Vehículo.
                         </div>
 
                     </div>
                 </label>
 
                 <label>
-                    <p class="label">Marca del vehiculo:</p>
-                    <input type="text" appInput formControlName="marca" placeholder="marca del vehiculo..">
+                    <p class="label">Marca del Vehículo:</p>
+                    <input type="text" appInput formControlName="marca" placeholder="Marca del Vehículo..">
                     <div
                         *ngIf="this.form.get('marca').invalid && (this.form.get('marca').dirty || this.form.get('marca').touched)">
 
                         <div *ngIf="this.form.get('marca').errors.required">
-                            Debes seleccionar un departamento.
+                            Debe seleccionar un departamento.
                         </div>
 
                     </div>
                 </label>
 
                 <label>
-                    <p class="label">Numero de placas:</p>
-                    <input type="text" appInput formControlName="placas" placeholder="numero de placas...">
+                    <p class="label">Número de placas:</p>
+                    <input type="text" appInput formControlName="placas" placeholder="Número de placas...">
                     <div
                         *ngIf="this.form.get('placas').invalid && (this.form.get('placas').dirty || this.form.get('placas').touched)">
 
@@ -54,7 +54,7 @@
 
                 <label>
                     <p class="label">Estado del kilometraje:</p>
-                    <input type="text" appInput formControlName="kilometraje" placeholder="cantidad de kilometraje...">
+                    <input type="text" appInput formControlName="kilometraje" placeholder="Cantidad de kilometraje...">
                     <div
                         *ngIf="this.form.get('kilometraje').invalid && (this.form.get('kilometraje').dirty || this.form.get('kilometraje').touched)">
 
@@ -81,7 +81,7 @@
                 </label>
 
                 <label>
-                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Actualizar transporte">
+                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Actualizar Vehículo">
                 </label>
 
             </article>

@@ -31,7 +31,7 @@ export class EditarStatusorderComponent implements OnInit {
     private _spinner: NgxSpinnerService
     ) {      
       this.token = this._variableService.getToken();
-      this.textoCrear = "actualiza el satus seleccionado!";  
+      this.textoCrear = "Actualice el satus seleccionado!";  
       this.statusorders = JSON.parse(localStorage.getItem('statusorders'));
     }
 
@@ -67,7 +67,7 @@ export class EditarStatusorderComponent implements OnInit {
     this._statusorderService.updateServicio(this.token, form, this.id).subscribe(
       response => {
         if(response.status == 'success'){
-          this._toastr.success('el status se ha creado con exito', 'LISTO');
+          this._toastr.success('El status se ha creado con éxito', 'LISTO');
           this.form.reset();
           window.scrollTo(0,0);
           this._spinner.hide();
@@ -78,13 +78,13 @@ export class EditarStatusorderComponent implements OnInit {
 
         }else{
           this._spinner.hide();
-          this._toastr.error('parece que ha habido algun error','OOPS');
+          this._toastr.error('Parece que ha habido algun error','OOPS');
 
         }
       },
       error => {
         this._spinner.hide();
-        this._toastr.error('parece que los datos han sido erroneos','OOPS');
+        this._toastr.error('Parece que los datos han sido erróneos','OOPS');
         console.log(<any>error);
 
       }

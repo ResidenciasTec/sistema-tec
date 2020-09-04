@@ -25,7 +25,7 @@ export class CargosComponent implements OnInit {
     private _spinner: NgxSpinnerService,
     ) 
     {    
-      this.textoCrear = "departamentos del ITM"
+      this.textoCrear = "Cargos de Docentes"
       this.token = this._variableService.getToken();
     }
 

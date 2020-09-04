@@ -11,7 +11,7 @@
 			<article class="requeridos">
 
 				<label id="titulo">
-					<p class="label">tipo:</p>
+					<p class="label">Tipo:</p>
 					<select type="text" formControlName="tipo">
 						<option>Interno</option>
 						<option>Externo</option>
@@ -20,7 +20,7 @@
 						*ngIf="this.form.get('tipo').invalid && (this.form.get('tipo').dirty || this.form.get('tipo').touched)">
 
 						<div *ngIf="this.form.get('tipo').errors.required">
-							Debes selecciona una opcion.
+							Debe selecciona una opción.
 						</div>
 
 					</div>
@@ -38,7 +38,7 @@
 						*ngIf="this.form.get('asignado_a').invalid && (this.form.get('asignado_a').dirty || this.form.get('asignado_a').touched)">
 
 						<div *ngIf="this.form.get('asignado_a').errors.required">
-							Debes seleccionar una opcion.
+							Debe seleccionar una opción.
 						</div>
 
 					</div>
@@ -52,7 +52,7 @@
 					*ngIf="this.form.get('trabajo_realizado').invalid && (this.form.get('trabajo_realizado').dirty || this.form.get('trabajo_realizado').touched)">
 
 					<div *ngIf="this.form.get('trabajo_realizado').errors.required">
-						Debes escribir algo.
+						Debe escribir el trabajo realizado.
 					</div>
 
 				</div>
@@ -70,7 +70,7 @@
 					*ngIf="this.form.get('servicio_id').invalid && (this.form.get('servicio_id').dirty || this.form.get('servicio_id').touched)">
 
 					<div *ngIf="this.form.get('servicio_id').errors.required">
-						Debes seleccionar una opcion.
+						Debe seleccionar una opción.
 					</div>
 
 				</div>
@@ -88,7 +88,7 @@
 					*ngIf="this.form.get('depto_solicitante').invalid && (this.form.get('depto_solicitante').dirty || this.form.get('depto_solicitante').touched)">
 
 					<div *ngIf="this.form.get('depto_solicitante').errors.required">
-						Debes seleccionar un departamento.
+						Debe seleccionar un departamento.
 					</div>
 
 				</div>
@@ -96,13 +96,13 @@
 
 
 				<label>
-					<p class="label">Fecha de realizacion:</p>
+					<p class="label">Fecha de realización:</p>
 					<input type="date" appInput placeholder="selecciona una fecha" formControlName="fecha">
 					<div
 						*ngIf="this.form.get('fecha').invalid && (this.form.get('fecha').dirty || this.form.get('fecha').touched)">
 
 						<div *ngIf="this.form.get('fecha').errors.required">
-							Debes seleccionar una fecha
+							Debe seleccionar una fecha
 						</div>
 
 					</div>
@@ -122,14 +122,14 @@
 				</label>
 
 				<label>
-					<p class="label">Hora de finalizacion:</p>
+					<p class="label">Hora de finalización:</p>
 					<input type="time" appInput formControlName="hora_final">
 				
 				<div
 				*ngIf="this.form.get('hora_final').invalid && (this.form.get('hora_final').dirty || this.form.get('hora_final').touched)">
 
 				<div *ngIf="this.form.get('hora_final').errors.required">
-					Elige una hora.
+					Elija una hora.
 				</div>
 
 			</div>
@@ -139,7 +139,7 @@
 
 			<label class="titulo-opcional">
 				<p class="label">Datos opcionales:</p>
-				<p>Estos datos puedes dejarlos vacios y mas tarde rellenarlos.</p>
+				<p>Estos datos puede dejarlos vacíos y mas tarde rellenarlos.</p>
 			</label>
 
 			<article class="opcionales">
@@ -160,8 +160,7 @@
 
 
 				<p class="aviso">
-					Las solicitudes que estes creando seran revisadas y se mantendran en estado "pendiente" hasta que la
-					junta administrativa revise y decida aceptar la solicitud.
+					Las solicitudes que esté creando serán revisadas y se mantendrán en estado "pendiente" hasta que la junta administrativa revise y decida aceptar la solicitud.
 				</p>
 
 			</article>

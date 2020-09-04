@@ -28,7 +28,7 @@ export class CrearUbicacionComponent implements OnInit {
     private _spinner: NgxSpinnerService
     ) {      
       this.token = this._variableService.getToken();
-      this.textoCrear = "crea una ubicacion nueva!";  
+      this.textoCrear = "Crear una ubicación nueva!";  
     }
 
   ngOnInit(): void {
@@ -50,7 +50,7 @@ export class CrearUbicacionComponent implements OnInit {
     this._ubicacionService.createUbicacion(this.token, form).subscribe(
       response => {
         if(response.status == 'success'){
-          this._toastr.success('la ubicacion se ha creado con exito', 'LISTO');
+          this._toastr.success('La ubicación se ha creado con éxito', 'LISTO');
           this.form.reset();
           window.scrollTo(0,0);
           this._spinner.hide();
@@ -58,13 +58,13 @@ export class CrearUbicacionComponent implements OnInit {
 
         }else{
           this._spinner.hide();
-          this._toastr.error('parece que ha habido algun error','OOPS');
+          this._toastr.error('Parece que ha habido algun error','OOPS');
 
         }
       },
       error => {
         this._spinner.hide();
-        this._toastr.error('parece que los datos han sido erroneos','OOPS');
+        this._toastr.error('Parece que los datos han sido erróneos','OOPS');
         console.log(<any>error);
 
       }

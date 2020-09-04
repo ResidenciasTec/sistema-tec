@@ -38,7 +38,7 @@ export class ActualizarSalidaComponent implements OnInit {
   {
     this.identity = JSON.parse(localStorage.getItem('identity'));
     this.token = localStorage.getItem('token');
-    this.textoCrear = "actualiza la solicitud de salida";
+    this.textoCrear = "Actualice la solicitud de salida";
     this.loading = false;
    
   }
@@ -94,7 +94,7 @@ export class ActualizarSalidaComponent implements OnInit {
                 this._spinner.hide();
                 window.scrollTo(0,0);
                 this.status = 'success';
-                this._toastr.success('la solicitud se ha actualizado correctamente.', 'SOLICITUD EXITOSA');
+                this._toastr.success('La solicitud se ha actualizado correctamente.', 'SOLICITUD EXITOSA');
 
                 //redireccion a inicio
 				        this._router.navigate(['salidas/'+this.id]);
@@ -103,7 +103,7 @@ export class ActualizarSalidaComponent implements OnInit {
             },
             error =>{
               this._spinner.hide();
-              this._toastr.error('algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
+              this._toastr.error('Algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
             }
 
 

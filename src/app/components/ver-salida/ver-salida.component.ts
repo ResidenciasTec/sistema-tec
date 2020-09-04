@@ -44,13 +44,13 @@ export class VerSalidaComponent implements OnInit {
     private _salidaService: SalidaService,
     private _spinner: NgxSpinnerService,
   	) {
-      this.departamento_text = "pedido por el departamento:";
-      this.vehiculo_text = "vehiculo seleccionado:";
-      this.user_text = "creado por el usuario";
-      this.textoCrear = "el destino no se ha especificado";
+      this.departamento_text = "Pedido por el departamento:";
+      this.vehiculo_text = "Vehículo seleccionado:";
+      this.user_text = "Creado por el usuario";
+      this.textoCrear = "El destino no se ha especificado";
       this.loading = false;
-      this.generar_pdf = "generar pdf";
-      this.descargar_pdf = "descargar pdf";
+      this.generar_pdf = "Generar pdf";
+      this.descargar_pdf = "Descargar pdf";
     }
 
     ngOnInit(): void {
@@ -114,14 +114,14 @@ export class VerSalidaComponent implements OnInit {
   
       doc.autoTable({
         head: [
-          ['solicitud de la salida', '']
+          ['Solicitud de la salida', '']
         ],
         body: [
-          ['destino de la salida'],
-          ['aqui va el destino de la salida...'],
-          ['pedido por el departamento', this.salida.departamento.departamento],
-          ['se llevara a cabo', 'empieza a ' + this.salida.hora_salida + ' y termina a las '+ this.salida.hora_llegada ],
-          ['status de la salida', this.salida.status ]
+          ['Destino de la salida'],
+          ['Aquí va el destino de la salida...'],
+          ['Pedido por el departamento', this.salida.departamento.departamento],
+          ['Se llevará a cabo', 'empieza a ' + this.salida.hora_salida + ' y termina a las '+ this.salida.hora_llegada ],
+          ['Status de la salida', this.salida.status ]
         ]
     })
       this._spinner.hide();
@@ -133,14 +133,14 @@ export class VerSalidaComponent implements OnInit {
       
       doc.autoTable({
         head: [
-          ['solicitud de salida', '']
+          ['Solicitud de salida', '']
         ],
         body: [
-          ['destino de la salida'],
-          ['aqui va el destino de la salida...'],
-          ['pedido por el departamento', this.salida.departamento.departamento],
-          ['se llevara a cabo', 'empieza a ' + this.salida.hora_salida + ' y termina a las '+ this.salida.hora_llegada ],
-          ['status de la salida', this.salida.status ]
+          ['Destino de la salida'],
+          ['Aquí va el destino de la salida...'],
+          ['Pedido por el departamento', this.salida.departamento.departamento],
+          ['Se llevará a cabo', 'empieza a ' + this.salida.hora_salida + ' y termina a las '+ this.salida.hora_llegada ],
+          ['Status de la salida', this.salida.status ]
         ]
     })
   

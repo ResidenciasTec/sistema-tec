@@ -13,20 +13,20 @@
             <article class="requeridos">
 
                 <label>
-                    <p class="label">Nombre del status:</p>
-                    <input type="text" appInput formControlName="status" placeholder="nombre del status..">
+                    <p class="label">Nombre del Status:</p>
+                    <input type="text" appInput formControlName="status" placeholder="Nombre del Status..">
                     <div
                         *ngIf="this.form.get('status').invalid && (this.form.get('status').dirty || this.form.get('status').touched)">
 
                         <div *ngIf="this.form.get('status').errors.required">
-                            Debes seleccionar un nombre de status valido.
+                            Debe seleccionar un nombre de Status válido.
                         </div>
                     </div>
                 </label>
 
 
                 <label>
-                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Editar status de vehiculos">
+                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Editar status de Vehículos">
                 </label>
 
             </article>

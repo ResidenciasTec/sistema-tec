@@ -11,7 +11,7 @@
 
 <article *ngIf="salida" [routerLink]="['/salidas/'+ salida.id]">
     <section *ngIf="salida.destino"class="replace">{{salida.destino}}</section>
-    <section *ngIf="!salida.destino">Aun no hay un destino.</section>
+    <section *ngIf="!salida.destino">Aún no hay un destino.</section>
     <section [className]="salida.status == 'aprobado' || salida.verificado == true ? 'replace aprobado' : 'replace'">{{salida.status}}</section>
 </article>
  
@@ -27,39 +27,39 @@
 
 <article *ngIf="cargo" [routerLink]="['/cargos/editar/'+ cargo.id]">
     <section *ngIf="cargo.cargo"class="replace">{{cargo.cargo}}</section>
-    <section>editar cargo</section>
+    <section>Editar Cargo</section>
 </article>
 
 <article class="permiso" *ngIf="permiso" [routerLink]="['/permisos/editar/'+ permiso.id]">
     <section *ngIf="permiso.user"class="replace">{{permiso.user.name}} {{permiso.user.surname}}</section>
     <section>{{permiso.departamento.departamento}}</section>
     <section *ngIf="permiso.cargo.cargo">{{permiso.cargo.cargo}}</section>
-    <section>editar permiso</section>
+    <section>Editar Permiso</section>
 </article>
 
 <article *ngIf="subdireccion" [routerLink]="['/subdirecciones/editar/'+ subdireccion.id]">
     <section *ngIf="subdireccion.subdireccion"class="replace">{{subdireccion.subdireccion}}</section>
-    <section>editar cargo</section>
+    <section>Editar Cargo</section>
 </article>
  
 <article *ngIf="statusvehiculo" [routerLink]="['/vehiculo/status/editar/'+ statusvehiculo.id]">
     <section *ngIf="statusvehiculo.status"class="replace">{{statusvehiculo.status}}</section>
-    <section>editar status</section>
+    <section>Editar Status</section>
 </article>
 
 <article *ngIf="statusorder" [routerLink]="['/status/mantenimiento/editar/'+ statusorder.id]">
     <section *ngIf="statusorder.status"class="replace">{{statusorder.status}}</section>
-    <section>editar status</section>
+    <section>Editar Status</section>
 </article>
 
 <article *ngIf="espacio" [routerLink]="['/espacios/editar/'+ espacio.id]">
     <section *ngIf="espacio.espacio"class="replace">{{espacio.espacio}}</section>
-    <section>editar espacio</section>
+    <section>Editar Espacio</section>
 </article>
 
 <article *ngIf="ubicacion" [routerLink]="['/ubicaciones/editar/'+ ubicacion.id]">
     <section *ngIf="ubicacion.ubicacion"class="replace">{{ubicacion.ubicacion}}</section>
-    <section>editar ubicacion</section>
+    <section>Editar Ubicacion</section>
 </article>
 
 

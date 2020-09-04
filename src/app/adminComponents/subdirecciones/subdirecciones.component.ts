@@ -25,7 +25,7 @@ export class SubdireccionesComponent implements OnInit {
     private _route: ActivatedRoute,
     private _spinner: NgxSpinnerService
     ) {       
-    this.textoCrear = "departamentos del ITM"
+    this.textoCrear = "Departamentos del ITM"
     this.token = this._variableService.getToken();
   }
 

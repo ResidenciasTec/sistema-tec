@@ -34,7 +34,7 @@ export class EditarEspacioComponent implements OnInit {
     private _spinner: NgxSpinnerService
     ) {      
       this.token = this._variableService.getToken();
-      this.textoCrear = "edita el espacio seleccionado!";  
+      this.textoCrear = "Edite el espacio seleccionado!";  
       this.espacios = JSON.parse(localStorage.getItem('espacios'));
     }
 
@@ -93,7 +93,7 @@ export class EditarEspacioComponent implements OnInit {
     this._lugarService.updateLugar(this.token, form, this.id).subscribe(
       response => {
         if(response.status == 'success'){
-          this._toastr.success('el espacio se ha creado con exito', 'LISTO');
+          this._toastr.success('El espacio se ha creado con éxito', 'LISTO');
           this.form.reset();
           window.scrollTo(0,0);
           this._spinner.hide();
@@ -105,13 +105,13 @@ export class EditarEspacioComponent implements OnInit {
 
         }else{
           this._spinner.hide();
-          this._toastr.error('parece que ha habido algun error','OOPS');
+          this._toastr.error('Parece que ha habido algun error','OOPS');
 
         }
       },
       error => {
         this._spinner.hide();
-        this._toastr.error('parece que los datos han sido erroneos','OOPS');
+        this._toastr.error('Parece que los datos han sido erróneos','OOPS');
         console.log(<any>error);
 
       }

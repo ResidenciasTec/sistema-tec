@@ -20,10 +20,10 @@
             <p>Hora de salida: <span>{{salida.hora_salida}}</span></p>
             <p>Departamento solicitante: <span>{{salida.depto_solicitante}}</span></p>
             <p *ngIf="salida.destino">Lugar: <span>{{salida.destino}}</span></p>
-            <p *ngIf="!salida.destino">Lugar: <span>No hay destino asignado aun</span></p>
-            <p>vehiculo: <span>{{salida.vehiculo_id}}</span></p>
+            <p *ngIf="!salida.destino">Lugar: <span>No hay destino asignado aún</span></p>
+            <p>Vehículo: <span>{{salida.vehiculo_id}}</span></p>
             <p *ngIf="salida.chofer">Chofer: <span>{{salida.chofer}}</span></p>
-            <p *ngIf="!salida.chofer">Chofer: <span>No hay chofer asignado aun</span></p>
+            <p *ngIf="!salida.chofer">Chofer: <span>No hay chofer asignado aún</span></p>
             
         </div>
     </div>

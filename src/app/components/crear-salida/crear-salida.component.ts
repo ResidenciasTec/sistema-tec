@@ -76,7 +76,7 @@ export class CrearSalidaComponent implements OnInit {
         localStorage.setItem('salidas', JSON.stringify(this.salida));
         this.form.reset();
         window.scrollTo(0,0);
-        this._toastr.success('la solicitud se ha creado exitosamente', 'SOLICITUD EXITOSA');
+        this._toastr.success('La solicitud se ha creado exitosamente', 'SOLICITUD EXITOSA');
         this._spinner.hide();
         
       }else{ 
@@ -91,7 +91,7 @@ export class CrearSalidaComponent implements OnInit {
         this._spinner.hide();
         
         this.status = 'error';
-        this._toastr.error('algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
+        this._toastr.error('Algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
         console.log(<any>error);
       }
       );

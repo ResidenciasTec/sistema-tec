@@ -13,19 +13,19 @@
             <article class="requeridos">
 
                 <label>
-                    <p class="label">Verifica tu identidad:</p>
-                    <input type="password" appInput formControlName="password" placeholder="escribe tu password...">
+                    <p class="label">Verifique su identidad:</p>
+                    <input type="password" appInput formControlName="password" placeholder="Escriba su contraseña...">
                     <div
                         *ngIf="this.form.get('password').invalid && (this.form.get('password').dirty || this.form.get('password').touched)">
 
                         <div *ngIf="this.form.get('password').errors.required">
-                            No has escrito tu password aun.
+                            No ha escrito su contraseña.
                         </div>
                     </div>
                 </label>
 
                 <label>
-                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Aprobar solicitud">
+                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Aprobar Solicitud">
                 </label>
 
             </article>

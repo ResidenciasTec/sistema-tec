@@ -26,7 +26,7 @@ export class StatusordersComponent implements OnInit {
     private _route: ActivatedRoute,
     private _spinner: NgxSpinnerService
     ) {    
-      this.textoCrear = "status de las solicitudes"
+      this.textoCrear = "Status de las Solicitudes"
       this.token = this._variableService.getToken();  
     }
 

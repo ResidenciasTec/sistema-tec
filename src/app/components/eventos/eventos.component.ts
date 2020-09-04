@@ -33,10 +33,10 @@ export class EventosComponent implements OnInit {
   	
   	) { 
       this.global = global.url;
-      this.title = "pagina de eventos";
+      this.title = "Página de eventos";
       this.textoCrear = "Solicitudes de eventos"
       this.token = this._variableService.getToken();
-      this.types = [ 'mas recientes', 'mas antiguos', 'por mes', 'por estado' ];
+      this.types = [ 'Mas recientes', 'Mas antiguos', 'Por mes', 'Por status' ];
         
       this.order = {
         type: 'type1'          
@@ -236,19 +236,19 @@ export class EventosComponent implements OnInit {
       let data = this.order.type=value;
   
       switch(data){
-        case 'mas recientes':
+        case 'Mas recientes':
           this.getEventos();
         break;
   
-        case 'mas antiguos':
+        case 'Mas antiguos':
           this.getAntiguos();
         break;
   
-        case 'por mes':
+        case 'Por mes':
           this.getPorMes();
         break;
 
-        case 'por status':
+        case 'Por status':
           this.getPorStatus();
         break;
   
