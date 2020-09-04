@@ -38,7 +38,7 @@ export class ActualizarTransporteComponent implements OnInit {
   ) 
   { 
     this.token = this._variableService.getToken();
-    this.textoCrear = "actualizar el vehiculo";
+    this.textoCrear = "Actualizar el Vehículo";
     this.vehiculos = JSON.parse(localStorage.getItem('vehiculos'));
   }
 
@@ -77,7 +77,7 @@ export class ActualizarTransporteComponent implements OnInit {
     this._transporteService.updateTransporte(this.token, form, this.vehiculo.id).subscribe(
       response => {
         if(response.status == 'success'){
-          this._toastr.success('el vehiculo se ha actualizado correctamente', 'LISTO');
+          this._toastr.success('El Vehículo se ha actualizado correctamente', 'LISTO');
           window.scrollTo(0,0);
           this._spinner.hide();
 
@@ -87,14 +87,14 @@ export class ActualizarTransporteComponent implements OnInit {
 
         }else{
           this._spinner.hide();
-          this._toastr.error('parece que ango anda mal, intentalo nuevamente', 'UPS');
+          this._toastr.error('Parece que ango anda mal, intentelo nuevamente', 'UPS');
 
         }
       },
       error =>{
         this._spinner.hide();
         console.log(<any>error);
-        this._toastr.error('parece que los datos ingresados no son correctos', 'UPS');
+        this._toastr.error('Parece que los datos ingresados no son correctos', 'UPS');
 
       }
     )

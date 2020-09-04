@@ -15,7 +15,7 @@
                 <label>
                     <p class="label">Usuario seleccionado:</p>
                     <select formControlName="usuario_id" appInput>
-                        <option selected>Selecciona un usuario:</option>
+                        <option selected>Seleccione un usuario:</option>
                         <option *ngFor="let user of users" value="{{user.id}}">
                             {{user.name}} {{user.surname}}</option>
                     </select>
@@ -31,7 +31,7 @@
                 <label>
                     <p class="label">Departamento perteneciente:</p>
                     <select formControlName="departamento_id" appInput>
-                        <option selected>Selecciona un departamento:</option>
+                        <option selected>Seleccione un departamento:</option>
                         <option *ngFor="let departamento of departamentos" value="{{departamento.id}}">
                             {{departamento.departamento}}</option>
                     </select>
@@ -47,7 +47,7 @@
                 <label>
                     <p class="label">Cargo a ocupar:</p>
                     <select formControlName="cargo_id" appInput>
-                        <option selected>Selecciona un cargo:</option>
+                        <option selected>Seleccione un cargo:</option>
                         <option *ngFor="let cargo of cargos" value="{{cargo.id}}">
                             {{cargo.cargo}}</option>
                     </select>
@@ -62,7 +62,7 @@
 
 
                 <label>
-                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Crear permiso">
+                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Crear Permiso">
                 </label>
 
             </article>

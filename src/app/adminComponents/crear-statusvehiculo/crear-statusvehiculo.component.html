@@ -14,19 +14,19 @@
 
                 <label>
                     <p class="label">Nombre del status:</p>
-                    <input type="text" appInput formControlName="status" placeholder="nombre del status..">
+                    <input type="text" appInput formControlName="status" placeholder="Nombre del status..">
                     <div
                         *ngIf="this.form.get('status').invalid && (this.form.get('status').dirty || this.form.get('status').touched)">
 
                         <div *ngIf="this.form.get('status').errors.required">
-                            Debes seleccionar un nombre de status valido.
+                            Debe seleccionar un nombre de status válido.
                         </div>
                     </div>
                 </label>
 
 
                 <label>
-                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Crear status de vehiculos">
+                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Crear status de Vehículos">
                 </label>
 
             </article>

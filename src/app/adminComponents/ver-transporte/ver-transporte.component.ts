@@ -28,7 +28,7 @@ export class VerTransporteComponent implements OnInit {
     private _router: Router,
     private _route: ActivatedRoute,
   ) {
-    this.textoCrear = "todos los vehiculos"
+    this.textoCrear = "Todos los Vehículos"
     this.token = this._variableService.getToken();
    }
 

@@ -28,7 +28,7 @@ export class CrearStatusvehiculoComponent implements OnInit {
     private _spinner: NgxSpinnerService
     ) {      
       this.token = this._variableService.getToken();
-      this.textoCrear = "crea un status de vehiculos nuevo!";   
+      this.textoCrear = "Crear un status de Vehículos nuevo!";   
     }
 
   ngOnInit(): void {
@@ -49,7 +49,7 @@ export class CrearStatusvehiculoComponent implements OnInit {
     this._statusvehiculoService.createStatusvehiculo(this.token, form).subscribe(
       response => {
         if(response.status == 'success'){
-          this._toastr.success('el status se ha creado con exito', 'LISTO');
+          this._toastr.success('El status se ha creado con éxito', 'LISTO');
           this.form.reset();
           window.scrollTo(0,0);
           this._spinner.hide();
@@ -57,13 +57,13 @@ export class CrearStatusvehiculoComponent implements OnInit {
 
         }else{
           this._spinner.hide();
-          this._toastr.error('parece que ha habido algun error','OOPS');
+          this._toastr.error('Parece que ha habido algun error','OOPS');
 
         }
       },
       error => {
         this._spinner.hide();
-        this._toastr.error('parece que los datos han sido erroneos','OOPS');
+        this._toastr.error('Parece que los datos han sido erróneos','OOPS');
         console.log(<any>error);
 
       }

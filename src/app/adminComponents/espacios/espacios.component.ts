@@ -26,7 +26,7 @@ export class EspaciosComponent implements OnInit {
     private _spinner: NgxSpinnerService
     ) 
     {    
-    this.textoCrear = "lugares de eventos del ITM"
+    this.textoCrear = "Lugares de Eventos del ITM"
     this.token = this._variableService.getToken(); 
   }
 

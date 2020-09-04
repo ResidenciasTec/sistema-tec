@@ -40,7 +40,7 @@ export class VerificarComponent implements OnInit {
     private _spinner: NgxSpinnerService
   ) { 
     this.token = this._variableService.getToken();
-    this.textoCrear = "verifique la solicitud";  
+    this.textoCrear = "Verifique la Solicitud";  
     this.identity = this._variableService.getIdentity(); 
 
     this.verificado = {
@@ -114,13 +114,13 @@ export class VerificarComponent implements OnInit {
 
         }else{
           this._spinner.hide();
-          this._toastr.error('parece que ha habido algun error','OOPS');
+          this._toastr.error('Parece que ha habido algun error','OOPS');
 
         }
       },
       error => {
         this._spinner.hide();
-        this._toastr.error('parece que los datos han sido erroneos','OOPS');
+        this._toastr.error('Parece que los datos han sido erróneos','OOPS');
         console.log(<any>error);
 
       }
@@ -133,19 +133,19 @@ export class VerificarComponent implements OnInit {
         response => {
           if(response.status == "success"){
             this._spinner.hide();
-            this._toastr.success('la verificacion se ha realizado con exito', 'LISTO');
+            this._toastr.success('La verificación se ha realizado con éxito', 'LISTO');
             this._router.navigate(['eventos/'+this.id]);
   
           }else{
             this._spinner.hide();
-            this._toastr.error('la solicitud no se ha podido verificar', 'SOLICITUD FALLIDA');
+            this._toastr.error('La solicitud no se ha podido verificar', 'SOLICITUD FALLIDA');
           }
   
         },
   
         error => {
           this._spinner.hide();
-          this._toastr.error('la solicitud no se ha podido verificar', 'SOLICITUD FALLIDA');
+          this._toastr.error('La solicitud no se ha podido verificar', 'SOLICITUD FALLIDA');
           console.log(<any>error);
   
         }
@@ -157,19 +157,19 @@ export class VerificarComponent implements OnInit {
         response => {
           if(response.status == "success"){
             this._spinner.hide();
-            this._toastr.success('la verificacion se ha realizado con exito', 'LISTO');
+            this._toastr.success('La verificación se ha realizado con éxito', 'LISTO');
             this._router.navigate(['mantenimiento/'+this.id]);
   
           }else{
             this._spinner.hide();
-            this._toastr.error('la solicitud no se ha podido verificar', 'SOLICITUD FALLIDA');
+            this._toastr.error('La solicitud no se ha podido verificar', 'SOLICITUD FALLIDA');
           }
   
         },
   
         error => {
           this._spinner.hide();
-          this._toastr.error('la solicitud no se ha podido verificar', 'SOLICITUD FALLIDA');
+          this._toastr.error('La solicitud no se ha podido verificar', 'SOLICITUD FALLIDA');
           console.log(<any>error);
   
         }
@@ -181,12 +181,12 @@ export class VerificarComponent implements OnInit {
         response => {
           if(response.status == "success"){
             this._spinner.hide();
-            this._toastr.success('la verificacion se ha realizado con exito', 'LISTO');
+            this._toastr.success('La verificación se ha realizado con éxito', 'LISTO');
             this._router.navigate(['salidas/'+this.id]);
   
           }else{
             this._spinner.hide();
-            this._toastr.error('la solicitud no se ha podido verificar', 'SOLICITUD FALLIDA');
+            this._toastr.error('La solicitud no se ha podido verificar', 'SOLICITUD FALLIDA');
           }
   
         },

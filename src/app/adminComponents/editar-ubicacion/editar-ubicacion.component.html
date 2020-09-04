@@ -13,20 +13,20 @@
             <article class="requeridos">
 
                 <label>
-                    <p class="label">Nombre de la ubicacion:</p>
-                    <input type="text" appInput formControlName="ubicacion" placeholder="nombre de la ubicacion..">
+                    <p class="label">Nombre de la ubicación:</p>
+                    <input type="text" appInput formControlName="ubicacion" placeholder="Nombre de la ubicación..">
                     <div
                         *ngIf="this.form.get('ubicacion').invalid && (this.form.get('ubicacion').dirty || this.form.get('ubicacion').touched)">
 
                         <div *ngIf="this.form.get('ubicacion').errors.required">
-                            Debes seleccionar un nombre de ubicacion valido.
+                            Debe seleccionar un nombre de ubicación válido.
                         </div>
                     </div>
                 </label>
 
 
                 <label>
-                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Editar ubicacion">
+                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Editar Ubicación">
                 </label>
 
             </article>

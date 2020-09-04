@@ -37,7 +37,7 @@ export class PermisosComponent implements OnInit {
     )
     {
       this.global = global.url;
-      this.textoCrear = "permisos de usuarios"
+      this.textoCrear = "Permisos de Usuarios"
       this.token = this._variableService.getToken();
      }
 

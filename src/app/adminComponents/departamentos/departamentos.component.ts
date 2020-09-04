@@ -41,7 +41,7 @@ export class DepartamentosComponent implements OnInit {
     private _spinner: NgxSpinnerService,
     ) {
       this.global = global.url;
-      this.textoCrear = "departamentos del ITM"
+      this.textoCrear = "Departamentos del ITM"
       this.token = this._variableService.getToken();
       this.types = [ 'academica', 'administrativa', 'planeacion', 'mostrar todas'];
         

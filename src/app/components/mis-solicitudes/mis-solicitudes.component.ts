@@ -44,13 +44,13 @@ order: { type: string; };
     private _variableService: variableService
     ) { 
       this.global = global.url;
-      this.titulo = "Mis solicitudes";
+      this.titulo = "Sus Solicitudes";
       this.data = 'eventos';
       this.evento = true;
       this.mantenimiento = false;
       this.salida = false;
-      this.title = "pagina de eventos";
-      this.textoCrear = "mis solicitudes de eventos"
+      this.title = "Página de eventos";
+      this.textoCrear = "Sus solicitudes de eventos"
       this.token = this._variableService.getToken();
       this.identity = this._variableService.getIdentity();
       this.types = [ 'eventos', 'mantenimientos', 'salidas' ];
@@ -78,7 +78,7 @@ order: { type: string; };
           if(response.elemento.data){
             this.eventos = response.elemento.data;
           }else{
-            this.eventos = "no tienes solicitudes de eventos"
+            this.eventos = "No tiene solicitudes de eventos"
           }
           
           this.total = response.elemento.total;
@@ -226,7 +226,7 @@ order: { type: string; };
        this.evento = true;
        this.salida = false;
        this.mantenimiento = false;
-        this.textoCrear = "mis solicitudes de eventos"
+        this.textoCrear = "Sus solicitudes de eventos"
         this.getEventos();
       break;
 
@@ -234,7 +234,7 @@ order: { type: string; };
         this.salida = true;
         this.evento = false;
         this.mantenimiento = false;
-        this.textoCrear = "mis solicitudes de salidas"
+        this.textoCrear = "Sus solicitudes de salidas"
         this.getSalidas();
       break;
 
@@ -242,7 +242,7 @@ order: { type: string; };
         this.mantenimiento = true;
         this.evento = false;
         this.salida = false;
-        this.textoCrear = "mis solicitudes de mantenimiento"
+        this.textoCrear = "Sus solicitudes de mantenimientos"
         this.getMantenimientos();
       break;
 

@@ -40,7 +40,7 @@ export class EditarPermisosComponent implements OnInit {
     ) 
     { 
       this.token = this._variableService.getToken();
-      this.textoCrear = "actualiza el permiso";
+      this.textoCrear = "Actualice el permiso";
       this.cargos = JSON.parse(localStorage.getItem('cargos'));
       this.departamentos = JSON.parse(localStorage.getItem('departamentos'));
       this.users = JSON.parse(localStorage.getItem('users'));
@@ -92,7 +92,7 @@ export class EditarPermisosComponent implements OnInit {
           this._userService.update(this.token, this.json, this.permiso.usuario_id).subscribe(
             response => {
               if(response.status == 'success'){
-                this._toastr.success('el permiso se ha asignado correctamente', 'LISTO');
+                this._toastr.success('El permiso se ha asignado correctamente', 'LISTO');
                 window.scrollTo(0,0);
                 this.form.reset();
                 this._spinner.hide();
@@ -101,7 +101,7 @@ export class EditarPermisosComponent implements OnInit {
 
               }else{
                 console.log('error');
-                this._toastr.error('el permiso no se ha asignado correctamente', 'MAL');
+                this._toastr.error('El permiso no se ha asignado correctamente', 'MAL');
                 this._spinner.hide();
               }
 
@@ -109,12 +109,12 @@ export class EditarPermisosComponent implements OnInit {
             error => {
               this._spinner.hide();
               console.log(<any>error);
-              this._toastr.error('el permiso no se ha asignado correctamente', 'MAL');
+              this._toastr.error('El permiso no se ha asignado correctamente', 'MAL');
 
             }
           )
 
-          this._toastr.success('el permiso se ha actualizado correctamente', 'LISTO');
+          this._toastr.success('El permiso se ha actualizado correctamente', 'LISTO');
           window.scrollTo(0,0);
           this._spinner.hide();
 
@@ -124,14 +124,14 @@ export class EditarPermisosComponent implements OnInit {
 
         }else{
           this._spinner.hide();
-          this._toastr.error('parece que algo anda mal, intentalo nuevamente', 'UPS');
+          this._toastr.error('Parece que algo anda mal, inténtelo nuevamente', 'UPS');
 
         }
       },
       error =>{
         this._spinner.hide();
         console.log(<any>error);
-        this._toastr.error('parece que los datos ingresados no son correctos', 'UPS');
+        this._toastr.error('Parece que los datos ingresados no son correctos', 'UPS');
 
       }
     )

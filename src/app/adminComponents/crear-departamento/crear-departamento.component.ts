@@ -30,7 +30,7 @@ export class CrearDepartamentoComponent implements OnInit {
     private _spinner: NgxSpinnerService,
   ) { 
     this.token = this._variableService.getToken();
-    this.textoCrear = "crea un nuevo departamento!";
+    this.textoCrear = "Crear un nuevo departamento!";
   }
 
   ngOnInit(): void {
@@ -55,7 +55,7 @@ export class CrearDepartamentoComponent implements OnInit {
     this._departamentoService.createDepartamento(this.token, form).subscribe(
       response => {
         if(response.status == 'success'){
-          this._toastr.success('el departamento se ha creado con exito', 'LISTO');
+          this._toastr.success('El departamento se ha creado con éxito', 'LISTO');
           this.form.reset();
           window.scrollTo(0,0);
           this._spinner.hide();
@@ -63,13 +63,13 @@ export class CrearDepartamentoComponent implements OnInit {
 
         }else{
           this._spinner.hide();
-          this._toastr.error('parece que ha habido algun error','OOPS');
+          this._toastr.error('Parece que ha habido algun error','OOPS');
 
         }
       },
       error => {
         this._spinner.hide();
-        this._toastr.error('parece que los datos han sido erroneos','OOPS');
+        this._toastr.error('Parece que los datos han sido erróneos','OOPS');
         console.log(<any>error);
 
       }

@@ -9,23 +9,23 @@
                 <img *ngIf="!identity.image" src="../../../assets/img/articles-57236_img_destacada.png">
                 <h3>{{identity.name}} {{identity.surname}}</h3>
                 <p *ngIf="identity.description">{{identity.description}}</p>
-                <p *ngIf="!identity.description">Edita tu perfil para que puedas agregar una descripcion breve sobre ti</p>
+                <p *ngIf="!identity.description">Edite su perfil para que pueda agregar una descripción breve sobre usted.</p>
             </div>
 
             <div class="section-info">
-                <p>DEPARTAMENTO:</p> 
-                <p>El departamento es este</p>
-                <p>PUESTO:</p>
+                <p>Departamento:</p> 
+                <p>El departamento.</p>
+                <p>Puesto:</p>
                 <p>General </p>
-                <p>NUMERO DE CONTROL:</p> 
+                <p>Número de control:</p> 
                 <p>{{logueado.control_number}}</p>
-                <p>CORREO ELECTRONICO:</p>
+                <p>Correo electrónico:</p>
                 <p>{{identity.email}}</p>
-                <p>NUMERO TELEFONICO:</p> 
+                <p>Número Telefónico:</p> 
                 <p *ngIf="identity.phone">{{identity.phone}}</p>
-                <p *ngIf="!identity.phone">No has agregado tu numero.</p>
+                <p *ngIf="!identity.phone">No ha agregado su número.</p>
                 <div class="submit">
-                    <p class=" btn" appSubmit [routerLink]="['/perfil/editar']">Editar mi perfil</p>
+                    <p class=" btn" appSubmit [routerLink]="['/perfil/editar']">Editar Perfil</p>
                 </div>
             </div>
                 

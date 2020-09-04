@@ -14,24 +14,24 @@
 
                 <label>
                     <p class="label">Nombre del departamento:</p>
-                    <input type="text" appInput formControlName="departamento" placeholder="nombre del departamento..">
+                    <input type="text" appInput formControlName="departamento" placeholder="Nombre del departamento..">
                     <div
                         *ngIf="this.form.get('departamento').invalid && (this.form.get('departamento').dirty || this.form.get('departamento').touched)">
 
                         <div *ngIf="this.form.get('departamento').errors.required">
-                            Debes seleccionar un departamento valido.
+                            Debe seleccionar un departamento válido.
                         </div>
                     </div>
                 </label>
 
                 <label>
-                    <p class="label">Numero de telefono:</p>
-                    <input type="tel" appInput formControlName="telefono" placeholder="telefono de contacto..">
+                    <p class="label">Número de teléfono:</p>
+                    <input type="tel" appInput formControlName="telefono" placeholder="Teléfono de contacto..">
                     <div
                         *ngIf="this.form.get('telefono').invalid && (this.form.get('telefono').dirty || this.form.get('telefono').touched)">
 
                         <div *ngIf="this.form.get('telefono').errors.required">
-                            Debes seleccionar un telefono valido.
+                            Debe seleccionar un teléfono válido.
                         </div>
 
                     </div>
@@ -39,13 +39,13 @@
 
 
                 <label>
-                    <p class="label">Correo electronico:</p>
-                    <input type="text" appInput formControlName="correo" placeholder="correo de contacto...">
+                    <p class="label">Correo electrónico:</p>
+                    <input type="text" appInput formControlName="correo" placeholder="Correo de contacto...">
                     <div
                         *ngIf="this.form.get('correo').invalid && (this.form.get('correo').dirty || this.form.get('correo').touched)">
 
                         <div *ngIf="this.form.get('correo').errors.required">
-                            El correo debe ser valido.
+                            El correo debe ser válido.
                         </div>
 
                     </div>
@@ -55,7 +55,7 @@
                 <label>
                     <p class="label">Pertenece a la subdireccion:</p>
                     <select formControlName="subdireccion_id" appInput>
-                        <option selected>Selecciona una subdireccion:</option>
+                        <option selected>Seleccione una subdirección:</option>
                         <option *ngFor="let subdireccion of subdirecciones" value="{{subdireccion.id}}">
                             {{subdireccion.subdireccion}}</option>
                     </select>
@@ -63,14 +63,14 @@
                         *ngIf="this.form.get('subdireccion_id').invalid && (this.form.get('subdireccion_id').dirty || this.form.get('status_id').touched)">
 
                         <div *ngIf="this.form.get('subdireccion_id').errors.required">
-                            La subdireccion es requerida.
+                            La subdirección es requerida.
                         </div>
                     </div>
                 </label>
 
 
                 <label>
-                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Actualizar departamento">
+                    <input type="submit" class="btn" appSubmit [disabled]="form.invalid" value="Actualizar Departamento">
                 </label>
 
             </article>

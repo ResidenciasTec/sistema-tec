@@ -37,7 +37,7 @@ export class BitacoraComponent implements OnInit {
     private _variableService: variableService,
   ) {
     this.global = global.url;
-    this.textoCrear = "Bitacora de vehiculos y salidas"
+    this.textoCrear = "Bitácora de Vehículos y Salidas"
     this.token = this._variableService.getToken();
     this.mesActual = moment().format('MMMM YYYY');
     this.fechaDinamica = moment().format('YYYY-MM-DD');

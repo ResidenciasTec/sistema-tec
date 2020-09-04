@@ -33,7 +33,7 @@ export class ActualizarDepartamentoComponent implements OnInit {
     private _route: ActivatedRoute,
   ) {
     this.token = this._variableService.getToken();
-    this.textoCrear = "actualizar el departamento";
+    this.textoCrear = "Actualizar el departamento";
     this.departamentos = JSON.parse(localStorage.getItem('departamentos'));
    }
 
@@ -74,7 +74,7 @@ export class ActualizarDepartamentoComponent implements OnInit {
     this._departamentoService.updateDepartamento(this.token, form, this.departamento.id).subscribe(
       response => {
         if(response.status == 'success'){
-          this._toastr.success('el vehiculo se ha actualizado correctamente', 'LISTO');
+          this._toastr.success('El departamento se ha actualizado correctamente', 'LISTO');
           window.scrollTo(0,0);
           this._spinner.hide();
 
@@ -84,14 +84,14 @@ export class ActualizarDepartamentoComponent implements OnInit {
 
         }else{
           this._spinner.hide();
-          this._toastr.error('parece que algo anda mal, intentalo nuevamente', 'UPS');
+          this._toastr.error('Parece que algo anda mal, intentalo nuevamente', 'UPS');
 
         }
       },
       error =>{
         this._spinner.hide();
         console.log(<any>error);
-        this._toastr.error('parece que los datos ingresados no son correctos', 'UPS');
+        this._toastr.error('Parece que los datos ingresados no son correctos', 'UPS');
 
       }
     )

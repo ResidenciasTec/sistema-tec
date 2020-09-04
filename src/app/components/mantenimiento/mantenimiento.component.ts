@@ -34,10 +34,10 @@ export class MantenimientoComponent implements OnInit {
 
   	) { 
       this.global = global.url;
-      this.title = "pagina de mantenimiento";
+      this.title = "Página de mantenimiento";
       this.textoCrear = "Solicitudes de mantenimientos"
       this.token = this._variableService.getToken();
-      this.types = [ 'mas recientes', 'mas antiguos', 'por mes', 'por estado' ];
+      this.types = [ 'Mas recientes', 'Mas antiguos', 'Por mes', 'Por status' ];
       
       this.order = {
         type: 'type1'          
@@ -236,19 +236,19 @@ export class MantenimientoComponent implements OnInit {
     let data = this.order.type=value;
 
     switch(data){
-      case 'mas recientes':
+      case 'Mas recientes':
         this.getMantenimientos();
       break;
 
-      case 'mas antiguos':
+      case 'Mas antiguos':
         this.getAntiguos();
       break;
 
-      case 'por mes':
+      case 'Por mes':
         this.getPorMes();
       break;
 
-      case 'por status':
+      case 'Por status':
         this.getPorStatus();
       break;
 

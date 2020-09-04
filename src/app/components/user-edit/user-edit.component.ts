@@ -106,7 +106,7 @@ export class UserEditComponent implements OnInit, DoCheck {
               this.identity = JSON.parse(localStorage.getItem('identity'));
               this.status = "success";
               this._spinner.hide();
-              this._toastr.success('Tus datos se actualizaron con exito.', 'PERFIL ACTUALIZADO');
+              this._toastr.success('Sus datos se actualizaron con éxito.', 'PERFIL ACTUALIZADO');
 
 
           setTimeout (() => {
@@ -125,7 +125,7 @@ export class UserEditComponent implements OnInit, DoCheck {
         }else{
           this.status = "error";
           this._spinner.hide();
-          this._toastr.error('Algunos de tus datos no fueron correctos.', 'SOLICITUD NO EXITOSA');
+          this._toastr.error('Sus datos no fueron correctos.', 'SOLICITUD NO EXITOSA');
         }
 
       },
@@ -133,7 +133,7 @@ export class UserEditComponent implements OnInit, DoCheck {
         this._spinner.hide();
         console.log(<any>error);
         this.status = "error";
-        this._toastr.error('Algunos de tus datos no fueron correctos.', 'SOLICITUD NO EXITOSA');
+        this._toastr.error('Sus datos no fueron correctos.', 'SOLICITUD NO EXITOSA');
       }
       );
   }

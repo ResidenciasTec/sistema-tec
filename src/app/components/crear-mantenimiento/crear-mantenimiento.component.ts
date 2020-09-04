@@ -74,7 +74,7 @@ export class CrearMantenimientoComponent implements OnInit {
           localStorage.setItem('mantenimientos', JSON.stringify(this.mantenimiento));
           this.form.reset();
           window.scrollTo(0,0);
-          this._toastr.success('la solicitud se ha creado exitosamente', 'SOLICITUD EXITOSA');
+          this._toastr.success('La solicitud se ha creado exitosamente', 'SOLICITUD EXITOSA');
           this._spinner.hide();
         }else{
           this._spinner.hide();
@@ -85,7 +85,7 @@ export class CrearMantenimientoComponent implements OnInit {
       error => {
         console.log(<any>error);
         this._spinner.hide();
-        this._toastr.error('algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
+        this._toastr.error('Algunos datos de la solicitud fueron erroneos', 'SOLICITUD FALLIDA');
         this.status = 'error';
       }
       );
