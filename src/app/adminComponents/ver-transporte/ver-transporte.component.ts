@@ -74,6 +74,8 @@ export class VerTransporteComponent implements OnInit {
           if(response.status == 'success'){
             this.vehiculos = response.elementos;
             localStorage.setItem('transportes', JSON.stringify(this.vehiculos));
+            let crudo = JSON.parse(localStorage.getItem('transportes'));
+            this.vehiculos = crudo.reverse().slice(0, 5);
             this._spinner.hide();
           }else{
             this._spinner.hide();
@@ -89,3 +91,4 @@ export class VerTransporteComponent implements OnInit {
   }
 
 }
+

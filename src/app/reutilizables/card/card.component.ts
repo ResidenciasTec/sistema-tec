@@ -19,10 +19,14 @@ export class CardComponent implements OnInit {
   @Input() statusorder: any;
   @Input() espacio: any;
   @Input() ubicacion: any;
+  
+  constructor() {
 
-  constructor() { }
+    
+   }
 
   ngOnInit(): void {
+    
   }
 
 }

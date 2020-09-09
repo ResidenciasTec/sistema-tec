@@ -76,6 +76,8 @@ export class VerDepartamentoComponent implements OnInit {
         if(response.status == 'success'){
           this.departamentos = response.elementos.data;
           localStorage.setItem('departamentos', JSON.stringify(this.departamentos));
+          let crudo = JSON.parse(localStorage.getItem('departamentos'));
+          this.departamentos = crudo.reverse().slice(0, 5);
           this._spinner.hide();
         }else{
           this._spinner.hide();
