@@ -18,6 +18,7 @@ article{
         cursor: pointer;
     }
 
+
     section{
 
         &:first-child{
@@ -59,7 +60,7 @@ article{
 .permiso{
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 2em 2em 2em;
+    grid-template-rows: 1fr 3em 3em 3em;
     border-radius: 5px;
     grid-gap: 0px;
     width: 15em;
@@ -94,6 +95,7 @@ article{
             display: flex;
             justify-content: center;
             align-items: center;
+            text-align: center;
             background-color: transparent;
             color: #735a5a;
             border: 1px solid #e1bda8;

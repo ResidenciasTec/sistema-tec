@@ -26,7 +26,7 @@
 </article>
 
 <article *ngIf="cargo" [routerLink]="['/cargos/editar/'+ cargo.id]">
-    <section *ngIf="cargo.cargo"class="replace">{{cargo.cargo}}</section>
+    <section *ngIf="cargo.cargo"class="replace">{{cargo.cargo.substring(0,1).toUpperCase() + cargo.cargo.substring(1).toLowerCase()}}</section>
     <section>Editar Cargo</section>
 </article>
 
